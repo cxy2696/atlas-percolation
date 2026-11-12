@@ -25,6 +25,20 @@ jobs:
         run: PYTHONPATH=lib/python python3 -m unittest discover -s lib/python/tests -v
       - name: Cross-language parity runner
         run: make parity-check
+      - name: v3 algorithm parity runner
+        run: python3 scripts/parity_algorithms.py
+      - name: Reference audit (schema)
+        run: python3 scripts/verify_references.py --offline
+      - name: Python package build
+        run: |
+          python3 -m pip install build
+          python3 -m build --wheel --outdir dist lib/python
+      - name: API smoke test
+        run: |
+          PYTHONPATH=lib/python python3 -m percolation_atlas serve --port 8099 &
+          sleep 1
+          curl -fsS http://127.0.0.1:8099/api/health
+          curl -fsS -X POST http://127.0.0.1:8099/api/bootstrap -H 'Content-Type: application/json' -d '{"L":32,"p":0.5,"r":3,"seed":11}'
       - name: C++ suite
         run: make -C lib/cpp test
       - name: Benchmark smoke test

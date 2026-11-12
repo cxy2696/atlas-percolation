@@ -1140,7 +1140,313 @@
     "sharpness",
     "history"
    ],
-   "note": "No DOI; the result is also described in the review literature on sharpness."
+   "note": "Soviet Mathematics Doklady 33 (1986), 856–859. No DOI is available for this translation; the bibliographic record is the traceable source."
+  },
+  {
+   "id": "bk1985",
+   "authors": [
+    "van den Berg, J.",
+    "Kesten, H."
+   ],
+   "year": 1985,
+   "title": "Inequalities with applications to percolation and reliability",
+   "venue": "Journal of Applied Probability",
+   "volume": "22",
+   "pages": "556–569",
+   "doi": "10.2307/3213860",
+   "type": "article",
+   "topics": [
+    "core",
+    "fkg",
+    "bk"
+   ]
+  },
+  {
+   "id": "holroyd2003",
+   "authors": [
+    "Holroyd, A. E."
+   ],
+   "year": 2003,
+   "title": "Sharp metastability threshold for two-dimensional bootstrap percolation",
+   "venue": "Probability Theory and Related Fields",
+   "volume": "125",
+   "pages": "195–224",
+   "doi": "10.1007/s00440-002-0239-x",
+   "type": "article",
+   "topics": [
+    "bootstrap",
+    "thresholds"
+   ]
+  },
+  {
+   "id": "achlioptas2009",
+   "authors": [
+    "Achlioptas, D.",
+    "D'Souza, R. M.",
+    "Spencer, J."
+   ],
+   "year": 2009,
+   "title": "Explosive percolation in random networks",
+   "venue": "Science",
+   "volume": "323",
+   "pages": "1453–1455",
+   "doi": "10.1126/science.1167782",
+   "type": "article",
+   "topics": [
+    "explosive",
+    "networks",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "dacosta2011",
+   "authors": [
+    "da Costa, R. A.",
+    "Dorogovtsev, S. N.",
+    "Goltsev, A. V.",
+    "Mendes, J. F. F."
+   ],
+   "year": 2011,
+   "title": "Explosive percolation is continuous, but with unusual finite size behavior",
+   "venue": "Physical Review Letters",
+   "volume": "106",
+   "pages": "225701",
+   "doi": "10.1103/PhysRevLett.106.225701",
+   "type": "article",
+   "topics": [
+    "explosive",
+    "networks"
+   ]
+  },
+  {
+   "id": "riordan2011",
+   "authors": [
+    "Riordan, O.",
+    "Warnke, L."
+   ],
+   "year": 2011,
+   "title": "Explosive percolation is continuous",
+   "venue": "Science",
+   "volume": "333",
+   "pages": "322–324",
+   "doi": "10.1126/science.1206241",
+   "type": "article",
+   "topics": [
+    "explosive",
+    "networks",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "grassberger2003",
+   "authors": [
+    "Grassberger, P."
+   ],
+   "year": 2003,
+   "title": "Critical percolation in high dimensions",
+   "venue": "Physical Review E",
+   "volume": "67",
+   "pages": "036101",
+   "doi": "10.1103/PhysRevE.67.036101",
+   "type": "article",
+   "topics": [
+    "high-dimensions",
+    "exponents"
+   ]
+  },
+  {
+   "id": "schramm2000",
+   "authors": [
+    "Schramm, O."
+   ],
+   "year": 2000,
+   "title": "Scaling limits of loop-erased random walks and uniform spanning trees",
+   "venue": "Israel Journal of Mathematics",
+   "volume": "118",
+   "pages": "221–288",
+   "doi": "10.1007/BF02803524",
+   "type": "article",
+   "topics": [
+    "sle",
+    "two-dimensions"
+   ]
+  },
+  {
+   "id": "motter2002",
+   "authors": [
+    "Motter, A. E.",
+    "Lai, Y.-C."
+   ],
+   "year": 2002,
+   "title": "Cascade-based attacks on complex networks",
+   "venue": "Physical Review E",
+   "volume": "66",
+   "pages": "065102",
+   "doi": "10.1103/PhysRevE.66.065102",
+   "type": "article",
+   "topics": [
+    "networks",
+    "cascades",
+    "applications"
+   ]
+  },
+  {
+   "id": "watts2002",
+   "authors": [
+    "Watts, D. J."
+   ],
+   "year": 2002,
+   "title": "A simple model of global cascades on random networks",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "99",
+   "pages": "5766–5771",
+   "doi": "10.1073/pnas.082090499",
+   "type": "article",
+   "topics": [
+    "networks",
+    "cascades"
+   ]
+  },
+  {
+   "id": "gao2016",
+   "authors": [
+    "Gao, J.",
+    "Barzel, B.",
+    "Barabási, A.-L."
+   ],
+   "year": 2016,
+   "title": "Universal resilience patterns in complex networks",
+   "venue": "Nature",
+   "volume": "530",
+   "pages": "307–312",
+   "doi": "10.1038/nature16948",
+   "type": "article",
+   "topics": [
+    "networks",
+    "resilience"
+   ]
+  },
+  {
+   "id": "sahimi2023",
+   "authors": [
+    "Sahimi, M."
+   ],
+   "year": 2023,
+   "title": "Applications of Percolation Theory",
+   "edition": "2nd",
+   "venue": "Springer",
+   "doi": "10.1007/978-3-031-20386-2",
+   "type": "book",
+   "topics": [
+    "applications",
+    "porous-media",
+    "transport"
+   ]
+  },
+  {
+   "id": "meester1996",
+   "authors": [
+    "Meester, R.",
+    "Roy, R."
+   ],
+   "year": 1996,
+   "title": "Continuum Percolation",
+   "venue": "Cambridge University Press",
+   "doi": "10.1017/CBO9780511895357",
+   "type": "book",
+   "topics": [
+    "continuum",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "hunt2013",
+   "authors": [
+    "Hunt, A.",
+    "Ewing, R.",
+    "Ghanbarian, B."
+   ],
+   "year": 2013,
+   "title": "Percolation Theory for Flow in Porous Media",
+   "edition": "3rd",
+   "venue": "Springer",
+   "doi": "10.1007/978-3-319-03771-4",
+   "type": "book",
+   "topics": [
+    "porous-media",
+    "transport",
+    "applications"
+   ]
+  },
+  {
+   "id": "johndcook2015",
+   "authors": [
+    "Cook, J. D."
+   ],
+   "year": 2015,
+   "title": "QR codes and percolation",
+   "venue": "John D. Cook blog",
+   "url": "https://www.johndcook.com/blog/2015/04/15/qr-codes/",
+   "accessed": "2026-11-12",
+   "type": "blog",
+   "topics": [
+    "applications",
+    "imaging",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "olucha_nd",
+   "authors": [
+    "Olucha Fuentes, J."
+   ],
+   "year": "n.d.",
+   "title": "Maths Museum: percolation theory",
+   "venue": "Maths Museum (personal notes)",
+   "url": "https://janolucha.github.io/museum.html",
+   "accessed": "2026-11-12",
+   "type": "blog",
+   "topics": [
+    "foundations",
+    "two-dimensions"
+   ]
+  },
+  {
+   "id": "networkx",
+   "authors": [
+    "Hagberg, A.",
+    "Schult, D.",
+    "Swart, P."
+   ],
+   "year": 2008,
+   "title": "NetworkX: network analysis in Python",
+   "venue": "SciPy Proceedings; documentation at networkx.org",
+   "url": "https://networkx.org/documentation/stable/",
+   "accessed": "2026-11-12",
+   "type": "software",
+   "topics": [
+    "algorithms",
+    "networks",
+    "software"
+   ]
+  },
+  {
+   "id": "dct2016",
+   "authors": [
+    "Duminil-Copin, H.",
+    "Tassion, V."
+   ],
+   "year": 2016,
+   "title": "A new proof of the sharpness of the phase transition for Bernoulli percolation on Z^d",
+   "venue": "L'Enseignement Mathématique 62, 199–206; arXiv:1502.03051",
+   "url": "https://arxiv.org/abs/1502.03051",
+   "accessed": "2026-11-12",
+   "type": "preprint",
+   "topics": [
+    "core",
+    "sharpness",
+    "rigorous"
+   ]
   }
  ]
 }

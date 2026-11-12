@@ -38,8 +38,24 @@ from .network import (
 from .continuum import boolean_model, poisson_points
 from .directed import directed_crossing, directed_crossing_rate, directed_crosses_lr
 from .cardy import cardy_crossing, cardy_crossing_vertical, cardy_hypergeom, cardy_modulus, CARDY_CONSTANT
+from .algorithms import (
+    neighbours_from_edges,
+    bootstrap_activation,
+    bootstrap_lattice,
+    explosive_sweep,
+    explosive_percolation,
+    explosive_random_graph,
+    invasion_cluster,
+    invasion_percolation,
+    leath_cluster,
+    BootstrapResult,
+    ExplosiveResult,
+    ExplosiveGraphResult,
+    InvasionResult,
+    LeathResult,
+)
 
-__version__ = "2.1.0"
+__version__ = "3.0.0"
 
 __all__ = [
     "Rng",
@@ -71,4 +87,18 @@ __all__ = [
     "cardy_hypergeom",
     "cardy_modulus",
     "CARDY_CONSTANT",
+    "neighbours_from_edges",
+    "bootstrap_activation",
+    "bootstrap_lattice",
+    "explosive_sweep",
+    "explosive_percolation",
+    "explosive_random_graph",
+    "invasion_cluster",
+    "invasion_percolation",
+    "leath_cluster",
+    "BootstrapResult",
+    "ExplosiveResult",
+    "ExplosiveGraphResult",
+    "InvasionResult",
+    "LeathResult",
 ]

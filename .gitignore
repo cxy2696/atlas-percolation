@@ -10,3 +10,7 @@ coverage/
 site/_site/
 _site/
 tmp/
+
+dist/
+*.egg-info/
+lib/python/build/

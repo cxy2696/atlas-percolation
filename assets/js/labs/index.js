@@ -83,6 +83,46 @@ export const LABS = [
     mount: (el, ctx) => import('./directed.js').then((m) => m.mount(el, ctx)),
   },
   {
+    id: 'bootstrap',
+    title: { en: 'Bootstrap percolation', zh: '自举渗流', de: 'Bootstrap-Perkolation' },
+    blurb: {
+      en: 'A closure rule: r active neighbours activate a site. The final set is a least fixed point.',
+      zh: '一个闭包规则：r 个活跃邻居激活一个位点。最终集合是最小不动点。',
+      de: 'Eine Abschlussregel: r aktive Nachbarn aktivieren einen Platz. Die Endmenge ist ein kleinster Fixpunkt.',
+    },
+    mount: (el, ctx) => import('./bootstrap.js').then((m) => m.mount(el, ctx)),
+  },
+  {
+    id: 'explosive',
+    title: { en: 'Explosive percolation', zh: '爆炸渗流', de: 'Explosive Perkolation' },
+    blurb: {
+      en: 'Two-choice edge rules delay the giant component and sharpen the finite-size jump.',
+      zh: '双选择加边规则推迟巨分量，并让有限尺度跳变更陡。',
+      de: 'Zwei-Wahl-Kantenregeln verzögern die Riesenkomponente und schärfen den Endlichkeitssprung.',
+    },
+    mount: (el, ctx) => import('./explosive.js').then((m) => m.mount(el, ctx)),
+  },
+  {
+    id: 'invasion',
+    title: { en: 'Invasion percolation', zh: '侵入渗流', de: 'Invasion-Perkolation' },
+    blurb: {
+      en: 'Greedy minimum-threshold growth, accepted tree, rejected loops, finite-size fractal slope.',
+      zh: '贪心的最小阈值生长、接受树、被拒绝的环，以及有限尺度的分形斜率。',
+      de: 'Gieriges Wachstum über kleinste Schwellen, Spannbaum, verworfene Kreise, endliche Fraktalsteigung.',
+    },
+    mount: (el, ctx) => import('./invasion.js').then((m) => m.mount(el, ctx)),
+  },
+  {
+    id: 'algorithm-studio',
+    title: { en: 'Algorithm studio', zh: '算法工坊', de: 'Algorithmen-Studio' },
+    blurb: {
+      en: 'Replay a union-find sweep edge by edge and compare measured cost and scaling.',
+      zh: '逐边重放并查集扫描，比较实测代价与标度。',
+      de: 'Einen Union-Find-Sweep Kante für Kante abspielen und Kosten sowie Skalierung vergleichen.',
+    },
+    mount: (el, ctx) => import('./algorithm-studio.js').then((m) => m.mount(el, ctx)),
+  },
+  {
     id: 'random-cluster',
     title: { en: 'Random-cluster / Potts', zh: '随机簇 / Potts', de: 'Random-Cluster / Potts' },
     blurb: {

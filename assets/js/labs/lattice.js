@@ -1,6 +1,7 @@
 import { Rng, buildLattice, Percolation, degreeHistogram } from '../../../lib/js/index.js';
 import { labHead, control, select, readout, panel, canvasBox, bindRange, clusterColor, fmt, setText } from './ui.js';
 import { t } from '../i18n.js';
+import { palette, onTheme } from '../theme.js';
 
 const PC = {
   'square:bond': 0.5,
@@ -90,15 +91,15 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'lattice' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('lat-canvas', [t(lang, 'geometry'), t(lang, 'stage_engine'), 'p', 'L'])}
         <div class="legend" style="margin:10px 0 14px">
-          <span><i style="background:#4fe3ea"></i>${L.largest}</span>
-          <span><i style="background:#ffb454"></i>${L.second}</span>
-          <span><i style="background:#3f8fa0"></i>${t(lang, 'clusters')}</span>
-          <span><i style="background:#16242b"></i>${L.empty}</span>
+          <span><i data-theme-color="cyan"></i>${L.largest}</span>
+          <span><i data-theme-color="amber"></i>${L.second}</span>
+          <span><i data-theme-color="cyan-dim"></i>${t(lang, 'clusters')}</span>
+          <span><i data-theme-color="closed"></i>${L.empty}</span>
         </div>
         <div class="grid-2">
           ${panel(L.observables,
@@ -186,6 +187,7 @@ export function mount(root, ctx) {
   }
 
   function draw() {
+    const C = palette();
     const wrap = canvas.parentElement;
     const W = Math.max(280, wrap.clientWidth - 2);
     const H = Math.min(560, Math.round(W * 0.86));
@@ -196,11 +198,18 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
 
-    if (state.kind === 'square') drawPixel(g, W, H);
-    else drawVector(g, W, H);
+    if (state.kind === 'square') drawPixel(g, W, H, C);
+    else drawVector(g, W, H, C);
+  }
+
+  function rgbOfHex(hex, fallback) {
+    const m = String(hex || '').match(/^#?([0-9a-f]{6})$/i);
+    if (!m) return fallback;
+    const n = parseInt(m[1], 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   }
 
   function rootSizes() {
@@ -214,16 +223,17 @@ export function mount(root, ctx) {
     return sizeOf;
   }
 
-  function drawPixel(g, W, H) {
+  function drawPixel(g, W, H, C) {
     const L2 = state.mode === 'bond' ? 2 * state.L - 1 : state.L;
     pixelCanvas.width = L2;
     pixelCanvas.height = L2;
     const img = pixelCtx.createImageData(L2, L2);
     const data = img.data;
+    const bg = rgbOfHex(C.bg, [7, 12, 16]);
     for (let i = 0; i < data.length; i += 4) {
-      data[i] = 7;
-      data[i + 1] = 12;
-      data[i + 2] = 16;
+      data[i] = bg[0];
+      data[i + 1] = bg[1];
+      data[i + 2] = bg[2];
       data[i + 3] = 255;
     }
     const sizeOf = rootSizes();
@@ -234,7 +244,7 @@ export function mount(root, ctx) {
       let c = rgbCache.get(r);
       if (!c) {
         const s = sizeOf.get(r) || 1;
-        const str = clusterColor(s, maxS, 1);
+        const str = clusterColor(s, maxS, 1, C);
         const m = str.match(/rgba?\(([^)]+)\)/);
         const p = m ? m[1].split(',').map(Number) : [80, 200, 210];
         c = [p[0], p[1], p[2]];
@@ -256,7 +266,7 @@ export function mount(root, ctx) {
         const px = state.mode === 'bond' ? 2 * j : j;
         const py = state.mode === 'bond' ? 2 * i : i;
         if (!model.occ[v]) {
-          put(px, py, [16, 24, 30]);
+          put(px, py, rgbOfHex(C.closed, [16, 24, 30]));
           continue;
         }
         put(px, py, rgbOf(dsu.find(v)));
@@ -286,11 +296,11 @@ export function mount(root, ctx) {
     const pad = 8;
     const side = Math.min(W - 2 * pad, H - 2 * pad);
     g.drawImage(pixelCanvas, pad + (W - 2 * pad - side) / 2, pad + (H - 2 * pad - side) / 2, side, side);
-    g.strokeStyle = 'rgba(96,190,210,0.25)';
+    g.strokeStyle = C.grid;
     g.strokeRect(pad + 0.5, pad + 0.5, side, side);
   }
 
-  function drawVector(g, W, H) {
+  function drawVector(g, W, H, C) {
     const pad = 18;
     const side = Math.min(W - 2 * pad, H - 2 * pad);
     const ox = pad + (W - 2 * pad - side) / 2;
@@ -304,7 +314,7 @@ export function mount(root, ctx) {
     const sizeOf = rootSizes();
     // closed edges first
     g.lineWidth = 1;
-    g.strokeStyle = 'rgba(30,60,72,0.55)';
+    g.strokeStyle = C.grid;
     g.beginPath();
     for (let e = 0; e < lat.m; e++) {
       if (model.open[e]) continue;
@@ -321,7 +331,7 @@ export function mount(root, ctx) {
       const [x1, y1] = pos(lat.eu[e]);
       const [x2, y2] = pos(lat.ev[e]);
       const r = dsu.find(lat.eu[e]);
-      g.strokeStyle = clusterColor(sizeOf.get(r) || 1, maxS, 0.9);
+      g.strokeStyle = clusterColor(sizeOf.get(r) || 1, maxS, 0.9, C);
       g.lineWidth = 1.2;
       g.beginPath();
       g.moveTo(x1, y1);
@@ -332,15 +342,15 @@ export function mount(root, ctx) {
     for (let v = 0; v < lat.n; v++) {
       const [x, y] = pos(v);
       if (!model.occ[v]) {
-        g.fillStyle = '#0c141a';
+        g.fillStyle = C.closed;
         g.fillRect(x - 1, y - 1, 2, 2);
       } else {
         const r = dsu.find(v);
-        g.fillStyle = clusterColor(sizeOf.get(r) || 1, maxS, 1);
+        g.fillStyle = clusterColor(sizeOf.get(r) || 1, maxS, 1, C);
         g.fillRect(x - 1.2, y - 1.2, 2.4, 2.4);
       }
     }
-    g.strokeStyle = 'rgba(96,190,210,0.2)';
+    g.strokeStyle = C.grid;
     g.strokeRect(ox - 6, oy - 6, side + 12, side + 12);
   }
 
@@ -393,10 +403,12 @@ export function mount(root, ctx) {
 
   const onResize = () => draw();
   window.addEventListener('resize', onResize);
+  const offTheme = onTheme(() => draw());
 
   applyControls();
 
   return () => {
+    offTheme();
     window.removeEventListener('resize', onResize);
     if (sweeping) clearInterval(sweeping);
   };

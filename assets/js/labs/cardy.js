@@ -2,6 +2,7 @@ import { cardyCrossing, cardyHypergeom, cardyModulus, CARDY_CONSTANT } from '../
 import { labHead, panel, canvasBox, readout, fmt, setText } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -52,7 +53,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'cardy' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cardy-plot', ['π(ℓ)', 'CARDY 1992 / SMIRNOV 2001', 'ℓ', ''])}
@@ -138,9 +139,10 @@ export function mount(root, ctx) {
     canvas.height = H * dpr;
     canvas.style.width = W + 'px';
     canvas.style.height = H + 'px';
+    const C = palette();
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     const maxW = Math.min(W - 120, 300);
     const maxH = H - 70;
@@ -149,24 +151,24 @@ export function mount(root, ctx) {
     const rh = Math.max(24, scale * l);
     const x0 = (W - rw) / 2;
     const y0 = (H - rh) / 2 + 6;
-    g.fillStyle = 'rgba(79,227,234,0.06)';
+    g.fillStyle = withAlpha(C.cyan, 0.07);
     g.fillRect(x0, y0, rw, rh);
     g.lineWidth = 1;
-    g.strokeStyle = 'rgba(79,227,234,0.85)';
+    g.strokeStyle = C.cyan;
     g.beginPath();
     g.moveTo(x0, y0);
     g.lineTo(x0, y0 + rh);
     g.moveTo(x0 + rw, y0);
     g.lineTo(x0 + rw, y0 + rh);
     g.stroke();
-    g.strokeStyle = 'rgba(125,144,156,0.7)';
+    g.strokeStyle = withAlpha(C.dim, 0.75);
     g.beginPath();
     g.moveTo(x0, y0);
     g.lineTo(x0 + rw, y0);
     g.moveTo(x0, y0 + rh);
     g.lineTo(x0 + rw, y0 + rh);
     g.stroke();
-    g.fillStyle = 'rgba(125,144,156,0.9)';
+    g.fillStyle = C.dim;
     g.font = '9px monospace';
     g.fillText('W', x0 + rw / 2 - 3, y0 + rh + 14);
     g.save();
@@ -174,23 +176,27 @@ export function mount(root, ctx) {
     g.rotate(-Math.PI / 2);
     g.fillText('H', 0, 0);
     g.restore();
-    g.strokeStyle = 'rgba(255,180,84,0.8)';
+    g.strokeStyle = C.amber;
     g.beginPath();
     g.moveTo(x0 - 16, y0 + rh / 2);
     g.lineTo(x0 + rw + 16, y0 + rh / 2);
     g.stroke();
-    g.fillStyle = 'rgba(255,180,84,0.9)';
+    g.fillStyle = C.amber;
     g.beginPath();
     g.moveTo(x0 + rw + 16, y0 + rh / 2);
     g.lineTo(x0 + rw + 10, y0 + rh / 2 - 3);
     g.lineTo(x0 + rw + 10, y0 + rh / 2 + 3);
     g.fill();
-    g.fillStyle = 'rgba(125,144,156,0.9)';
+    g.fillStyle = C.dim;
   }
 
   document.getElementById('cardy-l').addEventListener('input', draw);
   const onResize = () => draw();
   window.addEventListener('resize', onResize);
+  const offTheme = onTheme(() => draw());
   draw();
-  return () => window.removeEventListener('resize', onResize);
+  return () => {
+    offTheme();
+    window.removeEventListener('resize', onResize);
+  };
 }

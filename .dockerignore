@@ -1,0 +1,12 @@
+.git
+.github
+tmp
+build
+_site
+node_modules
+.venv
+__pycache__
+*.pyc
+.DS_Store
+lib/cpp/build
+*.png

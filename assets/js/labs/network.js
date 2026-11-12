@@ -9,6 +9,7 @@ import {
 import { labHead, panel, canvasBox, readout, fmt, setText, bindRange } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -64,7 +65,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'network' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('net-plot', ['S(f)', 'CONFIG MODEL', 'f', 'N = 20 000'])}
@@ -194,6 +195,7 @@ export function mount(root, ctx) {
   }
 
   function drawHubs() {
+    const C = palette();
     const canvas = document.getElementById('net-graph');
     const wrap = canvas.parentElement;
     const W = Math.max(280, wrap.clientWidth - 2);
@@ -205,7 +207,7 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     const graph = state.graph;
     if (!graph) return;
@@ -223,7 +225,7 @@ export function mount(root, ctx) {
       const a = i * 2.399963229728653;
       return [cx + rr * Math.cos(a), cy + rr * Math.sin(a)];
     };
-    g.strokeStyle = 'rgba(79,227,234,0.10)';
+    g.strokeStyle = withAlpha(C.cyan, 0.12);
     g.lineWidth = 0.6;
     g.beginPath();
     for (let i = 0; i < top; i++) {
@@ -243,10 +245,12 @@ export function mount(root, ctx) {
       const [x, y] = pos(i);
       const deg = graph.offset[order[i] + 1] - graph.offset[order[i]];
       const t0 = Math.min(1, deg / 60);
-      g.fillStyle = i < 8 ? PALETTE.amber : `rgba(79,227,234,${0.25 + 0.65 * t0})`;
+      g.fillStyle = i < 8 ? C.amber : C.cyan;
+      g.globalAlpha = i < 8 ? 1 : 0.3 + 0.6 * t0;
       g.beginPath();
       g.arc(x, y, i < 8 ? 2.6 : 1.2 + 1.4 * t0, 0, Math.PI * 2);
       g.fill();
+      g.globalAlpha = 1;
     }
   }
 
@@ -268,7 +272,11 @@ export function mount(root, ctx) {
 
   const onResize = () => draw();
   window.addEventListener('resize', onResize);
+  const offTheme = onTheme(() => draw());
   buildNetwork();
 
-  return () => window.removeEventListener('resize', onResize);
+  return () => {
+    offTheme();
+    window.removeEventListener('resize', onResize);
+  };
 }

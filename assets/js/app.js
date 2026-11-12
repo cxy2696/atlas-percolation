@@ -8,24 +8,37 @@ import * as data from './views/data.js';
 import * as library from './views/library.js';
 import * as sources from './views/sources.js';
 import { LABS } from './labs/index.js';
+import { initTheme, toggleTheme, themeLabel, onTheme } from './theme.js';
 
 const VIEWS = { overview, atlas, labs, code, data, library, sources };
 const state = { lang: 'en', view: 'overview', param: null, manifest: null, cleanup: null };
 
 function parseHash() {
   const raw = location.hash.replace(/^#\/?/, '');
-  const parts = raw.split('/').filter(Boolean);
+  const [path, search = ''] = raw.split('?');
+  const query = Object.fromEntries(new URLSearchParams(search));
+  const parts = path.split('/').filter(Boolean);
   const saved = localStorage.getItem('atlas-lang');
   let lang = LANGS.includes(parts[0]) ? parts[0] : LANGS.includes(saved) ? saved : 'en';
   const view = parts[1] && VIEWS[parts[1]] ? parts[1] : 'overview';
   const param = parts.slice(2).join('/') || null;
-  return { lang, view, param };
+  return { lang, view, param, query };
 }
 
-function go(lang, view, param) {
-  const target = `#/${lang}/${view}${param ? '/' + param : ''}`;
+function go(lang, view, param, query) {
+  const qs = query && Object.keys(query).length ? '?' + new URLSearchParams(query).toString() : '';
+  const target = `#/${lang}/${view}${param ? '/' + param : ''}${qs}`;
   if (location.hash === target) route();
   else location.hash = target;
+}
+
+function updateThemeButton() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const label = themeLabel(state.lang);
+  btn.querySelector('.theme-text').textContent = label;
+  btn.setAttribute('aria-label', `${label} · switch colour theme`);
+  btn.setAttribute('title', `${label} · switch colour theme`);
 }
 
 function setStatus(mode, info) {
@@ -100,7 +113,7 @@ function tickClock() {
 }
 
 async function route() {
-  const { lang, view, param } = parseHash();
+  const { lang, view, param, query } = parseHash();
   state.lang = lang;
   state.view = view;
   state.param = param;
@@ -111,6 +124,7 @@ async function route() {
 
   buildNav();
   buildRail();
+  updateThemeButton();
   document.querySelectorAll('.topnav a').forEach((a) => {
     a.classList.toggle('active', a.dataset.view === view);
   });
@@ -135,7 +149,8 @@ async function route() {
       lang,
       manifest: state.manifest,
       param,
-      go: (v, p) => go(lang, v, p),
+      query,
+      go: (v, p, q) => go(lang, v, p, q),
       setStatus,
     });
   } catch (err) {
@@ -146,11 +161,15 @@ async function route() {
       <p class="hint">${t(lang, 'error_hint')}</p></div>`;
   }
 
+  if (new URLSearchParams(location.search).get('guide') === 'open') {
+    main.querySelectorAll('details.guide').forEach((d) => { d.open = true; });
+  }
   const n = state.manifest ? state.manifest.chapters.length : 0;
   setStatus(t(lang, 'status_ready'), `${n} ${t(lang, 'chapters')} · ${state.manifest ? state.manifest.languages.length : 3} LANG · ${lang.toUpperCase()}`);
 }
 
 async function boot() {
+  initTheme();
   try {
     state.manifest = await getManifest();
   } catch (err) {
@@ -160,8 +179,24 @@ async function boot() {
   document.querySelectorAll('.langswitch button').forEach((b) => {
     b.addEventListener('click', () => {
       const cur = parseHash();
-      go(b.dataset.lang, cur.view, cur.param);
+      go(b.dataset.lang, cur.view, cur.param, cur.query);
     });
+  });
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    toggleTheme();
+    updateThemeButton();
+  });
+  onTheme(() => {
+    updateThemeButton();
+    if (state.view === 'data') route();
+  });
+  document.addEventListener('click', (e) => {
+    const tab = e.target.closest('.guide-tabs button');
+    if (!tab) return;
+    const box = tab.closest('.guide');
+    if (!box) return;
+    box.querySelectorAll('.guide-tabs button').forEach((b) => b.classList.toggle('active', b === tab));
+    box.querySelectorAll('.guide-pane').forEach((p) => p.classList.toggle('active', p.dataset.pane === tab.dataset.tab));
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement?.tagName || '')) {

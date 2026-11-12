@@ -16,9 +16,9 @@ JULIA  ?= julia
 CXX    ?= c++
 PORT   ?= 8788
 
-.PHONY: test test-js test-py test-cpp test-julia parity parity-check bench analyse content site serve clean
+.PHONY: test test-js test-py test-cpp test-julia parity parity-check parity-alg audit bench analyse content site serve package api clean
 
-test: test-js test-py test-cpp test-julia parity-check
+test: test-js test-py test-cpp test-julia parity-check parity-alg
 
 test-js:
 	$(NODE) --test tests/js/*.test.js
@@ -32,10 +32,16 @@ test-cpp:
 test-julia:
 	$(JULIA) --startup-file=no --project=lib/julia lib/julia/test/runtests.jl
 
-parity: test-js test-py test-cpp test-julia parity-check
+parity: test-js test-py test-cpp test-julia parity-check parity-alg
 
 parity-check:
 	PYTHONPATH=lib/python $(PYTHON) scripts/parity.py
+
+parity-alg:
+	$(PYTHON) scripts/parity_algorithms.py
+
+audit:
+	$(PYTHON) scripts/verify_references.py
 
 bench:
 	mkdir -p build
@@ -54,6 +60,12 @@ site: content
 serve:
 	$(PYTHON) scripts/serve.py $(PORT)
 
+api:
+	PYTHONPATH=lib/python $(PYTHON) -m percolation_atlas serve --port $(PORT)
+
+package:
+	$(PYTHON) -m build --wheel --sdist --outdir dist lib/python
+
 clean:
 	$(MAKE) -C lib/cpp clean
-	rm -rf tmp
+	rm -rf tmp dist

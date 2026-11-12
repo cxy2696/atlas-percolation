@@ -1,0 +1,13 @@
+{
+  "name": "Percolation Atlas",
+  "short_name": "Percolation",
+  "description": "A trilingual, source-backed atlas of percolation theory with interactive laboratories and reference algorithms.",
+  "start_url": "./#/en/overview",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06090d",
+  "theme_color": "#06090d",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

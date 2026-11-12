@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-12 21:23",
+ "generated": "2026-11-12 22:11",
  "languages": [
   "en",
   "zh",
   "de"
  ],
- "references": 64,
+ "references": 81,
  "chapters": [
   {
    "id": "01-foundations",
@@ -455,6 +455,81 @@
     "en": "content/en/18-transport.md",
     "zh": "content/zh/18-transport.md",
     "de": "content/de/18-transport.md"
+   }
+  },
+  {
+   "id": "19-proofs",
+   "order": 19,
+   "part": "reference",
+   "title": {
+    "en": "Proofs, algorithms and the status of a claim",
+    "zh": "证明、算法与论断的地位",
+    "de": "Beweise, Algorithmen und der Status einer Aussage"
+   },
+   "subtitle": {
+    "en": "A rigorous appendix, with proof sketches clearly labelled",
+    "zh": "一份严格性附录，并明确标注哪些只是证明梗概",
+    "de": "Ein strenger Anhang, mit klar gekennzeichneten Beweisskizzen"
+   },
+   "reading": {
+    "en": 20,
+    "zh": 20,
+    "de": 20
+   },
+   "files": {
+    "en": "content/en/19-proofs.md",
+    "zh": "content/zh/19-proofs.md",
+    "de": "content/de/19-proofs.md"
+   }
+  },
+  {
+   "id": "20-design",
+   "order": 20,
+   "part": "networks",
+   "title": {
+    "en": "Design under uncertainty",
+    "zh": "不确定性下的设计",
+    "de": "Entwerfen unter Unsicherheit"
+   },
+   "subtitle": {
+    "en": "Choosing edges, doses, fillers and firebreaks when the medium is random",
+    "zh": "当介质随机时，如何选择边、剂量、填料与防火带",
+    "de": "Kanten, Dosen, Füllstoffe und Brandschneisen in einem zufälligen Medium wählen"
+   },
+   "reading": {
+    "en": 22,
+    "zh": 22,
+    "de": 22
+   },
+   "files": {
+    "en": "content/en/20-design.md",
+    "zh": "content/zh/20-design.md",
+    "de": "content/de/20-design.md"
+   }
+  },
+  {
+   "id": "21-reproducibility",
+   "order": 21,
+   "part": "methods",
+   "title": {
+    "en": "Reproducibility, uncertainty and the error budget",
+    "zh": "可复现性、不确定性与误差预算",
+    "de": "Reproduzierbarkeit, Unsicherheit und das Fehlerbudget"
+   },
+   "subtitle": {
+    "en": "From a seed to a published number, and back again",
+    "zh": "从一个种子到一个可发表的数，再原路返回",
+    "de": "Von einem Seed zu einer publizierbaren Zahl und zurück"
+   },
+   "reading": {
+    "en": 18,
+    "zh": 18,
+    "de": 18
+   },
+   "files": {
+    "en": "content/en/21-reproducibility.md",
+    "zh": "content/zh/21-reproducibility.md",
+    "de": "content/de/21-reproducibility.md"
    }
   }
  ]

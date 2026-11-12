@@ -1,6 +1,7 @@
 import { Rng, Dsu, buildLattice } from '../../../lib/js/index.js';
 import { labHead, control, select, readout, panel, canvasBox, fmt, setText } from './ui.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -59,7 +60,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'random-cluster' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('rc-canvas', ['POTTS', 'SWENDSEN–WANG', 'SPIN', ''])}
@@ -135,6 +136,8 @@ export function mount(root, ctx) {
   }
 
   function draw() {
+    const C = palette();
+    const COLS = [C.cyan, C.amber, C.green, C.violet];
     const canvas = document.getElementById('rc-canvas');
     const wrap = canvas.parentElement;
     const W = Math.max(300, wrap.clientWidth - 2);
@@ -146,7 +149,7 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     const pad = 10;
     const cell = Math.min((W - 2 * pad) / N, (H - 2 * pad) / N);
@@ -155,13 +158,13 @@ export function mount(root, ctx) {
     for (let i = 0; i < N; i++) {
       for (let j = 0; j < N; j++) {
         const v = i * N + j;
-        g.fillStyle = COLORS[state.spins[v] % COLORS.length];
+        g.fillStyle = COLS[state.spins[v] % COLS.length];
         g.globalAlpha = 0.82;
         g.fillRect(ox + j * cell, oy + i * cell, Math.max(1, cell - 0.3), Math.max(1, cell - 0.3));
       }
     }
     g.globalAlpha = 1;
-    g.strokeStyle = 'rgba(96,190,210,0.35)';
+    g.strokeStyle = C.grid;
     g.strokeRect(ox, oy, cell * N, cell * N);
     const st = stats();
     setText('rc-largest', `${fmt(st.largest / lat.n, 4)}  (${st.largest})`);
@@ -205,7 +208,9 @@ export function mount(root, ctx) {
   init();
   draw();
   timer = setInterval(tick, 160);
+  const offTheme = onTheme(() => draw());
   return () => {
+    offTheme();
     if (timer) clearInterval(timer);
   };
 }

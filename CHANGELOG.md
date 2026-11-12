@@ -1,5 +1,86 @@
 # Changelog
 
+## 3.0.0 — 2026-11-12
+
+The algorithm and application release. The atlas grows from 18 to 21 chapters,
+from 9 to 13 laboratories, and from 64 to 81 audited references (80 Crossref/HTTP-verified, 1 pre-DOI note); the core
+engine gains a second algorithm family with its own parity contract, and the
+Python package becomes a distributable CLI plus JSON API.
+
+**Content**
+
+- Added Chapter 19, *Proofs, algorithms and the status of a claim*: FKG, BK,
+  Burton–Keane uniqueness (with the tree counterexample), duality, RSW,
+  sharpness, mean-field range, Cardy/SLE, algorithm correctness, statistical
+  error and an explicit list of open problems.
+- Added Chapter 20, *Design under uncertainty*: a design template, the
+  distinction between monotonicity and submodularity, network/epidemic/
+  infrastructure/material/porous-media/fire/sensor/scaffold scenarios, an
+  optimisation-method comparison and a validation protocol.
+- Added Chapter 21, *Reproducibility, uncertainty and the error budget*: the
+  artifact contract, RNG conventions, parity scopes, statistical protocol,
+  five-line error budget, figure reproduction, package/API routes and a
+  ten-item reporting checklist.
+- Extended Chapter 15 with bootstrap, invasion and Achlioptas processes.
+- Added trilingual authored reading guides to all 13 laboratories: what you
+  see, what every parameter does, how to read the dynamics, what to try, and
+  the limits of the instrument.
+
+**Code**
+
+- Added `bootstrapActivation` / `bootstrapLattice` (synchronous r-neighbour
+  closure, O(n+m), least fixed point) in JavaScript and Python.
+- Added `invasionCluster` / `invasionPercolation` (greedy minimum-threshold
+  boundary growth, binary heap, accepted spanning tree, rejected loops).
+- Added `explosiveSweep`, `explosivePercolation` and `explosiveRandomGraph`
+  (Achlioptas product/sum rules, with an explicit finite-size warning).
+- Added `leathCluster` and `neighboursFromEdges`.
+- Added `randomGraphSweep` as the Erdős–Rényi baseline for the explosive
+  laboratory.
+- Added `data/golden/algorithms-v3.json` and `scripts/parity_algorithms.py`:
+  Python and JavaScript agree on bootstrap times, invasion order, Leath
+  cluster size and Achlioptas trajectories. The four-language contract still
+  covers the Bernoulli core.
+- Added `lib/python/percolation_atlas/cli.py` (`atlas-perc`) and `api.py`
+  (static site + `/api/*`), and made the package buildable as a wheel.
+
+**Interface**
+
+- Added a persisted light/dark theme switch (`?theme=` override for
+  screenshots and sharing), theme-aware canvas palettes in every laboratory,
+  and a stylesheet light theme with contrast fixes.
+- Added four laboratories: bootstrap percolation, explosive percolation,
+  invasion percolation and the algorithm studio (edge-by-edge Newman–Ziff
+  replay, measured cost table, log–log scaling fit).
+- Added parameter help text, plot notes, a collapsible reading guide with
+  tabs, and a "try this" section to every instrument.
+- Added PWA metadata, an offline service worker, Open Graph metadata,
+  `robots.txt`, `sitemap.xml`, a 404 page and deployment configs for Pages,
+  Docker, Netlify, Vercel and Fly.io.
+
+**Verification**
+
+- Added `scripts/verify_references.py` and `content/reference_audit.json`:
+  DOI entries are checked against Crossref, URL entries by HTTP fetch.
+- Added 17 references, including books (Sahimi 2023; Meester–Roy 1996;
+  Hunt–Ewing–Ghanbarian 2013), a blog note (John D. Cook 2015) and software
+  (NetworkX).
+- Added `make parity-alg`, `make audit`, `make package` and `make api`.
+- Extended CI with the v3 parity runner, the offline reference audit, a wheel
+  build and an API smoke test.
+
+**Corrections and clarifications**
+
+- Bootstrapping at r = 2 is now presented correctly: the infinite-lattice
+  threshold is zero, while a finite box fills above an L-dependent crossover;
+  r = 3 and r = 4 have positive thresholds.
+- The Achlioptas process is labelled with its rigorous status: continuous in
+  the thermodynamic limit; the visible jump is a finite-size effect.
+- Uniqueness is stated for amenable transitive graphs, with the regular-tree
+  counterexample noted.
+- The random baseline in the explosive laboratory is compared at q = ln 2
+  when candidate pairs are drawn with replacement.
+
 ## 2.1.0 — 2026-11-12
 
 A completeness and verification release. Four chapters, two laboratories and a

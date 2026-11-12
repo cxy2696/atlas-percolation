@@ -1,0 +1,84 @@
+{
+  "generated": "2026-11-12",
+  "scope": "python+js",
+  "note": "v3 algorithm probes. The four-language parity contract in parity.json still covers the core engine; these new algorithms have a two-language contract (Python and JavaScript) and are tested against this file by both suites.",
+  "probes": [
+    {
+      "id": "bootstrap_3x3_corners_r2",
+      "value": {
+        "activeCount": 9,
+        "rounds": 2,
+        "time": [
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "bootstrap_32x32_p055_r3_seed123",
+      "value": {
+        "activeCount": 811,
+        "rounds": 10,
+        "fraction": 0.7919921875
+      }
+    },
+    {
+      "id": "invasion_2x2_thresholds",
+      "value": {
+        "order": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "thresholds": [
+          0.1,
+          0.2,
+          0.8
+        ],
+        "loops": 1
+      }
+    },
+    {
+      "id": "invasion_16x16_seed5_rng13",
+      "value": {
+        "size": 256,
+        "loops": 225,
+        "last": 0.7136381922622188
+      }
+    },
+    {
+      "id": "leath_6x6_seed3_p05",
+      "value": {
+        "size": 4,
+        "openEdges": 3,
+        "perimeter": 5
+      }
+    },
+    {
+      "id": "explosive_graph_500_seed7",
+      "value": {
+        "final": 1.0,
+        "maxJump": 0.312,
+        "jumpAt": 464,
+        "added": 499
+      }
+    },
+    {
+      "id": "explosive_lattice_4x4_seed11_sum",
+      "value": {
+        "steps": 12,
+        "smax": 0.375,
+        "maxJump": 0.0625,
+        "jumpAt": 1
+      }
+    }
+  ]
+}

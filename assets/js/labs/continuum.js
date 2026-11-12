@@ -2,6 +2,7 @@ import { Rng, booleanModel } from '../../../lib/js/index.js';
 import { labHead, panel, canvasBox, readout, fmt, setText } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -81,7 +82,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'continuum' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cont-field', ['BOOLEAN', 'GRID SEARCH', 'λ', ''])}
@@ -127,6 +128,7 @@ export function mount(root, ctx) {
   }
 
   function drawField() {
+    const C = palette();
     const canvas = document.getElementById('cont-field');
     const wrap = canvas.parentElement;
     const W = Math.max(300, wrap.clientWidth - 2);
@@ -138,7 +140,7 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     if (!model) return;
     const { x, y, dsu, n, r } = model;
@@ -154,14 +156,14 @@ export function mount(root, ctx) {
       const big = s === maxS;
       g.beginPath();
       g.arc(x[v] * W, y[v] * H, r * W, 0, Math.PI * 2);
-      g.fillStyle = big ? 'rgba(79,227,234,0.28)' : s > maxS * 0.3 ? 'rgba(255,180,84,0.16)' : 'rgba(70,120,140,0.10)';
+      g.fillStyle = big ? withAlpha(C.cyan, 0.28) : s > maxS * 0.3 ? withAlpha(C.amber, 0.18) : withAlpha(C.cyanDim, 0.10);
       g.fill();
-      g.strokeStyle = big ? 'rgba(79,227,234,0.7)' : 'rgba(79,120,140,0.28)';
+      g.strokeStyle = big ? withAlpha(C.cyan, 0.75) : withAlpha(C.cyanDim, 0.3);
       g.lineWidth = 0.6;
       g.stroke();
     }
     for (let v = 0; v < n; v++) {
-      g.fillStyle = '#bff3f5';
+      g.fillStyle = C.ink;
       g.fillRect(x[v] * W - 0.8, y[v] * H - 0.8, 1.6, 1.6);
     }
   }
@@ -203,5 +205,9 @@ export function mount(root, ctx) {
     drawSweep();
   };
   window.addEventListener('resize', onResize);
-  return () => window.removeEventListener('resize', onResize);
+  const offTheme = onTheme(() => { drawField(); drawSweep(); });
+  return () => {
+    offTheme();
+    window.removeEventListener('resize', onResize);
+  };
 }

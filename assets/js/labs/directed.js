@@ -2,6 +2,7 @@ import { Rng, buildLattice, directedCrossing } from '../../../lib/js/index.js';
 import { labHead, control, select, readout, panel, canvasBox, fmt, setText } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const PC = { bond: 0.644700, site: 0.705489 };
 
@@ -69,7 +70,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'directed' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('dir-canvas', [L.space, '', L.time, ''])}
@@ -129,6 +130,7 @@ export function mount(root, ctx) {
   }
 
   function draw() {
+    const C = palette();
     const canvas = document.getElementById('dir-canvas');
     const wrap = canvas.parentElement;
     const W = Math.max(300, wrap.clientWidth - 2);
@@ -140,7 +142,7 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     if (!last) return;
     const n = state.L;
@@ -159,7 +161,7 @@ export function mount(root, ctx) {
         if (!open) continue;
         const ai = Math.floor(a / n), aj = a % n;
         const bi = Math.floor(b / n), bj = b % n;
-        g.strokeStyle = 'rgba(64,150,168,0.45)';
+        g.strokeStyle = withAlpha(C.cyanDim, 0.45);
         g.beginPath();
         g.moveTo(ox + (aj + 0.5) * cell, oy + (ai + 0.5) * cell);
         g.lineTo(ox + (bj + 0.5) * cell, oy + (bi + 0.5) * cell);
@@ -180,7 +182,7 @@ export function mount(root, ctx) {
       }
     }
 
-    g.strokeStyle = 'rgba(96,190,210,0.35)';
+    g.strokeStyle = C.grid;
     g.strokeRect(ox, oy, cell * n, cell * n);
   }
 
@@ -230,5 +232,6 @@ export function mount(root, ctx) {
 
   resample();
   sweep();
-  return null;
+  const offTheme = onTheme(() => { draw(); sweep(); });
+  return () => offTheme();
 }

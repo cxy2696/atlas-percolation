@@ -97,3 +97,56 @@ directed_crossing(build_lattice("square", 32), 0.65, Rng(4242); mode = "bond").c
 | directed | `directedCrossing(lat, p, rng, {mode})` | `directed_crossing(lat, p, rng, mode)` | `atlas::directed_crossing(lat, p, rng, site)` | `directed_crossing(lat, p, rng; mode)` |
 
 The RNG and observation order are documented in `docs/RNG.md`; the full API is in `docs/API.md`.
+
+## v3 algorithms: bootstrap, invasion and the Achlioptas process
+
+The v3 routines are exposed in Python and JavaScript. They share the Dsu and
+Rng types with the core, and their parity file is
+`data/golden/algorithms-v3.json`.
+
+```python
+from percolation_atlas import (
+    Rng, build_lattice, bootstrap_lattice,
+    invasion_percolation, explosive_random_graph,
+)
+
+lat = build_lattice("square", 64)
+rng = Rng(11)
+occupied = [1 if rng.random() < 0.55 else 0 for _ in range(lat.n)]
+boot = bootstrap_lattice(lat, occupied, r=3)
+print(boot.fraction, len(boot.rounds))       # ~0.7, a handful of rounds
+
+inv = invasion_percolation(lat.n, lat.eu, lat.ev, seed=0, rng_seed=5)
+print(inv.size, inv.last_threshold, inv.loops)
+
+ex = explosive_random_graph(2000, rule="product", seed=7)
+print(ex.points[-1]["smax"], ex.max_jump)
+```
+
+```javascript
+import {
+  Rng, buildLattice, bootstrapLattice,
+  invasionPercolation, explosiveRandomGraph,
+} from "./lib/js/index.js";
+
+const lat = buildLattice("square", 64);
+const rng = new Rng(11);
+const occupied = new Uint8Array(lat.n);
+for (let v = 0; v < lat.n; v++) occupied[v] = rng.random() < 0.55 ? 1 : 0;
+const boot = bootstrapLattice(lat, occupied, 3);
+console.log(boot.fraction, boot.rounds.length);
+
+const inv = invasionPercolation(lat.n, lat.eu, lat.ev, { seed: 0, rngSeed: 5 });
+console.log(inv.size, inv.lastThreshold, inv.loops);
+
+const ex = explosiveRandomGraph(2000, { rule: "product", seed: 7 });
+console.log(ex.points.at(-1).smax, ex.maxJump);
+```
+
+The CLI produces the same numbers:
+
+```sh
+atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11
+atlas-perc invasion --L 64 --seed 3
+atlas-perc explosive --n 2000 --rule product --seed 7
+```

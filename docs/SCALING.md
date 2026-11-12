@@ -70,3 +70,22 @@ The benchmark harness is single-threaded. The C++ union-find is the obvious plac
 - GPU kernels.
 
 These are honest boundaries, not omissions to be papered over. The cross-disciplinary chapter marks which extensions are exact, which are approximate, and which are metaphors.
+
+## v3 laboratories
+
+The four new instruments are deliberately bounded so that a laptop browser
+stays responsive:
+
+| Instrument | Bound | Memory | Time |
+|---|---|---|---|
+| Bootstrap percolation | L ≤ 128, r ≤ 4 | O(L²) byte arrays | O(L²) per closure |
+| Explosive percolation | n ≤ 4 000, 4n candidate steps | O(n) DSU | O(n α(n)) |
+| Invasion percolation | L ≤ 64 | O(L²) + binary heap | O(m log m) |
+| Algorithm studio | L ≤ 128 for replay; scaling sweep to 128 | O(L²) | seconds |
+
+The explosive laboratory samples two candidate pairs per step and can add up
+to 4n edges; duplicate pairs are counted as additions but do not merge
+components. The invasion laboratory stores one accepted tree and the rejected
+loop list, so its memory is linear in the number of edges. The bootstrap
+laboratory computes the least fixed point in one O(n+m) pass and then replays
+the rounds; the animation does not recompute the closure.

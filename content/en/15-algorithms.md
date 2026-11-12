@@ -93,6 +93,18 @@ The transfer matrix is exact for the strip, and finite-width scaling extracts $p
 
 The first three are implemented in all four libraries; the fourth is a research tool and is not part of the reference API. The parity probes in `data/golden/parity.json` compare integer counts for a fixed seed, which is the only way to catch a disagreement in edge order or RNG consumption before it turns into a wrong exponent.
 
+## 15.9 Beyond the core: bootstrap, explosive and invasion
+
+Three further algorithms are implemented in the Python and JavaScript reference libraries and exposed in the laboratories. They answer different questions and should not be mixed with the Bernoulli sampler.
+
+**Bootstrap percolation.** Occupied sites are active at time zero; an empty site activates when at least $r$ of its neighbours are active. The update is a monotone closure, so the final set is the least fixed point and is independent of the update order. The queue implementation activates each site at the first round in which its active-neighbour count reaches $r$, in $O(n+m)$ time. For $r=2$ the infinite-lattice threshold is zero, but a finite box fills above a crossover that depends on $L$; for $r=3$ and $r=4$ the threshold is positive. The distinction is visible in laboratory 10.
+
+**Invasion percolation.** Each edge carries an i.i.d. threshold. From a seed, the cluster repeatedly accepts the lowest-threshold boundary edge that leads to an unvisited site. The accepted set is a spanning tree of the invaded region, and the greedy rule is the definition of the process, not an approximation to Bernoulli percolation. A binary heap gives $O(m\log m)$ in the worst case and $O(b\log b)$ in terms of the boundary size $b$. Loop edges are discarded; the laboratory labels this as loop rejection, not the trapping variant used for defending clusters in porous media.
+
+**Achlioptas process.** At each step two candidate edges are drawn and the product (or sum) rule keeps the one whose endpoint components are smaller. On the complete graph this delays the giant component and produces a sharp finite-size jump. The jump is not a thermodynamic discontinuity: the product rule is continuous in the limit, as the scaling check in laboratory 11 shows. The implementation uses the same DSU and reports the trajectory as an exact function of the candidate sequence.
+
+The three algorithms have a two-language parity contract (Python and JavaScript), recorded in `data/golden/algorithms-v3.json`. The four-language contract still covers the Bernoulli core. The correctness arguments are in Chapter 19, and the instruments are laboratories 10–12.
+
 ## 15.8 Reading the implementations
 
 The JavaScript engine is the one the browser runs; the Python package is the readable reference; the C++ headers are the fast path; the Julia package is the typed path with the same public conventions. The edge order is fixed by `build_lattice`, the random stream by `docs/RNG.md`, and the DSU by the pseudocode above. A change to any of the three is a breaking change: regenerate the goldens, bump the version, and record the correction in Chapter 14.

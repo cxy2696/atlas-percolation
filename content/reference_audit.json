@@ -1,0 +1,415 @@
+{
+ "checked_at": "2026-11-12 22:14",
+ "method": "offline-schema",
+ "total": 81,
+ "counts": {
+  "schema-only": 81
+ },
+ "results": [
+  {
+   "id": "achlioptas2009",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "aizenman1986",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "aizenman1987",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "albert2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "balberg1984",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "benavraham2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "bk1985",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "bollobas2006",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "broadbent1957",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "buldyrev2010",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "burton1989",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "callaway2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "cardy1992",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "cohen2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "cohen2001",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "dacosta2011",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "dct2016",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "degennes1976",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "dorogovtsev2006",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "dorogovtsev2008",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "edwards1988",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "fitzner2017",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "fortuin1971",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "fortuin1972",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "galam1996",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "gao2016",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "gefen1983",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "gilbert1961",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "grassberger1982",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "grassberger1999",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "grassberger2003",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "grimmett1999",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "hammersley1957b",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "hara1990",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "harris1960",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "havlin2002",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "hinrichsen2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "holroyd2003",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "hoshen1976",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "hunt2013",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "jacobsen2014",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "janssen1981",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "johndcook2015",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "kesten1980",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "kesten1982",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "kirkpatrick1973",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "langlands1994",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "leath1976",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "lorenz1998",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "lsw2001a",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "lsw2001b",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "meester1996",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "menshikov1986",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "mertens2012",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "molloy1995",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "motter2002",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "networkx",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "newman2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "newman2001",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "newman2002",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "olucha_nd",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "parshani2010",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "pastor2001",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "redner2001",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "riordan2011",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "russo1978",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "sahimi1994",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "sahimi2023",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "schramm2000",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "seymour1978",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "smirnov2001",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "stauffer1994",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "swendsen1987",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "sykes1964",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "takeuchi2007",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "tarjan1975",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "torquato2002",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "vandermarck1997",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "wang2013",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "watts2002",
+   "status": "schema-only",
+   "problems": []
+  },
+  {
+   "id": "wierman1981",
+   "status": "schema-only",
+   "problems": []
+  }
+ ]
+}

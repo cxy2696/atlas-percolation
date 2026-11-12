@@ -1,10 +1,16 @@
 {
- "generated": "2026-11-12 21:23",
+ "generated": "2026-11-12 22:11",
  "languages": [
   {
    "id": "javascript",
    "group": "lib/js",
    "files": [
+    {
+     "path": "lib/js/engine/algorithms.js",
+     "bucket": "core",
+     "lines": 457,
+     "bytes": 14744
+    },
     {
      "path": "lib/js/engine/cardy.js",
      "bucket": "core",
@@ -62,14 +68,26 @@
     {
      "path": "lib/js/index.js",
      "bucket": "core",
-     "lines": 20,
-     "bytes": 796
+     "lines": 32,
+     "bytes": 1048
+    },
+    {
+     "path": "tests/js/algorithms.test.js",
+     "bucket": "tests",
+     "lines": 158,
+     "bytes": 6524
     },
     {
      "path": "tests/js/engine.test.js",
      "bucket": "tests",
      "lines": 222,
      "bytes": 8788
+    },
+    {
+     "path": "tests/js/guides.test.js",
+     "bucket": "tests",
+     "lines": 38,
+     "bytes": 1396
     }
    ]
   },
@@ -78,16 +96,112 @@
    "group": "lib/python",
    "files": [
     {
+     "path": "lib/python/build/lib/percolation_atlas/__init__.py",
+     "bucket": "core",
+     "lines": 104,
+     "bytes": 2731
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/__main__.py",
+     "bucket": "core",
+     "lines": 3,
+     "bytes": 48
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/algorithms.py",
+     "bucket": "core",
+     "lines": 378,
+     "bytes": 11425
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/api.py",
+     "bucket": "core",
+     "lines": 324,
+     "bytes": 12523
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/cardy.py",
+     "bucket": "core",
+     "lines": 83,
+     "bytes": 2715
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/cli.py",
+     "bucket": "core",
+     "lines": 259,
+     "bytes": 9063
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/continuum.py",
+     "bucket": "core",
+     "lines": 57,
+     "bytes": 1676
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/directed.py",
+     "bucket": "core",
+     "lines": 72,
+     "bytes": 2461
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/lattice.py",
+     "bucket": "core",
+     "lines": 89,
+     "bytes": 3012
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/network.py",
+     "bucket": "core",
+     "lines": 283,
+     "bytes": 8243
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/percolation.py",
+     "bucket": "core",
+     "lines": 193,
+     "bytes": 5651
+    },
+    {
+     "path": "lib/python/build/lib/percolation_atlas/rng.py",
+     "bucket": "core",
+     "lines": 102,
+     "bytes": 2791
+    },
+    {
      "path": "lib/python/percolation_atlas/__init__.py",
      "bucket": "core",
-     "lines": 74,
-     "bytes": 2027
+     "lines": 104,
+     "bytes": 2731
+    },
+    {
+     "path": "lib/python/percolation_atlas/__main__.py",
+     "bucket": "core",
+     "lines": 3,
+     "bytes": 48
+    },
+    {
+     "path": "lib/python/percolation_atlas/algorithms.py",
+     "bucket": "core",
+     "lines": 381,
+     "bytes": 11525
+    },
+    {
+     "path": "lib/python/percolation_atlas/api.py",
+     "bucket": "core",
+     "lines": 324,
+     "bytes": 12521
     },
     {
      "path": "lib/python/percolation_atlas/cardy.py",
      "bucket": "core",
      "lines": 83,
      "bytes": 2715
+    },
+    {
+     "path": "lib/python/percolation_atlas/cli.py",
+     "bucket": "core",
+     "lines": 259,
+     "bytes": 9061
     },
     {
      "path": "lib/python/percolation_atlas/continuum.py",
@@ -124,6 +238,12 @@
      "bucket": "core",
      "lines": 102,
      "bytes": 2791
+    },
+    {
+     "path": "lib/python/tests/test_algorithms.py",
+     "bucket": "core",
+     "lines": 153,
+     "bytes": 5788
     },
     {
      "path": "lib/python/tests/test_engine.py",

@@ -6,6 +6,7 @@ import {
 import { labHead, panel, canvasBox, readout, fmt, setText } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -92,7 +93,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'interdependent' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('dep-layers', ['A', 'B', 'SADDLE-NODE', ''])}
@@ -181,6 +182,7 @@ export function mount(root, ctx) {
   }
 
   function drawLayers(step) {
+    const C = palette();
     const canvas = document.getElementById('dep-layers');
     const wrap = canvas.parentElement;
     const W = Math.max(300, wrap.clientWidth - 2);
@@ -192,7 +194,7 @@ export function mount(root, ctx) {
     canvas.style.height = H + 'px';
     const g = canvas.getContext('2d');
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    g.fillStyle = '#050a0e';
+    g.fillStyle = C.bg;
     g.fillRect(0, 0, W, H);
     const snap = state.snapshots[Math.min(step, state.snapshots.length - 1)];
     if (!snap) return;
@@ -206,13 +208,13 @@ export function mount(root, ctx) {
       for (let i = 0; i < SIDE; i++) {
         for (let j = 0; j < SIDE; j++) {
           const on = act[i * SIDE + j];
-          g.fillStyle = on ? 'rgba(79,227,234,0.85)' : 'rgba(30,48,58,0.9)';
+          g.fillStyle = on ? withAlpha(C.cyan, 0.9) : withAlpha(C.closed, 0.95);
           g.fillRect(ox[layer] + j * cell, oy + i * cell, Math.max(1, cell - 0.4), Math.max(1, cell - 0.4));
         }
       }
-      g.strokeStyle = 'rgba(96,190,210,0.3)';
+      g.strokeStyle = C.grid;
       g.strokeRect(ox[layer] - 2, oy - 2, side + 4, side + 4);
-      g.fillStyle = 'rgba(125,144,156,0.9)';
+      g.fillStyle = C.dim;
       g.font = '9px monospace';
       g.fillText(layer === 0 ? 'A' : 'B', ox[layer], oy - 6);
     }
@@ -244,10 +246,12 @@ export function mount(root, ctx) {
     return n;
   }
 
+  let lastStep = 0;
   function animate() {
     if (timer) clearTimeout(timer);
     let step = 0;
     const run = () => {
+      lastStep = step;
       drawLayers(step);
       setText('dep-steps', `${step + 1} / ${state.snapshots.length}`);
       if (step < state.snapshots.length - 1) {
@@ -287,8 +291,10 @@ export function mount(root, ctx) {
   document.getElementById('dep-restart').addEventListener('click', restart);
 
   restart();
+  const offTheme = onTheme(() => { drawLayers(lastStep); drawCurve(); });
 
   return () => {
+    offTheme();
     if (timer) clearTimeout(timer);
   };
 }

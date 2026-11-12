@@ -3,7 +3,7 @@ import { t } from '../i18n.js';
 
 const TOPICS = [
   'foundations', 'core', 'critical', 'networks', 'methods', 'applications',
-  'continuum', 'epidemics', 'transport', 'reference',
+  'continuum', 'epidemics', 'transport', 'reference', 'bootstrap', 'explosive',
 ];
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -33,13 +33,16 @@ export async function render(root, ctx) {
   const T = (key) => t(lang, key);
   let data = null;
   let citations = {};
+  let audit = { results: [] };
   try {
-    const [r1, r2] = await Promise.all([
+    const [r1, r2, r3] = await Promise.all([
       fetch('content/references.json', { cache: 'no-cache' }),
       fetch('content/citations.json', { cache: 'no-cache' }),
+      fetch('content/reference_audit.json', { cache: 'no-cache' }),
     ]);
     if (r1.ok) data = await r1.json();
     if (r2.ok) citations = await r2.json();
+    if (r3.ok) audit = await r3.json();
   } catch (e) { /* handled below */ }
 
   root.innerHTML = `
@@ -62,6 +65,10 @@ export async function render(root, ctx) {
   }
 
   const entries = data.entries.slice();
+  const auditById = new Map((audit.results || []).map((r) => [r.id, r]));
+  const auditLine = audit.checked_at
+    ? `${(audit.counts && audit.counts.ok) || 0} / ${audit.total || entries.length} ${T('verified')} · ${audit.checked_at}`
+    : '';
   const titleOf = (chapterId) => {
     const ch = manifest?.chapters?.find((c) => c.id === chapterId);
     return ch ? ch.title[lang] || ch.title.en : chapterId;
@@ -75,7 +82,7 @@ export async function render(root, ctx) {
   }
 
   const meta = root.querySelector('#src-meta');
-  meta.innerHTML = `${entries.length} ${T('references')}<br>${T('updated')} ${esc(data.updated || '')}`;
+  meta.innerHTML = `${entries.length} ${T('references')}<br>${auditLine || T('updated') + ' ' + esc(data.updated || '')}`;
 
   const topics = ['all', ...TOPICS.filter((topic) => entries.some((e) => topicsOf(e).includes(topic)))];
   let activeTopic = 'all';
@@ -95,7 +102,7 @@ export async function render(root, ctx) {
   }
 
   function matches(entry, tokens) {
-    const hay = `${entry.authors.join(' ')} ${entry.title} ${entry.venue} ${entry.year} ${(entry.topics || []).join(' ')}`.toLowerCase();
+    const hay = `${entry.authors.join(' ')} ${entry.title} ${entry.venue} ${entry.year} ${entry.url || ''} ${(entry.topics || []).join(' ')}`.toLowerCase();
     return tokens.every((tok) => hay.includes(tok));
   }
 
@@ -104,25 +111,34 @@ export async function render(root, ctx) {
     const filtered = entries
       .filter((entry) => activeTopic === 'all' || topicsOf(entry).includes(activeTopic))
       .filter((entry) => !tokens.length || matches(entry, tokens))
-      .sort((a, b) => a.authors[0].localeCompare(b.authors[0]) || a.year - b.year);
-    meta.innerHTML = `${filtered.length} / ${entries.length} ${T('references')}<br>${T('updated')} ${esc(data.updated || '')}`;
+      .sort((a, b) => a.authors[0].localeCompare(b.authors[0]) || (Number(a.year) || 9999) - (Number(b.year) || 9999));
+    meta.innerHTML = `${filtered.length} / ${entries.length} ${T('references')}<br>${auditLine || T('updated') + ' ' + esc(data.updated || '')}`;
     if (!filtered.length) {
       results.innerHTML = `<p class="muted small">${T('no_sources')}</p>`;
       return;
     }
     results.innerHTML = filtered.map((entry) => {
       const chapters = (usedBy.get(entry.id) || []).slice(0, 5);
+      const check = auditById.get(entry.id);
+      const verified = check ? (check.status === 'ok' ? T('verified') : check.status === 'ok-note' ? T('source_note') : T('unverified')) : '';
+      const link = entry.doi
+        ? `<a class="doi" href="https://doi.org/${esc(entry.doi)}" target="_blank" rel="noopener noreferrer">DOI ${esc(entry.doi)}</a>`
+        : entry.url
+          ? `<a class="doi" href="${esc(entry.url)}" target="_blank" rel="noopener noreferrer">${T('open_source')} ↗</a>`
+          : '';
       return `<article class="source-card" data-id="${esc(entry.id)}">
         <div class="source-top">
           <span class="badge">${esc(entry.type || 'source')}</span>
           <span class="mono">${esc(entry.year)}</span>
+          ${verified ? `<span class="badge ${check && check.status === 'ok' ? 'ok' : ''}">${verified}</span>` : ''}
           <button class="copy-btn" data-copy="${esc(cite(entry))}" title="${T('copy_citation')}">${T('copy')}</button>
         </div>
         <h3>${esc(entry.title)}</h3>
         <p class="source-authors">${esc(entry.authors.join(' · '))}</p>
-        <p class="source-venue">${esc(entry.venue)}${entry.volume ? ` · ${esc(entry.volume)}` : ''}${entry.pages ? ` · ${esc(entry.pages)}` : ''}</p>
+        <p class="source-venue">${esc(entry.venue)}${entry.volume ? ` · ${esc(entry.volume)}` : ''}${entry.pages ? ` · ${esc(entry.pages)}` : ''}${entry.edition ? ` · ${esc(entry.edition)}` : ''}</p>
+        ${entry.note ? `<p class="hud-note">${esc(entry.note)}</p>` : ''}
         <div class="source-bottom">
-          ${entry.doi ? `<a class="doi" href="https://doi.org/${esc(entry.doi)}" target="_blank" rel="noopener noreferrer">DOI ${esc(entry.doi)}</a>` : ''}
+          ${link}
           ${chapters.length ? `<span class="source-used">${T('used_in')}: ${chapters.map((id) => `<a href="#/${lang}/atlas/${esc(id)}">${esc(titleOf(id))}</a>`).join(' · ')}</span>` : ''}
         </div>
       </article>`;

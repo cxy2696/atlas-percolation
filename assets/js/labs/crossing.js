@@ -2,6 +2,7 @@ import { Rng, buildLattice, Percolation } from '../../../lib/js/index.js';
 import { labHead, panel, canvasBox, readout, fmt, setText, bindRange } from './ui.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
 import { t } from '../i18n.js';
+import { onTheme } from '../theme.js';
 
 const LABELS = {
   en: {
@@ -54,7 +55,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang , guide: 'crossing' }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cross-raw', ['π(p)', 'BOND · SQUARE', 'p', ''])}
@@ -192,7 +193,9 @@ export function mount(root, ctx) {
   timer = setInterval(tick, 60);
   draw();
 
+  const offTheme = onTheme(() => draw());
   return () => {
+    offTheme();
     if (timer) clearInterval(timer);
   };
 }

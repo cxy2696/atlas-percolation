@@ -3,6 +3,7 @@ import { Rng, buildLattice, Percolation } from '../../../lib/js/index.js';
 import { t } from '../i18n.js';
 import { LABS } from '../labs/index.js';
 import { drawPlot, PALETTE } from '../lib/plot.js';
+import { palette, onTheme } from '../theme.js';
 
 const L = 32;
 const PC = 0.5;
@@ -73,10 +74,10 @@ export async function render(root, ctx) {
             <div class="stage-corner bl" id="dash-cross-label">LR —</div>
             <div class="stage-corner br">p_c = 0.5</div>
             <div class="stage-legend">
-              <span><i style="background:#4fe3ea"></i>${T('largest')}</span>
-              <span><i style="background:#ffb454"></i>${T('second')}</span>
-              <span><i style="background:#57a9b8"></i>${T('closed')}</span>
-              <span><i style="background:#16242b"></i>${T('empty')}</span>
+              <span><i data-theme-color="cyan"></i>${T('largest')}</span>
+              <span><i data-theme-color="amber"></i>${T('second')}</span>
+              <span><i data-theme-color="cyan-dim"></i>${T('closed')}</span>
+              <span><i data-theme-color="closed"></i>${T('empty')}</span>
             </div>
           </div>
           <div class="stage-foot">
@@ -167,6 +168,10 @@ export async function render(root, ctx) {
 
   function draw() {
     if (!stage || !stats) return;
+    const C = palette();
+    const CLUSTERS = C.theme === 'light'
+      ? ['#087e8e', '#a86200', '#3c8794', '#5b8f98', '#7898a0', '#9aaca8', '#b9c4bb']
+      : PALETTE_CLUSTER;
     const W = Math.max(320, stage.clientWidth);
     const H = Math.max(260, stage.clientHeight);
     const dpr = window.devicePixelRatio || 1;
@@ -195,14 +200,14 @@ export async function render(root, ctx) {
     g.lineTo(c.x, c.y);
     g.lineTo(d.x, d.y);
     g.closePath();
-    g.fillStyle = 'rgba(9, 27, 35, 0.62)';
+    g.fillStyle = C.theme === 'light' ? 'rgba(226, 220, 207, 0.72)' : 'rgba(9, 27, 35, 0.62)';
     g.fill();
-    g.strokeStyle = 'rgba(79,227,234,0.18)';
+    g.strokeStyle = C.grid;
     g.lineWidth = 1;
     g.stroke();
 
     // Grid on the ground.
-    g.strokeStyle = 'rgba(79,227,234,0.055)';
+    g.strokeStyle = C.gridFaint;
     g.beginPath();
     for (let k = 0; k <= L; k += 4) {
       const p1 = iso(0, k), p2 = iso(L, k);
@@ -224,10 +229,10 @@ export async function render(root, ctx) {
     const maxS = stats.maxSize;
     const colorOf = (root) => {
       const size = rootSize.get(root) || 1;
-      if (size === maxS) return PALETTE_CLUSTER[0];
-      if (size > maxS * 0.45) return PALETTE_CLUSTER[1];
-      const idx = Math.min(PALETTE_CLUSTER.length - 1, 2 + (Math.log2(1 + size) | 0) % 5);
-      return PALETTE_CLUSTER[idx];
+      if (size === maxS) return CLUSTERS[0];
+      if (size > maxS * 0.45) return CLUSTERS[1];
+      const idx = Math.min(CLUSTERS.length - 1, 2 + (Math.log2(1 + size) | 0) % 5);
+      return CLUSTERS[idx];
     };
     const faces = [];
     for (let i = 0; i < L; i++) {
@@ -256,20 +261,20 @@ export async function render(root, ctx) {
       ];
       const left = [top[3], top[2], { x: top[2].x, y: top[2].y + h * s }, { x: top[3].x, y: top[3].y + h * s }];
       const right = [top[2], top[1], { x: top[1].x, y: top[1].y + h * s }, { x: top[2].x, y: top[2].y + h * s }];
-      const col = open ? colorOf(root) : '#0d171d';
+      const col = open ? colorOf(root) : C.closed;
       // side faces
-      g.fillStyle = open ? shade(col, -0.52) : '#091116';
+      g.fillStyle = open ? shade(col, -0.52) : shade(C.closed, -0.12);
       poly(g, left);
-      g.fillStyle = open ? shade(col, -0.34) : '#0b1419';
+      g.fillStyle = open ? shade(col, -0.34) : shade(C.closed, -0.06);
       poly(g, right);
       // top face
-      g.fillStyle = open ? shade(col, -0.05) : '#0e1a21';
+      g.fillStyle = open ? shade(col, -0.05) : shade(C.closed, 0.05);
       poly(g, top);
-      g.strokeStyle = open ? 'rgba(180,255,255,0.22)' : 'rgba(70,120,140,0.10)';
+      g.strokeStyle = open ? (C.theme === 'light' ? 'rgba(20,60,72,0.22)' : 'rgba(180,255,255,0.22)') : C.gridFaint;
       g.lineWidth = 0.5;
       poly(g, top, true);
       if (open && size === maxS) {
-        g.strokeStyle = 'rgba(79,227,234,0.65)';
+        g.strokeStyle = C.cyan;
         g.lineWidth = 0.9;
         poly(g, top, true);
       }
@@ -287,7 +292,7 @@ export async function render(root, ctx) {
       const h = 0.42 + Math.min(3.1, Math.sqrt(size / Math.max(1, maxS)) * 3.2) + (((i * 17 + j * 11) % 7) / 7) * 0.55;
       const p1 = iso(i, j, h);
       const p2 = iso(ii, jj, h);
-      g.strokeStyle = size === maxS ? 'rgba(79,227,234,0.42)' : 'rgba(255,180,84,0.25)';
+      g.strokeStyle = size === maxS ? C.cyanDim : C.amber;
       g.lineWidth = size === maxS ? 1.1 : 0.7;
       g.beginPath();
       g.moveTo(p1.x, p1.y);
@@ -296,7 +301,7 @@ export async function render(root, ctx) {
     }
 
     // boundary rails
-    g.strokeStyle = 'rgba(255,180,84,0.34)';
+    g.strokeStyle = C.amber;
     g.lineWidth = 1;
     for (let k = 0; k <= L; k += 8) {
       const p1 = iso(0, k, 0.05), p2 = iso(0, k, 1.0);
@@ -339,7 +344,7 @@ export async function render(root, ctx) {
       yRange: [0, 1],
       xTicks: [0.4, 0.5, 0.6],
       yTicks: [0, 1],
-      vlines: [{ x: state.p, color: 'rgba(255,180,84,0.7)', label: '' }],
+      vlines: [{ x: state.p, color: PALETTE.amber, label: '' }],
       series: [{ x: xs, y: ys, color: PALETTE.cyan, width: 1.2 }],
     });
   }
@@ -374,6 +379,7 @@ export async function render(root, ctx) {
   function stopTimer() { if (timer) clearInterval(timer); timer = null; }
 
   const onResize = () => { draw(); drawMini(); };
+  const offTheme = onTheme(() => { draw(); drawMini(); });
   window.addEventListener('resize', onResize);
   updateClock();
   clockTimer = setInterval(updateClock, 1000);
@@ -383,6 +389,7 @@ export async function render(root, ctx) {
   ctx.setStatus(T('status_ready'), `OVERVIEW · ${L}×${L} · SEED ${state.seed}`);
 
   return () => {
+    offTheme();
     stopTimer();
     if (clockTimer) clearInterval(clockTimer);
     window.removeEventListener('resize', onResize);

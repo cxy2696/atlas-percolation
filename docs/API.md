@@ -103,3 +103,72 @@ for seed 11. The lab and the C++ benchmark use the same update.
 - `Rng.int(n)` rejects `n > 2^32`; `poisson_degrees` switches to a stable
   exponential-sum sampler for `mean > 700`; `power_law_degrees` requires
   `gamma > 1` and keeps the even-sum fix inside `[kmin, kmax]`.
+
+
+## v3 algorithm zoo
+
+These routines live in `lib/python/percolation_atlas/algorithms.py` and
+`lib/js/engine/algorithms.js`. They share the `Dsu` and `Rng` types with the
+Bernoulli core but have their own parity contract
+(`data/golden/algorithms-v3.json`); the C++ and Julia libraries do not
+implement them.
+
+- `neighbours_from_edges(n, eu, ev)` → `(start, adj, edge_of, degree)` CSR.
+  Python returns a tuple; JavaScript returns an object with the same fields.
+- `bootstrap_activation(n, neighbours, initial, r)` → result with `active`,
+  `time`, `rounds`, `active_count`, `fraction`, `converged`. Synchronous
+  r-neighbour closure; the least fixed point, independent of update order.
+  `bootstrap_lattice(lattice, occupied, r)` is the lattice convenience form.
+- `explosive_sweep(n, eu, ev, candidate_order, rule)` → trajectory indexed by
+  candidate steps. `rule` is `"product"` or `"sum"`. `explosive_percolation`
+  shuffles the edge list with the shared RNG; `explosive_random_graph` samples
+  two uniform pairs per step on the complete graph.
+- `invasion_cluster(n, eu, ev, threshold, seed)` → `order`, `thresholds`,
+  `accepted`, `visited`, `size`, `loops`, `loop_edges`. The accepted edges
+  form a spanning tree of the invaded region.
+- `invasion_percolation(..., rng_seed)` draws i.i.d. uniform thresholds.
+- `leath_cluster(lattice, seed, p, rng)` → `sites`, `size`, `open_edges`,
+  `perimeter`, `truncated`.
+- `random_graph_sweep(n, seed)` is the Erdős–Rényi baseline used by the
+  explosive laboratory.
+
+The convention is the same in both languages except for naming (`snake_case`
+in Python, `camelCase` in JavaScript). Integer results and component sizes are
+exact; the golden file uses tolerances only for the float-valued fields.
+
+## Command line: `atlas-perc`
+
+```sh
+atlas-perc info
+atlas-perc sample --lattice square --mode bond --L 128 --p 0.5 --seed 42
+atlas-perc sweep --lattice square --L 64 --seed 7
+atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11
+atlas-perc invasion --L 48 --seed 3
+atlas-perc explosive --n 2000 --rule product --seed 7
+atlas-perc serve --host 127.0.0.1 --port 8080
+```
+
+Every command accepts `--json` and prints a stable JSON envelope:
+`{"package", "version", "engine", "command", "result"}`. Errors return exit
+status 2 with a one-line message on stderr.
+
+## HTTP API
+
+`atlas-perc serve` serves the static site from the repository root and a JSON
+API. Request bodies are JSON objects; unknown fields are ignored, sizes are
+bounded, and errors are `{"ok": false, "error": "..."}` with status 400/404/500.
+
+| Method | Route | Body / notes |
+|---|---|---|
+| GET | `/api/health` | `{"ok": true, "version": ...}` |
+| GET | `/api/thresholds` | exact/numerical table with status labels |
+| GET | `/api/openapi.json` | OpenAPI 3.1 document |
+| POST | `/api/sample` | `{lattice, mode, L, p, seed}`; `L ≤ 512` |
+| POST | `/api/sweep` | `{lattice, L, seed, checkpoints}`; `L ≤ 512` |
+| POST | `/api/bootstrap` | `{lattice, L, p, r, seed}`; `L ≤ 256` |
+| POST | `/api/invasion` | `{lattice, L, seed, rng_seed}`; `L ≤ 128` |
+| POST | `/api/explosive` | `{n, rule, seed}`; `n ≤ 20000` |
+
+The API is a reference service with no authentication and no persistence. It
+does not expose a job queue; long runs should be done with the CLI or the
+Python API directly. The Dockerfile runs `atlas-perc serve` on port 8080.
