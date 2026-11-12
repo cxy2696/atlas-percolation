@@ -1581,3 +1581,41 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
 [data-theme="light"] .algo-list { background: #fbf9f3; }
 [data-theme="light"] .algo-list a { color: #3c525c; }
 [data-theme="light"] .algo-article { background: #fdfbf7; }
+
+/* Light reader: headings, running text, tables and KaTeX need their own
+   contrast pass.  The dark palette inherits a pale ink that is unreadable on
+   paper, so set the reader colours explicitly rather than relying on --text. */
+[data-theme="light"] .article { color: #1f2f36; }
+[data-theme="light"] .article h1 { color: #0f2027; }
+[data-theme="light"] .article h2 { color: #13242b; }
+[data-theme="light"] .article h3 { color: #1a2b32; }
+[data-theme="light"] .article .subtitle { color: #3f555e; }
+[data-theme="light"] .article p,
+[data-theme="light"] .article li { color: #24343c; }
+[data-theme="light"] .article strong { color: #0b1a20; }
+[data-theme="light"] .article em { color: #22333b; }
+[data-theme="light"] .article a { color: #066a78; border-bottom-color: #087e8e; }
+[data-theme="light"] .article code {
+  color: #07515c;
+  background: rgba(8, 126, 142, 0.09);
+  border-color: rgba(8, 126, 142, 0.18);
+}
+[data-theme="light"] .article pre { background: #f3eee4; border-color: rgba(18, 78, 94, 0.18); }
+[data-theme="light"] .article pre code { color: #1f3038; }
+[data-theme="light"] .article blockquote {
+  color: #3d2c12;
+  background: #f7eeda;
+  border-left-color: #9c5c00;
+}
+[data-theme="light"] .article table th { color: #075b67; border-bottom-color: rgba(8, 100, 120, 0.4); }
+[data-theme="light"] .article table td { color: #26363e; border-bottom-color: rgba(18, 78, 94, 0.16); }
+[data-theme="light"] .article tr:hover td { background: rgba(8, 126, 142, 0.05); }
+[data-theme="light"] .article hr { border-top-color: rgba(18, 78, 94, 0.18); }
+[data-theme="light"] .article .katex,
+[data-theme="light"] .article .katex * { color: #14242b !important; }
+[data-theme="light"] .article .katex-display { color: #14242b; }
+[data-theme="light"] .toc a { color: #536a73; border-left-color: rgba(18, 78, 94, 0.18); }
+[data-theme="light"] .toc a:hover,
+[data-theme="light"] .toc a.active { color: #075b67; border-left-color: #087e8e; }
+[data-theme="light"] .doc-meta { color: #5d727b; }
+[data-theme="light"] .doc-meta span b { color: #075b67; }

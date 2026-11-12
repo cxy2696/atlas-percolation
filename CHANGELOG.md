@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.1.1 — 2026-11-13
+
+A contrast patch for the reader in light mode. The page background was light
+but several reader colours still came from the dark HUD palette: h1, h2,
+section headings, table cells, block quotes and KaTeX formulas were almost
+invisible.
+
+The light theme now sets its own ink for the reader: near-black headings,
+dark body text, darker table headers and cells, readable code, block quotes
+and links, and an explicit `color` on KaTeX so formulas no longer inherit the
+pale dark-theme text. The table of contents and document metadata were
+darkened at the same time. The dark theme is unchanged.
+
+No content, algorithm, golden file or reference changed in this patch.
+
 ## 3.1.0 — 2026-11-12
 
 A readability and evidence release. The site now opens light and English on a
