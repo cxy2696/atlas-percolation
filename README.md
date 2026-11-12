@@ -19,7 +19,7 @@ A trilingual, source-backed atlas of percolation theory with four reference impl
 | Tests | Integer-exact parity probes across the four implementations, a Python+JavaScript parity contract for the v3 algorithms, RNG golden vectors, property tests, and a reference audit |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md`; the code-reading map: `docs/ALGORITHMS.md`; a CLI and JSON API: `docs/API.md` |
 
-**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v3.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.0) · **Package:** `pip install -e lib/python`
+**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v3.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.1) · **Package:** `pip install -e lib/python`
 
 ## Quick start
 

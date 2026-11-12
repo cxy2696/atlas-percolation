@@ -1671,5 +1671,9 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
 .entry-actions .btn { width: auto; flex: 0 0 auto; padding: 7px 14px; }
 [data-theme="light"] .view-head .meta { color: #536a73; }
 [data-theme="light"] .view-head .kicker { color: #075b67; }
-body[data-view="guide"] #app { grid-template-columns: 0 minmax(0, 1fr); }
-body[data-view="guide"] .rail { display: none; }
+@media (min-width: 861px) {
+  /* The guide uses the full width on desktop; on narrow screens the normal
+     one-column shell applies, otherwise the site column collapses to 0. */
+  body[data-view="guide"] #app { grid-template-columns: 0 minmax(0, 1fr); }
+  body[data-view="guide"] .rail { display: none; }
+}

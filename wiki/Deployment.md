@@ -17,8 +17,8 @@ The live URL is <https://cxy2696.github.io/atlas-percolation/>.
 ## Docker
 
 ```sh
-docker build -t atlas-percolation:3.2.0 .
-docker run --rm -p 8080:8080 atlas-percolation:3.2.0
+docker build -t atlas-percolation:3.2.1 .
+docker run --rm -p 8080:8080 atlas-percolation:3.2.1
 ```
 
 Open <http://127.0.0.1:8080/>. The API is at `/api/health`, `/api/thresholds`, `/api/sample`, `/api/sweep`, `/api/bootstrap`, `/api/invasion`, `/api/explosive`, `/api/openapi.json`.
@@ -40,6 +40,6 @@ cd lib/python
 python3 -m build --wheel --sdist --outdir ../../dist
 ```
 
-The wheel is `percolation_atlas-3.2.0-py3-none-any.whl`; the release assets are on the [v3.2.0 release](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.0).
+The wheel is `percolation_atlas-3.2.1-py3-none-any.whl`; the release assets are on the [v3.2.1 release](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.1).
 
 Next: [[Contributing]].

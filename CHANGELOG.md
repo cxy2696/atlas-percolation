@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.2.1 — 2026-11-13
+
+A layout fix for the Start view. The full-width desktop rule for the guide
+(`grid-template-columns: 0 1fr`) was outside a media query, so it overrode the
+one-column mobile shell below 861px. The page content collapsed into a narrow
+strip at exactly the tablet width where the mobile layout starts.
+
+The desktop rule is now wrapped in `@media (min-width: 861px)`. Desktop is
+unchanged; the 500–860px layout uses the normal one-column shell, with the
+guide cards stacked and the top bar intact.
+
+No content, algorithm, golden file or reference changed.
+
 ## 3.2.0 — 2026-11-13
 
 A start-here release. The first visit now lands on a short interface guide in

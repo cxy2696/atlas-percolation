@@ -1,6 +1,6 @@
 # Percolation Atlas — wiki
 
-**Version 3.2.0** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.0)
+**Version 3.2.1** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.1)
 
 A trilingual atlas of percolation theory: 21 chapters, 13 interactive laboratories, 8 algorithm walkthroughs, 105 audited references, four-language core code and a Python package.
 
