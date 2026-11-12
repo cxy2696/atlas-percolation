@@ -64,12 +64,16 @@ python3 scripts/analyse_bench.py</pre></div>`;
   const fits = data.fits || {};
   const collapse = fits.collapse || {};
   const armFit = fits.one_arm || {};
+  const fitWindow = collapse.window
+    ? `p ∈ [${collapse.window[0].toFixed(2)}, ${collapse.window[1].toFixed(2)}] · L = ${(collapse.sizes || []).join(', ')}`
+    : '';
   body.innerHTML = `<div class="stat-strip">
     <div><span>${t(lang, 'data_fit')} p_c</span><b>${fmt(collapse.pc, 4)}</b></div>
-    <div><span>ν</span><b>${fmt(collapse.nu, 3)}</b></div>
-    <div><span>one-arm</span><b>${fmt(armFit.slope, 4)}</b></div>
+    <div><span>ν (fixed)</span><b>${fmt(collapse.nu, 3)}</b></div>
+    <div><span>one-arm</span><b>${fmt(armFit.slope, 4)}${armFit.slope_se ? ` ± ${fmt(1.96 * armFit.slope_se, 3)}` : ''}</b></div>
     <div><span>${t(lang, 'sections')}</span><b>${(data.crossing || []).length + (data.torus || []).length}</b></div>
-  </div>`;
+  </div>
+  <p class="hint small" style="margin:-4px 0 18px">${collapse.note || ''}${fitWindow ? ' · ' + fitWindow : ''}</p>`;
   const crossingByL = byL(data.crossing || [], 'L');
   const torusByL = byL(data.torus || [], 'L');
 

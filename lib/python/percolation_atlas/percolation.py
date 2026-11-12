@@ -100,6 +100,7 @@ class Percolation:
         dsu.reset()
         occ, op = self.occ, self.open
         dsu.count = sum(occ)
+        dsu.max_size = 1 if dsu.count else 0
         eu, ev = self.lat.eu, self.lat.ev
         for e in range(self.lat.m):
             if op[e] and occ[eu[e]] and occ[ev[e]]:
@@ -160,6 +161,8 @@ class Percolation:
 
 def newman_ziff(lat: Lattice, rng: Rng, checkpoints: int = 400):
     """One random edge order -> S_max(p), chi2(p), cluster count(p)."""
+    if checkpoints < 1:
+        raise ValueError("checkpoints must be positive")
     order = list(range(lat.m))
     rng.shuffle(order)
     dsu = Dsu(lat.n)

@@ -29,8 +29,12 @@ class Lattice:
     def __post_init__(self) -> None:
         if self.kind not in LATTICE_KINDS:
             raise ValueError(f"unknown lattice: {self.kind}")
+        if self.L < 1:
+            raise ValueError("L must be positive")
         if self.kind == "honeycomb" and self.L % 2 != 0:
             raise ValueError("honeycomb needs even L")
+        if self.kind == "honeycomb" and self.L < 6:
+            raise ValueError("honeycomb needs L >= 6")
         self.n = self.L * self.L
         L, torus = self.L, self.torus
         eu, ev, et = self.eu, self.ev, self.etype

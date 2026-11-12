@@ -6,6 +6,6 @@ Readable reference implementation of the algorithms used by the atlas. It shares
 PYTHONPATH=lib/python python3 -m unittest discover -s lib/python/tests -v
 ```
 
-Requires Python 3.9+ and the standard library only. The package is intentionally small: `Percolation`, `newman_ziff`, lattice generators, configuration-model and k-core utilities, the Boolean model, and Cardy's formula.
+Requires Python 3.10+ and the standard library only. The package is intentionally small: `Percolation`, `newman_ziff`, lattice generators, configuration-model and k-core utilities, the Boolean model, Cardy's formula, and directed percolation.
 
 See the repository root `README.md` and `docs/API.md` for the full contract.

@@ -1,6 +1,6 @@
 {
   "name": "atlas-percolation",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Three-language atlas of percolation theory with four-language reference implementations",
   "type": "module",
   "private": true,

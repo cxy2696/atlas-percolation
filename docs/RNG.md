@@ -79,6 +79,7 @@ Observables depend on the order in which uniforms are drawn.  The contract is:
 | bond percolation sample | `m` uniforms, edges in generator order |
 | configuration model | one shuffle of the stub array |
 | continuum model | `2n` uniforms, x then y for each point |
+| directed percolation | `n` uniforms (site) or `m` uniforms (bond), as the undirected sampler |
 
 Changing this order is a breaking change and requires new golden vectors.
 
@@ -86,8 +87,10 @@ Changing this order is a breaking change and requires new golden vectors.
 
 `data/golden/rng-seed42.json` contains, for seed 42: the first eight doubles,
 the first eight `int(10)` draws, the sum of the first 10 000 raw 32-bit
-outputs modulo 2^32, and the 32-bit FNV-1a hash of those outputs.  Every
-language test suite must reproduce all four.
+outputs modulo 2^32, the 32-bit FNV-1a hash of those outputs, and the first
+six standard normals.  Every language test suite must reproduce all five.
+The normal draw uses Marsaglia's polar Box–Muller with a cached spare; the
+spare is cleared on reseeding, and a test covers that case.
 
 Reference values:
 
@@ -97,6 +100,7 @@ doubles[1] = 0.018084544121180213
 ints[0..7] = 1 2 6 3 6 7 4 6
 u32_sum    = 839333524
 fnv1a      = 3108118429
+normals[0..5] = 0.2675268891 1.7424408577 0.5813902729 -1.6928023016 0.8153199417 -0.4575232516
 ```
 
 ## Why not use the language's native RNG?

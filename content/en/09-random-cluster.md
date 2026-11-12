@@ -25,31 +25,33 @@ where $k(\omega)$ is the number of connected components of the open subgraph, co
 $$
 Z_{\text{Potts}}(\beta)=\sum_{\sigma\in\{1,\dots,q\}^V}\exp\Big(-\beta\sum_{e=(u,v)}\big(1-\delta_{\sigma_u\sigma_v}\big)\Big)
 $$
-equals $Z_G(p,q)$ up to an explicit factor, with $p=1-e^{-\beta}$.
+equals $Z_G(p,q)$ exactly, with $p=1-e^{-\beta}$.
 
 **Proof.** For a single edge, the identity
 $$
-e^{-\beta(1-\delta_{\sigma_u\sigma_v})}=1+\big(e^{\beta}-1\big)\delta_{\sigma_u\sigma_v}
+e^{-\beta(1-\delta_{\sigma_u\sigma_v})}
+=e^{-\beta}+\big(1-e^{-\beta}\big)\delta_{\sigma_u\sigma_v}
+=(1-p)+p\,\delta_{\sigma_u\sigma_v}
 $$
-is a two-case check. Multiplying over edges and expanding the product,
+is a two-case check: the left side is $1$ when the spins agree and $e^{-\beta}$ when they differ. Multiplying over edges and expanding the product,
 $$
-\prod_{e\in E}\Big(1+(e^\beta-1)\delta_{\sigma_u\sigma_v}\Big)
-=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
+\prod_{e\in E}\Big((1-p)+p\,\delta_{\sigma_u\sigma_v}\Big)
+=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
 $$
 Summing over $\sigma$, the product of deltas forces $\sigma$ to be constant on each connected component of $(V,\omega)$, and each component can take any of $q$ colours. There are $q^{k(\omega)}$ colourings, so
 $$
-Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}q^{k(\omega)}
-=\sum_\omega p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}\cdot(1-p)^{-|E|},
+Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}
+=Z_G(p,q).
 $$
-using $e^\beta-1=p/(1-p)$. The last factor is independent of $\omega$ and cancels in the normalisation. $\blacksquare$
+No prefactor is needed: the Bernoulli weights and the cluster weight are already normalised by the same sum. $\blacksquare$
 
-At $q=2$ this is the Ising model in its Fortuin–Kasteleyn form, and the percolation probability becomes the magnetisation: $\langle\sigma_0\rangle$ is an increasing function of the probability that the origin is connected to the boundary. The correspondence is exact, not an analogy, and it is the reason percolation exponents can be computed from spin-model technology and vice versa.
+At $q=2$ this is the Ising model in its Fortuin–Kasteleyn form, and the percolation probability becomes the magnetisation: with wired boundary conditions, $\langle\sigma_0\rangle$ equals the probability that the origin is connected to the boundary. The correspondence is exact, not an analogy, and it is the reason percolation exponents can be computed from spin-model technology and vice versa.
 
 ## 9.3 Consequences
 
 **Shared critical points.** The RC model has a phase transition at a value $p_c(q)$ that is the image of the Potts critical temperature. For $q=2$ on $\mathbb{Z}^2$, the self-dual point is $p_c=\sqrt2/(1+\sqrt2)=0.585786\ldots$, which corresponds to the Ising critical point $\sinh(2\beta_c)=1$ under $p=1-e^{-2\beta_c}$. The equality is a theorem, and it gives the Ising critical temperature on $\mathbb{Z}^2$ without a transfer-matrix calculation. The value $p=1/2$ is the $q=1$ (percolation) special case, not the Ising point.
 
-**Monotonicity in $q$.** The RC measure is positively associated for $q\ge1$ and satisfies FKG; the percolation probability is monotone in $p$ and, for fixed $p$, monotone in $q$ in a suitable coupling. This is why increasing $q$ can turn a continuous transition into a first-order one: the cluster reward favours a dense phase.
+**Monotonicity in $q$.** The RC measure is positively associated for $q\ge1$ and satisfies FKG, and the percolation probability is monotone in $p$. Increasing $q$ rewards cluster formation and can turn a continuous transition into a first-order one: the cluster reward favours a dense phase. The precise $q$-dependence of the transition order is model-dependent, and the statements below do not rely on a monotonicity in $q$.
 
 **Duality.** On a planar graph the RC model has a dual model with transformed parameters; on the square lattice the self-dual curve is $p=\sqrt q/(1+\sqrt q)$, and at $q=1$ it reduces to $p\leftrightarrow1-p$. The duality relations are the RC generalisation of Lemma 4.2 and are the cleanest route to the $q$-dependent critical points on the square and triangular lattices.
 

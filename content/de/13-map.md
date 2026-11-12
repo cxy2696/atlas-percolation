@@ -64,7 +64,7 @@ Die Liste ist von „fällt wahrscheinlich im nächsten Jahrzehnt“ bis „viel
 
 **7. Zeitliche Perkolation.** Reale Konnektivität ist zeitabhängig: Ein Pfad muss existieren *und* innerhalb eines Zeitfensters durchlaufen werden können. Die Theorie der zeitlichen Perkolation ist jung, und die angemessene Skalierungstheorie ist nicht geklärt.
 
-**8. Algorithmische Komplexität von Perkolationsgrößen.** Die Perkolationswahrscheinlichkeit oder das Zuverlässigkeitspolynom eines gegebenen endlichen Graphen zu berechnen, ist im Allgemeinen #P-schwer; die Rückgewinnung der Volumen-Schwelle aus endlichen Daten und der planare Fall sind davon getrennte Fragen.
+**8. Algorithmische Komplexität von Perkolationsgrößen.** Die Perkolationswahrscheinlichkeit oder das Zuverlässigkeitspolynom eines gegebenen endlichen Graphen zu berechnen, ist im Allgemeinen #P-schwer; die Rückgewinnung der Volumen-Schwelle aus endlichen Daten und der planare Fall sind davon getrennte Fragen. Der Zusammenhang mit dem Tutte-Polynom legt eine Komplexitätsklassifikation nahe, ist aber für Perkolationsschwellen im Besonderen noch nicht ausgearbeitet.
 
 **9. Schwellen der Quantenfehlerkorrektur.** Der Schwellensatz für Oberflächencodes ist gut gesichert; die optimalen Schwellen für allgemeine Codefamilien und das Verhalten unter korreliertem Rauschen sind offen. Die Perkolationsanalogie ist für manche Dekodierungsprobleme exakt und für andere nur heuristisch.
 

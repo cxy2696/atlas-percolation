@@ -23,8 +23,11 @@ The Makefile uses `-O2 -std=c++20 -Wall -Wextra -Wpedantic`.
 | `percolation_atlas/network.hpp` | `poisson_degrees`, `power_law_degrees`, `configuration_model`, `components`, `kcore`, `targeted_removal`, `interdependent_er`, `molloy_reed` |
 | `percolation_atlas/continuum.hpp` | `poisson_points`, `boolean_model` |
 | `percolation_atlas/cardy.hpp` | `cardy_crossing`, `cardy_crossing_vertical`, `cardy_hypergeom`, `cardy_modulus` |
+| `percolation_atlas/directed.hpp` | `directed_crossing`, `directed_crosses_lr`, `directed_crossing_rate` |
 | `percolation_atlas/atlas.hpp` | umbrella header for all of the above |
 
 All types live in `namespace atlas`.  `make test` checks the golden RNG
-vectors, every `parity.json` probe, Cardy values, sanity checks and crossing
-duality; the golden values are embedded, so the test binary runs standalone.
+vectors (including the six normals), every `parity.json` probe (including
+directed percolation), Cardy values, edge-case regressions, sanity checks and
+crossing duality; the golden values are embedded, so the test binary runs
+standalone.

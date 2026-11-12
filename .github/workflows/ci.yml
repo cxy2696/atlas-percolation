@@ -23,6 +23,8 @@ jobs:
         run: node --test tests/js/*.test.js
       - name: Python suite
         run: PYTHONPATH=lib/python python3 -m unittest discover -s lib/python/tests -v
+      - name: Cross-language parity runner
+        run: make parity-check
       - name: C++ suite
         run: make -C lib/cpp test
       - name: Benchmark smoke test

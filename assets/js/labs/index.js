@@ -72,4 +72,24 @@ export const LABS = [
     },
     mount: (el, ctx) => import('./cardy.js').then((m) => m.mount(el, ctx)),
   },
+  {
+    id: 'directed',
+    title: { en: 'Directed percolation', zh: '有向渗流', de: 'Gerichtete Perkolation' },
+    blurb: {
+      en: 'East is space, south is time; the causal future of the left boundary.',
+      zh: '东为空间，南为时间；左边界在因果意义上的未来。',
+      de: 'Ost ist Raum, Süd ist Zeit; die kausale Zukunft des linken Randes.',
+    },
+    mount: (el, ctx) => import('./directed.js').then((m) => m.mount(el, ctx)),
+  },
+  {
+    id: 'random-cluster',
+    title: { en: 'Random-cluster / Potts', zh: '随机簇 / Potts', de: 'Random-Cluster / Potts' },
+    blurb: {
+      en: 'Swendsen–Wang updates, the q-dependent self-dual point, and Ising at q=2.',
+      zh: 'Swendsen–Wang 更新、依赖 q 的自对偶点，以及 q=2 的 Ising 情形。',
+      de: 'Swendsen–Wang-Updates, der q-abhängige selbstduale Punkt und Ising bei q=2.',
+    },
+    mount: (el, ctx) => import('./random-cluster.js').then((m) => m.mount(el, ctx)),
+  },
 ];

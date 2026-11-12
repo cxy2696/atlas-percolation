@@ -71,7 +71,7 @@ Ein Waldbrand ist ein natürliches Perkolationsproblem mit derselben Struktur: D
 
 **Drahtlose Sensornetze.** Abdeckung und Konnektivität sind verschiedene Fragen. Die Abdeckung ist der glatte Flächenanteil der Vereinigung von Kreisscheiben (ein Boolesches Modell); die Konnektivität ist ein Kontinuumsperkolationsproblem mit eigener Schwelle, $\lambda_c\approx1.128$ in zwei Dimensionen für die reduzierte Dichte $\lambda=n\pi r^2$ (Mertens und Moore 2012). Die beiden zu verwechseln, führt zu optimistischen Einsatzregeln: Die Abdeckung ist eine Aussage über die Vereinigung von Kreisscheiben, die Konnektivität eine Aussage über einen durchspannenden Cluster, und bei endlicher Dichte kann man eine hohe Abdeckung ohne durchspannenden Cluster haben.
 
-**Gewebezüchtung.** Ein poröses Gerüst muss zusammenhängende Poren für Zellmigration und Vaskularisierung haben. Unterhalb der Porenkonnektivitätsschwelle bleiben die Zellen an der Oberfläche, und das Konstrukt vaskularisiert nicht; oberhalb dringt es rasch ein. Die Schwelle hängt von der Porengrößenverteilung und von der Zellgröße ab, was sie erneut zu einem *gewichteten* Perkolationsproblem macht.
+**Gewebezüchtung.** Ein poröses Gerüst muss zusammenhängende Poren für Zellmigration und Vaskularisierung haben. Unterhalb der Porenkonnektivitätsschwelle bleiben die Zellen an der Oberfläche, und das Konstrukt vaskularisiert nicht; oberhalb dringen die Zellen rasch ein. Die Schwelle hängt von der Porengrößenverteilung und von der Zellgröße ab, was sie erneut zu einem *gewichteten* Perkolationsproblem macht.
 
 ## 12.7 Vier Fallstudien, und was das Modell nicht liefert
 

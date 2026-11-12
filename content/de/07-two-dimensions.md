@@ -56,7 +56,7 @@ und für $\ell>1$ wird die Symmetrie $\pi(\ell)=1-\pi(1/\ell)$ verwendet. Der Mo
 
 Drei Prüfungen legen die Konstanten und die Orientierung fest.
 
-*Symmetrie.* Bei $\ell=1$, $m=1/2$, ist ${}_2F_1(1/3,2/3;4/3;1/2)=1.1129126745\ldots$, $m^{1/3}=0.7937005260\ldots$ und $3\Gamma(2/3)/\Gamma(1/3)^2=0.5660466804\ldots$; das Produkt ist $0.5$ bis auf Maschinengenauigkeit. Das ist die Selbstdualitätsidentität aus Proposition 4.3.
+*Symmetrie.* Bei $\ell=1$, $m=1/2$, ist ${}_2F_1(1/3,2/3;4/3;1/2)=1.1129126745\ldots$, $m^{1/3}=0.7937005260\ldots$ und $3\Gamma(2/3)/\Gamma(1/3)^2=0.5660466804\ldots$; das Produkt ist $0.5$ bis auf Maschinengenauigkeit. Das ist der Cardy-Wert für $\ell=1$; er stimmt mit dem Grenzwert $L\to\infty$ aus Proposition 4.3 überein, nicht mit einer Identität bei jeder endlichen Größe.
 
 *Grenzwerte.* Für $\ell\to0$ geht $m\to0$ und $\pi\to0$; für $\ell\to\infty$ geht $\pi\to1$. Beides ist geometrisch plausibel: Ein sehr breites, flaches Rechteck wird fast nie links–rechts durchquert, ein sehr hohes fast immer.
 

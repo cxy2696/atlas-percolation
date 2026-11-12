@@ -45,7 +45,7 @@ const LABELS = {
     smax: 'S_max',
     status: 'Perkolierend',
     coverage: 'Überdeckter Flächenanteil',
-    note: 'N = 1200. λ_c ist der Literaturwert für das unendliche Poisson-Boolesche Modell; ein endliches Quadrat perkolierte etwas darüber. Der Sweep zeigt S_max, nicht die Überdeckung.',
+    note: 'N = 1200. λ_c ist der Literaturwert für das unendliche Poisson-Boolesche Modell; ein endliches Quadrat perkoliert erst etwas darüber. Der Sweep zeigt S_max, nicht die Überdeckung.',
     radius: 'Scheibenradius r',
     n: 'Punkte n',
   },
@@ -81,7 +81,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cont-field', ['BOOLEAN', 'GRID SEARCH', 'λ', ''])}

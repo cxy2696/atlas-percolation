@@ -70,6 +70,9 @@ inline Lattice build_lattice(std::string_view kind, int L, bool torus = false) {
   if (kind == "honeycomb" && L % 2 != 0) {
     throw std::invalid_argument("honeycomb needs even L");
   }
+  if (kind == "honeycomb" && L < 6) {
+    throw std::invalid_argument("honeycomb needs L >= 6");
+  }
   // The edge count fits in int for every lattice we can represent.  m <= 3n.
   if (static_cast<long long>(L) * L > std::numeric_limits<int>::max() / 3) {
     throw std::invalid_argument("lattice too large");

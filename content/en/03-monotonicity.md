@@ -75,37 +75,28 @@ $$
 $$
 Then
 $$
-\frac{1}{\Delta-1}\ \le\ p_c(G)\ \le\ \frac{1}{\lambda}.
+p_c(G)\ \ge\ \frac{1}{\lambda}\ \ge\ \frac{1}{\Delta-1}.
 $$
-In particular $0<p_c<1$ for every $d\ge2$ lattice.
+In particular $p_c>0$ for every graph of maximum degree at least two, and $p_c<1$ for every $d\ge2$ lattice by Theorem 3.5 below. On the $z$-regular tree both inequalities are equalities.
 
-**Proof of the lower bound (★).** Let $N_n$ be the number of open self-avoiding paths of length $n$ starting at the origin, counted with multiplicity, and $N=\sum_{n\ge0}N_n$. A path of length $n$ has $n$ edges, so $\mathbb{E}_p[N_n]\le\Delta(\Delta-1)^{n-1}p^n$; summing the geometric series,
+**Proof (★).** Let $N_n$ be the number of open self-avoiding paths of length $n$ starting at the origin, counted with multiplicity, and $N=\sum_{n\ge0}N_n$. If $\kappa_n$ is the number of self-avoiding paths of length $n$, then $\mathbb{E}_p[N_n]=\kappa_np^n$. Fix $p<1/\lambda$ and choose $\varepsilon>0$ with $p(\lambda+\varepsilon)<1$. Since $\kappa_n^{1/n}\to\lambda$, we have $\kappa_n\le(\lambda+\varepsilon)^n$ for all large $n$, hence
 $$
-\mathbb{E}_p[N]\ \le\ 1+\frac{\Delta p}{1-(\Delta-1)p}\ <\ \infty\qquad\text{whenever }p<\frac{1}{\Delta-1}.
+\sum_{n\ge0}\mathbb{E}_p[N_n]\ \le\ C(p,\varepsilon)+\sum_{n\ge N}\big(p(\lambda+\varepsilon)\big)^n\ <\ \infty .
 $$
-Every vertex of $C_0$ is the endpoint of at least one open path from the origin, so $|C_0|\le N$ and $\mathbb{E}_p|C_0|<\infty$. If $\theta(p)>0$ then $\mathbb{P}_p(|C_0|=\infty)>0$, which forces $\mathbb{E}_p|C_0|=\infty$. Contradiction. Hence $\theta(p)=0$ for $p<1/(\Delta-1)$, i.e. $p_c\ge1/(\Delta-1)$. $\blacksquare$
+Therefore $N<\infty$ almost surely. Every vertex of $C_0$ is the endpoint of at least one open self-avoiding path from the origin, so $|C_0|\le N$ and $\mathbb{E}_p|C_0|<\infty$. If $\theta(p)>0$ then $\mathbb{P}_p(|C_0|=\infty)>0$, which forces $\mathbb{E}_p|C_0|=\infty$. Contradiction. Hence $\theta(p)=0$ for every $p<1/\lambda$, i.e. $p_c\ge1/\lambda$. Finally, the number of self-avoiding paths of length $n$ is at most $\Delta(\Delta-1)^{n-1}$, so $\lambda\le\Delta-1$ and $1/\lambda\ge1/(\Delta-1)$. $\blacksquare$
 
-**Sketch of the upper bound.** Fix $p$ with $p\lambda>1$. Then $\mathbb{E}_p[N_n]=\kappa_np^n$ grows exponentially, where $\kappa_n$ is the number of self-avoiding paths of length $n$. The second-moment estimate
-$$
-\mathbb{E}_p\big[N_n^2\big]\ \le\ C(p)\,\mathbb{E}_p[N_n]^2
-$$
-holds for all $p$ in a neighbourhood of $1$ and, by the standard submultiplicativity argument for self-avoiding walks, extends to every $p>1/\lambda$; the constant absorbs the number of pairs of paths that intersect, which is $O(\theta^n)$ with $\theta<1$ when $p$ is close enough to $1$. A complete proof, including the submultiplicativity estimate, is in Grimmett (1999). The Cauchy–Schwarz (Paley–Zygmund) inequality
-$$
-\mathbb{P}_p(N_n>0)\ \ge\ \frac{\mathbb{E}_p[N_n]^2}{\mathbb{E}_p[N_n^2]}
-$$
-is then bounded below by a positive constant $c(p)$ independent of $n$. Since $N_n>0$ implies $|C_0|\ge n$, we get $\mathbb{P}_p(|C_0|\ge n)\ge c(p)$ for every $n$. The events $\{|C_0|\ge n\}$ decrease to $\{|C_0|=\infty\}$, so $\mathbb{P}_p(|C_0|=\infty)\ge c(p)>0$ and $p>p_c$. Hence $p_c\le1/\lambda$. $\blacksquare$
-
-**Remark.** The lower bound is sharp on trees: for the $z$-regular tree $\Delta=z$ and $\lambda=z-1$, so both bounds equal $1/(z-1)$. On $\mathbb{Z}^d$ the two bounds leave a wide gap, which is exactly the content of the next two chapters.
+**Remark on the missing upper bound.** It is tempting to conclude the reverse inequality, $p_c\le1/\lambda$, from the second-moment method: if $\mathbb{E}_p[N_n]$ grows and $\mathbb{E}_p[N_n^2]\le C(p)\,\mathbb{E}_p[N_n]^2$, then $\mathbb{P}_p(N_n>0)$ is bounded below and $N_n>0$ implies $|C_0|\ge n$. The argument is sound, but the hypothesis is not available for every $p>1/\lambda$. Above $1/\lambda$ the expected number of open self-avoiding paths grows, yet the paths overlap heavily and the second moment grows faster; the uniform bound is proved only when $p$ is sufficiently close to $1$. The conclusion $p_c\le1/\lambda$ is actually false: on $\mathbb{Z}^2$ the connective constant is $\lambda=2.6381585\ldots$, so $1/\lambda=0.3790\ldots$, while $p_c=1/2$. The correct quantitative upper bound, $p_c<1$, comes from the Peierls argument, not from the first moment.
 
 **Theorem 3.5 (Peierls argument).** For bond percolation on $\mathbb{Z}^d$, $d\ge2$, $p_c<1$.
 
 **Proof sketch.** Suppose the open cluster of the origin is finite. Then it is surrounded by a closed $\ast$-connected surface of dual plaquettes: a finite set $S$ of dual $(d-1)$-faces separating the origin from infinity. Every plaquette of $S$ is dual to a closed bond, so $\mathbb{P}_p(S\text{ is closed})=(1-p)^{|S|}$.
 
-It remains to count surfaces. A $\ast$-connected set of $n$ dual plaquettes containing a fixed plaquette adjacent to the origin can be grown one plaquette at a time; each new plaquette touches the current set along a face, and there are at most $c_d$ choices per step with $c_d=4d$ (a crude but sufficient bound). Hence there are at most $c_d^{\,n}$ such sets, and
+It remains to count surfaces. A connected set of $n$ dual plaquettes containing a fixed plaquette can be covered by a spanning tree with $n-1$ edges, and such a tree is determined by a walk of length $n-1$ in the dual lattice starting at the fixed plaquette. Since the dual lattice has bounded degree, there are at most $c_d^{\,n}$ such sets for a dimension-dependent constant $c_d<\infty$; we do not try to optimize $c_d$. Hence
 $$
-\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n.
+\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n
+=\frac{x}{1-x},\qquad x=c_d(1-p).
 $$
-For $1-p<c_d^{-1}$ the series converges and is strictly smaller than $1$, so $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$. Therefore $p_c\le 1-c_d^{-1}<1$. $\blacksquare$
+For $1-p<1/(2c_d)$ we have $x<1/2$, so the bound is strictly smaller than $1$ and $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$. Therefore $p_c\le 1-1/(2c_d)<1$. $\blacksquare$
 
 The sketch omits the geometric bookkeeping that makes the surface count rigorous; the same argument gives an explicit (very poor) numerical bound. Better bounds come from counting surfaces with weights, which is how the Peierls argument is used in Ising and lattice gauge theory.
 

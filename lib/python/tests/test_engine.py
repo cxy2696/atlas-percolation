@@ -26,6 +26,9 @@ from percolation_atlas import (
     molloy_reed,
     newman_ziff,
     poisson_degrees,
+    directed_crossing,
+    power_law_degrees,
+    Graph,
 )
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
@@ -56,6 +59,12 @@ class TestRng(unittest.TestCase):
             h = ((h ^ v) * 16777619) % 2**32
         self.assertEqual(total, g["u32_sum_first_10000"])
         self.assertEqual(h, g["fnv1a_first_10000"])
+
+    def test_golden_normals(self):
+        g = json.loads(GOLDEN.read_text())
+        rng = Rng(g["seed"])
+        got = [rng.normal() for _ in range(len(g["normals"]))]
+        self.assertEqual(got, g["normals"])
 
     def test_uniform_range(self):
         rng = Rng(7)
@@ -142,6 +151,56 @@ class TestPercolation(unittest.TestCase):
         self.assertAlmostEqual(out["p"][-1], 1.0)
         self.assertEqual(out["smax"][-1], lat.n)
         self.assertEqual(out["smax"], sorted(out["smax"]))
+
+
+class TestRegressions(unittest.TestCase):
+    def test_kcore_triangle_leaf(self):
+        # Triangle 0-1-2 plus leaf 3-2; the 3-core is empty.
+        g = Graph(4, [0, 2, 4, 7, 8], [1, 2, 0, 2, 1, 0, 3, 2])
+        res = kcore(g, [1, 1, 1, 1], 3)
+        self.assertEqual(res["size"], 0)
+
+    def test_sizes_sorted_and_empty_dsu(self):
+        lat = build_lattice("square", 8)
+        model = Percolation(lat, mode="bond")
+        st = model.sample(0.5, Rng(1)).analyze()
+        self.assertEqual(st.sizes[0], st.max_size)
+        self.assertEqual(st.sizes, sorted(st.sizes, reverse=True))
+        model = Percolation(lat, mode="site")
+        model.sample(0.0, Rng(2)).build()
+        self.assertEqual(model.dsu.count, 0)
+        self.assertEqual(model.dsu.max_size, 0)
+
+    def test_large_mean_poisson(self):
+        deg = poisson_degrees(4000, 1000.0, Rng(2))
+        self.assertLess(abs(sum(deg) / len(deg) - 1000.0), 5.0)
+
+    def test_power_law_validation(self):
+        with self.assertRaises(ValueError):
+            power_law_degrees(10, 1.0, 2, 1000, Rng(3))
+        deg = power_law_degrees(100, 1.01, 2, 1000, Rng(4))
+        self.assertTrue(all(2 <= d <= 1000 for d in deg))
+
+    def test_honeycomb_minimum_size(self):
+        with self.assertRaises(ValueError):
+            build_lattice("honeycomb", 4)
+
+    def test_molloy_reed_empty(self):
+        with self.assertRaises(ValueError):
+            molloy_reed([])
+
+
+class TestDirected(unittest.TestCase):
+    def test_parity(self):
+        lat = build_lattice("square", 32)
+        for mode, p, want in (("bond", 0.65, 354), ("site", 0.70, 328)):
+            rng = Rng(4242)
+            hits = sum(directed_crossing(lat, p, rng, mode)["cross"] for _ in range(500))
+            self.assertEqual(hits, want)
+
+    def test_bad_lattice(self):
+        with self.assertRaises(ValueError):
+            directed_crossing(build_lattice("triangular", 8), 0.5, Rng(1))
 
 
 class TestNetwork(unittest.TestCase):

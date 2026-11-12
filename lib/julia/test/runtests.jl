@@ -21,6 +21,14 @@ const GOLDEN_DOUBLES = [
     0.30334379811845724,
 ]
 const GOLDEN_INTS = [1, 2, 6, 3, 6, 7, 4, 6]
+const GOLDEN_NORMALS = [
+    0.26752688913325207,
+    1.7424408577069266,
+    0.5813902729075202,
+    -1.6928023015879279,
+    0.8153199416965593,
+    -0.4575232516347127,
+]
 const GOLDEN_U32_SUM = 839333524
 const GOLDEN_FNV1A = 3108118429
 
@@ -59,6 +67,9 @@ end
     @test t.ints_mod_10 == GOLDEN_INTS
     @test Int(t.u32_sum) == GOLDEN_U32_SUM
     @test Int(t.fnv1a) == GOLDEN_FNV1A
+
+    rng = Rng(42)
+    @test [normal(rng) for _ in 1:6] == GOLDEN_NORMALS
 
     # Consumption and range sanity.
     rng = Rng(7)
@@ -122,6 +133,42 @@ end
     # interdependent_fraction_seed11 (exact)
     res = interdependent_er(1500, 3.5, 0.75, Rng(11))
     @test res.fraction == 0.5306666666666666
+end
+
+@testset "Directed percolation parity" begin
+    lat = build_lattice("square", 32)
+    rng = Rng(4242)
+    hits = 0
+    for _ in 1:500
+        hits += directed_crossing(lat, 0.65, rng; mode = "bond").cross ? 1 : 0
+    end
+    @test hits == 354
+    rng = Rng(4242)
+    hits = 0
+    for _ in 1:500
+        hits += directed_crossing(lat, 0.70, rng; mode = "site").cross ? 1 : 0
+    end
+    @test hits == 328
+end
+
+@testset "Regression checks" begin
+    # Triangle 0-1-2 plus leaf 3-2: the 3-core is empty.
+    g = Graph(4, 8, Int32[0, 2, 4, 7, 8], Int32[1, 2, 0, 2, 1, 0, 3, 2])
+    @test kcore(g, [1, 1, 1, 1], 3).size == 0
+
+    # Site p=0 leaves no occupied component.
+    model = Percolation(build_lattice("square", 8), "site")
+    model.sample(0.0, Rng(2))
+    model.build()
+    @test model.dsu.count == 0
+    @test model.dsu.max_size == 0
+
+    # Large-mean Poisson.
+    deg = poisson_degrees(2000, 1000.0, Rng(3))
+    @test abs(sum(deg) / length(deg) - 1000.0) < 5.0
+
+    # Degenerate honeycomb quotient is rejected.
+    @test_throws ArgumentError build_lattice("honeycomb", 4)
 end
 
 @testset "Cardy formula" begin

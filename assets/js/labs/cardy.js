@@ -52,12 +52,12 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cardy-plot', ['π(ℓ)', 'CARDY 1992 / SMIRNOV 2001', 'ℓ', ''])}
         <div style="height:12px"></div>
-        ${canvasBox('cardy-shape', ['GEOMETRY', 'LEFT → RIGHT', '', ''])}
+        ${canvasBox('cardy-shape', [t(lang, 'geometry'), t(lang, 'left_right'), '', ''])}
         <div class="grid-2" style="margin-top:12px">
           ${panel(L.curve, '')}
         </div>

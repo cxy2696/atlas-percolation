@@ -7,7 +7,7 @@ subtitle: Molekularfeld-Verhalten, die Dreiecksbedingung und warum sechs
 reading: 14 min
 ---
 
-Oberhalb von sechs Dimensionen vergisst die Perkolation ihr Gitter. Die Exponenten nehmen ihre Molekularfeld-Werte an, der Ordnungsparameter ist bei $p_c$ glatt, und die gesamte Theorie reduziert sich auf einen Verzweigungsprozess mit Korrekturen, die sich abschätzen lassen. Das Werkzeug, das dies beweist, ist die Lace-Expansion, eine der wenigen nichtperturbativen Methoden der kritischen Phänomene. Dieses Kapitel erklärt, was die Expansion ist, warum ihre Konvergenzschwelle $d\ge11$ statt $d>6$ lautet und warum diese Lücke von Bedeutung ist.
+Oberhalb von sechs Dimensionen vergisst die Perkolation ihr Gitter. Die Exponenten nehmen ihre Molekularfeld-Werte an, der Ordnungsparameter ist oberhalb von $p_c$ glatt, und die gesamte Theorie reduziert sich auf einen Verzweigungsprozess mit Korrekturen, die sich abschätzen lassen. Das Werkzeug, das dies beweist, ist die Lace-Expansion, eine der wenigen nichtperturbativen Methoden der kritischen Phänomene. Dieses Kapitel erklärt, was die Expansion ist, warum ihre Konvergenzschwelle $d\ge11$ statt $d>6$ lautet und warum diese Lücke von Bedeutung ist.
 
 ## 8.1 Molekularfeld vom Bethe-Gitter, korrekt hergeleitet
 
@@ -41,7 +41,7 @@ $$
 $$
 also $\gamma=1$. Am kritischen Punkt hat die Nachkommenverteilung den Mittelwert eins und endliche Varianz; die Clustergröße liegt daher im Einzugsbereich einer stabilen Verteilung mit $\mathbb{P}(|C_0|=n)\sim n^{-3/2}$, was $1+1/\delta=3/2$ ergibt, also $\delta=2$. Schließlich liefert die Relation $\beta=\nu(d-2+\eta)/2$ bei der oberen kritischen Dimension $d=6$ mit $\eta=0$ die Gleichung $1=\nu\cdot 2$, also $\nu=1/2$; die Korrelationslänge verhält sich wie $(p_c-p)^{-1/2}$, was sich auch direkt aus der Rekursion prüfen lässt. Die fraktale Dimension ist $d_f=d-\beta/\nu=6-2=4$.
 
-**Warum das Bethe-Gitter kein Gitter ist.** Es besitzt keine Zyklen und ist daher für kein endliches $d$ ein Teilgraph von $\mathbb{Z}^d$. Seine Exponenten stimmen mit den Molekularfeld-Werten überein, weil die Verzweigungsnäherung exakt wird, wenn Schleifen vernachlässigbar sind, und Schleifen sind oberhalb von $d_c$ vernachlässigbar. Die Übereinstimmung ist oberhalb von sechs Dimensionen ein Satz, keine Analogie.
+**Warum das Bethe-Gitter kein Gitter ist.** Es besitzt keine Zyklen und ist daher für kein endliches $d$ ein Teilgraph von $\mathbb{Z}^d$. Seine Exponenten stimmen mit den Molekularfeld-Werten überein, weil die Verzweigungsnäherung exakt wird, wenn Schleifen vernachlässigbar sind, und Schleifen sind oberhalb von $d_c$ vernachlässigbar. Für nächste-Nachbar-Bond-Perkolation ist die Übereinstimmung für $d\ge11$ bewiesen, für das Spread-out-Modell für $d>6$. Sie ist ein Satz, keine Analogie, aber der Dimensionsbereich muss korrekt angegeben werden.
 
 ## 8.2 Die Dreiecksbedingung
 
@@ -51,7 +51,7 @@ $$
 $$
 (Aizenman–Newman 1984; Barsky–Aizenman 1987 führten sie für die Perkolation ein.) Der Name stammt vom Diagramm: drei Propagatoren, die zwei Knoten verbinden, also ein Dreieck in der dualen Darstellung oder ein Theta-Graph in der direkten Darstellung.
 
-**Satz 8.1 (Aizenman–Newman; Barsky–Aizenman).** Wenn die Dreiecksbedingung bei $p_c$ gilt, gelten die Molekularfeld-Exponenten: $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$, und $\theta$ ist bei $p_c$ zweimal differenzierbar mit $\theta'(p_c)>0$.
+**Satz 8.1 (Aizenman–Newman; Barsky–Aizenman).** Wenn die Dreiecksbedingung bei $p_c$ gilt, gelten die Molekularfeld-Exponenten: $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$, und $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ für $p>p_c$ mit $c_1>0$; $\theta$ ist auf $(p_c,1]$ $C^2$ und besitzt bei $p_c$ einseitige rechtsseitige Ableitungen.
 
 Der Beweis kombiniert die Infrarot-Schranke (eine Fourierraum-Ungleichung für $\tau$) mit einer Differentialungleichung für $\theta$; die Lace-Expansion wird nicht benötigt. Zu verifizieren ist die Dreiecksbedingung selbst, und hier kommt die Lace-Expansion ins Spiel.
 
@@ -61,7 +61,7 @@ $$
 $$
 was genau dann endlich ist, wenn $d>6$ gilt. Bei $d=6$ divergiert das Integral logarithmisch; diese Divergenz ist die Quelle der logarithmischen Korrekturen des Molekularfeld-Verhaltens an der oberen kritischen Dimension.
 
-Dieselbe Abzählung im Ortsraum: Der Theta-Graph besteht aus drei Wegen der Skalierungsdimension $d-2$, die zwei Verzweigungspunkte verbinden. Er ist endlich, wenn $3(d-2)>2d$ gilt, also $d>6$. Beim selbstmeidenden Weg hat das entsprechende Diagramm zwei Wege und eine Schleife, $2(d-2)>d$, was das bekannte $d_c=4$ ergibt. Der zusätzliche Propagator ist der Grund dafür, dass die obere kritische Dimension der Perkolation um zwei über der des Weges liegt.
+Dieselbe Abzählung im Ortsraum: Der Theta-Graph besteht aus drei Wegen der Skalierungsdimension $d-2$, die zwei Verzweigungspunkte verbinden. Er ist endlich, wenn $3(d-2)>2d$ gilt, also $d>6$. Beim selbstvermeidenden Weg hat das entsprechende Diagramm zwei Wege und eine Schleife, $2(d-2)>d$, was das bekannte $d_c=4$ ergibt. Der zusätzliche Propagator ist der Grund dafür, dass die obere kritische Dimension der Perkolation um zwei über der des Weges liegt.
 
 ## 8.3 Die Lace-Expansion
 

@@ -23,7 +23,7 @@ const LABELS = {
     lead: '同时采样三种尺寸。左：原始横穿曲线随 L 增大而变陡，且都经过 p_c 处的 1/2。右：把同一批数据画在标度变量 (p − p_c)L^(1/ν) 上（ν = 4/3），曲线重合，说明整个相变由一个指数组织。',
     raw: 'π(p) 随尺寸',
     collapse: '有限尺度坍缩',
-    speed: '每拍样本',
+    speed: '每帧样本数',
     samples: '样本数',
     pi32: 'p_c 处 π，L=32',
     pi64: 'p_c 处 π，L=64',
@@ -35,7 +35,7 @@ const LABELS = {
     title: 'Durchgangswahrscheinlichkeit und Kollaps',
     lead: 'Drei Gittergrößen werden gleichzeitig gezogen. Links: die Rohkurven werden mit wachsendem L steiler, laufen aber alle bei p_c durch 1/2. Rechts: dieselben Daten in der Skalenvariablen (p − p_c)L^(1/ν), ν = 4/3 — der Kollaps zeigt, dass ein einziger Exponent den Übergang organisiert.',
     raw: 'π(p) nach Gittergröße',
-    collapse: 'Kollaps der endlichen Größen',
+    collapse: 'Finite-Size-Kollaps',
     speed: 'Stichproben / Takt',
     samples: 'Stichproben',
     pi32: 'π bei p_c, L=32',
@@ -54,7 +54,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('cross-raw', ['π(p)', 'BOND · SQUARE', 'p', ''])}

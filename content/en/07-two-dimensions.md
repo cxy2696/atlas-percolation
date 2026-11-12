@@ -56,7 +56,7 @@ and for $\ell>1$ the symmetry $\pi(\ell)=1-\pi(1/\ell)$ is used. The modulus is 
 
 Three checks fix the constants and the orientation.
 
-*Symmetry.* At $\ell=1$, $m=1/2$, ${}_2F_1(1/3,2/3;4/3;1/2)=1.1129126745\ldots$, $m^{1/3}=0.7937005260\ldots$, and $3\Gamma(2/3)/\Gamma(1/3)^2=0.5660466804\ldots$; the product is $0.5$ to machine precision. This is the self-duality identity of Proposition 4.3.
+*Symmetry.* At $\ell=1$, $m=1/2$, ${}_2F_1(1/3,2/3;4/3;1/2)=1.1129126745\ldots$, $m^{1/3}=0.7937005260\ldots$, and $3\Gamma(2/3)/\Gamma(1/3)^2=0.5660466804\ldots$; the product is $0.5$ to machine precision. This is the $\ell=1$ Cardy value; it agrees with the $L\to\infty$ limit in Proposition 4.3, not with an identity at every finite size.
 
 *Limits.* As $\ell\to0$, $m\to0$ and $\pi\to0$; as $\ell\to\infty$, $\pi\to1$. Both limits are consistent with the geometry: a very wide, short rectangle is unlikely to be crossed left–right, while a very tall one is almost surely crossed.
 

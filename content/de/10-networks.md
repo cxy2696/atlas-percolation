@@ -34,7 +34,7 @@ $$
 p_c=\frac{\langle k\rangle}{\langle k^2\rangle-\langle k\rangle}=\frac{1}{\kappa-1},
 \qquad \kappa:=\frac{\langle k^2\rangle}{\langle k\rangle},
 $$
-Bei voller Besetzung ($p=1$) reduziert sich dies auf $\kappa>2$, das Molloy–Reed-Kriterium. Unter Verdünnung lautet das Kriterium $p(\kappa-1)>1$ bzw. $p>1/(\kappa-1)$; $\kappa>2$ allein genügt nicht. Der Parameter $\kappa$ ist der Verzweigungsfaktor des größenverzerrten Laufs; er ist nicht der mittlere Grad, und beide stimmen nur bei Poisson-Graden überein.
+Bei voller Besetzung ($p=1$) reduziert sich dies auf $\kappa>2$, das Molloy–Reed-Kriterium. Unter Verdünnung lautet das Kriterium $p(\kappa-1)>1$ bzw. $p>1/(\kappa-1)$; $\kappa>2$ allein genügt nicht. Der Verzweigungsfaktor ist $\kappa-1$, nicht $\kappa$. Er ist nicht der mittlere Grad; beide stimmen nur bei Poisson-Graden überein, wo $\kappa=c+1$ und $\kappa-1=c$ gilt.
 
 Der verdünnte Anteil ist $f=1-p$, der kritische Entfernungsanteil also
 $$
@@ -42,7 +42,7 @@ f_c=1-\frac{1}{\kappa-1}=\frac{\kappa-2}{\kappa-1}.
 $$
 Für Erdős–Rényi-Grade gilt $\langle k^2\rangle=\langle k\rangle(\langle k\rangle+1)$ und $\kappa=c+1$, was $f_c=1-1/c$ ergibt – das bekannte Ergebnis, dass ein Zufallsgraph mit mittlerem Grad $c$ zerfällt, wenn ein Anteil $1-1/c$ der Knoten entfernt wird.
 
-**Ein häufiger Stolperstein.** Es liegt nahe, $f_c=1-1/\kappa$ zu schreiben und in derselben abgesetzten Formel den korrekten Ausdruck $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$ anzugeben. Die beiden sind nicht gleich: $1/\kappa=\langle k\rangle/\langle k^2\rangle$, während der korrekte Nenner $\langle k^2\rangle-\langle k\rangle$ lautet. Der Erdős–Rényi-Sonderfall ist nachsichtig, weshalb der Fehler flüchtige Prüfungen übersteht. Die allgemeine Formel lautet $f_c=1-1/(\kappa-1)$, und der Unterschied zählt bei Graden mit schweren Verteilungsenden, wo sich $\kappa-1$ und $\kappa$ um einen großen Faktor unterscheiden können.
+**Ein häufiger Stolperstein.** Es liegt nahe, $f_c=1-1/\kappa$ zu schreiben und in derselben abgesetzten Formel den korrekten Ausdruck $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$ anzugeben. Die beiden sind nicht gleich: $1/\kappa=\langle k\rangle/\langle k^2\rangle$, während der korrekte Nenner $\langle k^2\rangle-\langle k\rangle$ lautet. Der Erdős–Rényi-Sonderfall ist nachsichtig, weshalb der Fehler flüchtige Prüfungen übersteht. Die allgemeine Formel lautet $f_c=1-1/(\kappa-1)$; die Abweichung von $1-1/\kappa$ beträgt $1/[\kappa(\kappa-1)]$, ist in der Nähe von $\kappa=2$ am größten und verschwindet für schwere Verteilungen.
 
 ## 10.3 Skalenfreie Grade: das Verschwinden der Schwelle
 
@@ -56,7 +56,7 @@ was genau dann konvergiert, wenn $\gamma_{\text{deg}}>3$. Daraus ergeben sich dr
 - $2<\gamma_{\text{deg}}\le3$: $\langle k^2\rangle=\infty$, also $\kappa=\infty$, $f_c=1$: Zufälliges Entfernen zerstört die Riesenkomponente im Limes unendlicher Größe nie.
 - $\gamma_{\text{deg}}\le2$: Selbst $\langle k\rangle$ divergiert, und die Verteilung benötigt eine Regularisierung bei endlichem $N$; der Begriff eines Zufallsgraphen mit solchen Graden ist heikel.
 
-Dasselbe Netzwerk ist gegenüber **gezielter** Entfernung extrem fragil: Entfernt man Knoten in absteigender Gradfolge, lässt sich die Riesenkomponente zerstören, während die meisten Knoten erhalten bleiben. Dies ist die Dualität „robust und doch fragil“ von Cohen, Erez, ben-Avraham und Havlin (2000) sowie Albert, Jeong und Barabási (2000). Sie ist kein Paradoxon: Zufälliges Entfernen tastet die Gradverteilung proportional ab, sodass die vielen Knoten niedrigen Grades dominieren; gezieltes Entfernen trifft die Hubs, die das Netzwerk zusammenhalten.
+Dasselbe Netzwerk ist gegenüber **gezielter** Entfernung extrem fragil: Entfernt man Knoten in absteigender Gradfolge, lässt sich die Riesenkomponente zerstören, während die meisten Knoten erhalten bleiben. Dies ist die Doppelnatur „robust und doch fragil“ von Cohen, Erez, ben-Avraham und Havlin (2000) sowie Albert, Jeong und Barabási (2000). Sie ist kein Paradoxon: Zufälliges Entfernen tastet die Gradverteilung proportional ab, sodass die vielen Knoten niedrigen Grades dominieren; gezieltes Entfernen trifft die Hubs, die das Netzwerk zusammenhalten.
 
 ## 10.4 $k$-Kern-Perkolation
 

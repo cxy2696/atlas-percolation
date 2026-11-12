@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-12 19:58",
+ "generated": "2026-11-12 21:08",
  "languages": [
   "en",
   "zh",
   "de"
  ],
- "references": 47,
+ "references": 64,
  "chapters": [
   {
    "id": "01-foundations",
@@ -343,7 +343,7 @@
    },
    "subtitle": {
     "en": "How the numbers are checked, what changed, and how to keep the atlas alive",
-    "zh": "数字如何核查、改动了什么，以及如何让图谱活下去",
+    "zh": "数字如何核查、改动了什么，以及如何让图册活下去",
     "de": "Wie die Zahlen geprüft werden, was sich geändert hat und wie man den Atlas am Leben hält"
    },
    "reading": {
@@ -355,6 +355,106 @@
     "en": "content/en/14-sources.md",
     "zh": "content/zh/14-sources.md",
     "de": "content/de/14-sources.md"
+   }
+  },
+  {
+   "id": "15-algorithms",
+   "order": 15,
+   "part": "methods",
+   "title": {
+    "en": "Algorithms: from one sample to the whole curve",
+    "zh": "算法：从单次采样到整条曲线",
+    "de": "Algorithmen: von einer Stichprobe zur ganzen Kurve"
+   },
+   "subtitle": {
+    "en": "Union-find, label propagation, edge sweeps, and what each one costs",
+    "zh": "并查集、标号传播、边扫描，以及每一种做法的代价",
+    "de": "Union-Find, Label-Propagation, Kanten-Sweeps und ihre Kosten"
+   },
+   "reading": {
+    "en": 15,
+    "zh": 15,
+    "de": 15
+   },
+   "files": {
+    "en": "content/en/15-algorithms.md",
+    "zh": "content/zh/15-algorithms.md",
+    "de": "content/de/15-algorithms.md"
+   }
+  },
+  {
+   "id": "16-directed",
+   "order": 16,
+   "part": "critical",
+   "title": {
+    "en": "Directed percolation: time as a direction",
+    "zh": "有向渗流：把时间作为方向",
+    "de": "Gerichtete Perkolation: die Zeit als Richtung"
+   },
+   "subtitle": {
+    "en": "Causality, the DP conjecture, and the exponents that come with it",
+    "zh": "因果性、DP 猜想，以及随之而来的指数",
+    "de": "Kausalität, die DP-Vermutung und die zugehörigen Exponenten"
+   },
+   "reading": {
+    "en": 14,
+    "zh": 14,
+    "de": 14
+   },
+   "files": {
+    "en": "content/en/16-directed.md",
+    "zh": "content/zh/16-directed.md",
+    "de": "content/de/16-directed.md"
+   }
+  },
+  {
+   "id": "17-continuum",
+   "order": 17,
+   "part": "networks",
+   "title": {
+    "en": "Continuum percolation: disks, rods, and real media",
+    "zh": "连续渗流：圆盘、棒与真实介质",
+    "de": "Kontinuumsperkolation: Scheiben, Stäbe und reale Medien"
+   },
+   "subtitle": {
+    "en": "The Boolean model, excluded volume, and why coverage is not connectivity",
+    "zh": "布尔模型、排除体积，以及为什么覆盖不等于连通",
+    "de": "Das Boolesche Modell, Ausschlussvolumen und warum Überdeckung nicht Konnektivität ist"
+   },
+   "reading": {
+    "en": 15,
+    "zh": 15,
+    "de": 15
+   },
+   "files": {
+    "en": "content/en/17-continuum.md",
+    "zh": "content/zh/17-continuum.md",
+    "de": "content/de/17-continuum.md"
+   }
+  },
+  {
+   "id": "18-transport",
+   "order": 18,
+   "part": "networks",
+   "title": {
+    "en": "Transport and first passage",
+    "zh": "输运与首达",
+    "de": "Transport und Erstpassage"
+   },
+   "subtitle": {
+    "en": "What connectivity does not tell you, and how to measure the rest",
+    "zh": "连通性不告诉你的，以及如何测量其余部分",
+    "de": "Was Konnektivität nicht sagt, und wie man den Rest misst"
+   },
+   "reading": {
+    "en": 14,
+    "zh": 14,
+    "de": 14
+   },
+   "files": {
+    "en": "content/en/18-transport.md",
+    "zh": "content/zh/18-transport.md",
+    "de": "content/de/18-transport.md"
    }
   }
  ]

@@ -34,7 +34,7 @@ $$
 p_c=\frac{\langle k\rangle}{\langle k^2\rangle-\langle k\rangle}=\frac{1}{\kappa-1},
 \qquad \kappa:=\frac{\langle k^2\rangle}{\langle k\rangle},
 $$
-At full occupancy ($p=1$) this reduces to $\kappa>2$, the Molloy–Reed criterion. Under dilution the criterion is $p(\kappa-1)>1$, or equivalently $p>1/(\kappa-1)$; $\kappa>2$ alone is not enough. The parameter $\kappa$ is the branching factor of the size-biased walk; it is not the mean degree, and the two coincide only for Poisson degrees.
+At full occupancy ($p=1$) this reduces to $\kappa>2$, the Molloy–Reed criterion. Under dilution the criterion is $p(\kappa-1)>1$, or equivalently $p>1/(\kappa-1)$; $\kappa>2$ alone is not enough. The branching factor is $\kappa-1$, not $\kappa$. It is not the mean degree; the two coincide only for Poisson degrees, where $\kappa=c+1$ and $\kappa-1=c$.
 
 The dilute fraction is $f=1-p$, so the critical removal fraction is
 $$
@@ -42,7 +42,7 @@ f_c=1-\frac{1}{\kappa-1}=\frac{\kappa-2}{\kappa-1}.
 $$
 For Erdős–Rényi degrees, $\langle k^2\rangle=\langle k\rangle(\langle k\rangle+1)$ and $\kappa=c+1$, giving $f_c=1-1/c$, the familiar result that a random graph with mean degree $c$ fragments when a fraction $1-1/c$ of vertices is removed.
 
-**A common slip.** It is tempting to write $f_c=1-1/\kappa$ and to quote, in the same display, the correct expression $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$. The two are not equal: $1/\kappa=\langle k\rangle/\langle k^2\rangle$, whereas the correct denominator is $\langle k^2\rangle-\langle k\rangle$. The Erdős–Rényi special case is forgiving, which is why the error survives casual checks. The general formula is $f_c=1-1/(\kappa-1)$, and the difference matters for heavy-tailed degrees, where $\kappa-1$ and $\kappa$ can differ by a large factor.
+**A common slip.** It is tempting to write $f_c=1-1/\kappa$ and to quote, in the same display, the correct expression $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$. The two are not equal: $1/\kappa=\langle k\rangle/\langle k^2\rangle$, whereas the correct denominator is $\langle k^2\rangle-\langle k\rangle$. The Erdős–Rényi special case is forgiving, which is why the error survives casual checks. The general formula is $f_c=1-1/(\kappa-1)$; the difference from $1-1/\kappa$ is $1/[\kappa(\kappa-1)]$, which is largest near $\kappa=2$ and vanishes for heavy tails.
 
 ## 10.3 Scale-free degrees: the disappearance of the threshold
 

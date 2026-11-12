@@ -231,6 +231,7 @@ function build!(m::Percolation)
             active += Int(occ[v])
         end
         dsu.count = active
+        dsu.max_size = active > 0 ? 1 : 0
         @inbounds for e in 1:lat.m
             a = Int(eu[e]) + 1
             b = Int(ev[e]) + 1

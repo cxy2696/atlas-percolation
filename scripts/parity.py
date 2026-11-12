@@ -24,6 +24,7 @@ from percolation_atlas import (  # noqa: E402
     newman_ziff,
     Percolation,
     poisson_degrees,
+    directed_crossing,
 )
 
 
@@ -34,6 +35,12 @@ def crossing(lat, mode, p, seed, n):
     for _ in range(n):
         hits += int(model.sample(p, rng).crosses_lr())
     return hits
+
+
+def directed_count(mode, p, seed, n):
+    lat = build_lattice("square", 32)
+    rng = Rng(seed)
+    return sum(directed_crossing(lat, p, rng, mode)["cross"] for _ in range(n))
 
 
 def python_probes():
@@ -51,6 +58,8 @@ def python_probes():
         "interdependent_fraction_seed11": interdependent_er(
             1500, 3.5, 0.75, Rng(11)
         )["fraction"],
+        "directed_bond_cross_500_seed4242": directed_count("bond", 0.65, 4242, 500),
+        "directed_site_cross_500_seed4242": directed_count("site", 0.70, 4242, 500),
     }
 
 

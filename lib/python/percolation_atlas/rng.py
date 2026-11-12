@@ -24,9 +24,10 @@ def _mix32(z: int) -> int:
 class Rng:
     """Deterministic random stream shared by all four implementations."""
 
-    __slots__ = ("s",)
+    __slots__ = ("s", "_spare")
 
     def __init__(self, seed: int = GOLDEN):
+        self._spare = None
         self.seed(seed)
 
     def seed(self, seed: int) -> "Rng":
@@ -38,6 +39,7 @@ class Rng:
         if (s[0] | s[1] | s[2] | s[3]) == 0:
             s[0] = 1
         self.s = s
+        self._spare = None
         return self
 
     def u32(self) -> int:
@@ -60,6 +62,8 @@ class Rng:
     def int(self, n: int) -> int:
         if n <= 1:
             return 0
+        if n > 4294967296:
+            raise ValueError("int(n) requires n <= 2^32")
         limit = (4294967296 // n) * n
         while True:
             r = self.u32()
@@ -76,13 +80,23 @@ class Rng:
         return a
 
     def normal(self) -> float:
+        """Standard normal via Marsaglia polar Box-Muller.
+
+        The cached spare and the rejection loop must match the other three
+        implementations, otherwise a program that draws normals consumes a
+        different random stream (JS/C++/Julia use the same polar method).
+        """
         import math
 
-        u = 2.0 * self.random() - 1.0
-        v = 2.0 * self.random() - 1.0
-        s = u * u + v * v
-        while s >= 1.0 or s == 0.0:
+        if self._spare is not None:
+            value = self._spare
+            self._spare = None
+            return value
+        while True:
             u = 2.0 * self.random() - 1.0
             v = 2.0 * self.random() - 1.0
             s = u * u + v * v
-        return u * math.sqrt(-2.0 * math.log(s) / s)
+            if 0.0 < s < 1.0:
+                m = math.sqrt(-2.0 * math.log(s) / s)
+                self._spare = v * m
+                return u * m

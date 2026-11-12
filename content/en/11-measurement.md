@@ -26,7 +26,7 @@ A simulation has finite $L$, so it never observes $\theta$. Instead it observes 
 - the crossing point of the Binder cumulant $U_4=1-\langle S^4\rangle/(3\langle S^2\rangle^2)$ for two sizes;
 - the $p$ at which the largest-cluster fraction $S_{\max}(p,L)$ equals a fixed fraction of the box.
 
-Each convention has a different finite-size correction. On the square lattice with bond percolation, the first is special: duality gives $\pi(1/2,L)=1/2$ exactly for every $L$ with free boundary conditions. That is a rare luxury, and it is why the square-lattice bond model is the calibration case for any new code. It is not a licence to use the same shortcut on another lattice.
+Each convention has a different finite-size correction. On the square lattice with bond percolation, the first has a useful limit: duality forces $\pi(1/2,L)\to1/2$ as $L\to\infty$, but the finite-$L$ values are not exactly $1/2$. The recorded rates at $L=32,64,128$ are $0.528$, $0.538$ and $0.505$. Use the trend, or a tolerance that accounts for the correction, and do not treat the limit as a per-size identity.
 
 The differences between conventions are not cosmetic. If $p_c(L)=p_c+aL^{-1/\nu}(1+bL^{-\omega}+\cdots)$, then the coefficient $a$ depends on the observable, while $p_c$ and $\nu$ do not. Two conventions that disagree by $10^{-2}$ at $L=64$ can agree to $10^{-4}$ after extrapolation, or can reveal a bug. Reporting the convention is part of reporting the number.
 
@@ -35,7 +35,7 @@ The differences between conventions are not cosmetic. If $p_c(L)=p_c+aL^{-1/\nu}
 Near $p_c$, the scaling ansatz for an observable $A$ is
 
 $$
-A(p,L)=L^{y_A/\nu}\,\mathcal A\!\left((p-p_c)L^{1/\nu}\right)\left(1+cL^{-\omega}+\cdots\right),
+A(p,L)=L^{y_A}\,\mathcal A\!\left((p-p_c)L^{1/\nu}\right)\left(1+cL^{-\omega}+\cdots\right),
 $$
 
 where $y_A$ is the scaling dimension of $A$ and $\omega$ is the leading correction exponent. For the crossing probability $y_A=0$, so the curves for different $L$ should cross at $p_c$ and collapse when plotted against $(p-p_c)L^{1/\nu}$. For $S_{\max}$, $y_A=d_f$; for $\chi$, $y_A=\gamma/\nu$.
@@ -85,9 +85,9 @@ A defensible statement has the form "we obtain $p_c=0.5927(3)$ from sizes $L=64$
 
 `scripts/bench.cpp` is a self-contained C++20 harness. It uses the shared xoshiro128** stream, the same lattice edge order as the libraries, and writes raw counts rather than fitted values. `scripts/analyse_bench.py` adds the Cardy curve, a collapse fit and a one-arm slope, and records the seed and the generation date in `data/benchmarks.json`.
 
-The benchmark is designed to show the *shape* of a finite-size study, not to compete with dedicated high-precision work. The crossing experiment uses free boundaries and $L\in\{32,64,128\}$; the torus experiment uses $L\le128$; the Cardy experiment uses a $96\times H$ rectangle with $H/W$ from $0.25$ to $4$. Every row carries its own sample count. The data view on the website reads the same file; if the file is missing, the page says so rather than inventing a curve.
+The benchmark is designed to show the *shape* of a finite-size study, not to compete with dedicated high-precision work. The crossing experiment uses free boundaries and $L\in\{32,64,128\}$; the torus experiment uses $L\le128$; the one-arm experiment uses $L\le512$ and fits only $L\ge64$; the Cardy experiment uses a $96\times H$ rectangle with $H/W$ from $0.25$ to $4$. The headline collapse fixes $\nu=4/3$ and fits $p_c$ alone; the unconstrained two-parameter fit is reported as a diagnostic because it is ill-conditioned at these sizes. Every row carries its own sample count. The data view on the website reads the same file; if the file is missing, the page says so rather than inventing a curve.
 
-The important test is not whether the fitted $p_c$ lands on $0.5$ to four decimals. It is whether the crossing rate at $p=1/2$ is statistically consistent with $1/2$, whether the curves sharpen with $L$, and whether the same seed produces the same integer counts in C++, Julia, Python and JavaScript. Those are the checks that catch the errors which matter.
+The important test is not whether the fitted $p_c$ lands on $0.5$ to four decimals. It is whether the crossing rate at $p=1/2$ follows the finite-size trend towards $1/2$, whether the curves sharpen with $L$, and whether the same seed produces the same integer counts in C++, Julia, Python and JavaScript. Those are the checks that catch the errors which matter.
 
 ## 11.7 Traps, in the order they usually appear
 

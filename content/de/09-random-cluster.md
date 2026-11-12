@@ -25,31 +25,33 @@ wobei $k(\omega)$ die Anzahl der Zusammenhangskomponenten des offenen Teilgraphe
 $$
 Z_{\text{Potts}}(\beta)=\sum_{\sigma\in\{1,\dots,q\}^V}\exp\Big(-\beta\sum_{e=(u,v)}\big(1-\delta_{\sigma_u\sigma_v}\big)\Big)
 $$
-bis auf einen expliziten Faktor gleich $Z_G(p,q)$, mit $p=1-e^{-\beta}$.
+exakt gleich $Z_G(p,q)$, mit $p=1-e^{-\beta}$.
 
-**Beweis.** Für eine einzelne Kante ist die Identität
+**Beweis.** Für eine einzelne Kante gilt die Identität
 $$
-e^{-\beta(1-\delta_{\sigma_u\sigma_v})}=1+\big(e^{\beta}-1\big)\delta_{\sigma_u\sigma_v}
+e^{-\beta(1-\delta_{\sigma_u\sigma_v})}
+=e^{-\beta}+\big(1-e^{-\beta}\big)\delta_{\sigma_u\sigma_v}
+=(1-p)+p\,\delta_{\sigma_u\sigma_v};
 $$
-eine Prüfung zweier Fälle. Multipliziert man über alle Kanten und entwickelt das Produkt,
+die linke Seite ist $1$ bei gleichen Spins und $e^{-\beta}$ bei verschiedenen. Multipliziert man über alle Kanten und entwickelt das Produkt,
 $$
-\prod_{e\in E}\Big(1+(e^\beta-1)\delta_{\sigma_u\sigma_v}\Big)
-=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
+\prod_{e\in E}\Big((1-p)+p\,\delta_{\sigma_u\sigma_v}\Big)
+=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
 $$
 Summiert man über $\sigma$, so erzwingt das Produkt der Deltas, dass $\sigma$ auf jeder Zusammenhangskomponente von $(V,\omega)$ konstant ist, und jede Komponente kann eine von $q$ Farben annehmen. Es gibt $q^{k(\omega)}$ Färbungen, also
 $$
-Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}q^{k(\omega)}
-=\sum_\omega p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}\cdot(1-p)^{-|E|},
+Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}
+=Z_G(p,q).
 $$
-wobei $e^\beta-1=p/(1-p)$ verwendet wurde. Der letzte Faktor ist unabhängig von $\omega$ und kürzt sich in der Normierung. $\blacksquare$
+Ein Vorfaktor ist nicht nötig: Die Bernoulli-Gewichte und das Clustergewicht werden bereits durch dieselbe Summe normiert. $\blacksquare$
 
-Für $q=2$ ist dies das Ising-Modell in seiner Fortuin-Kasteleyn-Form, und die Perkolationswahrscheinlichkeit wird zur Magnetisierung: $\langle\sigma_0\rangle$ ist eine wachsende Funktion der Wahrscheinlichkeit, dass der Ursprung mit dem Rand verbunden ist. Die Korrespondenz ist exakt, keine Analogie, und sie ist der Grund, warum sich Perkolationsexponenten mit der Technik der Spinsysteme berechnen lassen und umgekehrt.
+Für $q=2$ ist dies das Ising-Modell in seiner Fortuin-Kasteleyn-Form, und die Perkolationswahrscheinlichkeit wird zur Magnetisierung: Bei verdrahteten Randbedingungen ist $\langle\sigma_0\rangle$ gleich der Wahrscheinlichkeit, dass der Ursprung mit dem Rand verbunden ist. Die Korrespondenz ist exakt, keine Analogie, und sie ist der Grund, warum sich Perkolationsexponenten mit der Technik der Spinsysteme berechnen lassen und umgekehrt.
 
 ## 9.3 Konsequenzen
 
 **Gemeinsame kritische Punkte.** Das RC-Modell besitzt einen Phasenübergang bei einem Wert $p_c(q)$, der das Bild der kritischen Potts-Temperatur ist. Für $q=2$ auf $\mathbb{Z}^2$ ist der selbstduale Punkt $p_c=\sqrt2/(1+\sqrt2)=0.585786\ldots$, der unter $p=1-e^{-2\beta_c}$ dem kritischen Ising-Punkt $\sinh(2\beta_c)=1$ entspricht. Diese Gleichheit ist ein Satz, und sie liefert die kritische Ising-Temperatur auf $\mathbb{Z}^2$ ohne Transfermatrix-Rechnung. Der Wert $p=1/2$ ist der Spezialfall $q=1$ (Perkolation), nicht der Ising-Punkt.
 
-**Monotonie in $q$.** Das RC-Maß ist für $q\ge1$ positiv assoziiert und erfüllt die FKG-Ungleichung; die Perkolationswahrscheinlichkeit ist monoton in $p$ und bei festem $p$ in einer geeigneten Kopplung monoton in $q$. Deshalb kann eine Erhöhung von $q$ einen stetigen Übergang in einen Übergang erster Ordnung verwandeln: Die Clusterbelohnung begünstigt eine dichte Phase.
+**Monotonie in $q$.** Das RC-Maß ist für $q\ge1$ positiv assoziiert und erfüllt die FKG-Ungleichung; die Perkolationswahrscheinlichkeit ist monoton in $p$. Eine Erhöhung von $q$ belohnt die Clusterbildung und kann einen stetigen Übergang in einen Übergang erster Ordnung verwandeln: Die Clusterbelohnung begünstigt eine dichte Phase. Die genaue $q$-Abhängigkeit der Ordnung des Übergangs ist modellabhängig; die folgenden Aussagen benötigen keine Monotonie in $q$.
 
 **Dualität.** Auf einem planaren Graphen besitzt das RC-Modell ein duales Modell mit transformierten Parametern; auf dem Quadratgitter lautet die selbstduale Kurve $p=\sqrt q/(1+\sqrt q)$, und für $q=1$ reduziert sie sich auf $p\leftrightarrow1-p$. Die Dualitätsrelationen sind die RC-Verallgemeinerung von Lemma 4.2 und der sauberste Weg zu den $q$-abhängigen kritischen Punkten auf dem Quadrat- und dem Dreiecksgitter.
 

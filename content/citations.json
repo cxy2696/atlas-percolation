@@ -26,7 +26,11 @@
     "lsw2001b",
     "cohen2000",
     "molloy1995",
-    "buldyrev2010"
+    "buldyrev2010",
+    "degennes1976",
+    "menshikov1986",
+    "aizenman1986",
+    "callaway2000"
   ],
   "03-monotonicity": [
     "harris1960",
@@ -51,7 +55,8 @@
     "aizenman1987",
     "burton1989",
     "kesten1980",
-    "grimmett1999"
+    "grimmett1999",
+    "menshikov1986"
   ],
   "06-exponents": [
     "stauffer1994",
@@ -124,5 +129,35 @@
     "grimmett1999",
     "bollobas2006",
     "stauffer1994"
+  ],
+  "15-algorithms": [
+    "tarjan1975",
+    "hoshen1976",
+    "leath1976",
+    "newman2000",
+    "newman2001",
+    "grassberger1999",
+    "grimmett1999"
+  ],
+  "16-directed": [
+    "hinrichsen2000",
+    "janssen1981",
+    "grassberger1982",
+    "takeuchi2007"
+  ],
+  "17-continuum": [
+    "gilbert1961",
+    "mertens2012",
+    "torquato2002",
+    "balberg1984",
+    "sahimi1994"
+  ],
+  "18-transport": [
+    "kirkpatrick1973",
+    "grassberger1999",
+    "gefen1983",
+    "havlin2002",
+    "redner2001",
+    "benavraham2000"
   ]
 }

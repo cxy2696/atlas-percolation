@@ -1,4 +1,5 @@
 /** Shared lab scaffolding: panels, controls, readouts, canvases. */
+import { t } from '../i18n.js';
 
 export function fmt(x, d = 3) {
   if (!isFinite(x)) return '—';
@@ -42,10 +43,10 @@ export function canvasBox(id, corners = ['', '', '', '']) {
   </div>`;
 }
 
-export function labHead({ kicker, title, lead }) {
+export function labHead({ kicker, title, lead, lang = 'en' }) {
   return `<div class="view-head">
     <div><div class="kicker">${kicker}</div><h2>${title}</h2></div>
-    <div class="meta">INTERACTIVE<br>LIVE ENGINE</div>
+    <div class="meta">${t(lang, 'lab_badge')}</div>
   </div>
   <p class="muted" style="max-width:820px;line-height:1.7;margin:-4px 0 20px">${lead}</p>`;
 }

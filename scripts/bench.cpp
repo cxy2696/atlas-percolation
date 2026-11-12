@@ -268,10 +268,11 @@ void exp_psi(Rng& rng) {
   // probability that the origin is connected to the boundary, at p_c
   emit(",\"arm\":[");
   bool first = true;
-  for (int L : {32, 64, 128}) {
+  for (int L : {32, 64, 128, 256, 512}) {
     Lattice g = make_lattice("square", L, L, false);
     Sample s(g);
-    int n = (L <= 64) ? 800 : 400;
+    // Keep the total work bounded: the 512^2 box is 16 times the 128^2 box.
+    int n = (L <= 64) ? 800 : (L <= 256 ? 400 : 200);
     int hits = 0;
     for (int t = 0; t < n; t++) {
       draw_bond(s, g, 0.5, rng);
@@ -296,7 +297,10 @@ void exp_cardy(Rng& rng) {
     int H = (int)std::lround(W * aspect);
     Lattice g = make_lattice("square", W, H, false);
     Sample s(g);
-    int n = 300;
+    // The narrow rectangle has a tiny crossing probability; a fixed n=300
+    // gave a 3-sigma fluctuation at aspect 0.25.  Spend the samples where the
+    // signal is rare.
+    int n = (aspect <= 0.3) ? 3000 : 600;
     int hits = 0;
     for (int t = 0; t < n; t++) {
       draw_bond(s, g, 0.5, rng);
@@ -413,9 +417,14 @@ std::vector<int> powerlaw_deg(int n, double gamma, int kmin, Rng& rng) {
   double a = 1.0 / (gamma - 1.0);
   for (int i = 0; i < n; i++) {
     double u = rng.random();
-    int k = (int)std::floor(kmin * std::pow(1 - u, -a));
+    const double kd = std::floor(kmin * std::pow(1 - u, -a));
+    int k;
+    if (!std::isfinite(kd) || kd > 5000.0) {
+      k = 5000;
+    } else {
+      k = static_cast<int>(kd);
+    }
     if (k < kmin) k = kmin;
-    if (k > 5000) k = 5000;
     d[i] = k;
     sum += k;
   }
@@ -455,7 +464,9 @@ void exp_network(Rng& rng) {
     for (int d : deg) { s1 += d; s2 += (long long)d * d; }
     std::vector<int> order(N);
     std::iota(order.begin(), order.end(), 0);
-    std::sort(order.begin(), order.end(), [&](int a, int b) {
+    // Ties are common in a power-law degree sequence; keep the vertex index
+    // as a deterministic tie-breaker so the published curve is reproducible.
+    std::stable_sort(order.begin(), order.end(), [&](int a, int b) {
       return (g.off[a + 1] - g.off[a]) > (g.off[b + 1] - g.off[b]);
     });
     emit(",\"pl25\":{\"mean\":" + d2s((double)s1 / N) + ",\"second\":" + d2s((double)s2 / N) +
@@ -501,7 +512,10 @@ void exp_interdependent(Rng& rng) {
   for (int k = 0; k <= 12; k++) {
     double p = 0.55 + 0.025 * k;
     double sum = 0;
-    int reps = 3;
+    double sumsq = 0;
+    int max_rounds = 0;
+    bool all_converged = true;
+    const int reps = 50;
     for (int rep = 0; rep < reps; rep++) {
       auto dA = poisson_deg(N, c, rng);
       auto dB = poisson_deg(N, c, rng);
@@ -509,7 +523,10 @@ void exp_interdependent(Rng& rng) {
       Graph B = make_config(dB, rng);
       std::vector<uint8_t> surviving(N);
       for (int i = 0; i < N; i++) surviving[i] = rng.random() < p;
-      for (int it = 0; it < 20; it++) {
+      int rounds = 0;
+      bool converged = false;
+      for (int it = 0; it < 100; it++) {
+        rounds = it + 1;
         std::vector<uint8_t> giantA(N, 0), giantB(N, 0);
         auto mark = [&](const Graph& G, const std::vector<uint8_t>& act,
                         std::vector<uint8_t>& outv) {
@@ -554,27 +571,39 @@ void exp_interdependent(Rng& rng) {
           if (next[i] != surviving[i]) changed = true;
         }
         surviving.swap(next);
-        if (!changed) break;
+        if (!changed) { converged = true; break; }
       }
+      if (!converged) all_converged = false;
+      if (rounds > max_rounds) max_rounds = rounds;
       int alive = std::accumulate(surviving.begin(), surviving.end(), 0);
-      sum += (double)alive / N;
+      const double frac = (double)alive / N;
+      sum += frac;
+      sumsq += frac * frac;
     }
+    const double mean = sum / reps;
+    const double variance = reps > 1 ? (sumsq - reps * mean * mean) / (reps - 1) : 0.0;
+    const double se = std::sqrt(std::max(0.0, variance) / reps);
     if (!first) emit(",");
     first = false;
-    emit("{\"p\":" + d2s(p) + ",\"s\":" + d2s(sum / reps) + "}");
+    emit("{\"p\":" + d2s(p) + ",\"s\":" + d2s(mean) + ",\"se\":" + d2s(se) +
+         ",\"reps\":" + std::to_string(reps) + ",\"rounds\":" + std::to_string(max_rounds) +
+         ",\"converged\":" + (all_converged ? "true" : "false") + "}");
   }
   emit("]}");
 }
 
 void exp_kcore(Rng& rng) {
   const int N = 10000;
-  const double c = 3.5;
+  const double c = 4.0;
   auto deg = poisson_deg(N, c, rng);
   Graph g = make_config(deg, rng);
   emit(",\"kcore\":{\"c\":" + d2s(c) + ",\"points\":[");
   bool first = true;
   for (int k = 0; k <= 10; k++) {
-    double p = 0.55 + 0.0225 * k;
+    // The 3-core of a diluted ER graph appears near p = c_3/c = 3.35/4, so
+    // the old 0.55..0.775 window was entirely subcritical and produced a flat
+    // zero curve.  Span 0.75..1.00 to show the discontinuous onset.
+    double p = 0.75 + 0.025 * k;
     std::vector<uint8_t> act(N, 1);
     for (int i = 0; i < N; i++) act[i] = rng.random() < p;
     // 3-core peeling

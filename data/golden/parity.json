@@ -1,48 +1,58 @@
 {
-  "description": "Cross-language parity probes. All four implementations must reproduce every field exactly (integers) or to 1e-12 (floats), using the shared RNG spec in docs/RNG.md.",
-  "probes": [
-    {
-      "id": "square_bond_cross_500_seed1234",
-      "call": "Percolation(build_lattice('square',32), 'bond'); 500 samples at p=0.5 with Rng(1234); count crosses_lr()",
-      "value": 244
-    },
-    {
-      "id": "tri_site_cross_300_seed777",
-      "call": "Percolation(build_lattice('triangular',16), 'site'); 300 samples at p=0.5 with Rng(777); count crosses_lr()",
-      "value": 151
-    },
-    {
-      "id": "nz_smax_q1_q2_end_seed5",
-      "call": "newman_ziff(build_lattice('square',16), Rng(5), checkpoints=64); smax at indices len//4, len//2, len-1",
-      "value": [
-        10,
-        109,
-        256
-      ]
-    },
-    {
-      "id": "configmodel_largest_seed9",
-      "call": "poisson_degrees(2000, 3.0, Rng(9)); configuration_model; components(all active).largest",
-      "value": 1883
-    },
-    {
-      "id": "interdependent_fraction_seed11",
-      "call": "interdependent_er(1500, 3.5, 0.75, Rng(11)).fraction",
-      "value": 0.5306666666666666
-    }
-  ],
-  "cardy": [
-    {
-      "l": 0.1,
-      "value": 4.0394890895707114e-05
-    },
-    {
-      "l": 1.0,
-      "value": 0.5
-    },
-    {
-      "l": 10.0,
-      "value": 0.9999596051091043
-    }
-  ]
+ "description": "Cross-language parity probes. All four implementations must reproduce every field exactly (integers) or to 1e-12 (floats), using the shared RNG spec in docs/RNG.md.",
+ "probes": [
+  {
+   "id": "square_bond_cross_500_seed1234",
+   "call": "Percolation(build_lattice('square',32), 'bond'); 500 samples at p=0.5 with Rng(1234); count crosses_lr()",
+   "value": 244
+  },
+  {
+   "id": "tri_site_cross_300_seed777",
+   "call": "Percolation(build_lattice('triangular',16), 'site'); 300 samples at p=0.5 with Rng(777); count crosses_lr()",
+   "value": 151
+  },
+  {
+   "id": "nz_smax_q1_q2_end_seed5",
+   "call": "newman_ziff(build_lattice('square',16), Rng(5), checkpoints=64); smax at indices len//4, len//2, len-1",
+   "value": [
+    10,
+    109,
+    256
+   ]
+  },
+  {
+   "id": "configmodel_largest_seed9",
+   "call": "poisson_degrees(2000, 3.0, Rng(9)); configuration_model; components(all active).largest",
+   "value": 1883
+  },
+  {
+   "id": "interdependent_fraction_seed11",
+   "call": "interdependent_er(1500, 3.5, 0.75, Rng(11)).fraction",
+   "value": 0.5306666666666666
+  },
+  {
+   "id": "directed_bond_cross_500_seed4242",
+   "call": "directed_crossing(build_lattice('square',32), p=0.65, Rng(4242), mode='bond'); 500 samples; count cross",
+   "value": 354
+  },
+  {
+   "id": "directed_site_cross_500_seed4242",
+   "call": "directed_crossing(build_lattice('square',32), p=0.70, Rng(4242), mode='site'); 500 samples; count cross",
+   "value": 328
+  }
+ ],
+ "cardy": [
+  {
+   "l": 0.1,
+   "value": 4.0394890895707114e-05
+  },
+  {
+   "l": 1.0,
+   "value": 0.5
+  },
+  {
+   "l": 10.0,
+   "value": 0.9999596051091043
+  }
+ ]
 }

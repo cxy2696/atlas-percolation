@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12 19:58",
+ "generated": "2026-11-12 21:08",
  "languages": [
   {
    "id": "javascript",
@@ -14,8 +14,14 @@
     {
      "path": "lib/js/engine/continuum.js",
      "bucket": "core",
-     "lines": 74,
-     "bytes": 2035
+     "lines": 76,
+     "bytes": 2214
+    },
+    {
+     "path": "lib/js/engine/directed.js",
+     "bucket": "core",
+     "lines": 84,
+     "bytes": 3196
     },
     {
      "path": "lib/js/engine/dsu.js",
@@ -26,26 +32,26 @@
     {
      "path": "lib/js/engine/lattice.js",
      "bucket": "core",
-     "lines": 92,
-     "bytes": 2858
+     "lines": 98,
+     "bytes": 3148
     },
     {
      "path": "lib/js/engine/network.js",
      "bucket": "core",
-     "lines": 289,
-     "bytes": 8382
+     "lines": 323,
+     "bytes": 9987
     },
     {
      "path": "lib/js/engine/percolation.js",
      "bucket": "core",
-     "lines": 239,
-     "bytes": 6504
+     "lines": 244,
+     "bytes": 6799
     },
     {
      "path": "lib/js/engine/rng.js",
      "bucket": "core",
-     "lines": 126,
-     "bytes": 3144
+     "lines": 128,
+     "bytes": 3243
     },
     {
      "path": "lib/js/engine/stats.js",
@@ -56,14 +62,14 @@
     {
      "path": "lib/js/index.js",
      "bucket": "core",
-     "lines": 19,
-     "bytes": 698
+     "lines": 20,
+     "bytes": 796
     },
     {
      "path": "tests/js/engine.test.js",
      "bucket": "tests",
-     "lines": 172,
-     "bytes": 6839
+     "lines": 222,
+     "bytes": 8788
     }
    ]
   },
@@ -74,8 +80,8 @@
     {
      "path": "lib/python/percolation_atlas/__init__.py",
      "bucket": "core",
-     "lines": 68,
-     "bytes": 1836
+     "lines": 74,
+     "bytes": 2027
     },
     {
      "path": "lib/python/percolation_atlas/cardy.py",
@@ -86,38 +92,44 @@
     {
      "path": "lib/python/percolation_atlas/continuum.py",
      "bucket": "core",
-     "lines": 55,
-     "bytes": 1559
+     "lines": 57,
+     "bytes": 1676
+    },
+    {
+     "path": "lib/python/percolation_atlas/directed.py",
+     "bucket": "core",
+     "lines": 72,
+     "bytes": 2461
     },
     {
      "path": "lib/python/percolation_atlas/lattice.py",
      "bucket": "core",
-     "lines": 85,
-     "bytes": 2831
+     "lines": 89,
+     "bytes": 3012
     },
     {
      "path": "lib/python/percolation_atlas/network.py",
      "bucket": "core",
-     "lines": 245,
-     "bytes": 6868
+     "lines": 283,
+     "bytes": 8243
     },
     {
      "path": "lib/python/percolation_atlas/percolation.py",
      "bucket": "core",
-     "lines": 190,
-     "bytes": 5525
+     "lines": 193,
+     "bytes": 5651
     },
     {
      "path": "lib/python/percolation_atlas/rng.py",
      "bucket": "core",
-     "lines": 88,
-     "bytes": 2245
+     "lines": 102,
+     "bytes": 2791
     },
     {
      "path": "lib/python/tests/test_engine.py",
      "bucket": "core",
-     "lines": 208,
-     "bytes": 6924
+     "lines": 267,
+     "bytes": 9120
     }
    ]
   },
@@ -128,8 +140,8 @@
     {
      "path": "lib/cpp/include/percolation_atlas/atlas.hpp",
      "bucket": "core",
-     "lines": 10,
-     "bytes": 322
+     "lines": 11,
+     "bytes": 364
     },
     {
      "path": "lib/cpp/include/percolation_atlas/cardy.hpp",
@@ -144,22 +156,28 @@
      "bytes": 4129
     },
     {
+     "path": "lib/cpp/include/percolation_atlas/directed.hpp",
+     "bucket": "core",
+     "lines": 105,
+     "bytes": 3451
+    },
+    {
      "path": "lib/cpp/include/percolation_atlas/lattice.hpp",
      "bucket": "core",
-     "lines": 149,
-     "bytes": 4670
+     "lines": 152,
+     "bytes": 4771
     },
     {
      "path": "lib/cpp/include/percolation_atlas/network.hpp",
      "bucket": "core",
-     "lines": 419,
-     "bytes": 15149
+     "lines": 445,
+     "bytes": 15788
     },
     {
      "path": "lib/cpp/include/percolation_atlas/percolation.hpp",
      "bucket": "core",
      "lines": 320,
-     "bytes": 9896
+     "bytes": 9924
     },
     {
      "path": "lib/cpp/include/percolation_atlas/rng.hpp",
@@ -176,14 +194,14 @@
     {
      "path": "lib/cpp/tests/test_main.cpp",
      "bucket": "core",
-     "lines": 288,
-     "bytes": 9159
+     "lines": 360,
+     "bytes": 11267
     },
     {
      "path": "scripts/bench.cpp",
      "bucket": "core",
-     "lines": 666,
-     "bytes": 20265
+     "lines": 695,
+     "bytes": 21764
     }
    ]
   },
@@ -194,8 +212,8 @@
     {
      "path": "lib/julia/src/PercolationAtlas.jl",
      "bucket": "core",
-     "lines": 48,
-     "bytes": 1639
+     "lines": 50,
+     "bytes": 1748
     },
     {
      "path": "lib/julia/src/cardy.jl",
@@ -210,22 +228,28 @@
      "bytes": 2789
     },
     {
+     "path": "lib/julia/src/directed.jl",
+     "bucket": "core",
+     "lines": 97,
+     "bytes": 3241
+    },
+    {
      "path": "lib/julia/src/lattice.jl",
      "bucket": "core",
-     "lines": 148,
-     "bytes": 4840
+     "lines": 151,
+     "bytes": 4936
     },
     {
      "path": "lib/julia/src/network.jl",
      "bucket": "core",
-     "lines": 408,
-     "bytes": 12902
+     "lines": 434,
+     "bytes": 13643
     },
     {
      "path": "lib/julia/src/percolation.jl",
      "bucket": "core",
-     "lines": 388,
-     "bytes": 10192
+     "lines": 389,
+     "bytes": 10234
     },
     {
      "path": "lib/julia/src/rng.jl",
@@ -236,8 +260,8 @@
     {
      "path": "lib/julia/test/runtests.jl",
      "bucket": "tests",
-     "lines": 291,
-     "bytes": 9458
+     "lines": 338,
+     "bytes": 10790
     }
    ]
   }

@@ -21,7 +21,7 @@ T. E. Harris, *A lower bound for the critical probability in a certain percolati
 
 M. F. Sykes and J. W. Essam, *Exact critical percolation probabilities for site and bond problems in two dimensions*, **J. Math. Phys.** 5 (1964), 1117，引入匹配方法，得到三角格子与蜂窝格子键阈值的闭式。他们的路线经过星–三角变换；第 4 章正确复现了这一代数推导，并逐步核验。
 
-L. Russo, *A note on percolation*, **Z. Wahrsch. Verw. Gebiete** 43 (1978), 39–48，以及 P. D. Seymour and D. J. A. Welsh, *Percolation probabilities on the square lattice*, **Ann. Discrete Math.** 3 (1978), 227–245，各自独立证明了盒子横穿不等式，使二维渗流变得可处理。RSW 引理几乎是每一个二维严格结果的发动机，包括两年后 Kesten 的定理。
+L. Russo, *A note on percolation*, **Z. Wahrsch. Verw. Gebiete** 43 (1978), 39–48，以及 P. D. Seymour and D. J. A. Welsh, *Percolation probabilities on the square lattice*, **Ann. Discrete Math.** 3 (1978), 227–245，各自独立证明了盒子横穿不等式，使二维渗流变得可处理。RSW 引理几乎是每一个二维严格结果的核心工具，包括两年后 Kesten 的定理。
 
 H. Kesten, *The critical probability of bond percolation on the square lattice equals 1/2*, **Comm. Math. Phys.** 74 (1980), 41–59，补上了这道缺口。证明冗长而技术化。Bollobás 与 Riordan（2006）利用锐阈值技术给出了一条短得多的路线。
 
@@ -33,7 +33,7 @@ H. Kesten, *The critical probability of bond percolation on the square lattice e
 
 ## 1986–1992：高维与共形场论
 
-M. Aizenman and R. Fernández, *On the critical behavior of the magnetization in high dimensional Ising models*, **J. Stat. Phys.** 44 (1986), 393，以及 T. Hara and G. Slade, *Mean-field critical behaviour for percolation in high dimensions*, **Comm. Math. Phys.** 128 (1990), 333–391，用 lace 展开证明充分高维下的平均场行为。该方法是非微扰的，至今仍是超越上临界维数后通往临界指数的唯一严格途径。目前最近邻键渗流的维数阈值为 $d\ge11$（Fitzner and van der Hofstad, 2017），这一结果建立在 Hara 与 Slade 的 $d\ge19$ 结果以及后来对展开的改进之上。
+M. Aizenman 与 R. Fernández, *On the critical behavior of the magnetization in high dimensional Ising models*, **J. Stat. Phys.** 44 (1986), 393，用随机流表示证明了高维 Ising 模型的平均场行为。T. Hara 与 G. Slade, *Mean-field critical behaviour for percolation in high dimensions*, **Comm. Math. Phys.** 128 (1990), 333–391，把 lace 展开发展用于渗流，并证明了充分高维下的相应结果。lace 展开是非微扰的，至今仍是超越上临界维数后通往临界指数的唯一严格途径。目前最近邻键渗流的维数阈值为 $d\ge11$（Fitzner and van der Hofstad, 2017），这一结果建立在 Hara 与 Slade 的 $d\ge19$ 结果以及后来对展开的改进之上。
 
 与此同时，J. L. Cardy, *Critical percolation in finite geometries*, **J. Phys. A** 25 (1992), L201，用共形场论预测了矩形的精确横穿概率。R. Langlands, P. Pouliot and Y. Saint-Aubin, *Conformal invariance in two-dimensional percolation*, **Bull. Amer. Math. Soc.** 30 (1994), 1–61，对这一预测做了数值检验，并把背后的猜想归功于 Aizenman。
 

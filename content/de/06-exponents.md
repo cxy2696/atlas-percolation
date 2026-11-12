@@ -36,16 +36,16 @@ Sie skaliert wie $n^{-\beta/\nu}$. Diese Identität dient ständig als Fingerabd
 
 | | $\beta$ | $\gamma$ | $\nu$ | $\delta$ | $\eta$ | $d_f$ | Status |
 |---|---|---|---|---|---|---|---|
-| $d=1$ | 0 | 1 | 1 | $\infty$ | — | 0 | exakt, entartet |
+| $d=1$ | 0 | 1 | 1 | $\infty$ | — | 1 | exakt, entartet |
 | $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | Satz (SLE) |
 | $d=3$ | 0.4181(1) | 1.793(3) | 0.8764(1) | 5.29(1) | $-0.046(2)$ | 2.5229(1) | numerisch |
 | $d=4$ | 0.639(2) | 1.44(2) | 0.689(2) | 3.26(2) | — | — | numerisch |
 | $d=5$ | 0.77(1) | 1.18(1) | 0.54(1) | — | — | — | numerisch |
-| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | Satz ($d>6$), Logarithmen bei $d=6$ |
+| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | Satz (nächste Nachbarn $d\ge11$; spread-out $d>6$), Logarithmen bei $d=6$ |
 | Bethe | 1 | 1 | $1/2$ | 2 | 0 | 4 | exakt |
-| Gerichtet, $d=2$ | 0.276(1) | 2.277(3) | 1.096(2) | — | — | — | numerisch, eigene Klasse |
+| Gerichtet, $1+1$D | 0.276486(8) | 2.277730(5) | 1.096854(4) | — | — | — | numerisch, eigene Klasse (ν = ν_⊥) |
 
-Die Zeile $d=1$ ist die untere kritische Dimension: Die Schwelle liegt bei $p=1$, der Cluster ist ein Segment, und die folgenden Hyperskalierungsrelationen entarten (sie sind für $d\ge2$ formuliert). Die zweidimensionale Zeile ist die einzige, die zugleich exakt und nicht im Molekularfeld-Sinne ist. Sie stammt aus der SLE-Beschreibung des Skalierungslimits (Kapitel 7), und jeder Eintrag lässt sich an den folgenden Relationen prüfen. So sollte die Tabelle auch gelesen werden: nicht als sechs unabhängige Zahlen, sondern als eine kleine, durch Konsistenz eingeschränkte Menge.
+Die gerichtete Zeile bezieht sich auf gerichtete Perkolation in $1+1$ Dimensionen (eine transversale Dimension und eine Zeitrichtung); $\nu$ ist dort der transversale Exponent $\nu_\perp$. Die $2+1$-dimensionale Klasse hat andere Werte ($\beta\approx0.584$, $\nu_\perp\approx0.733$); die Tabelle nennt die $1+1$-dimensionale Klasse, weil das interaktive gerichtete Gitter dieser Klasse angehört. Die Zeile $d=1$ ist die untere kritische Dimension: Die Schwelle liegt bei $p=1$, der Cluster ist ein Segment, und die folgenden Hyperskalierungsrelationen entarten (sie sind für $d\ge2$ formuliert). Die zweidimensionale Zeile ist die einzige, die zugleich exakt und nicht im Molekularfeld-Sinne ist. Sie stammt aus der SLE-Beschreibung des Skalierungslimits (Kapitel 7), und jeder Eintrag lässt sich an den folgenden Relationen prüfen. So sollte die Tabelle auch gelesen werden: nicht als sechs unabhängige Zahlen, sondern als eine kleine, durch Konsistenz eingeschränkte Menge.
 
 Für $d=3$ stammen die obigen Werte von Wang, Zhou, Zhang, Garoni und Deng (2013); sie wurden aus $L\le512$ mit etwa $2.5\times10^7$ Stichproben je Größe gewonnen. Sie sind mit der Genauigkeit angegeben, die die Methode hergibt; die dritte Nachkommastelle ist zwischen den Methoden nicht stabil.
 
@@ -73,7 +73,15 @@ $$
 $$
 Das Integral ist eine endliche Konstante, also gilt $\chi\asymp\xi^{2-\eta}$. Mit $\chi\sim\varepsilon^{-\gamma}$ und $\xi\sim\varepsilon^{-\nu}$ folgt $\gamma=(2-\eta)\nu$. $\blacksquare$
 
-**Relation 3: Fisher, $d_f=(d+2-\eta)/2$ (Hyperskalierung, $d\le d_c$).** Die Masse-Radius-Relation und die Zweipunktfunktion müssen für die Dichte eines kritischen Clusters im Abstand $r$ übereinstimmen: Der Cluster besetzt $\sim r^{d_f}$ Plätze in einer Kugel vom Volumen $r^d$, und die Konnektivität zu einem Platz im Abstand $r$ ist $\sim r^{-(d-2+\eta)}$. Gleichsetzen der beiden Dichten ergibt $d_f=(d+2-\eta)/2$. Zusammen mit Relation 1 folgt $\beta=\nu(d-2+\eta)/2$, die Form, in der die Relation üblicherweise zitiert wird. Die Relation ist eine Hyperskalierungsrelation: Sie versagt oberhalb von $d_c=6$, wo $d_f=4$ fest bleibt, während $(d+2)/2$ wächst. $\blacksquare$
+**Relation 3: Fisher, $d_f=(d+2-\eta)/2$ (Hyperskalierung, $d\le d_c$).** Das ist keine unabhängige Dichteanpassung; der naive Vergleich von $r^{d_f-d}$ mit $\tau(r)$ liefert den falschen Exponenten $2-\eta$. Die Relation folgt aus den Relationen 1, 2 und 5. Die Josephson-Relation $d\nu=2\beta+\gamma$ und Relation 2, $\gamma=(2-\eta)\nu$, ergeben
+$$
+\beta=\frac{\nu(d-2+\eta)}{2}.
+$$
+Eingesetzt in Relation 1 folgt
+$$
+d_f=d-\frac{\beta}{\nu}=d-\frac{d-2+\eta}{2}=\frac{d+2-\eta}{2}.
+$$
+Die Relation ist eine Hyperskalierungsrelation: Sie versagt oberhalb von $d_c=6$, wo $d_f=4$ fest bleibt, während $(d+2)/2$ wächst. $\blacksquare$
 
 **Relation 4: $\delta=1+\gamma/\beta$ (Widom; Standardargument der Skalierung).** Man nehme die Skalierungsform der Clusterzahldichte an:
 $$
@@ -95,7 +103,7 @@ Das Muster lässt sich klar benennen: Die Relationen 1 und 2 sind Buchführung u
 
 ## 6.4 Warum die obere kritische Dimension sechs ist
 
-Die obere kritische Dimension ist die Dimension, oberhalb derer die Molekularfeld-Exponenten exakt werden. Für selbstmeidende Wege ist sie vier, für die Perkolation sechs. Der Unterschied beruht auf einem Abzählargument über Schleifen, und es lohnt sich, es sorgfältig durchzuführen, weil die Abzählung leicht zu unpräzise formuliert wird.
+Die obere kritische Dimension ist die Dimension, oberhalb derer die Molekularfeld-Exponenten exakt werden. Für selbstvermeidende Wege ist sie vier, für die Perkolation sechs. Der Unterschied beruht auf einem Abzählargument über Schleifen, und es lohnt sich, es sorgfältig durchzuführen, weil die Abzählung leicht zu unpräzise formuliert wird.
 
 Man betrachte die Zweipunktfunktion am kritischen Punkt. In der Molekularfeldtheorie gilt $\tau(x)\asymp|x|^{-(d-2)}$, ihre Fouriertransformierte verhält sich also wie $\hat\tau(k)\asymp|k|^{-2}$. Die Korrekturen zur Molekularfeldtheorie werden durch das **Dreiecks- (Blasen-)Diagramm**
 $$
@@ -103,7 +111,7 @@ $$
 $$
 organisiert, das drei Wege zählt, die zwei Verzweigungspunkte verbinden, also einen Theta-Graphen. Im Fourierraum ist dies $\int\hat\tau(k)^3\,d^dk\asymp\int|k|^{-6}\,d^dk$, was genau dann konvergiert, wenn $d>6$ gilt. Konvergiert der Ausdruck, so lässt sich die Lace-Expansion als konvergente Reihe organisieren, und die Molekularfeld-Exponenten folgen; divergiert er, so kontrolliert die Reihe das kritische Verhalten nicht.
 
-Dieselbe Abzählung im Ortsraum: Jeder der drei Wege trägt einen Faktor der Dimension $d-2$ bei, die beiden Verzweigungspunkte tragen $2d$ bei; das Diagramm ist endlich, wenn $3(d-2)>2d$ gilt, also $d>6$. Beim selbstmeidenden Weg hat das analoge Diagramm zwei Wege und eine Schleife, $2(d-2)>d$, was $d_c=4$ ergibt. Der zusätzliche Weg ist der Grund, warum sechs über vier liegt.
+Dieselbe Abzählung im Ortsraum: Jeder der drei Wege trägt einen Faktor der Dimension $d-2$ bei, die beiden Verzweigungspunkte tragen $2d$ bei; das Diagramm ist endlich, wenn $3(d-2)>2d$ gilt, also $d>6$. Beim selbstvermeidenden Weg hat das analoge Diagramm zwei Wege und eine Schleife, $2(d-2)>d$, was $d_c=4$ ergibt. Der zusätzliche Weg ist der Grund, warum sechs über vier liegt.
 
 Bei genau $d=6$ divergiert $\int|k|^{-6}$ logarithmisch, und das Molekularfeld-Bild überlebt nur mit logarithmischen Korrekturen der Skalierungsformen. Die Exponenten sind die Molekularfeld-Exponenten, doch die Amplituden tragen Logarithmen; die Koeffizienten erfordern eine gesonderte Renormierungsgruppenrechnung.
 
@@ -113,9 +121,9 @@ Universalität ist die Behauptung, dass die Exponenten nur von der Dimension (un
 
 **Zwei Dimensionen: Satz für das Dreiecksgitter und seine Stern-Dreieck-Verwandten.** Für die kritische Site-Perkolation auf dem Dreiecksgitter ist das Skalierungslimit konform invariant, und die Grenzlinien konvergieren gegen SLE$_6$ (Kapitel 7), was die Exponenten festlegt. Derselbe Exponentensatz wird auf jedem periodischen planaren Gitter derselben Universalitätsklasse erwartet; die konforme Invarianz des Skalierungslimits für ein allgemeines planares Gitter ist jedoch weiterhin eine Vermutung, die von umfangreicher Numerik gestützt wird. Dies ist das wichtigste offene Problem der rigorosen zweidimensionalen Theorie und wird in Kapitel 13 behandelt.
 
-**Oberhalb von sechs Dimensionen: Satz.** Die Lace-Expansion beweist Molekularfeld-Verhalten für $d\ge11$ bei Nächste-Nachbar-Bond-Perkolation (Fitzner–van der Hofstad 2017); die frühere Schwelle von Hara und Slade (1990) lag bei $d\ge19$. Das Ergebnis umfasst die Werte $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ und die Differenzierbarkeit von $\theta$ bei $p_c$.
+**Oberhalb von sechs Dimensionen: Satz.** Die Lace-Expansion beweist Molekularfeld-Verhalten für $d\ge11$ bei Nächste-Nachbar-Bond-Perkolation (Fitzner–van der Hofstad 2017); die frühere Schwelle von Hara und Slade (1990) lag bei $d\ge19$. Das Ergebnis umfasst die Werte $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ und das Verhalten $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ für $p>p_c$ mit $c_1>0$; $\theta$ ist auf $(p_c,1]$ $C^2$ und besitzt bei $p_c$ einseitige rechtsseitige Ableitungen.
 
-**Drei bis fünf Dimensionen: kein Beweis.** Die Exponenten in der Tabelle für $d=3,4,5$ sind numerisch. Sie sind außerordentlich gut eingeschränkt — die Relationen aus Abschnitt 6.3 gelten im Rahmen der angegebenen Genauigkeit, und unabhängige Methoden (Monte Carlo, konformer Bootstrap, wo anwendbar, funktionale Renormierungsgruppe) stimmen überein —, doch sie sind keine Sätze. Jede Aussage der Form „Die dreidimensionalen Perkolationsexponenten seien bekannt“ ist streng genommen eine Aussage über Numerik.
+**Drei bis fünf Dimensionen: kein Beweis.** Die Exponenten in der Tabelle für $d=3,4,5$ sind numerisch. Sie sind außerordentlich gut eingeschränkt — die Relationen aus Abschnitt 6.3 gelten im Rahmen der angegebenen Genauigkeit, und unabhängige Methoden (Monte Carlo, konformer Bootstrap, wo anwendbar, funktionale Renormierungsgruppe) stimmen überein —, doch sie sind keine Sätze. Jede Aussage der Form „Die dreidimensionalen Perkolationsexponenten sind bekannt“ ist streng genommen eine Aussage über Numerik.
 
 **Bethe-Gitter: exakt.** Die Molekularfeld-Exponenten werden in Kapitel 8 durch Lösen der Rekursion des Verzweigungsprozesses exakt berechnet. Das Bethe-Gitter ist der Limes $d\to\infty$ und der Referenzpunkt, mit dem die endlichdimensionalen Zahlen verglichen werden.
 

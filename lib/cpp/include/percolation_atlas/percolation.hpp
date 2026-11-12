@@ -39,7 +39,7 @@ class Dsu {
     size_.assign(static_cast<std::size_t>(n_), 1);
     for (int i = 0; i < n_; ++i) parent_[static_cast<std::size_t>(i)] = i;
     count_ = active_count < 0 ? n_ : active_count;
-    max_size_ = n_ > 0 ? 1 : 0;
+    max_size_ = (active_count == 0) ? 0 : (n_ > 0 ? 1 : 0);
   }
 
   int find(int x) {

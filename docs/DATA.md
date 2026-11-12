@@ -1,6 +1,6 @@
 # Data record and benchmark pipeline
 
-The Data view is a record, not an illustration. Every row on it comes from a seed, a sample count and a harness that can be rebuilt.
+The Data view is a record, not an illustration. Every row on it comes from a seed, a sample count (or replicate count) and a harness that can be rebuilt. The network curves use one configuration per removal fraction and record N in the experiment block.
 
 ## Files
 
@@ -28,12 +28,12 @@ The C++ harness is self-contained so that the published record does not depend o
 |---|---|---|---|
 | `crossing` | square bond, free boundaries, `p ∈ [0.44, 0.56]` | 400 for L ≤ 64, 200 for L = 128 | left–right crossing indicator |
 | `torus` | square bond on a torus, `p ∈ [0.42, 0.58]` | 100 per point, L = 32, 64, 128 | `S_max` and `chi2` |
-| `arm` | center connected to *any* boundary at `p = 1/2` | 800 for L ≤ 64, 400 for L = 128 | one-arm probability proxy |
-| `cardy` | rectangles of width 96, aspect ratio 0.25–4 | 300 | left–right crossing at `p = 1/2` |
-| `cluster_hist` | square 512 at `p = 1/2` | 5 configurations | log-spaced histogram |
+| `arm` | center connected to *any* boundary at `p = 1/2` | 800 for L ≤ 64, 400 for L = 128, 256, 200 for L = 512 | one-arm probability proxy; fit uses L ≥ 64 |
+| `cardy` | rectangles of width 96, aspect ratio 0.25–4 | 3000 at aspect 0.25, 600 otherwise | left–right crossing at `p = 1/2` |
+| `cluster_hist` | square 512 at `p = 1/2` | 20 configurations | log-spaced histogram |
 | `network` | configuration model, N = 10000 | 11 fractions | ER random, power-law random/targeted |
-| `interdependent` | two coupled ER layers, N = 5000, c = 4 | 3 replicates per p | intersection update |
-| `kcore` | ER, N = 10000, c = 3.5 | 11 fractions | 3-core peeling |
+| `interdependent` | two coupled ER layers, N = 5000, c = 4 | 50 replicates per p | intersection update; `se`, `reps`, `rounds`, `converged` recorded |
+| `kcore` | ER, N = 10000, c = 4.0 | 11 fractions in `p ∈ [0.75, 1.0]` | 3-core peeling; the onset is near `p = 3.35/4` |
 | `continuum` | Poisson disks, N = 500 | one configuration per radius | Boolean model |
 
 ## Reading the record
@@ -41,7 +41,8 @@ The C++ harness is self-contained so that the published record does not depend o
 - `pi = hits / n` for crossing experiments; the raw `hits` and `n` are kept.
 - `torus.smax` is already an average over configurations.
 - `chi` is `sum |C|^2 / sum |C|` from the harness, not the mean cluster size.
-- `fits.collapse` minimises a binned spread over `(p_c, ν)`; it is a teaching fit, not a precision estimate.
-- `fits.one_arm.slope` is a log–log fit to the one-arm proxy; the expected two-dimensional value is `-5/48`.
+- `fits.collapse` holds `ν = 4/3` (the exact two-dimensional value) and fits `p_c` by minimising a binned collapse spread; it is a teaching fit, not a precision estimate. The unconstrained two-parameter fit is stored in `fits.collapse.nu_free` as a diagnostic.
+- `fits.collapse_smax` repeats the exercise for `S_max` with the exact `β/ν = 5/48` prefactor; `fits.collapse_smax.nu` is still ill-conditioned and is not a result.
+- `fits.one_arm.slope` is a log–log fit to the one-arm proxy over `L ≥ 64`; `slope_se` and `ci95` are the OLS standard error and the 95% interval. The expected two-dimensional value is `-5/48`, and the current interval is wide because the largest sizes carry few samples.
 
 The analyser prints the fit and the `p_c` estimates from the `S = 0.5` level. Those estimates are deliberately shown with their bias; Chapter 11 explains why the level crossing is not the recommended estimator.

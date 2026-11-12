@@ -90,10 +90,10 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
     `<div class="grid-lab">
       <div>
-        ${canvasBox('lat-canvas', ['GEOMETRY', 'DSU / PATH HALVING', 'p', 'L'])}
+        ${canvasBox('lat-canvas', [t(lang, 'geometry'), t(lang, 'stage_engine'), 'p', 'L'])}
         <div class="legend" style="margin:10px 0 14px">
           <span><i style="background:#4fe3ea"></i>${L.largest}</span>
           <span><i style="background:#ffb454"></i>${L.second}</span>

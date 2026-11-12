@@ -1,845 +1,1146 @@
 {
-  "version": 1,
-  "updated": "2026-11-12",
-  "note": "Primary sources used by the atlas. DOIs were checked against Crossref on 2026-11-12. The year is the year of the version consulted.",
-  "entries": [
-    {
-      "id": "broadbent1957",
-      "authors": [
-        "Broadbent, S. R.",
-        "Hammersley, J. M."
-      ],
-      "year": 1957,
-      "title": "Percolation processes: I. Crystals and mazes",
-      "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
-      "volume": "53",
-      "pages": "629–641",
-      "doi": "10.1017/S0305004100032680",
-      "type": "article",
-      "topics": [
-        "foundations",
-        "history"
-      ]
-    },
-    {
-      "id": "hammersley1957b",
-      "authors": [
-        "Hammersley, J. M."
-      ],
-      "year": 1957,
-      "title": "Percolation processes: II. The connective constant",
-      "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
-      "volume": "53",
-      "pages": "642–645",
-      "doi": "10.1017/S0305004100032692",
-      "type": "article",
-      "topics": [
-        "foundations",
-        "history",
-        "mean-field"
-      ]
-    },
-    {
-      "id": "harris1960",
-      "authors": [
-        "Harris, T. E."
-      ],
-      "year": 1960,
-      "title": "A lower bound for the critical probability in a certain percolation process",
-      "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
-      "volume": "56",
-      "pages": "13–20",
-      "doi": "10.1017/S0305004100034241",
-      "type": "article",
-      "topics": [
-        "duality",
-        "fkg"
-      ]
-    },
-    {
-      "id": "sykes1964",
-      "authors": [
-        "Sykes, M. F.",
-        "Essam, J. W."
-      ],
-      "year": 1964,
-      "title": "Exact critical percolation probabilities for site and bond problems in two dimensions",
-      "venue": "Journal of Mathematical Physics",
-      "volume": "5",
-      "pages": "1117–1127",
-      "doi": "10.1063/1.1704215",
-      "type": "article",
-      "topics": [
-        "duality",
-        "thresholds"
-      ]
-    },
-    {
-      "id": "russo1978",
-      "authors": [
-        "Russo, L."
-      ],
-      "year": 1978,
-      "title": "A note on percolation",
-      "venue": "Zeitschrift für Wahrscheinlichkeitstheorie und Verwandte Gebiete",
-      "volume": "43",
-      "pages": "39–48",
-      "doi": "10.1007/BF00535274",
-      "type": "article",
-      "topics": [
-        "duality",
-        "rsw"
-      ]
-    },
-    {
-      "id": "seymour1978",
-      "authors": [
-        "Seymour, P. D.",
-        "Welsh, D. J. A."
-      ],
-      "year": 1978,
-      "title": "Percolation probabilities on the square lattice",
-      "venue": "Annals of Discrete Mathematics",
-      "volume": "3",
-      "pages": "227–245",
-      "doi": "10.1016/S0167-5060(08)70509-0",
-      "type": "chapter",
-      "topics": [
-        "duality",
-        "rsw"
-      ]
-    },
-    {
-      "id": "kesten1980",
-      "authors": [
-        "Kesten, H."
-      ],
-      "year": 1980,
-      "title": "The critical probability of bond percolation on the square lattice equals 1/2",
-      "venue": "Communications in Mathematical Physics",
-      "volume": "74",
-      "pages": "41–59",
-      "doi": "10.1007/BF01197577",
-      "type": "article",
-      "topics": [
-        "duality",
-        "thresholds",
-        "two-dimensions"
-      ]
-    },
-    {
-      "id": "kesten1982",
-      "authors": [
-        "Kesten, H."
-      ],
-      "year": 1982,
-      "title": "Percolation Theory for Mathematicians",
-      "venue": "Birkhäuser",
-      "doi": "10.1007/978-1-4899-2730-9",
-      "type": "book",
-      "topics": [
-        "foundations",
-        "rigorous"
-      ]
-    },
-    {
-      "id": "wierman1981",
-      "authors": [
-        "Wierman, J. C."
-      ],
-      "year": 1981,
-      "title": "Bond percolation on honeycomb and triangular lattices",
-      "venue": "Advances in Applied Probability",
-      "volume": "13",
-      "pages": "298–313",
-      "doi": "10.2307/1426685",
-      "type": "article",
-      "topics": [
-        "duality",
-        "thresholds"
-      ]
-    },
-    {
-      "id": "aizenman1987",
-      "authors": [
-        "Aizenman, M.",
-        "Barsky, D. J."
-      ],
-      "year": 1987,
-      "title": "Sharpness of the phase transition in percolation models",
-      "venue": "Communications in Mathematical Physics",
-      "volume": "108",
-      "pages": "489–526",
-      "doi": "10.1007/BF01212322",
-      "type": "article",
-      "topics": [
-        "sharpness"
-      ]
-    },
-    {
-      "id": "burton1989",
-      "authors": [
-        "Burton, R. M.",
-        "Keane, M."
-      ],
-      "year": 1989,
-      "title": "Density and uniqueness in percolation",
-      "venue": "Communications in Mathematical Physics",
-      "volume": "121",
-      "pages": "501–505",
-      "doi": "10.1007/BF01217735",
-      "type": "article",
-      "topics": [
-        "sharpness",
-        "uniqueness"
-      ]
-    },
-    {
-      "id": "cardy1992",
-      "authors": [
-        "Cardy, J. L."
-      ],
-      "year": 1992,
-      "title": "Critical percolation in finite geometries",
-      "venue": "Journal of Physics A: Mathematical and General",
-      "volume": "25",
-      "pages": "L201–L206",
-      "doi": "10.1088/0305-4470/25/4/009",
-      "type": "article",
-      "topics": [
-        "two-dimensions",
-        "cardy"
-      ]
-    },
-    {
-      "id": "langlands1994",
-      "authors": [
-        "Langlands, R.",
-        "Pouliot, P.",
-        "Saint-Aubin, Y."
-      ],
-      "year": 1994,
-      "title": "Conformal invariance in two-dimensional percolation",
-      "venue": "Bulletin of the American Mathematical Society",
-      "volume": "30",
-      "pages": "1–61",
-      "doi": "10.1090/S0273-0979-1994-00456-2",
-      "type": "article",
-      "topics": [
-        "two-dimensions",
-        "cardy"
-      ]
-    },
-    {
-      "id": "smirnov2001",
-      "authors": [
-        "Smirnov, S."
-      ],
-      "year": 2001,
-      "title": "Critical percolation in the plane: conformal invariance, Cardy's formula, scaling limits",
-      "venue": "Comptes Rendus de l'Académie des Sciences – Series I – Mathematics",
-      "volume": "333",
-      "pages": "239–244",
-      "doi": "10.1016/S0764-4442(01)01991-7",
-      "type": "article",
-      "topics": [
-        "two-dimensions",
-        "sle"
-      ]
-    },
-    {
-      "id": "lsw2001a",
-      "authors": [
-        "Lawler, G. F.",
-        "Schramm, O.",
-        "Werner, W."
-      ],
-      "year": 2001,
-      "title": "Values of Brownian intersection exponents, I: Half-plane exponents",
-      "venue": "Acta Mathematica",
-      "volume": "187",
-      "pages": "237–273",
-      "doi": "10.1007/BF02392618",
-      "type": "article",
-      "topics": [
-        "two-dimensions",
-        "sle"
-      ]
-    },
-    {
-      "id": "lsw2001b",
-      "authors": [
-        "Lawler, G. F.",
-        "Schramm, O.",
-        "Werner, W."
-      ],
-      "year": 2001,
-      "title": "Values of Brownian intersection exponents, II: Plane exponents",
-      "venue": "Acta Mathematica",
-      "volume": "187",
-      "pages": "275–308",
-      "doi": "10.1007/BF02392619",
-      "type": "article",
-      "topics": [
-        "two-dimensions",
-        "sle"
-      ]
-    },
-    {
-      "id": "hara1990",
-      "authors": [
-        "Hara, T.",
-        "Slade, G."
-      ],
-      "year": 1990,
-      "title": "Mean-field critical behaviour for percolation in high dimensions",
-      "venue": "Communications in Mathematical Physics",
-      "volume": "128",
-      "pages": "333–391",
-      "doi": "10.1007/BF02108785",
-      "type": "article",
-      "topics": [
-        "high-dimensions",
-        "lace-expansion"
-      ]
-    },
-    {
-      "id": "fitzner2017",
-      "authors": [
-        "Fitzner, R.",
-        "van der Hofstad, R."
-      ],
-      "year": 2017,
-      "title": "Mean-field behavior for nearest-neighbor percolation in d > 10",
-      "venue": "Electronic Journal of Probability",
-      "volume": "22",
-      "pages": "1–65",
-      "doi": "10.1214/17-EJP56",
-      "type": "article",
-      "topics": [
-        "high-dimensions",
-        "lace-expansion"
-      ]
-    },
-    {
-      "id": "newman2000",
-      "authors": [
-        "Newman, M. E. J.",
-        "Ziff, R. M."
-      ],
-      "year": 2000,
-      "title": "Efficient Monte Carlo algorithm and high-precision results for percolation",
-      "venue": "Physical Review Letters",
-      "volume": "85",
-      "pages": "4104–4107",
-      "doi": "10.1103/PhysRevLett.85.4104",
-      "type": "article",
-      "topics": [
-        "algorithms",
-        "measurement"
-      ]
-    },
-    {
-      "id": "newman2001",
-      "authors": [
-        "Newman, M. E. J.",
-        "Ziff, R. M."
-      ],
-      "year": 2001,
-      "title": "Fast Monte Carlo algorithm for site or bond percolation",
-      "venue": "Physical Review E",
-      "volume": "64",
-      "pages": "016706",
-      "doi": "10.1103/PhysRevE.64.016706",
-      "type": "article",
-      "topics": [
-        "algorithms",
-        "measurement"
-      ]
-    },
-    {
-      "id": "wang2013",
-      "authors": [
-        "Wang, J.",
-        "Zhou, Z.",
-        "Zhang, W.",
-        "Garoni, T. M.",
-        "Deng, Y."
-      ],
-      "year": 2013,
-      "title": "Bond and site percolation in three dimensions",
-      "venue": "Physical Review E",
-      "volume": "87",
-      "pages": "052107",
-      "doi": "10.1103/PhysRevE.87.052107",
-      "type": "article",
-      "topics": [
-        "exponents",
-        "three-dimensions"
-      ]
-    },
-    {
-      "id": "lorenz1998",
-      "authors": [
-        "Lorenz, C. D.",
-        "Ziff, R. M."
-      ],
-      "year": 1998,
-      "title": "Precise determination of the bond percolation thresholds and finite-size scaling corrections for the sc, fcc, and bcc lattices",
-      "venue": "Physical Review E",
-      "volume": "57",
-      "pages": "230–236",
-      "doi": "10.1103/PhysRevE.57.230",
-      "type": "article",
-      "topics": [
-        "thresholds",
-        "three-dimensions"
-      ]
-    },
-    {
-      "id": "vandermarck1997",
-      "authors": [
-        "van der Marck, S. C."
-      ],
-      "year": 1997,
-      "title": "Percolation thresholds and universal formulas",
-      "venue": "Physical Review E",
-      "volume": "55",
-      "pages": "1514–1517",
-      "doi": "10.1103/PhysRevE.55.1514",
-      "type": "article",
-      "topics": [
-        "thresholds",
-        "three-dimensions"
-      ]
-    },
-    {
-      "id": "jacobsen2014",
-      "authors": [
-        "Jacobsen, J. L."
-      ],
-      "year": 2014,
-      "title": "High-precision percolation thresholds and Potts-model critical manifolds from graph polynomials",
-      "venue": "Journal of Physics A: Mathematical and Theoretical",
-      "volume": "47",
-      "pages": "135001",
-      "doi": "10.1088/1751-8113/47/13/135001",
-      "type": "article",
-      "topics": [
-        "thresholds",
-        "two-dimensions"
-      ]
-    },
-    {
-      "id": "galam1996",
-      "authors": [
-        "Galam, S.",
-        "Mauger, A."
-      ],
-      "year": 1996,
-      "title": "Universal formulas for percolation thresholds",
-      "venue": "Physical Review E",
-      "volume": "53",
-      "pages": "2177–2181",
-      "doi": "10.1103/PhysRevE.53.2177",
-      "type": "article",
-      "topics": [
-        "thresholds",
-        "approximations"
-      ]
-    },
-    {
-      "id": "molloy1995",
-      "authors": [
-        "Molloy, M.",
-        "Reed, B."
-      ],
-      "year": 1995,
-      "title": "A critical point for random graphs with a given degree sequence",
-      "venue": "Random Structures & Algorithms",
-      "volume": "6",
-      "pages": "161–180",
-      "doi": "10.1002/rsa.3240060204",
-      "type": "article",
-      "topics": [
-        "networks"
-      ]
-    },
-    {
-      "id": "cohen2000",
-      "authors": [
-        "Cohen, R.",
-        "Erez, K.",
-        "ben-Avraham, D.",
-        "Havlin, S."
-      ],
-      "year": 2000,
-      "title": "Resilience of the Internet to random breakdowns",
-      "venue": "Physical Review Letters",
-      "volume": "85",
-      "pages": "4626–4628",
-      "doi": "10.1103/PhysRevLett.85.4626",
-      "type": "article",
-      "topics": [
-        "networks",
-        "robustness"
-      ]
-    },
-    {
-      "id": "cohen2001",
-      "authors": [
-        "Cohen, R.",
-        "Erez, K.",
-        "ben-Avraham, D.",
-        "Havlin, S."
-      ],
-      "year": 2001,
-      "title": "Breakdown of the Internet under intentional attack",
-      "venue": "Physical Review Letters",
-      "volume": "86",
-      "pages": "3682–3685",
-      "doi": "10.1103/PhysRevLett.86.3682",
-      "type": "article",
-      "topics": [
-        "networks",
-        "robustness"
-      ]
-    },
-    {
-      "id": "albert2000",
-      "authors": [
-        "Albert, R.",
-        "Jeong, H.",
-        "Barabási, A.-L."
-      ],
-      "year": 2000,
-      "title": "Error and attack tolerance of complex networks",
-      "venue": "Nature",
-      "volume": "406",
-      "pages": "378–382",
-      "doi": "10.1038/35019019",
-      "type": "article",
-      "topics": [
-        "networks",
-        "robustness"
-      ]
-    },
-    {
-      "id": "buldyrev2010",
-      "authors": [
-        "Buldyrev, S. V.",
-        "Parshani, R.",
-        "Paul, G.",
-        "Stanley, H. E.",
-        "Havlin, S."
-      ],
-      "year": 2010,
-      "title": "Catastrophic cascade of failures in interdependent networks",
-      "venue": "Nature",
-      "volume": "464",
-      "pages": "1025–1028",
-      "doi": "10.1038/nature08932",
-      "type": "article",
-      "topics": [
-        "networks",
-        "cascades"
-      ]
-    },
-    {
-      "id": "parshani2010",
-      "authors": [
-        "Parshani, R.",
-        "Buldyrev, S. V.",
-        "Havlin, S."
-      ],
-      "year": 2010,
-      "title": "Interdependent networks: reducing the coupling strength leads to a change from a first to second order percolation transition",
-      "venue": "Physical Review Letters",
-      "volume": "105",
-      "pages": "048701",
-      "doi": "10.1103/PhysRevLett.105.048701",
-      "type": "article",
-      "topics": [
-        "networks",
-        "cascades"
-      ]
-    },
-    {
-      "id": "dorogovtsev2006",
-      "authors": [
-        "Dorogovtsev, S. N.",
-        "Goltsev, A. V.",
-        "Mendes, J. F. F."
-      ],
-      "year": 2006,
-      "title": "k-core organization of complex networks",
-      "venue": "Physical Review Letters",
-      "volume": "96",
-      "pages": "040601",
-      "doi": "10.1103/PhysRevLett.96.040601",
-      "type": "article",
-      "topics": [
-        "networks",
-        "k-core"
-      ]
-    },
-    {
-      "id": "dorogovtsev2008",
-      "authors": [
-        "Dorogovtsev, S. N.",
-        "Goltsev, A. V.",
-        "Mendes, J. F. F."
-      ],
-      "year": 2008,
-      "title": "Critical phenomena in complex networks",
-      "venue": "Reviews of Modern Physics",
-      "volume": "80",
-      "pages": "1275–1335",
-      "doi": "10.1103/RevModPhys.80.1275",
-      "type": "article",
-      "topics": [
-        "networks"
-      ]
-    },
-    {
-      "id": "fortuin1971",
-      "authors": [
-        "Fortuin, C. M.",
-        "Kasteleyn, P. W.",
-        "Ginibre, J."
-      ],
-      "year": 1971,
-      "title": "Correlation inequalities on some partially ordered sets",
-      "venue": "Communications in Mathematical Physics",
-      "volume": "22",
-      "pages": "89–103",
-      "doi": "10.1007/BF01651330",
-      "type": "article",
-      "topics": [
-        "fkg",
-        "rigorous"
-      ]
-    },
-    {
-      "id": "fortuin1972",
-      "authors": [
-        "Fortuin, C. M.",
-        "Kasteleyn, P. W."
-      ],
-      "year": 1972,
-      "title": "On the random-cluster model: I. Introduction and relation to Ising and Potts models",
-      "venue": "Physica",
-      "volume": "57",
-      "pages": "536–564",
-      "doi": "10.1016/0031-8914(72)90045-6",
-      "type": "article",
-      "topics": [
-        "random-cluster"
-      ]
-    },
-    {
-      "id": "swendsen1987",
-      "authors": [
-        "Swendsen, R. H.",
-        "Wang, J.-S."
-      ],
-      "year": 1987,
-      "title": "Nonuniversal critical dynamics in Monte Carlo simulations",
-      "venue": "Physical Review Letters",
-      "volume": "58",
-      "pages": "86–88",
-      "doi": "10.1103/PhysRevLett.58.86",
-      "type": "article",
-      "topics": [
-        "random-cluster",
-        "algorithms"
-      ]
-    },
-    {
-      "id": "edwards1988",
-      "authors": [
-        "Edwards, R. G.",
-        "Sokal, A. D."
-      ],
-      "year": 1988,
-      "title": "Generalization of the Fortuin–Kasteleyn–Swendsen–Wang representation and Monte Carlo algorithm",
-      "venue": "Physical Review D",
-      "volume": "38",
-      "pages": "2009–2012",
-      "doi": "10.1103/PhysRevD.38.2009",
-      "type": "article",
-      "topics": [
-        "random-cluster",
-        "algorithms"
-      ]
-    },
-    {
-      "id": "grimmett1999",
-      "authors": [
-        "Grimmett, G."
-      ],
-      "year": 1999,
-      "title": "Percolation",
-      "venue": "Springer",
-      "edition": "2nd",
-      "doi": "10.1007/978-3-662-03981-6",
-      "type": "book",
-      "topics": [
-        "foundations",
-        "rigorous"
-      ]
-    },
-    {
-      "id": "bollobas2006",
-      "authors": [
-        "Bollobás, B.",
-        "Riordan, O."
-      ],
-      "year": 2006,
-      "title": "Percolation",
-      "venue": "Cambridge University Press",
-      "doi": "10.1017/CBO9781139167383",
-      "type": "book",
-      "topics": [
-        "foundations",
-        "rigorous"
-      ]
-    },
-    {
-      "id": "stauffer1994",
-      "authors": [
-        "Stauffer, D.",
-        "Aharony, A."
-      ],
-      "year": 1994,
-      "title": "Introduction to Percolation Theory",
-      "venue": "Taylor & Francis",
-      "edition": "2nd",
-      "type": "book",
-      "topics": [
-        "foundations",
-        "critical-phenomena"
-      ],
-      "doi": "10.1201/9781315274386",
-      "note": "Second edition, Taylor & Francis, 1994; the DOI resolves to the 2018 reissue."
-    },
-    {
-      "id": "sahimi1994",
-      "authors": [
-        "Sahimi, M."
-      ],
-      "year": 1994,
-      "title": "Applications of Percolation Theory",
-      "venue": "Taylor & Francis",
-      "doi": "10.1201/9781482272444",
-      "type": "book",
-      "topics": [
-        "applications"
-      ]
-    },
-    {
-      "id": "kirkpatrick1973",
-      "authors": [
-        "Kirkpatrick, S."
-      ],
-      "year": 1973,
-      "title": "Percolation and conduction",
-      "venue": "Reviews of Modern Physics",
-      "volume": "45",
-      "pages": "574–588",
-      "doi": "10.1103/RevModPhys.45.574",
-      "type": "article",
-      "topics": [
-        "applications",
-        "transport"
-      ]
-    },
-    {
-      "id": "grassberger1999",
-      "authors": [
-        "Grassberger, P."
-      ],
-      "year": 1999,
-      "title": "Conductivity exponent and backbone dimension in 2-d percolation",
-      "venue": "Physica A: Statistical Mechanics and its Applications",
-      "volume": "262",
-      "pages": "251–263",
-      "doi": "10.1016/S0378-4371(98)00435-X",
-      "type": "article",
-      "topics": [
-        "transport",
-        "two-dimensions"
-      ]
-    },
-    {
-      "id": "mertens2012",
-      "authors": [
-        "Mertens, S.",
-        "Moore, C."
-      ],
-      "year": 2012,
-      "title": "Continuum percolation thresholds in two dimensions",
-      "venue": "Physical Review E",
-      "volume": "86",
-      "pages": "061109",
-      "doi": "10.1103/PhysRevE.86.061109",
-      "type": "article",
-      "topics": [
-        "continuum",
-        "thresholds"
-      ]
-    },
-    {
-      "id": "pastor2001",
-      "authors": [
-        "Pastor-Satorras, R.",
-        "Vespignani, A."
-      ],
-      "year": 2001,
-      "title": "Epidemic spreading in scale-free networks",
-      "venue": "Physical Review Letters",
-      "volume": "86",
-      "pages": "3200–3203",
-      "doi": "10.1103/PhysRevLett.86.3200",
-      "type": "article",
-      "topics": [
-        "epidemics",
-        "networks"
-      ]
-    },
-    {
-      "id": "newman2002",
-      "authors": [
-        "Newman, M. E. J."
-      ],
-      "year": 2002,
-      "title": "Spread of epidemic disease on networks",
-      "venue": "Physical Review E",
-      "volume": "66",
-      "pages": "016128",
-      "doi": "10.1103/PhysRevE.66.016128",
-      "type": "article",
-      "topics": [
-        "epidemics",
-        "networks"
-      ]
-    },
-    {
-      "id": "hinrichsen2000",
-      "authors": [
-        "Hinrichsen, H."
-      ],
-      "year": 2000,
-      "title": "Non-equilibrium critical phenomena and phase transitions into absorbing states",
-      "venue": "Advances in Physics",
-      "volume": "49",
-      "pages": "815–958",
-      "doi": "10.1080/00018730050198152",
-      "type": "article",
-      "topics": [
-        "directed-percolation",
-        "exponents"
-      ]
-    }
-  ]
+ "version": 1,
+ "updated": "2026-11-12",
+ "note": "Primary sources used by the atlas. DOIs were checked against Crossref on 2026-11-12. The year is the year of the version consulted.",
+ "entries": [
+  {
+   "id": "broadbent1957",
+   "authors": [
+    "Broadbent, S. R.",
+    "Hammersley, J. M."
+   ],
+   "year": 1957,
+   "title": "Percolation processes: I. Crystals and mazes",
+   "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
+   "volume": "53",
+   "pages": "629–641",
+   "doi": "10.1017/S0305004100032680",
+   "type": "article",
+   "topics": [
+    "foundations",
+    "history"
+   ]
+  },
+  {
+   "id": "hammersley1957b",
+   "authors": [
+    "Hammersley, J. M."
+   ],
+   "year": 1957,
+   "title": "Percolation processes: II. The connective constant",
+   "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
+   "volume": "53",
+   "pages": "642–645",
+   "doi": "10.1017/S0305004100032692",
+   "type": "article",
+   "topics": [
+    "foundations",
+    "history",
+    "mean-field"
+   ]
+  },
+  {
+   "id": "harris1960",
+   "authors": [
+    "Harris, T. E."
+   ],
+   "year": 1960,
+   "title": "A lower bound for the critical probability in a certain percolation process",
+   "venue": "Mathematical Proceedings of the Cambridge Philosophical Society",
+   "volume": "56",
+   "pages": "13–20",
+   "doi": "10.1017/S0305004100034241",
+   "type": "article",
+   "topics": [
+    "duality",
+    "fkg"
+   ]
+  },
+  {
+   "id": "sykes1964",
+   "authors": [
+    "Sykes, M. F.",
+    "Essam, J. W."
+   ],
+   "year": 1964,
+   "title": "Exact critical percolation probabilities for site and bond problems in two dimensions",
+   "venue": "Journal of Mathematical Physics",
+   "volume": "5",
+   "pages": "1117–1127",
+   "doi": "10.1063/1.1704215",
+   "type": "article",
+   "topics": [
+    "duality",
+    "thresholds"
+   ]
+  },
+  {
+   "id": "russo1978",
+   "authors": [
+    "Russo, L."
+   ],
+   "year": 1978,
+   "title": "A note on percolation",
+   "venue": "Zeitschrift für Wahrscheinlichkeitstheorie und Verwandte Gebiete",
+   "volume": "43",
+   "pages": "39–48",
+   "doi": "10.1007/BF00535274",
+   "type": "article",
+   "topics": [
+    "duality",
+    "rsw"
+   ]
+  },
+  {
+   "id": "seymour1978",
+   "authors": [
+    "Seymour, P. D.",
+    "Welsh, D. J. A."
+   ],
+   "year": 1978,
+   "title": "Percolation probabilities on the square lattice",
+   "venue": "Annals of Discrete Mathematics",
+   "volume": "3",
+   "pages": "227–245",
+   "doi": "10.1016/S0167-5060(08)70509-0",
+   "type": "chapter",
+   "topics": [
+    "duality",
+    "rsw"
+   ]
+  },
+  {
+   "id": "kesten1980",
+   "authors": [
+    "Kesten, H."
+   ],
+   "year": 1980,
+   "title": "The critical probability of bond percolation on the square lattice equals 1/2",
+   "venue": "Communications in Mathematical Physics",
+   "volume": "74",
+   "pages": "41–59",
+   "doi": "10.1007/BF01197577",
+   "type": "article",
+   "topics": [
+    "duality",
+    "thresholds",
+    "two-dimensions"
+   ]
+  },
+  {
+   "id": "kesten1982",
+   "authors": [
+    "Kesten, H."
+   ],
+   "year": 1982,
+   "title": "Percolation Theory for Mathematicians",
+   "venue": "Birkhäuser",
+   "doi": "10.1007/978-1-4899-2730-9",
+   "type": "book",
+   "topics": [
+    "foundations",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "wierman1981",
+   "authors": [
+    "Wierman, J. C."
+   ],
+   "year": 1981,
+   "title": "Bond percolation on honeycomb and triangular lattices",
+   "venue": "Advances in Applied Probability",
+   "volume": "13",
+   "pages": "298–313",
+   "doi": "10.2307/1426685",
+   "type": "article",
+   "topics": [
+    "duality",
+    "thresholds"
+   ]
+  },
+  {
+   "id": "aizenman1987",
+   "authors": [
+    "Aizenman, M.",
+    "Barsky, D. J."
+   ],
+   "year": 1987,
+   "title": "Sharpness of the phase transition in percolation models",
+   "venue": "Communications in Mathematical Physics",
+   "volume": "108",
+   "pages": "489–526",
+   "doi": "10.1007/BF01212322",
+   "type": "article",
+   "topics": [
+    "sharpness"
+   ]
+  },
+  {
+   "id": "burton1989",
+   "authors": [
+    "Burton, R. M.",
+    "Keane, M."
+   ],
+   "year": 1989,
+   "title": "Density and uniqueness in percolation",
+   "venue": "Communications in Mathematical Physics",
+   "volume": "121",
+   "pages": "501–505",
+   "doi": "10.1007/BF01217735",
+   "type": "article",
+   "topics": [
+    "sharpness",
+    "uniqueness"
+   ]
+  },
+  {
+   "id": "cardy1992",
+   "authors": [
+    "Cardy, J. L."
+   ],
+   "year": 1992,
+   "title": "Critical percolation in finite geometries",
+   "venue": "Journal of Physics A: Mathematical and General",
+   "volume": "25",
+   "pages": "L201–L206",
+   "doi": "10.1088/0305-4470/25/4/009",
+   "type": "article",
+   "topics": [
+    "two-dimensions",
+    "cardy"
+   ]
+  },
+  {
+   "id": "langlands1994",
+   "authors": [
+    "Langlands, R.",
+    "Pouliot, P.",
+    "Saint-Aubin, Y."
+   ],
+   "year": 1994,
+   "title": "Conformal invariance in two-dimensional percolation",
+   "venue": "Bulletin of the American Mathematical Society",
+   "volume": "30",
+   "pages": "1–61",
+   "doi": "10.1090/S0273-0979-1994-00456-2",
+   "type": "article",
+   "topics": [
+    "two-dimensions",
+    "cardy"
+   ]
+  },
+  {
+   "id": "smirnov2001",
+   "authors": [
+    "Smirnov, S."
+   ],
+   "year": 2001,
+   "title": "Critical percolation in the plane: conformal invariance, Cardy's formula, scaling limits",
+   "venue": "Comptes Rendus de l'Académie des Sciences – Series I – Mathematics",
+   "volume": "333",
+   "pages": "239–244",
+   "doi": "10.1016/S0764-4442(01)01991-7",
+   "type": "article",
+   "topics": [
+    "two-dimensions",
+    "sle"
+   ]
+  },
+  {
+   "id": "lsw2001a",
+   "authors": [
+    "Lawler, G. F.",
+    "Schramm, O.",
+    "Werner, W."
+   ],
+   "year": 2001,
+   "title": "Values of Brownian intersection exponents, I: Half-plane exponents",
+   "venue": "Acta Mathematica",
+   "volume": "187",
+   "pages": "237–273",
+   "doi": "10.1007/BF02392618",
+   "type": "article",
+   "topics": [
+    "two-dimensions",
+    "sle"
+   ]
+  },
+  {
+   "id": "lsw2001b",
+   "authors": [
+    "Lawler, G. F.",
+    "Schramm, O.",
+    "Werner, W."
+   ],
+   "year": 2001,
+   "title": "Values of Brownian intersection exponents, II: Plane exponents",
+   "venue": "Acta Mathematica",
+   "volume": "187",
+   "pages": "275–308",
+   "doi": "10.1007/BF02392619",
+   "type": "article",
+   "topics": [
+    "two-dimensions",
+    "sle"
+   ]
+  },
+  {
+   "id": "hara1990",
+   "authors": [
+    "Hara, T.",
+    "Slade, G."
+   ],
+   "year": 1990,
+   "title": "Mean-field critical behaviour for percolation in high dimensions",
+   "venue": "Communications in Mathematical Physics",
+   "volume": "128",
+   "pages": "333–391",
+   "doi": "10.1007/BF02108785",
+   "type": "article",
+   "topics": [
+    "high-dimensions",
+    "lace-expansion"
+   ]
+  },
+  {
+   "id": "fitzner2017",
+   "authors": [
+    "Fitzner, R.",
+    "van der Hofstad, R."
+   ],
+   "year": 2017,
+   "title": "Mean-field behavior for nearest-neighbor percolation in d > 10",
+   "venue": "Electronic Journal of Probability",
+   "volume": "22",
+   "pages": "1–65",
+   "doi": "10.1214/17-EJP56",
+   "type": "article",
+   "topics": [
+    "high-dimensions",
+    "lace-expansion"
+   ]
+  },
+  {
+   "id": "newman2000",
+   "authors": [
+    "Newman, M. E. J.",
+    "Ziff, R. M."
+   ],
+   "year": 2000,
+   "title": "Efficient Monte Carlo algorithm and high-precision results for percolation",
+   "venue": "Physical Review Letters",
+   "volume": "85",
+   "pages": "4104–4107",
+   "doi": "10.1103/PhysRevLett.85.4104",
+   "type": "article",
+   "topics": [
+    "algorithms",
+    "measurement"
+   ]
+  },
+  {
+   "id": "newman2001",
+   "authors": [
+    "Newman, M. E. J.",
+    "Ziff, R. M."
+   ],
+   "year": 2001,
+   "title": "Fast Monte Carlo algorithm for site or bond percolation",
+   "venue": "Physical Review E",
+   "volume": "64",
+   "pages": "016706",
+   "doi": "10.1103/PhysRevE.64.016706",
+   "type": "article",
+   "topics": [
+    "algorithms",
+    "measurement"
+   ]
+  },
+  {
+   "id": "wang2013",
+   "authors": [
+    "Wang, J.",
+    "Zhou, Z.",
+    "Zhang, W.",
+    "Garoni, T. M.",
+    "Deng, Y."
+   ],
+   "year": 2013,
+   "title": "Bond and site percolation in three dimensions",
+   "venue": "Physical Review E",
+   "volume": "87",
+   "pages": "052107",
+   "doi": "10.1103/PhysRevE.87.052107",
+   "type": "article",
+   "topics": [
+    "exponents",
+    "three-dimensions"
+   ]
+  },
+  {
+   "id": "lorenz1998",
+   "authors": [
+    "Lorenz, C. D.",
+    "Ziff, R. M."
+   ],
+   "year": 1998,
+   "title": "Precise determination of the bond percolation thresholds and finite-size scaling corrections for the sc, fcc, and bcc lattices",
+   "venue": "Physical Review E",
+   "volume": "57",
+   "pages": "230–236",
+   "doi": "10.1103/PhysRevE.57.230",
+   "type": "article",
+   "topics": [
+    "thresholds",
+    "three-dimensions"
+   ]
+  },
+  {
+   "id": "vandermarck1997",
+   "authors": [
+    "van der Marck, S. C."
+   ],
+   "year": 1997,
+   "title": "Percolation thresholds and universal formulas",
+   "venue": "Physical Review E",
+   "volume": "55",
+   "pages": "1514–1517",
+   "doi": "10.1103/PhysRevE.55.1514",
+   "type": "article",
+   "topics": [
+    "thresholds",
+    "three-dimensions"
+   ]
+  },
+  {
+   "id": "jacobsen2014",
+   "authors": [
+    "Jacobsen, J. L."
+   ],
+   "year": 2014,
+   "title": "High-precision percolation thresholds and Potts-model critical manifolds from graph polynomials",
+   "venue": "Journal of Physics A: Mathematical and Theoretical",
+   "volume": "47",
+   "pages": "135001",
+   "doi": "10.1088/1751-8113/47/13/135001",
+   "type": "article",
+   "topics": [
+    "thresholds",
+    "two-dimensions"
+   ]
+  },
+  {
+   "id": "galam1996",
+   "authors": [
+    "Galam, S.",
+    "Mauger, A."
+   ],
+   "year": 1996,
+   "title": "Universal formulas for percolation thresholds",
+   "venue": "Physical Review E",
+   "volume": "53",
+   "pages": "2177–2181",
+   "doi": "10.1103/PhysRevE.53.2177",
+   "type": "article",
+   "topics": [
+    "thresholds",
+    "approximations"
+   ]
+  },
+  {
+   "id": "molloy1995",
+   "authors": [
+    "Molloy, M.",
+    "Reed, B."
+   ],
+   "year": 1995,
+   "title": "A critical point for random graphs with a given degree sequence",
+   "venue": "Random Structures & Algorithms",
+   "volume": "6",
+   "pages": "161–180",
+   "doi": "10.1002/rsa.3240060204",
+   "type": "article",
+   "topics": [
+    "networks"
+   ]
+  },
+  {
+   "id": "cohen2000",
+   "authors": [
+    "Cohen, R.",
+    "Erez, K.",
+    "ben-Avraham, D.",
+    "Havlin, S."
+   ],
+   "year": 2000,
+   "title": "Resilience of the Internet to random breakdowns",
+   "venue": "Physical Review Letters",
+   "volume": "85",
+   "pages": "4626–4628",
+   "doi": "10.1103/PhysRevLett.85.4626",
+   "type": "article",
+   "topics": [
+    "networks",
+    "robustness"
+   ]
+  },
+  {
+   "id": "cohen2001",
+   "authors": [
+    "Cohen, R.",
+    "Erez, K.",
+    "ben-Avraham, D.",
+    "Havlin, S."
+   ],
+   "year": 2001,
+   "title": "Breakdown of the Internet under intentional attack",
+   "venue": "Physical Review Letters",
+   "volume": "86",
+   "pages": "3682–3685",
+   "doi": "10.1103/PhysRevLett.86.3682",
+   "type": "article",
+   "topics": [
+    "networks",
+    "robustness"
+   ]
+  },
+  {
+   "id": "albert2000",
+   "authors": [
+    "Albert, R.",
+    "Jeong, H.",
+    "Barabási, A.-L."
+   ],
+   "year": 2000,
+   "title": "Error and attack tolerance of complex networks",
+   "venue": "Nature",
+   "volume": "406",
+   "pages": "378–382",
+   "doi": "10.1038/35019019",
+   "type": "article",
+   "topics": [
+    "networks",
+    "robustness"
+   ]
+  },
+  {
+   "id": "buldyrev2010",
+   "authors": [
+    "Buldyrev, S. V.",
+    "Parshani, R.",
+    "Paul, G.",
+    "Stanley, H. E.",
+    "Havlin, S."
+   ],
+   "year": 2010,
+   "title": "Catastrophic cascade of failures in interdependent networks",
+   "venue": "Nature",
+   "volume": "464",
+   "pages": "1025–1028",
+   "doi": "10.1038/nature08932",
+   "type": "article",
+   "topics": [
+    "networks",
+    "cascades"
+   ]
+  },
+  {
+   "id": "parshani2010",
+   "authors": [
+    "Parshani, R.",
+    "Buldyrev, S. V.",
+    "Havlin, S."
+   ],
+   "year": 2010,
+   "title": "Interdependent networks: reducing the coupling strength leads to a change from a first to second order percolation transition",
+   "venue": "Physical Review Letters",
+   "volume": "105",
+   "pages": "048701",
+   "doi": "10.1103/PhysRevLett.105.048701",
+   "type": "article",
+   "topics": [
+    "networks",
+    "cascades"
+   ]
+  },
+  {
+   "id": "dorogovtsev2006",
+   "authors": [
+    "Dorogovtsev, S. N.",
+    "Goltsev, A. V.",
+    "Mendes, J. F. F."
+   ],
+   "year": 2006,
+   "title": "k-core organization of complex networks",
+   "venue": "Physical Review Letters",
+   "volume": "96",
+   "pages": "040601",
+   "doi": "10.1103/PhysRevLett.96.040601",
+   "type": "article",
+   "topics": [
+    "networks",
+    "k-core"
+   ]
+  },
+  {
+   "id": "dorogovtsev2008",
+   "authors": [
+    "Dorogovtsev, S. N.",
+    "Goltsev, A. V.",
+    "Mendes, J. F. F."
+   ],
+   "year": 2008,
+   "title": "Critical phenomena in complex networks",
+   "venue": "Reviews of Modern Physics",
+   "volume": "80",
+   "pages": "1275–1335",
+   "doi": "10.1103/RevModPhys.80.1275",
+   "type": "article",
+   "topics": [
+    "networks"
+   ]
+  },
+  {
+   "id": "fortuin1971",
+   "authors": [
+    "Fortuin, C. M.",
+    "Kasteleyn, P. W.",
+    "Ginibre, J."
+   ],
+   "year": 1971,
+   "title": "Correlation inequalities on some partially ordered sets",
+   "venue": "Communications in Mathematical Physics",
+   "volume": "22",
+   "pages": "89–103",
+   "doi": "10.1007/BF01651330",
+   "type": "article",
+   "topics": [
+    "fkg",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "fortuin1972",
+   "authors": [
+    "Fortuin, C. M.",
+    "Kasteleyn, P. W."
+   ],
+   "year": 1972,
+   "title": "On the random-cluster model: I. Introduction and relation to Ising and Potts models",
+   "venue": "Physica",
+   "volume": "57",
+   "pages": "536–564",
+   "doi": "10.1016/0031-8914(72)90045-6",
+   "type": "article",
+   "topics": [
+    "random-cluster"
+   ]
+  },
+  {
+   "id": "swendsen1987",
+   "authors": [
+    "Swendsen, R. H.",
+    "Wang, J.-S."
+   ],
+   "year": 1987,
+   "title": "Nonuniversal critical dynamics in Monte Carlo simulations",
+   "venue": "Physical Review Letters",
+   "volume": "58",
+   "pages": "86–88",
+   "doi": "10.1103/PhysRevLett.58.86",
+   "type": "article",
+   "topics": [
+    "random-cluster",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "edwards1988",
+   "authors": [
+    "Edwards, R. G.",
+    "Sokal, A. D."
+   ],
+   "year": 1988,
+   "title": "Generalization of the Fortuin–Kasteleyn–Swendsen–Wang representation and Monte Carlo algorithm",
+   "venue": "Physical Review D",
+   "volume": "38",
+   "pages": "2009–2012",
+   "doi": "10.1103/PhysRevD.38.2009",
+   "type": "article",
+   "topics": [
+    "random-cluster",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "grimmett1999",
+   "authors": [
+    "Grimmett, G."
+   ],
+   "year": 1999,
+   "title": "Percolation",
+   "venue": "Springer",
+   "edition": "2nd",
+   "doi": "10.1007/978-3-662-03981-6",
+   "type": "book",
+   "topics": [
+    "foundations",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "bollobas2006",
+   "authors": [
+    "Bollobás, B.",
+    "Riordan, O."
+   ],
+   "year": 2006,
+   "title": "Percolation",
+   "venue": "Cambridge University Press",
+   "doi": "10.1017/CBO9781139167383",
+   "type": "book",
+   "topics": [
+    "foundations",
+    "rigorous"
+   ]
+  },
+  {
+   "id": "stauffer1994",
+   "authors": [
+    "Stauffer, D.",
+    "Aharony, A."
+   ],
+   "year": 1994,
+   "title": "Introduction to Percolation Theory",
+   "venue": "Taylor & Francis",
+   "edition": "2nd",
+   "type": "book",
+   "topics": [
+    "foundations",
+    "critical-phenomena"
+   ],
+   "doi": "10.1201/9781315274386",
+   "note": "Second edition, Taylor & Francis, 1994; the DOI resolves to the 2018 reissue."
+  },
+  {
+   "id": "sahimi1994",
+   "authors": [
+    "Sahimi, M."
+   ],
+   "year": 1994,
+   "title": "Applications of Percolation Theory",
+   "venue": "Taylor & Francis",
+   "doi": "10.1201/9781482272444",
+   "type": "book",
+   "topics": [
+    "applications"
+   ]
+  },
+  {
+   "id": "kirkpatrick1973",
+   "authors": [
+    "Kirkpatrick, S."
+   ],
+   "year": 1973,
+   "title": "Percolation and conduction",
+   "venue": "Reviews of Modern Physics",
+   "volume": "45",
+   "pages": "574–588",
+   "doi": "10.1103/RevModPhys.45.574",
+   "type": "article",
+   "topics": [
+    "applications",
+    "transport"
+   ]
+  },
+  {
+   "id": "grassberger1999",
+   "authors": [
+    "Grassberger, P."
+   ],
+   "year": 1999,
+   "title": "Conductivity exponent and backbone dimension in 2-d percolation",
+   "venue": "Physica A: Statistical Mechanics and its Applications",
+   "volume": "262",
+   "pages": "251–263",
+   "doi": "10.1016/S0378-4371(98)00435-X",
+   "type": "article",
+   "topics": [
+    "transport",
+    "two-dimensions"
+   ]
+  },
+  {
+   "id": "mertens2012",
+   "authors": [
+    "Mertens, S.",
+    "Moore, C."
+   ],
+   "year": 2012,
+   "title": "Continuum percolation thresholds in two dimensions",
+   "venue": "Physical Review E",
+   "volume": "86",
+   "pages": "061109",
+   "doi": "10.1103/PhysRevE.86.061109",
+   "type": "article",
+   "topics": [
+    "continuum",
+    "thresholds"
+   ]
+  },
+  {
+   "id": "pastor2001",
+   "authors": [
+    "Pastor-Satorras, R.",
+    "Vespignani, A."
+   ],
+   "year": 2001,
+   "title": "Epidemic spreading in scale-free networks",
+   "venue": "Physical Review Letters",
+   "volume": "86",
+   "pages": "3200–3203",
+   "doi": "10.1103/PhysRevLett.86.3200",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "newman2002",
+   "authors": [
+    "Newman, M. E. J."
+   ],
+   "year": 2002,
+   "title": "Spread of epidemic disease on networks",
+   "venue": "Physical Review E",
+   "volume": "66",
+   "pages": "016128",
+   "doi": "10.1103/PhysRevE.66.016128",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "hinrichsen2000",
+   "authors": [
+    "Hinrichsen, H."
+   ],
+   "year": 2000,
+   "title": "Non-equilibrium critical phenomena and phase transitions into absorbing states",
+   "venue": "Advances in Physics",
+   "volume": "49",
+   "pages": "815–958",
+   "doi": "10.1080/00018730050198152",
+   "type": "article",
+   "topics": [
+    "directed-percolation",
+    "exponents"
+   ]
+  },
+  {
+   "id": "hoshen1976",
+   "authors": [
+    "Hoshen, J.",
+    "Kopelman, R."
+   ],
+   "year": 1976,
+   "title": "Percolation and cluster distribution. I. Cluster multiple labeling technique and critical concentration algorithm",
+   "venue": "Physical Review B",
+   "volume": "14",
+   "pages": "3438–3445",
+   "doi": "10.1103/PhysRevB.14.3438",
+   "type": "article",
+   "topics": [
+    "algorithms",
+    "clusters"
+   ]
+  },
+  {
+   "id": "leath1976",
+   "authors": [
+    "Leath, P. L."
+   ],
+   "year": 1976,
+   "title": "Cluster size and boundary distribution near percolation threshold",
+   "venue": "Physical Review B",
+   "volume": "14",
+   "pages": "5046–5055",
+   "doi": "10.1103/PhysRevB.14.5046",
+   "type": "article",
+   "topics": [
+    "algorithms",
+    "clusters"
+   ]
+  },
+  {
+   "id": "tarjan1975",
+   "authors": [
+    "Tarjan, R. E."
+   ],
+   "year": 1975,
+   "title": "Efficiency of a good but not linear set union algorithm",
+   "venue": "Journal of the ACM",
+   "volume": "22",
+   "pages": "215–225",
+   "doi": "10.1145/321879.321884",
+   "type": "article",
+   "topics": [
+    "algorithms",
+    "complexity"
+   ]
+  },
+  {
+   "id": "janssen1981",
+   "authors": [
+    "Janssen, H. K."
+   ],
+   "year": 1981,
+   "title": "On the nonequilibrium phase transition in reaction-diffusion systems with an absorbing stationary state",
+   "venue": "Zeitschrift für Physik B Condensed Matter",
+   "volume": "42",
+   "pages": "151–154",
+   "doi": "10.1007/BF01319549",
+   "type": "article",
+   "topics": [
+    "directed",
+    "critical-phenomena"
+   ]
+  },
+  {
+   "id": "grassberger1982",
+   "authors": [
+    "Grassberger, P."
+   ],
+   "year": 1982,
+   "title": "On phase transitions in Schlögl's second model",
+   "venue": "Zeitschrift für Physik B Condensed Matter",
+   "volume": "47",
+   "pages": "365–374",
+   "doi": "10.1007/BF01313803",
+   "type": "article",
+   "topics": [
+    "directed",
+    "critical-phenomena"
+   ]
+  },
+  {
+   "id": "takeuchi2007",
+   "authors": [
+    "Takeuchi, K. A.",
+    "Kuroda, M.",
+    "Chaté, H.",
+    "Sano, M."
+   ],
+   "year": 2007,
+   "title": "Directed percolation criticality in turbulent liquid crystals",
+   "venue": "Physical Review Letters",
+   "volume": "99",
+   "pages": "234503",
+   "doi": "10.1103/PhysRevLett.99.234503",
+   "type": "article",
+   "topics": [
+    "directed",
+    "applications"
+   ]
+  },
+  {
+   "id": "gilbert1961",
+   "authors": [
+    "Gilbert, E. N."
+   ],
+   "year": 1961,
+   "title": "Random plane networks",
+   "venue": "Journal of the Society for Industrial and Applied Mathematics",
+   "volume": "9",
+   "pages": "533–543",
+   "doi": "10.1137/0109045",
+   "type": "article",
+   "topics": [
+    "continuum",
+    "applications"
+   ]
+  },
+  {
+   "id": "torquato2002",
+   "authors": [
+    "Torquato, S."
+   ],
+   "year": 2002,
+   "title": "Random Heterogeneous Materials: Microstructure and Macroscopic Properties",
+   "venue": "Springer",
+   "edition": "1st",
+   "doi": "10.1007/978-1-4757-6355-3",
+   "type": "book",
+   "topics": [
+    "continuum",
+    "applications"
+   ]
+  },
+  {
+   "id": "balberg1984",
+   "authors": [
+    "Balberg, I.",
+    "Anderson, C. H.",
+    "Alexander, S.",
+    "Wagner, N."
+   ],
+   "year": 1984,
+   "title": "Excluded volume and its relation to the onset of percolation",
+   "venue": "Physical Review B",
+   "volume": "30",
+   "pages": "3933–3943",
+   "doi": "10.1103/PhysRevB.30.3933",
+   "type": "article",
+   "topics": [
+    "continuum",
+    "applications"
+   ]
+  },
+  {
+   "id": "gefen1983",
+   "authors": [
+    "Gefen, Y.",
+    "Aharony, A.",
+    "Alexander, S."
+   ],
+   "year": 1983,
+   "title": "Anomalous diffusion on percolating clusters",
+   "venue": "Physical Review Letters",
+   "volume": "50",
+   "pages": "77–80",
+   "doi": "10.1103/PhysRevLett.50.77",
+   "type": "article",
+   "topics": [
+    "transport",
+    "critical-phenomena"
+   ]
+  },
+  {
+   "id": "havlin2002",
+   "authors": [
+    "Havlin, S.",
+    "Ben-Avraham, D."
+   ],
+   "year": 2002,
+   "title": "Diffusion in disordered media",
+   "venue": "Advances in Physics",
+   "volume": "51",
+   "pages": "187–292",
+   "doi": "10.1080/00018730110116353",
+   "type": "article",
+   "topics": [
+    "transport",
+    "applications"
+   ]
+  },
+  {
+   "id": "redner2001",
+   "authors": [
+    "Redner, S."
+   ],
+   "year": 2001,
+   "title": "A Guide to First-Passage Processes",
+   "venue": "Cambridge University Press",
+   "edition": "1st",
+   "doi": "10.1017/CBO9780511606014",
+   "type": "book",
+   "topics": [
+    "transport",
+    "applications"
+   ]
+  },
+  {
+   "id": "benavraham2000",
+   "authors": [
+    "Ben-Avraham, D.",
+    "Havlin, S."
+   ],
+   "year": 2000,
+   "title": "Diffusion and Reactions in Fractals and Disordered Systems",
+   "venue": "Cambridge University Press",
+   "edition": "1st",
+   "doi": "10.1017/CBO9780511605826",
+   "type": "book",
+   "topics": [
+    "transport",
+    "applications"
+   ]
+  },
+  {
+   "id": "degennes1976",
+   "authors": [
+    "de Gennes, P.-G."
+   ],
+   "year": 1976,
+   "title": "On a relation between percolation theory and the elasticity of gels",
+   "venue": "Journal de Physique Lettres",
+   "volume": "37",
+   "pages": "L1–L2",
+   "doi": "10.1051/jphyslet:019760037010100",
+   "type": "article",
+   "topics": [
+    "history",
+    "applications"
+   ]
+  },
+  {
+   "id": "aizenman1986",
+   "authors": [
+    "Aizenman, M.",
+    "Fernández, R."
+   ],
+   "year": 1986,
+   "title": "On the critical behavior of the magnetization in high-dimensional Ising models",
+   "venue": "Journal of Statistical Physics",
+   "volume": "44",
+   "pages": "393–454",
+   "doi": "10.1007/BF01011304",
+   "type": "article",
+   "topics": [
+    "high-dimensions",
+    "history"
+   ]
+  },
+  {
+   "id": "callaway2000",
+   "authors": [
+    "Callaway, D. S.",
+    "Newman, M. E. J.",
+    "Strogatz, S. H.",
+    "Watts, D. J."
+   ],
+   "year": 2000,
+   "title": "Network robustness and fragility: percolation on random graphs",
+   "venue": "Physical Review Letters",
+   "volume": "85",
+   "pages": "5468–5471",
+   "doi": "10.1103/PhysRevLett.85.5468",
+   "type": "article",
+   "topics": [
+    "networks",
+    "history"
+   ]
+  },
+  {
+   "id": "menshikov1986",
+   "authors": [
+    "Men'shikov, M. V."
+   ],
+   "year": 1986,
+   "title": "Coincidence of critical points in percolation problems",
+   "venue": "Soviet Mathematics Doklady",
+   "volume": "33",
+   "pages": "856–859",
+   "type": "article",
+   "topics": [
+    "sharpness",
+    "history"
+   ],
+   "note": "No DOI; the result is also described in the review literature on sharpness."
+  }
+ ]
 }

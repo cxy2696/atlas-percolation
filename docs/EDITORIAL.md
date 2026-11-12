@@ -16,6 +16,10 @@ Avoid the tells of generated prose: three-item lists that all say the same thing
 - Do not translate author names, journal titles, theorem labels, code identifiers, URLs or DOIs.
 - Equations, displayed formulas, table numbers and section numbers are part of the structure: keep them unchanged.
 
+## Mathematical labels
+
+Displayed formulas are shared by all editions, byte for byte where possible. A short label inside `\text{...}` may stay in English when it names a standard object (for example `open crossing`, `closed`, `for all`), because the same LaTeX then compiles identically in every edition and two translations can be compared line by line. The surrounding prose must give the local term at first use. Do not translate variable names, theorem numbers, section numbers, code identifiers, DOIs or author names. If a label is translated, translate it in every edition and update the formula in all three files in the same commit.
+
 ## Chinese glossary (简体中文)
 
 | English | Chinese | Notes |

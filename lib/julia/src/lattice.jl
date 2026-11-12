@@ -45,6 +45,9 @@ function build_lattice(kind::Union{AbstractString,Symbol}, L::Integer; torus::Bo
     if k === :honeycomb && isodd(L)
         throw(ArgumentError("honeycomb needs even L"))
     end
+    if k === :honeycomb && L < 6
+        throw(ArgumentError("honeycomb needs L >= 6"))
+    end
     L = Int(L)
     n = L * L
     n <= typemax(Int32) || throw(ArgumentError("L is too large for Int32 site indices"))

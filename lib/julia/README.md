@@ -28,12 +28,13 @@ the Cardy reference values and the duality crossing rate.
 | Percolation | `Percolation`, `sample!`, `build!`, `analyze!`, `crosses_lr`, `crosses_tb`, `newman_ziff` |
 | Network | `poisson_degrees`, `power_law_degrees`, `configuration_model`, `components`, `kcore`, `interdependent_er`, `molloy_reed` |
 | Continuum / Cardy | `boolean_model`, `poisson_points`; `cardy_crossing`, `cardy_hypergeom`, `cardy_modulus` |
+| Directed | `directed_crossing`, `directed_crosses_lr`, `directed_crossing_rate` |
 
 ## Parity notes
 * xoshiro128** + SplitMix32, pure `UInt32` arithmetic; site draws `n`
   uniforms, bond `m`, configuration model one stub shuffle, continuum `2n`.
 * 0-based public indices, 1-based internal union-find, `Int32`/`UInt8` arrays.
-  Parity probes match exactly (244, 151, [10,109,256], 1883, 0.5306666666666666); Cardy
-  agrees to 1e-12.
+  Parity probes match exactly (244, 151, [10,109,256], 1883, 0.5306666666666666,
+  directed 354/328); Cardy agrees to 1e-12.
 * Benchmark: 256x256 square bond, 200 samples, p=0.5, seed 2024: ~0.24 s
   (76 crossings, same as JS) on Julia 1.11.6.

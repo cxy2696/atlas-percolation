@@ -11,7 +11,7 @@ Die planare Dualität ist das wichtigste Werkzeug, das exakte Schwellen liefert,
 
 ## 4.1 Der Paarungsgraph und das Durchgangslemma
 
-**Definition 4.1.** $G$ sei ein in die Ebene eingebetteter Graph mit lokal endlichen Flächen. Der **Paarungsgraph** (matching graph) $G^\dagger$ hat einen Knoten in jeder Fläche von $G$ und eine Kante, die jede Kante von $G$ kreuzt und die beiden an sie angrenzenden Flächen verbindet. $G$ heißt **selbstdual**, wenn $G^\dagger\cong G$ als planare Graphen gilt. Das quadratische Gitter ist selbstdual; das Dreiecks- und das Honigwabengitter sind zueinander dual.
+**Definition 4.1.** $G$ sei ein in die Ebene eingebetteter Graph mit lokal endlichen Flächen. Der **Paarungsgraph** (matching graph) $G^\dagger$ hat einen Knoten in jeder Fläche von $G$ und eine Kante, die jede Kante von $G$ kreuzt und die beiden an sie angrenzenden Flächen verbindet. $G$ heißt **selbstdual**, wenn $G^\dagger\cong G$ als planare Graphen gilt. Das quadratische Gitter ist selbstdual; das Dreiecks- und das Honigwabengitter sind zueinander paarig (matching).
 
 **Lemma 4.2 (Durchgangsdualität, ★).** Sei $\Lambda_n=[-n,n]^2$ und $\Lambda_n^\dagger$ das duale Quadrat. Für jede Kantenkonfiguration $\omega$ auf $\Lambda_n$ gilt genau eine der folgenden Aussagen:
 
@@ -149,8 +149,8 @@ Die Tabelle enthält die in diesem Atlas durchgängig verwendeten Werte. „Exak
 | Honigwabe | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | Kante exakt, Platz numerisch | Sykes–Essam 1964; Jacobsen 2014 |
 | Kagome | 4 | $0.6527036447$ | 0.5244053(3) | Platz exakt, Kante numerisch | Paarungsargument; Jacobsen 2014 |
 | Einfach kubisch | 6 | 0.3116077(2) | 0.24881182(10) | numerisch | Wang et al. 2013 |
-| BCC | 8 | 0.2459(1) | 0.1803(1) | numerisch | van der Marck 1997 |
-| FCC | 12 | 0.1992(1) | 0.1190(1) | numerisch | van der Marck 1997 |
+| BCC | 8 | 0.2459(1) | 0.1803(1) | numerisch | Site van der Marck 1997; Bond Lorenz–Ziff 1998 |
+| FCC | 12 | 0.1992(1) | 0.1190(1) | numerisch | Site van der Marck 1997; Bond Lorenz–Ziff 1998 |
 | Diamant | 4 | 0.4299(2) | 0.3886(2) | numerisch | van der Marck 1997 |
 | Bethe-Gitter, Grad $z$ | $z$ | $1/(z-1)$ | $1/(z-1)$ | exakt | Hammersley 1957 |
 

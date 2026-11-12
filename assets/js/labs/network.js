@@ -64,7 +64,7 @@ export function mount(root, ctx) {
   const { lang } = ctx;
   const L = LABELS[lang] || LABELS.en;
   root.innerHTML =
-    labHead({ kicker: L.kicker, title: L.title, lead: L.lead }) +
+    labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang }) +
     `<div class="grid-lab">
       <div>
         ${canvasBox('net-plot', ['S(f)', 'CONFIG MODEL', 'f', 'N = 20 000'])}

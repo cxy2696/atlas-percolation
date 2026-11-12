@@ -34,7 +34,7 @@ $$
 p_c=\frac{\langle k\rangle}{\langle k^2\rangle-\langle k\rangle}=\frac{1}{\kappa-1},
 \qquad \kappa:=\frac{\langle k^2\rangle}{\langle k\rangle},
 $$
-在满占据（$p=1$）时，这恰好化为 $\kappa>2$，即 Molloy–Reed 判据；有稀释时判据是 $p(\kappa-1)>1$，等价于 $p>1/(\kappa-1)$，仅凭 $\kappa>2$ 不够。参数 $\kappa$ 是尺寸偏置游走的分支因子；它不是平均度，二者只在泊松度分布下重合。
+在满占据（$p=1$）时，这恰好化为 $\kappa>2$，即 Molloy–Reed 判据；有稀释时判据是 $p(\kappa-1)>1$，等价于 $p>1/(\kappa-1)$，仅凭 $\kappa>2$ 不够。分支因子是 $\kappa-1$，不是 $\kappa$。它不等于平均度；二者只在泊松度分布下重合，此时 $\kappa=c+1$，$\kappa-1=c$。
 
 被稀释的比例为 $f=1-p$，于是临界移除比例是
 $$
@@ -42,7 +42,7 @@ f_c=1-\frac{1}{\kappa-1}=\frac{\kappa-2}{\kappa-1}.
 $$
 对 Erdős–Rényi 度分布，$\langle k^2\rangle=\langle k\rangle(\langle k\rangle+1)$，$\kappa=c+1$，由此得 $f_c=1-1/c$：平均度为 $c$ 的随机图在移除比例为 $1-1/c$ 的顶点时碎裂，这是人们熟悉的结果。
 
-**一个常见失误。** 人们很容易写成 $f_c=1-1/\kappa$，却又在同一个式子里引用正确的表达式 $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$。两者并不相等：$1/\kappa=\langle k\rangle/\langle k^2\rangle$，而正确的分母是 $\langle k^2\rangle-\langle k\rangle$。Erdős–Rényi 特例对此相当宽容，错误这才躲得过随手的检查。一般公式是 $f_c=1-1/(\kappa-1)$；在重尾度分布下，$\kappa-1$ 与 $\kappa$ 可能相差很大，这个差别就不可忽视了。
+**一个常见失误。** 人们很容易写成 $f_c=1-1/\kappa$，却又在同一个式子里引用正确的表达式 $1-\langle k\rangle/(\langle k^2\rangle-\langle k\rangle)$。两者并不相等：$1/\kappa=\langle k\rangle/\langle k^2\rangle$，而正确的分母是 $\langle k^2\rangle-\langle k\rangle$。Erdős–Rényi 特例对此相当宽容，错误这才躲得过随手的检查。一般公式是 $f_c=1-1/(\kappa-1)$；它与 $1-1/\kappa$ 之差为 $1/[\kappa(\kappa-1)]$，在 $\kappa=2$ 附近最大，并随重尾而消失。
 
 ## 10.3 无标度度分布：阈值的消失
 
@@ -56,7 +56,7 @@ $$
 - $2<\gamma_{\text{deg}}\le3$：$\langle k^2\rangle=\infty$，故 $\kappa=\infty$，$f_c=1$：在无限尺寸极限下，随机移除永远无法摧毁巨分量。
 - $\gamma_{\text{deg}}\le2$：连 $\langle k\rangle$ 都发散，分布需要有限 $N$ 的正则化；这样的度所对应的随机图概念颇为微妙。
 
-同一个网络在**定向**移除下却极其脆弱：按度从大到小依次删除顶点，可以在大多数顶点尚未被删时就摧毁巨分量。这就是 Cohen、Erez、ben-Avraham 与 Havlin（2000）以及 Albert、Jeong 与 Barabási（2000）所说的“稳健而脆弱”的对偶。它并不矛盾：随机移除按比例从度分布中抽样，数量众多的低度顶点占了主导；定向移除则直击维系网络的枢纽。
+同一个网络在**定向**移除下却极其脆弱：按度从大到小依次删除顶点，可以在大多数顶点尚未被删时就摧毁巨分量。这就是 Cohen、Erez、ben-Avraham 与 Havlin（2000）以及 Albert、Jeong 与 Barabási（2000）所说的“稳健而脆弱”的二重性。它并不矛盾：随机移除按比例从度分布中抽样，数量众多的低度顶点占了主导；定向移除则直击维系网络的枢纽。
 
 ## 10.4 $k$-核渗流
 

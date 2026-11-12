@@ -23,6 +23,7 @@ from .rng import Rng
 from .lattice import build_lattice, degree_histogram, LATTICE_KINDS
 from .percolation import Percolation, ClusterStats, newman_ziff, cluster_size_distribution
 from .network import (
+    Graph,
     poisson_degrees,
     power_law_degrees,
     configuration_model,
@@ -35,9 +36,10 @@ from .network import (
     molloy_reed,
 )
 from .continuum import boolean_model, poisson_points
+from .directed import directed_crossing, directed_crossing_rate, directed_crosses_lr
 from .cardy import cardy_crossing, cardy_crossing_vertical, cardy_hypergeom, cardy_modulus, CARDY_CONSTANT
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 __all__ = [
     "Rng",
@@ -48,6 +50,7 @@ __all__ = [
     "ClusterStats",
     "newman_ziff",
     "cluster_size_distribution",
+    "Graph",
     "poisson_degrees",
     "power_law_degrees",
     "configuration_model",
@@ -60,6 +63,9 @@ __all__ = [
     "molloy_reed",
     "boolean_model",
     "poisson_points",
+    "directed_crossing",
+    "directed_crossing_rate",
+    "directed_crosses_lr",
     "cardy_crossing",
     "cardy_crossing_vertical",
     "cardy_hypergeom",

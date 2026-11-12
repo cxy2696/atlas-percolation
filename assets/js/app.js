@@ -107,6 +107,7 @@ async function route() {
   localStorage.setItem('atlas-lang', lang);
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
   document.body.dataset.view = view;
+  document.title = `${t(lang, 'brand')} — ${t(lang, view === 'overview' ? 'nav_overview' : `nav_${view}`)}`;
 
   buildNav();
   buildRail();

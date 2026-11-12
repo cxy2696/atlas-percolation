@@ -18,7 +18,7 @@ export async function render(root, ctx) {
   root.innerHTML =
     `<div class="view-head">
       <div><div class="kicker">${t(lang, 'labs_kicker')}</div><h2>${t(lang, 'labs_title')}</h2></div>
-      <div class="meta">${LABS.length} INSTRUMENTS<br>LIVE ENGINE</div>
+      <div class="meta">${LABS.length} ${t(lang, 'labs_badge')}</div>
     </div>
     <p class="muted" style="max-width:780px;line-height:1.7;margin-top:-6px">${t(lang, 'labs_lead')}</p>
     <div class="cards" style="margin-top:22px">` +

@@ -22,17 +22,33 @@ configuration model.
 function poisson_degrees(N::Integer, mean::Real, rng::Rng)
     N >= 0 || throw(ArgumentError("N must be non-negative"))
     mean >= 0 || throw(ArgumentError("mean must be non-negative"))
+    isfinite(mean) || throw(ArgumentError("mean must be finite"))
     deg = Vector{Int32}(undef, Int(N))
-    limit = exp(-Float64(mean))
-    @inbounds for i in 1:Int(N)
-        k = 0
-        p = 1.0
-        while true
-            k += 1
-            p *= random(rng)
-            p <= limit && break
+    m = Float64(mean)
+    if m <= 700.0
+        limit = exp(-m)
+        @inbounds for i in 1:Int(N)
+            k = 0
+            p = 1.0
+            while true
+                k += 1
+                p *= random(rng)
+                p <= limit && break
+            end
+            deg[i] = Int32(k - 1)
         end
-        deg[i] = Int32(k - 1)
+    else
+        # exp(-m) underflows above ~745; sum exponential waiting times instead.
+        @inbounds for i in 1:Int(N)
+            k = 0
+            s = 0.0
+            while true
+                k += 1
+                s -= log(1.0 - random(rng))
+                s > m && break
+            end
+            deg[i] = Int32(k - 1)
+        end
     end
     total = 0
     @inbounds for d in deg
@@ -71,7 +87,17 @@ function power_law_degrees(N::Integer, gamma::Real, kmin::Integer, kmax::Integer
         total += k
     end
     if isodd(total)
-        deg[1] += Int32(1)
+        bumped = false
+        @inbounds for i in eachindex(deg)
+            if Int(deg[i]) < kmax
+                deg[i] += Int32(1)
+                bumped = true
+                break
+            end
+        end
+        if !bumped
+            deg[1] -= Int32(1)
+        end
     end
     return deg
 end

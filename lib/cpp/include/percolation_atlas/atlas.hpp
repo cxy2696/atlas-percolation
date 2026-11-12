@@ -4,6 +4,7 @@
 
 #include "percolation_atlas/cardy.hpp"
 #include "percolation_atlas/continuum.hpp"
+#include "percolation_atlas/directed.hpp"
 #include "percolation_atlas/lattice.hpp"
 #include "percolation_atlas/network.hpp"
 #include "percolation_atlas/percolation.hpp"

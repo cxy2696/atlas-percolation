@@ -36,16 +36,16 @@ It scales as $n^{-\beta/\nu}$. This identity is used constantly as a fingerprint
 
 | | $\beta$ | $\gamma$ | $\nu$ | $\delta$ | $\eta$ | $d_f$ | status |
 |---|---|---|---|---|---|---|---|
-| $d=1$ | 0 | 1 | 1 | $\infty$ | — | 0 | exact, degenerate |
+| $d=1$ | 0 | 1 | 1 | $\infty$ | — | 1 | exact, degenerate |
 | $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | theorem (SLE) |
 | $d=3$ | 0.4181(1) | 1.793(3) | 0.8764(1) | 5.29(1) | $-0.046(2)$ | 2.5229(1) | numerical |
 | $d=4$ | 0.639(2) | 1.44(2) | 0.689(2) | 3.26(2) | — | — | numerical |
 | $d=5$ | 0.77(1) | 1.18(1) | 0.54(1) | — | — | — | numerical |
-| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | theorem ($d>6$), logs at $d=6$ |
+| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | theorem (nearest-neighbour $d\ge11$; spread-out $d>6$), logs at $d=6$ |
 | Bethe | 1 | 1 | $1/2$ | 2 | 0 | 4 | exact |
-| Directed, $d=2$ | 0.276(1) | 2.277(3) | 1.096(2) | — | — | — | numerical, distinct class |
+| Directed, $1+1$D | 0.276486(8) | 2.277730(5) | 1.096854(4) | — | — | — | numerical, distinct class (ν = ν_⊥) |
 
-The $d=1$ row is the lower critical dimension: the threshold is at $p=1$, the cluster is a segment, and the hyperscaling relations below degenerate (they are stated for $d\ge2$). The two-dimensional row is the only one that is simultaneously exact and non-mean-field. It comes from the SLE description of the scaling limit (Chapter 7), and every entry can be checked against the relations below, which is how the table should be read: not as six independent numbers but as a small set constrained by consistency.
+The directed row refers to directed percolation in $1+1$ dimensions (one transverse dimension and one time direction); $\nu$ there is the transverse exponent $\nu_\perp$. The $2+1$-dimensional class has different values ($\beta\approx0.584$, $\nu_\perp\approx0.733$); the table lists the $1+1$-dimensional class because that is the one the interactive directed lattice uses. The $d=1$ row is the lower critical dimension: the threshold is at $p=1$, the cluster is a segment, and the hyperscaling relations below degenerate (they are stated for $d\ge2$). The two-dimensional row is the only one that is simultaneously exact and non-mean-field. It comes from the SLE description of the scaling limit (Chapter 7), and every entry can be checked against the relations below, which is how the table should be read: not as six independent numbers but as a small set constrained by consistency.
 
 For $d=3$ the values above are those of Wang, Zhou, Zhang, Garoni and Deng (2013), obtained from $L\le512$ with about $2.5\times10^7$ samples per size. They are quoted with the precision the method supports; the third decimal is not stable across methods.
 
@@ -73,7 +73,15 @@ $$
 $$
 The integral is a finite constant, so $\chi\asymp\xi^{2-\eta}$. With $\chi\sim\varepsilon^{-\gamma}$ and $\xi\sim\varepsilon^{-\nu}$, $\gamma=(2-\eta)\nu$. $\blacksquare$
 
-**Relation 3: Fisher, $d_f=(d+2-\eta)/2$ (hyperscaling, $d\le d_c$).** The mass–radius relation and the two-point function must agree on the density of a critical cluster at distance $r$: the cluster occupies $\sim r^{d_f}$ sites inside a ball of volume $r^d$, and the connectivity to a site at distance $r$ is $\sim r^{-(d-2+\eta)}$. Matching the two densities gives $d_f=(d+2-\eta)/2$. Combined with Relation 1 this yields $\beta=\nu(d-2+\eta)/2$, the form in which the relation is usually quoted. The relation is a hyperscaling relation: it fails above $d_c=6$, where $d_f=4$ stays fixed while $(d+2)/2$ grows. $\blacksquare$
+**Relation 3: Fisher, $d_f=(d+2-\eta)/2$ (hyperscaling, $d\le d_c$).** This is not an independent density matching, and the naive comparison of $r^{d_f-d}$ with $\tau(r)$ gives the wrong exponent $2-\eta$. The relation follows from Relations 1, 2 and 5. Josephson's relation $d\nu=2\beta+\gamma$ and Relation 2, $\gamma=(2-\eta)\nu$, give
+$$
+\beta=\frac{\nu(d-2+\eta)}{2}.
+$$
+Substituting this into Relation 1,
+$$
+d_f=d-\frac{\beta}{\nu}=d-\frac{d-2+\eta}{2}=\frac{d+2-\eta}{2}.
+$$
+The relation is hyperscaling: it fails above $d_c=6$, where $d_f=4$ stays fixed while $(d+2)/2$ grows. $\blacksquare$
 
 **Relation 4: $\delta=1+\gamma/\beta$ (Widom; standard scaling argument).** Assume the cluster-number scaling form
 $$
@@ -113,7 +121,7 @@ Universality is the claim that the exponents depend only on the dimension (and o
 
 **Two dimensions: theorem for the triangular lattice and its star–triangle relatives.** For critical site percolation on the triangular lattice, the scaling limit is conformally invariant and the interfaces converge to SLE$_6$ (Chapter 7), which fixes the exponents. The same exponent set is expected on every periodic planar lattice in the same universality class, but conformal invariance of the scaling limit for a general planar lattice is still a conjecture, supported by extensive numerics. This is the most important open problem in the rigorous two-dimensional theory and is discussed in Chapter 13.
 
-**Above six dimensions: theorem.** Lace expansion proves mean-field behaviour for $d\ge11$ for nearest-neighbour bond percolation (Fitzner–van der Hofstad 2017), with Hara and Slade's earlier $d\ge19$ threshold (1990). The result includes the values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ and the differentiability of $\theta$ at $p_c$.
+**Above six dimensions: theorem.** Lace expansion proves mean-field behaviour for $d\ge11$ for nearest-neighbour bond percolation (Fitzner–van der Hofstad 2017), with Hara and Slade's earlier $d\ge19$ threshold (1990). The result includes the values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ and the behaviour $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ for $p>p_c$, with $c_1>0$; $\theta$ is $C^2$ on $(p_c,1]$ and has one-sided right derivatives at $p_c$.
 
 **Three to five dimensions: no proof.** The exponents in the table for $d=3,4,5$ are numerical. They are extremely well constrained — the relations of Section 6.3 hold to the quoted precision, and independent methods (Monte Carlo, conformal bootstrap where applicable, functional renormalisation group) agree — but they are not theorems. Any statement that "the three-dimensional percolation exponents are known" is, strictly, a statement about numerics.
 

@@ -63,6 +63,27 @@ println(hits / 1000)
 
 Run from the repository root with `julia --project=lib/julia`.
 
+## Directed percolation
+
+The directed probe returns a reachable mask and a crossing flag. The call is
+the same in all four languages; the mode is `"bond"` or `"site"`.
+
+```js
+directedCrossing(buildLattice('square', 32), 0.65, new Rng(4242), { mode: 'bond' }).cross
+```
+
+```python
+directed_crossing(build_lattice("square", 32), 0.65, Rng(4242), "bond")["cross"]
+```
+
+```cpp
+atlas::directed_crossing(atlas::build_lattice("square", 32), 0.65, rng, false).cross
+```
+
+```julia
+directed_crossing(build_lattice("square", 32), 0.65, Rng(4242); mode = "bond").cross
+```
+
 ## API names
 
 | concept | JavaScript | Python | C++ | Julia |
@@ -73,5 +94,6 @@ Run from the repository root with `julia --project=lib/julia`.
 | sample | `sample(p, rng)` | `sample(p, rng)` | `sample(p, rng)` | `sample!(model, p, rng)` |
 | crossing | `crossesLR()` | `crosses_lr()` | `crosses_lr()` | `crosses_lr(model)` |
 | Newman–Ziff | `newmanZiff(lat, rng)` | `newman_ziff(lat, rng)` | `atlas::newman_ziff(lat, rng)` | `newman_ziff(lat, rng)` |
+| directed | `directedCrossing(lat, p, rng, {mode})` | `directed_crossing(lat, p, rng, mode)` | `atlas::directed_crossing(lat, p, rng, site)` | `directed_crossing(lat, p, rng; mode)` |
 
 The RNG and observation order are documented in `docs/RNG.md`; the full API is in `docs/API.md`.

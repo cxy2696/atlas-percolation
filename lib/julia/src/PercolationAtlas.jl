@@ -28,6 +28,7 @@ include("percolation.jl")
 include("network.jl")
 include("continuum.jl")
 include("cardy.jl")
+include("directed.jl")
 
 export Rng, seed!, u32!, random, int, bernoulli, shuffle!, normal, state,
        load_state!, rng_test
@@ -42,7 +43,8 @@ export Graph, degree, poisson_degrees, power_law_degrees, configuration_model,
        interdependent_er, molloy_reed
 export poisson_points, boolean_model
 export cardy_crossing, cardy_crossing_vertical, cardy_hypergeom, cardy_modulus, CARDY_CONSTANT
+export DirectedResult, directed_crossing, directed_crossing_rate, directed_crosses_lr
 
-const PKG_VERSION = v"1.0.0"
+const PKG_VERSION = v"2.1.0"
 
 end

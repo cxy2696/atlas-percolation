@@ -32,7 +32,7 @@ Six quantities carry almost all of the theory. Their definitions are worth fixin
 
 **Cluster-size distribution.** $\theta_n(p)=\mathbb{P}_p(|C_0|=n)$ for $n<\infty$, and $\theta_\infty=\theta$.
 
-**Susceptibility.** $\chi(p)=\sum_{n\ge1} n\,\theta_n(p)=\mathbb{E}_p\big[|C_0|;\ |C_0|<\infty\big]$. This is the mean size of the cluster at the origin, with the infinite cluster excluded. It diverges as $p\uparrow p_c$; that divergence is the cleanest numerical signal of criticality.
+**Susceptibility.** $\chi(p)=\mathbb{E}_p|C_0|=\sum_{n\ge1} n\,\theta_n(p)$, with the convention that $\chi(p)=\infty$ when $\theta(p)>0$. This is the mean size of the cluster at the origin, including the infinite cluster. It diverges as $p\uparrow p_c$ and is infinite above $p_c$; that divergence is the cleanest numerical signal of criticality.
 
 **Correlation length.** $\xi(p)^{-1}=\lim_{n\to\infty}-\frac1n\log\tau_p(0,n\mathbf e_1)$, the exponential rate of decay of connectivity along a coordinate axis. It diverges as $p\to p_c$ from either side.
 
@@ -58,9 +58,9 @@ The subject is usually taught as a stack, and it helps to see the whole stack at
 
 ## Landmarks
 
-Three results orient a newcomer. On the square lattice, bond percolation has $p_c=1/2$ exactly (Kesten 1980). On the triangular lattice, site percolation has $p_c=1/2$ exactly, a fact with a short star–triangle proof (Chapter 4). For the triangular lattice and its star–triangle relatives, the two-dimensional critical exponents are known exactly: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. In three dimensions no threshold or exponent is known exactly; the best numerical values are $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, with error bars in the third decimal. Above six dimensions ($d>6$) the mean-field values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ hold rigorously, with logarithmic corrections at $d=6$.
+Three results orient a newcomer. On the square lattice, bond percolation has $p_c=1/2$ exactly (Kesten 1980). On the triangular lattice, site percolation has $p_c=1/2$ exactly, a fact with a short star–triangle proof (Chapter 4). For the triangular lattice and its star–triangle relatives, the two-dimensional critical exponents are known exactly: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. In three dimensions no threshold or exponent is known exactly; the best numerical values are $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, with error bars in the last quoted digit. Above six dimensions the mean-field values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ are expected; they are proved for $d\ge11$ (Chapter 8), and at $d=6$ the exponents are mean-field with logarithmic corrections.
 
-The gap between the exact results and the numerical middle is the honest shape of the field: exact in two dimensions, rigorous above six dimensions, numerical in between.
+The gap between the exact results and the numerical middle is the honest shape of the field: exact in two dimensions, rigorous for $d\ge11$, numerical in between.
 
 ## How to read this atlas
 

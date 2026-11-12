@@ -68,8 +68,8 @@ export async function render(root, ctx) {
           <div class="stage-canvas" id="dash-stage">
             <canvas id="dash-iso"></canvas>
             <div class="scanline"></div>
-            <div class="stage-corner tl">DSU / PATH HALVING</div>
-            <div class="stage-corner tr" id="dash-status">SAMPLING</div>
+            <div class="stage-corner tl">${T('stage_engine')}</div>
+            <div class="stage-corner tr" id="dash-status">${T('stage_sampling')}</div>
             <div class="stage-corner bl" id="dash-cross-label">LR —</div>
             <div class="stage-corner br">p_c = 0.5</div>
             <div class="stage-legend">
@@ -82,7 +82,7 @@ export async function render(root, ctx) {
           <div class="stage-foot">
             <div><span>${T('largest_cluster')}</span><b id="dash-smax">—</b></div>
             <div><span>${T('cluster_count')}</span><b id="dash-clusters">—</b></div>
-            <div><span>${T('spanning')}</span><b id="dash-cross">—</b></div>
+            <div><span>${T('lr_crossing')}</span><b id="dash-cross">—</b></div>
             <div><span>${T('phase_ratio')}</span><b id="dash-ratio2">—</b></div>
           </div>
         </section>
@@ -100,11 +100,11 @@ export async function render(root, ctx) {
                 <tr><td>d_f</td><td>91/48</td><td><span class="badge ok">${T('exact')}</span></td></tr>
               </tbody>
             </table>
-            <p class="hint">Triangular lattice · SLE₆ · <a href="#/${lang}/atlas/07-two-dimensions">Ch. 07</a></p>
+            <p class="hint">${T('lattice_triangular')} · SLE₆ · <a href="#/${lang}/atlas/07-two-dimensions">07</a></p>
           </section>
 
           <section class="panel dash-panel instruments-panel">
-            <div class="panel-tag">${T('instruments').toUpperCase()} / 04</div>
+            <div class="panel-tag">${T('instruments').toUpperCase()} / ${String(LABS.length).padStart(2, '0')}</div>
             <h3>${T('instruments')}</h3>
             <div class="instrument-list">
               ${LABS.map((lab, i) => `<a href="#/${lang}/labs/${lab.id}"><span class="dot"></span><span class="idx">${String(i + 1).padStart(2, '0')}</span><b>${lab.title[lang] || lab.title.en}</b><span class="arrow">↗</span></a>`).join('')}
@@ -115,7 +115,7 @@ export async function render(root, ctx) {
 
       <footer class="dash-foot">
         <div class="module-links">
-          <a href="#/${lang}/atlas"><b>01</b><span>${T('module_chapters')}</span><em>14</em></a>
+          <a href="#/${lang}/atlas"><b>01</b><span>${T('module_chapters')}</span><em>${ctx.manifest ? ctx.manifest.chapters.length : 18}</em></a>
           <a href="#/${lang}/labs"><b>02</b><span>${T('module_labs')}</span><em>${LABS.length}</em></a>
           <a href="#/${lang}/data"><b>03</b><span>${T('module_data')}</span><em>${T('module_data')}</em></a>
           <a href="#/${lang}/sources"><b>04</b><span>${T('module_sources')}</span><em>${ctx.manifest ? ctx.manifest.references || 0 : 0}</em></a>

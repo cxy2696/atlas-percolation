@@ -18,6 +18,8 @@ def poisson_points(n: int, rng: Rng):
 
 
 def boolean_model(n: int, r: float, rng: Rng) -> dict:
+    if n < 0 or not math.isfinite(r) or r <= 0:
+        raise ValueError("need n >= 0 and a positive finite radius")
     xs, ys = poisson_points(n, rng)
     dsu = Dsu(n)
     size = 2.0 * r

@@ -1,27 +1,29 @@
 # Percolation Atlas
 
-A trilingual, source-backed atlas of percolation theory with four reference implementations and seven interactive laboratories. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
+A trilingual, source-backed atlas of percolation theory with four reference implementations and nine interactive laboratories. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
 
-**Live content:** 14 chapters in English, Simplified Chinese and German · 7 laboratories · 4 language implementations · reproducible benchmark pipeline.
+**Live content:** 18 chapters in English, Simplified Chinese and German · 9 laboratories · 4 language implementations · reproducible benchmark pipeline.
 
 ## What is inside
 
 | Layer | Contents |
 |---|---|
-| Knowledge base | 14 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications and the cross-disciplinary map |
-| Sources | 47 primary references with DOI links; per-chapter source lists; an errata table that records every correction made in this edition |
+| Knowledge base | 18 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, and the cross-disciplinary map |
+| Sources | 64 primary references with DOI links where one exists; per-chapter source lists; an errata table that records every correction made in this edition |
 | Code | C++20 (header-only), Julia, Python and JavaScript, all consuming the same xoshiro128** stream and the same lattice edge order |
-| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, and Cardy's formula |
+| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, and random-cluster/Potts |
 | Data | A C++ benchmark harness, a Python analyser, and a JSON record that the Data view reads without hiding missing data |
 | Tests | Integer-exact parity probes across the four implementations, plus RNG golden vectors and property tests |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md` |
+
+**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Source:** <https://github.com/cxy2696/atlas-percolation>
 
 ## Quick start
 
 Requirements: Python 3.10+, Node.js 20+ for the tests and the site build, and a C++20 compiler. Julia 1.9+ is needed only for the Julia suite.
 
 ```sh
-git clone <this repository> atlas-percolation
+git clone https://github.com/cxy2696/atlas-percolation.git
 cd atlas-percolation
 
 python3 scripts/build_content.py     # manifest, search index, code inventory
@@ -30,7 +32,7 @@ python3 scripts/serve.py 8788        # http://127.0.0.1:8788/
 
 Open `http://127.0.0.1:8788/`. The site must be served over HTTP; the content loader uses `fetch()`, which browsers block for `file://` URLs.
 
-The default route is the control-room overview. The five main views are `#/en/overview`, `#/en/atlas`, `#/en/labs`, `#/en/code`, `#/en/data`, `#/en/library` and `#/en/sources`. Replace `en` with `zh` or `de` to switch language; the switch is also in the header and is remembered in `localStorage`.
+The default route is the control-room overview. The seven main views are `#/en/overview`, `#/en/atlas`, `#/en/labs`, `#/en/code`, `#/en/data`, `#/en/library` and `#/en/sources`. Replace `en` with `zh` or `de` to switch language; the switch is also in the header and is remembered in `localStorage`.
 
 ## Reproduce the checks
 
@@ -82,9 +84,10 @@ lib/
   julia/                Julia package + tests
   python/               Python package + tests
   js/                   ES-module engine shared with the site
+                        (percolation, networks, continuum, Cardy, directed)
 assets/
   js/views/             overview, atlas reader, labs, code, data, library, sources
-  js/labs/              one module per interactive instrument
+  js/labs/              nine instruments, including directed and random-cluster
   css/hud.css           the HUD shell
 scripts/
   build_content.py      validates content and generates JSON
@@ -99,7 +102,7 @@ docs/                   API, RNG, data, scaling and editorial notes
 
 - **UI.** Dark graphite/cyan HUD, thin instrumentation lines, monospace readouts. The overview is a live isometric bond-percolation map with a regime slider. It uses no images, no web fonts and no runtime framework; the only third-party front-end files are the vendored KaTeX and marked builds.
 - **Content.** Markdown with YAML front matter. Every chapter has a stable id and the same order in every language. `scripts/build_content.py` refuses to build a partial translation, a duplicate order or an unresolved citation.
-- **Translations.** Authored, not machine-translated at runtime. The glossary and voice rules are in `docs/EDITORIAL.md`. Technical terms are kept consistent so that a search for a threshold finds the same concept in all three editions.
+- **Translations.** Authored, not machine-translated at runtime. The glossary and voice rules are in `docs/EDITORIAL.md`. Technical terms are kept consistent so that a search for a threshold finds the same concept in all three editions. The language list, UI tables and content directories are data-driven; adding a fourth edition is a content and review task, not an engine change.
 - **Accessibility.** Keyboard navigation, visible focus states, semantic headings, a skip-friendly main region, and charts with textual readouts. The colour palette is not the only carrier of meaning: every stage readout has a text label.
 - **Browser support.** Current Chrome, Firefox and Safari with ES modules and `IntersectionObserver`. The site degrades to readable Markdown when JavaScript is disabled. Complexity and memory limits are documented in `docs/SCALING.md`.
 
@@ -107,7 +110,7 @@ docs/                   API, RNG, data, scaling and editorial notes
 
 The repository is already a static site. Publish the directory with GitHub Pages, Netlify, an object store, or any static server. The only requirement is the directory layout: `index.html` at the root, `assets/`, `content/` and `data/` beside it.
 
-For GitHub Pages, the simplest route is a Pages workflow that uploads the repository root after running `python3 scripts/build_content.py`. The site does not need a build step beyond that.
+The GitHub Pages workflow in `.github/workflows/pages.yml` assembles `index.html`, `assets/`, `content/` and `data/` into `_site/` and deploys it. The published URL is <https://cxy2696.github.io/atlas-percolation/>. The site does not need a build step beyond `python3 scripts/build_content.py`.
 
 ## Scope and honesty
 

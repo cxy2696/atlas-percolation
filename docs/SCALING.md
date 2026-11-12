@@ -14,6 +14,7 @@ Let `n = L²` be the number of sites and `m` the number of edges (`2L(L−1)` on
 | `build` (union-find) | O(m α(n)) | O(n) | α is the inverse Ackermann function |
 | `analyze` | O(n α(n)) | O(n) | one pass over occupied roots |
 | `crosses_lr` | O(L) | O(n) | root stamps, no allocation |
+| directed crossing | O(L²) | O(n + m) | row-major reachability DP after the sample |
 | Newman–Ziff sweep | O(m α(n)) | O(m + n) | one edge order; whole p-grid |
 
 The JavaScript engine is the fastest way to explore a single configuration up to `L≈1024` in a browser. The C++ and Julia versions are appropriate when the same configuration must be repeated many times, or when `L` is large enough that allocation and garbage collection dominate. Python is the readable reference; it is roughly one to two orders of magnitude slower than C++ for the same `m`.
@@ -34,7 +35,7 @@ For `N` vertices and degree sum `M = Σ k`:
 | Molloy–Reed | O(N) | O(1) extra |
 | coupled cascade | O(I (N + M)) | O(N) |
 
-`I` is the number of pruning rounds; in the one-to-one ER model it is small (typically under 20) but there is no universal bound. The benchmark caps it at 20 for speed; the libraries cap it at 1000 as a safety valve. A cap that is reached is a signal, not a result: the returned `cascade` trace shows the last state.
+`I` is the number of pruning rounds; in the one-to-one ER model it is small (typically under 40) but there is no universal bound. The benchmark caps it at 100 and records whether every replicate converged; the libraries cap it at 1000 as a safety valve. A cap that is reached is a signal, not a result: the returned `cascade` trace shows the last state.
 
 The configuration model keeps self-loops and parallel edges, which is the correct ensemble for the Molloy–Reed asymptotics but not for a simple graph. If a simple graph is required, remove self-loops and merge parallels after generation and recompute the degree sequence; the threshold formula then applies only approximately.
 
@@ -62,11 +63,10 @@ The benchmark harness is single-threaded. The C++ union-find is the obvious plac
 
 ## What is not implemented
 
-- Directed percolation (the directed lattice and its exponents are discussed in Chapter 6 but no separate engine is shipped).
-- Random-cluster sampling beyond the q=1 percolation case.
+- Random-cluster sampling as a library API. The Swendsen–Wang laboratory is a browser-only implementation; the four-library contract covers Bernoulli percolation and directed percolation.
+- Three-dimensional lattice generators (the threshold table is data, not a generator).
 - Higher-order connectivity on simplicial complexes.
 - Temporal networks and time-respecting paths.
-- Three-dimensional lattices (the threshold table is data, not a generator).
 - GPU kernels.
 
 These are honest boundaries, not omissions to be papered over. The cross-disciplinary chapter marks which extensions are exact, which are approximate, and which are metaphors.

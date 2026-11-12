@@ -7,7 +7,7 @@ subtitle: Mean-field behaviour, the triangle condition, and why six
 reading: 14 min
 ---
 
-Above six dimensions, percolation forgets its lattice. The exponents take their mean-field values, the order parameter is smooth at $p_c$, and the whole theory reduces to a branching process with corrections that can be bounded. The tool that proves this is the lace expansion, one of the few non-perturbative methods in critical phenomena. This chapter explains what the expansion is, why its convergence threshold is $d\ge11$ rather than $d>6$, and why the gap matters.
+Above six dimensions, percolation forgets its lattice. The exponents take their mean-field values, the order parameter is smooth above $p_c$, and the whole theory reduces to a branching process with corrections that can be bounded. The tool that proves this is the lace expansion, one of the few non-perturbative methods in critical phenomena. This chapter explains what the expansion is, why its convergence threshold is $d\ge11$ rather than $d>6$, and why the gap matters.
 
 ## 8.1 Mean-field from the Bethe lattice, done correctly
 
@@ -41,7 +41,7 @@ $$
 $$
 so $\gamma=1$. At criticality the offspring distribution has mean one and finite variance, so the cluster size is in the domain of attraction of a stable law with $\mathbb{P}(|C_0|=n)\sim n^{-3/2}$, which gives $1+1/\delta=3/2$, i.e. $\delta=2$. Finally, the relation $\beta=\nu(d-2+\eta)/2$ at the upper critical dimension $d=6$ with $\eta=0$ gives $1=\nu\cdot 2$, so $\nu=1/2$; the correlation length behaves as $(p_c-p)^{-1/2}$, which can also be checked directly from the recursion. The fractal dimension is $d_f=d-\beta/\nu=6-2=4$.
 
-**Why the Bethe lattice is not a lattice.** It has no cycles, so it is not a subgraph of $\mathbb{Z}^d$ for any finite $d$. Its exponents coincide with the mean-field values because the branching approximation becomes exact when loops are negligible, and loops are negligible above $d_c$. The coincidence is a theorem above six dimensions, not an analogy.
+**Why the Bethe lattice is not a lattice.** It has no cycles, so it is not a subgraph of $\mathbb{Z}^d$ for any finite $d$. Its exponents coincide with the mean-field values because the branching approximation becomes exact when loops are negligible, and loops are negligible above $d_c$. For nearest-neighbour bond percolation the coincidence is proved for $d\ge11$; for the spread-out model it is proved for $d>6$. It is a theorem, not an analogy, but the dimension range must be stated correctly.
 
 ## 8.2 The triangle condition
 
@@ -51,7 +51,7 @@ $$
 $$
 (Aizenman–Newman 1984; Barsky–Aizenman 1987 introduced it for percolation.) The name comes from the diagram: three propagators joining two vertices, i.e. a triangle in the dual representation, or a theta graph in the direct representation.
 
-**Theorem 8.1 (Aizenman–Newman; Barsky–Aizenman).** If the triangle condition holds at $p_c$, then the mean-field exponents hold: $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$, and $\theta$ is twice differentiable at $p_c$ with $\theta'(p_c)>0$.
+**Theorem 8.1 (Aizenman–Newman; Barsky–Aizenman).** If the triangle condition holds at $p_c$, then the mean-field exponents hold: $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$, and $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ for $p>p_c$ with $c_1>0$; $\theta$ is $C^2$ on $(p_c,1]$ and has one-sided right derivatives at $p_c$.
 
 The proof is a combination of the infrared bound (a Fourier-space inequality for $\tau$) with a differential inequality for $\theta$; it does not require the lace expansion. The triangle condition itself is what needs to be verified, and that is where the lace expansion enters.
 

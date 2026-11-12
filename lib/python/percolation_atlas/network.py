@@ -28,17 +28,33 @@ class Graph:
 
 
 def poisson_degrees(N: int, mean: float, rng: Rng) -> list:
+    if N < 0:
+        raise ValueError("N must be non-negative")
+    if not math.isfinite(mean) or mean < 0:
+        raise ValueError("mean must be non-negative and finite")
     deg = []
-    limit = math.exp(-mean)
-    for _ in range(N):
-        k = 0
-        p = 1.0
-        while True:
-            k += 1
-            p *= rng.random()
-            if p <= limit:
-                break
-        deg.append(k - 1)
+    if mean <= 700:
+        limit = math.exp(-mean)
+        for _ in range(N):
+            k = 0
+            p = 1.0
+            while True:
+                k += 1
+                p *= rng.random()
+                if p <= limit:
+                    break
+            deg.append(k - 1)
+    else:
+        # Sum of exponential waiting times; avoids the underflow of exp(-mean).
+        for _ in range(N):
+            k = 0
+            s = 0.0
+            while True:
+                k += 1
+                s -= math.log1p(-rng.random())
+                if s > mean:
+                    break
+            deg.append(k - 1)
     if sum(deg) % 2 == 1:
         deg[0] += 1
     return deg
@@ -47,18 +63,30 @@ def poisson_degrees(N: int, mean: float, rng: Rng) -> list:
 def power_law_degrees(N: int, gamma: float, kmin: int = 2, kmax: int = 10000, rng: Rng | None = None) -> list:
     if rng is None:
         raise ValueError("rng is required")
+    if gamma <= 1.0:
+        raise ValueError("gamma must be greater than 1")
+    if kmin < 1 or kmax < kmin:
+        raise ValueError("need 1 <= kmin <= kmax")
     a = 1.0 / (gamma - 1.0)
     deg = []
     for _ in range(N):
         u = rng.random()
-        k = int(kmin * (1.0 - u) ** (-a))
-        if k > kmax or k != k:
+        logk = math.log(kmin) - a * math.log1p(-u)
+        if logk >= math.log(kmax):
             k = kmax
-        if k < kmin:
-            k = kmin
+        else:
+            k = max(kmin, int(math.exp(logk)))
         deg.append(k)
     if sum(deg) % 2 == 1:
-        deg[0] += 1
+        # Make the sum even without exceeding kmax when a vertex has room.
+        bumped = False
+        for i, d in enumerate(deg):
+            if d < kmax:
+                deg[i] = d + 1
+                bumped = True
+                break
+        if not bumped:
+            deg[0] -= 1
     return deg
 
 
@@ -121,6 +149,8 @@ def components(graph: Graph, active) -> dict:
 
 
 def all_active(n: int) -> list:
+    if n < 0:
+        raise ValueError("n must be non-negative")
     return [1] * n
 
 
@@ -129,6 +159,8 @@ def dilute(active: list, p: float, rng: Rng) -> list:
 
 
 def targeted_removal(graph: Graph, frac: float) -> list:
+    if not 0.0 <= frac <= 1.0:
+        raise ValueError("frac must lie in [0,1]")
     n = graph.n
     order = sorted(range(n), key=lambda v: -graph.degree(v))
     active = [1] * n
@@ -138,6 +170,8 @@ def targeted_removal(graph: Graph, frac: float) -> list:
 
 
 def kcore(graph: Graph, active, k: int):
+    if k < 0:
+        raise ValueError("k must be non-negative")
     n = graph.n
     alive = [0] * n
     deg = [0] * n
@@ -236,10 +270,14 @@ def interdependent_er(N: int, mean_degree: float, p: float, rng: Rng) -> dict:
 
 def molloy_reed(deg: list) -> dict:
     n = len(deg)
+    if n == 0:
+        raise ValueError("degree sequence must not be empty")
     s1 = sum(deg)
     s2 = sum(d * d for d in deg)
     k1 = s1 / n
     k2 = s2 / n
-    kappa = k2 / k1 if k1 > 0 else math.inf
-    pc = k1 / (k2 - k1) if k2 > k1 else math.inf
-    return {"mean": k1, "second": k2, "kappa": kappa, "pc": pc, "fc": 1 - pc}
+    if k1 <= 0:
+        raise ValueError("mean degree must be positive")
+    kappa = k2 / k1
+    pc = k1 / (k2 - k1) if k2 > k1 else 1.0
+    return {"mean": k1, "second": k2, "kappa": kappa, "pc": pc, "fc": max(0.0, 1.0 - pc)}

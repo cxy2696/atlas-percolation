@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this atlas or its reference code, cite the repository and the primary sources for the specific results you use."
 title: "Percolation Atlas: a trilingual knowledge base and four-language reference implementation"
-version: "2.0.0"
+version: "2.1.0"
 date-released: "2026-11-12"
 authors:
   - name: "Atlas Percolation contributors"

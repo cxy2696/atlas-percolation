@@ -95,6 +95,15 @@ void test_rng() {
   CHECK_INT(sum, 839333524u);
   CHECK_INT(hash, 3108118429u);
 
+  // Normal draws use the polar Box-Muller path with a cached spare.
+  const double expected_normals[6] = {
+      0.26752688913325207, 1.7424408577069266, 0.5813902729075202,
+      -1.6928023015879279, 0.8153199416965593, -0.4575232516347127};
+  atlas::Rng normal_rng(42);
+  for (int i = 0; i < 6; ++i) {
+    CHECK_CLOSE(normal_rng.normal(), expected_normals[i], 0.0);
+  }
+
   // Fisher-Yates must stay a permutation (the exact order is covered by the
   // parity probes, which depend on it).
   atlas::Rng shuffle_rng(11);
@@ -170,6 +179,26 @@ void test_parity() {
   }
 }
 
+void test_directed() {
+  const atlas::Lattice lat = atlas::build_lattice("square", 32);
+  {
+    atlas::Rng rng(4242);
+    int hits = 0;
+    for (int s = 0; s < 500; ++s) {
+      if (atlas::directed_crossing(lat, 0.65, rng, false).cross) ++hits;
+    }
+    CHECK_INT(hits, 354);
+  }
+  {
+    atlas::Rng rng(4242);
+    int hits = 0;
+    for (int s = 0; s < 500; ++s) {
+      if (atlas::directed_crossing(lat, 0.70, rng, true).cross) ++hits;
+    }
+    CHECK_INT(hits, 328);
+  }
+}
+
 void test_cardy() {
   CHECK_CLOSE(atlas::cardy_crossing(0.1), 4.0394890895707114e-05, 1e-13);
   CHECK_CLOSE(atlas::cardy_hypergeom(1.0), 1.1129126745223048, 1e-12);
@@ -235,6 +264,47 @@ void test_sanity() {
   CHECK(!model.crosses_tb());
 }
 
+void test_regressions() {
+  // Triangle 0-1-2 plus leaf 3-2: the 3-core is empty.
+  {
+    atlas::Graph g;
+    g.n = 4;
+    g.m = 8;
+    g.offset = {0, 2, 4, 7, 8};
+    g.adj = {1, 2, 0, 2, 1, 0, 3, 2};
+    const atlas::KCoreResult core = atlas::kcore(g, atlas::all_active(4), 3);
+    CHECK_INT(core.size, 0);
+  }
+  // Site percolation at p=0 must not report a maximum cluster of size 1.
+  {
+    const atlas::Lattice lat = atlas::build_lattice("square", 8);
+    atlas::Percolation model(lat, Mode::Site);
+    atlas::Rng rng(2);
+    model.sample(0.0, rng);
+    model.build();
+    CHECK_INT(model.dsu().count(), 0);
+    CHECK_INT(model.dsu().max_size(), 0);
+  }
+  // Large-mean Poisson: exp(-mean) underflows above ~745.
+  {
+    atlas::Rng rng(3);
+    const std::vector<int> deg = atlas::poisson_degrees(2000, 1000.0, rng);
+    double sum = 0;
+    for (const int d : deg) sum += d;
+    CHECK_CLOSE(sum / static_cast<double>(deg.size()), 1000.0, 5.0);
+  }
+  // Degenerate honeycomb sizes are rejected.
+  {
+    bool threw = false;
+    try {
+      (void)atlas::build_lattice("honeycomb", 4);
+    } catch (const std::invalid_argument&) {
+      threw = true;
+    }
+    CHECK(threw);
+  }
+}
+
 void test_duality() {
   const atlas::Lattice lat = atlas::build_lattice("square", 32);
   atlas::Percolation model(lat, Mode::Bond);
@@ -260,8 +330,10 @@ int main() {
   const TestCase tests[] = {
       {"rng", test_rng},
       {"parity", test_parity},
+      {"directed", test_directed},
       {"cardy", test_cardy},
       {"sanity", test_sanity},
+      {"regressions", test_regressions},
       {"duality", test_duality},
   };
 

@@ -15,7 +15,8 @@ are identical and are covered by the same tests.  Any function marked
 - `etype[e]` in `{0,1,2}`: E, S, SW (triangular only).
 
 Kinds: `square` (degree 4), `triangular` (degree 6), `honeycomb` (degree 3,
-requires even `L`).  With `torus=true` edges wrap; with `torus=false` edges
+requires even `L >= 6`; smaller brick-wall quotients have parallel edges and
+4-cycles and are not the honeycomb lattice).  With `torus=true` edges wrap; with `torus=false` edges
 that would leave the box are omitted.
 
 ## Bernoulli percolation
@@ -24,7 +25,7 @@ that would leave the box are omitted.
 
 - `sample(p, rng)` — draw a configuration (consumption order in `RNG.md`).
 - `build()` — union-find over open edges between occupied sites.
-- `analyze()` — cluster statistics: count, sizes, largest, sum, sum of squares.
+- `analyze()` — cluster statistics: count, sizes (descending), largest, sum, sum of squares.
 - `crosses_lr()` / `crosses_tb()` — boundary-crossing tests.
 
 Cluster statistics use occupied sites as the denominator.  `chi2` is
@@ -37,6 +38,18 @@ largest cluster size, and `s_max_fraction = s_max / sum|C|`.
 Bond percolation only.  One random edge order gives the whole curve; `p` runs
 over the grid `k/m`.
 
+## Directed percolation
+
+`directed_crossing(lattice, p, rng, mode)` — one directed configuration on a
+square lattice with east and south edges. Bond mode opens every E/S edge with
+probability `p`; site mode occupies sites with probability `p`. The function
+returns `cross`, the reachable mask, the open/occupancy masks, `m` and `n`.
+The reachability DP is row-major and O(L^2); RNG consumption is the same as the
+undirected sampler (n uniforms for site, m for bond). `directed_crossing_rate`
+is the empirical mean over independent draws. The 1+1 reference thresholds are
+`p_c = 0.644700(10)` (bond) and `0.705489(4)` (site); these are numerical, and
+there is no exact 1/2 identity at `p_c`.
+
 ## Networks
 
 - `poisson_degrees(N, mean, rng)` — Poisson degree sequence with even sum.
@@ -46,7 +59,9 @@ over the grid `k/m`.
 - `kcore(graph, active, k)` — bucket peeling, returns survivors.
 - `targeted_removal(graph, frac)` — delete the highest-degree vertices.
 - `interdependent_er(N, mean, p, rng)` — one-to-one coupled ER cascade. The round keeps the intersection of the giant components of both layers; returns `fraction`, `cascade`, the two graphs and the final active mask. Pruning each layer independently is not the same algorithm and overestimates the mutual component.
-- `molloy_reed(deg)` — mean, second moment, kappa, p_c, f_c.
+- `molloy_reed(deg)` — mean, second moment, kappa, p_c, f_c. Empty or
+  zero-mean sequences raise; a degenerate sequence with `k2 <= k1` returns
+  `pc = 1`, `fc = 0` rather than a negative removal fraction.
 
 ## Continuum
 
@@ -82,5 +97,9 @@ for seed 11. The lab and the C++ benchmark use the same update.
 - Ill-formed arguments raise/throw (`ValueError`, `ArgumentError`,
   `std::invalid_argument`, `Error`); nothing returns `NaN` silently.
 - `crosses_lr` on an empty occupancy field returns `false`.
-- `molloy_reed` returns `pc = Inf` when the second moment is not larger than
-  the first (no giant component at any `p <= 1`).
+- `molloy_reed` returns `pc = 1`, `fc = 0` when the second moment is not
+  larger than the first (no giant component at any `p < 1`); an empty or
+  zero-mean sequence raises.
+- `Rng.int(n)` rejects `n > 2^32`; `poisson_degrees` switches to a stable
+  exponential-sum sampler for `mean > 700`; `power_law_degrees` requires
+  `gamma > 1` and keeps the even-sum fix inside `[kmin, kmax]`.

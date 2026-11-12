@@ -28,16 +28,32 @@ namespace atlas {
 // is odd, one is added to vertex 0, exactly as in the reference engines.
 inline std::vector<int> poisson_degrees(int N, double mean, Rng& rng) {
   if (N < 0) throw std::invalid_argument("N must be non-negative");
+  if (!(mean >= 0.0) || !std::isfinite(mean)) {
+    throw std::invalid_argument("mean must be non-negative and finite");
+  }
   std::vector<int> deg(static_cast<std::size_t>(N), 0);
-  const double limit = std::exp(-mean);
-  for (int i = 0; i < N; ++i) {
-    int k = 0;
-    double p = 1.0;
-    do {
-      ++k;
-      p *= rng.random();
-    } while (p > limit);
-    deg[static_cast<std::size_t>(i)] = k - 1;
+  if (mean <= 700.0) {
+    const double limit = std::exp(-mean);
+    for (int i = 0; i < N; ++i) {
+      int k = 0;
+      double p = 1.0;
+      do {
+        ++k;
+        p *= rng.random();
+      } while (p > limit);
+      deg[static_cast<std::size_t>(i)] = k - 1;
+    }
+  } else {
+    // Sum of exponential waiting times; exp(-mean) underflows above ~745.
+    for (int i = 0; i < N; ++i) {
+      int k = 0;
+      double s = 0.0;
+      do {
+        ++k;
+        s -= std::log(1.0 - rng.random());
+      } while (s <= mean);
+      deg[static_cast<std::size_t>(i)] = k - 1;
+    }
   }
   long long sum = 0;
   for (const int d : deg) sum += d;
@@ -69,7 +85,17 @@ inline std::vector<int> power_law_degrees(int N, double gamma, int kmin, int kma
     deg[static_cast<std::size_t>(i)] = k;
     sum += k;
   }
-  if (sum % 2 != 0) ++deg[0];
+  if (sum % 2 != 0) {
+    bool bumped = false;
+    for (int& d : deg) {
+      if (d < kmax) {
+        ++d;
+        bumped = true;
+        break;
+      }
+    }
+    if (!bumped) --deg[0];
+  }
   return deg;
 }
 

@@ -28,24 +28,21 @@ The lemma is the two-dimensional replacement for the absence of a "monotone coup
 
 ## 4.2 Why the self-dual point is $1/2$
 
-**Proposition 4.3 (★).** For bond percolation on $\mathbb{Z}^2$ at $p=1/2$, and for every $n$,
+**Proposition 4.3 (★).** For bond percolation on $\mathbb{Z}^2$ at $p=1/2$,
 $$
-\mathbb{P}_{1/2}\big(\text{open left–right crossing of }\Lambda_n\big)=\tfrac12.
+\lim_{n\to\infty}\mathbb{P}_{1/2}\big(\text{open left–right crossing of }\Lambda_n\big)=\tfrac12.
 $$
+The convergence is not exact at finite $n$. A $3\times3$ vertex box already gives $43/64=0.671875$, and a $4\times4$ box gives $3/4$. The identity is asymptotic, and it must not be used as a per-size calibration.
 
-**Proof.** Lemma 4.2 gives
+**Proof sketch.** Lemma 4.2 gives
 $$
-\mathbb{P}_p(A)+\mathbb{P}_p(B^\ast)=1
+\mathbb{P}_p(A_n)+\mathbb{P}_p(B_n^\ast)=1
 $$
-for every $p$. Under $p\mapsto1-p$ and colour exchange, $B^\ast$ becomes an open top–bottom crossing; by the fourfold symmetry of the square and the colour symmetry at $p=1/2$,
-$$
-\mathbb{P}_{1/2}(B^\ast)=\mathbb{P}_{1/2}(\text{open top–bottom crossing})=\mathbb{P}_{1/2}(\text{open left–right crossing}).
-$$
-Hence $2\mathbb{P}_{1/2}(A)=1$. $\blacksquare$
+for every $p$ and $n$. At $p=1/2$, colour exchange turns the closed top–bottom crossing $B_n^\ast$ of the dual box into an open top–bottom crossing. The dual box has side $2n$ faces, while $A_n$ lives on a $(2n+1)\times(2n+1)$ vertex box; the two crossing probabilities are therefore not equal at finite $n$, but their difference is a boundary term that vanishes as $n\to\infty$. RSW bounds both sequences away from $0$ and $1$, so every subsequential limit exists and is bounded away from the endpoints. The boundary term forces any such limit $\pi$ to satisfy $2\pi=1$, hence $\pi=1/2$; the full sequence converges to the same value. A complete proof identifies the limit through the Harris–Kesten theorem or Cardy's formula. $\blacksquare$
 
-This is a remarkable identity: for every size, the crossing probability at $p=1/2$ is exactly one half, not merely approximately. It is a sharp finite-size check for a two-dimensional code, and the benchmark suite in `data/benchmarks.json` uses it as the primary validation of the sampler.
+The finite-size values are the reason the benchmark in `data/benchmarks.json` reports the crossing rate with its sample count rather than asserting $1/2$. At $L=32,64,128$ the recorded rates at $p=1/2$ are $0.528$, $0.538$ and $0.505$; they approach $1/2$ but are not equal to it at any of these sizes.
 
-What Proposition 4.3 does **not** give is $p_c=1/2$. It says that $p=1/2$ is a fixed point of the duality, not that it is the critical point. A model could in principle have a first-order transition elsewhere and still satisfy the identity. Closing that gap is the Harris–Kesten theorem.
+What Proposition 4.3 does **not** give is $p_c=1/2$. It says that $p=1/2$ is a fixed point of the duality in the infinite-volume limit, not that it is the critical point. A model could in principle have a first-order transition elsewhere and still satisfy the limiting identity. Closing that gap is the Harris–Kesten theorem.
 
 ## 4.3 Harris–Kesten: the architecture
 
@@ -53,22 +50,21 @@ What Proposition 4.3 does **not** give is $p_c=1/2$. It says that $p=1/2$ is a f
 
 The proof has two halves that use different machinery.
 
-**Lower half, $p_c\ge1/2$ (Harris).** Suppose $\theta(1/2)>0$. Then there is an infinite open cluster with positive probability, and by the uniqueness theorem (Theorem 5.3, which does not depend on the value of $p_c$) it is almost surely unique. A standard consequence of uniqueness plus positive density is that the probability of an open left–right crossing of $\Lambda_n$ tends to $1$ as $n\to\infty$: the infinite cluster has positive density, so it meets both sides of a large box, and the crossing event fails only if the cluster is disconnected inside the box, an event of exponentially small probability. This contradicts Proposition 4.3, which fixes the probability at $1/2$ for every $n$. Hence $\theta(1/2)=0$ and $p_c\ge1/2$.
+**Lower half, $p_c\ge1/2$ (Harris).** Suppose $\theta(1/2)>0$. Then there is an infinite open cluster with positive probability, and by the uniqueness theorem (Theorem 5.3, which does not depend on the value of $p_c$) it is almost surely unique. A standard consequence of uniqueness plus positive density is that the probability of an open left–right crossing of $\Lambda_n$ tends to $1$ as $n\to\infty$: the infinite cluster has positive density, so it meets both sides of a large box, and the crossing event fails only if the cluster is disconnected inside the box, an event of exponentially small probability. This contradicts the limit in Proposition 4.3, which forces the crossing probability to tend to $1/2$. Hence $\theta(1/2)=0$ and $p_c\ge1/2$.
 
 The step from uniqueness to "crossing probability tends to one" is the only non-elementary ingredient; it is proved in Grimmett's *Percolation*, Chapter 8, and it is where the hypothesis of amenability enters. Everything else in the lower half is Proposition 4.3.
 
 **Upper half, $p_c\le1/2$ (Kesten).** The engine is the RSW inequality.
 
-**Theorem 4.5 (Russo 1978; Seymour–Welsh 1978).** There is a constant $\delta>0$ such that for all $p$ and all $n$,
+**Theorem 4.5 (Russo 1978; Seymour–Welsh 1978).** There is a constant $\eta>0$ such that for all $p$ and all $n$,
 $$
-\mathbb{P}_p\big(\Lambda_n\text{ is crossed left–right}\big)\ \ge\ \delta
-\quad\text{whenever}\quad
-\mathbb{P}_p\big([0,2n]\times[0,n]\text{ is crossed left–right}\big)\ \ge\ \tfrac12 .
+\mathbb{P}_p\big(\Lambda_n\text{ is crossed left–right}\big)\ \ge\ \tfrac12
+\quad\Longrightarrow\quad
+\mathbb{P}_p\big([0,3n]\times[0,n]\text{ is crossed left–right}\big)\ \ge\ \eta .
 $$
+The implication is the non-trivial direction of RSW: a square crossing with probability at least one half forces a long rectangle to be crossed with a probability bounded below independently of $n$. The proof is a coarse-graining argument. Place three overlapping $n\times n$ squares along the long rectangle. A left–right crossing of the long rectangle can be assembled from crossings of the three squares, and FKG turns a lower bound on the probability of each square crossing into a lower bound on the probability of the assembly. The constant $\eta$ depends only on the value $1/2$, not on $n$.
 
-The proof is a coarse-graining argument: divide the $2n\times n$ rectangle into four $n\times n$ squares; if the long rectangle is crossed, then either two adjacent squares are crossed in the same direction, or a dual crossing exists in the complementary direction; FKG converts the alternative into a lower bound for a single square, and iterating the inequality improves $\delta$ to a constant independent of $n$.
-
-With RSW in hand, Kesten's argument is a block construction. Take $p=1/2+\varepsilon$. For $n$ large compared with $1/\varepsilon$, the probability that a given $n\times n$ block is crossed left–right is at least $\delta$, and by FKG the crossings of horizontally adjacent blocks reinforce each other. Gluing a chain of such blocks across a rectangle of width $N$ gives a left–right crossing of the whole rectangle with probability tending to $1$ exponentially in $N/n$. Stacking these rectangles and using a "ladder" argument produces, for each scale, an open path reaching distance $2^k$ with probability bounded below by a constant; a Borel–Cantelli argument then gives $\theta(1/2+\varepsilon)>0$. Hence $p_c\le1/2+\varepsilon$ for every $\varepsilon>0$.
+With RSW in hand, Kesten's argument has three steps. Take $p=1/2+\varepsilon$. First, duality and the Harris lower bound $p_c\ge1/2$ show that a closed dual crossing of a long rectangle has probability tending to zero; equivalently, the primal crossing probability of a long rectangle tends to one. Second, RSW gives a uniform lower bound for crossings of rectangles of every scale. Third, the standard ladder (renormalisation) argument converts these scale-uniform bounds into an infinite open path with positive probability, so $\theta(1/2+\varepsilon)>0$. Hence $p_c\le1/2+\varepsilon$ for every $\varepsilon>0$. The second and third steps are where the proof is long; the first is the part that uses duality at the critical point.
 
 **Remark 4.6.** The proof has been simplified repeatedly. The route in Bollobás and Riordan (2006) uses the Friedgut–Kalai sharp-threshold theorem; it is conceptually cleaner but relies on a different heavy result. No proof is short. What matters for this atlas is the structure: duality gives the fixed point, RSW gives rigidity at the fixed point, and rigidity upgrades the fixed point to the critical point.
 
@@ -149,8 +145,8 @@ The table gives the values used throughout this atlas. "Exact" means a theorem; 
 | Honeycomb | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | bond exact, site numerical | Sykes–Essam 1964; Jacobsen 2014 |
 | Kagome | 4 | $0.6527036447$ | 0.5244053(3) | site exact, bond numerical | matching argument; Jacobsen 2014 |
 | Simple cubic | 6 | 0.3116077(2) | 0.24881182(10) | numerical | Wang et al. 2013 |
-| BCC | 8 | 0.2459(1) | 0.1803(1) | numerical | van der Marck 1997 |
-| FCC | 12 | 0.1992(1) | 0.1190(1) | numerical | van der Marck 1997 |
+| BCC | 8 | 0.2459(1) | 0.1803(1) | numerical | site van der Marck 1997; bond Lorenz–Ziff 1998 |
+| FCC | 12 | 0.1992(1) | 0.1190(1) | numerical | site van der Marck 1997; bond Lorenz–Ziff 1998 |
 | Diamond | 4 | 0.4299(2) | 0.3886(2) | numerical | van der Marck 1997 |
 | Bethe lattice, degree $z$ | $z$ | $1/(z-1)$ | $1/(z-1)$ | exact | Hammersley 1957 |
 

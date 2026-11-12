@@ -75,37 +75,28 @@ $$
 $$
 则
 $$
-\frac{1}{\Delta-1}\ \le\ p_c(G)\ \le\ \frac{1}{\lambda}.
+p_c(G)\ \ge\ \frac{1}{\lambda}\ \ge\ \frac{1}{\Delta-1}.
 $$
-特别地，对每个 $d\ge2$ 的格子都有 $0<p_c<1$。
+特别地，对最大度至少为 $2$ 的图有 $p_c>0$；对每个 $d\ge2$ 的格子，由下面的定理 3.5 得 $p_c<1$。在 $z$-正则树上，两个不等号都取等号。
 
-**下界的证明（★）。** 设 $N_n$ 为从原点出发、长度为 $n$ 的开自避路径数，按重数计，并令 $N=\sum_{n\ge0}N_n$。长度为 $n$ 的路径有 $n$ 条边，故 $\mathbb{E}_p[N_n]\le\Delta(\Delta-1)^{n-1}p^n$；对几何级数求和得
+**证明（★）。** 设 $N_n$ 为从原点出发、长度为 $n$ 的开自避路径数，按重数计，并令 $N=\sum_{n\ge0}N_n$。若 $\kappa_n$ 是长度为 $n$ 的自避路径数，则 $\mathbb{E}_p[N_n]=\kappa_np^n$。固定 $p<1/\lambda$，取 $\varepsilon>0$ 使 $p(\lambda+\varepsilon)<1$。由于 $\kappa_n^{1/n}\to\lambda$，当 $n$ 足够大时 $\kappa_n\le(\lambda+\varepsilon)^n$，于是
 $$
-\mathbb{E}_p[N]\ \le\ 1+\frac{\Delta p}{1-(\Delta-1)p}\ <\ \infty\qquad\text{whenever }p<\frac{1}{\Delta-1}.
+\sum_{n\ge0}\mathbb{E}_p[N_n]\ \le\ C(p,\varepsilon)+\sum_{n\ge N}\big(p(\lambda+\varepsilon)\big)^n\ <\ \infty .
 $$
-$C_0$ 的每个顶点都至少是一条从原点出发的开路径的终点，所以 $|C_0|\le N$，进而 $\mathbb{E}_p|C_0|<\infty$。若 $\theta(p)>0$，则 $\mathbb{P}_p(|C_0|=\infty)>0$，这迫使 $\mathbb{E}_p|C_0|=\infty$，矛盾。因此当 $p<1/(\Delta-1)$ 时 $\theta(p)=0$，即 $p_c\ge1/(\Delta-1)$。$\blacksquare$
+因此 $N<\infty$ 几乎必然成立。$C_0$ 的每个顶点都至少是一条从原点出发的开自避路径的终点，所以 $|C_0|\le N$，进而 $\mathbb{E}_p|C_0|<\infty$。若 $\theta(p)>0$，则 $\mathbb{P}_p(|C_0|=\infty)>0$，这迫使 $\mathbb{E}_p|C_0|=\infty$，矛盾。因此对每个 $p<1/\lambda$ 都有 $\theta(p)=0$，即 $p_c\ge1/\lambda$。最后，长度 $n$ 的自避路径数至多 $\Delta(\Delta-1)^{n-1}$，故 $\lambda\le\Delta-1$，从而 $1/\lambda\ge1/(\Delta-1)$。$\blacksquare$
 
-**上界的证明梗概。** 固定满足 $p\lambda>1$ 的 $p$。此时 $\mathbb{E}_p[N_n]=\kappa_np^n$ 指数增长，其中 $\kappa_n$ 是长度为 $n$ 的自避路径数。二阶矩估计
-$$
-\mathbb{E}_p\big[N_n^2\big]\ \le\ C(p)\,\mathbb{E}_p[N_n]^2
-$$
-对 $1$ 的某邻域内一切 $p$ 成立，并借助自避游走的标准次乘性论证推广到每个 $p>1/\lambda$；常数吸收了相交路径对的数目，当 $p$ 足够接近 $1$ 时它是 $O(\theta^n)$，其中 $\theta<1$。于是由 Cauchy–Schwarz（Paley–Zygmund）不等式
-$$
-\mathbb{P}_p(N_n>0)\ \ge\ \frac{\mathbb{E}_p[N_n]^2}{\mathbb{E}_p[N_n^2]}
-$$
-可知，该概率被一个与 $n$ 无关的正常数 $c(p)$ 从下方界住。由于 $N_n>0$ 蕴含 $|C_0|\ge n$，于是对每个 $n$ 都有 $\mathbb{P}_p(|C_0|\ge n)\ge c(p)$。事件 $\{|C_0|\ge n\}$ 随 $n$ 递减，其极限是 $\{|C_0|=\infty\}$，故 $\mathbb{P}_p(|C_0|=\infty)\ge c(p)>0$，从而 $p>p_c$。因此 $p_c\le1/\lambda$。$\blacksquare$
-
-**注。** 下界在树上是锐的：对 $z$-正则树，$\Delta=z$、$\lambda=z-1$，两个界都等于 $1/(z-1)$。在 $\mathbb{Z}^d$ 上，两个界之间留下一道很宽的缝，而这正是接下来两章的内容。
+**关于缺失的上界的注。** 人们容易从二阶矩方法推出反向不等式 $p_c\le1/\lambda$：若 $\mathbb{E}_p[N_n]$ 增长，且 $\mathbb{E}_p[N_n^2]\le C(p)\,\mathbb{E}_p[N_n]^2$，则 $\mathbb{P}_p(N_n>0)$ 有正下界，而 $N_n>0$ 蕴含 $|C_0|\ge n$。论证本身没有问题，问题在于这个假设并非对每个 $p>1/\lambda$ 都成立。当 $p$ 超过 $1/\lambda$ 时，开自避路径的期望数确实增长，但路径彼此大量重叠，二阶矩增长得更快；一致界只在 $p$ 足够接近 $1$ 时得到证明。而 $p_c\le1/\lambda$ 实际上是假的：在 $\mathbb{Z}^2$ 上，连通常数 $\lambda=2.6381585\ldots$，故 $1/\lambda=0.3790\ldots$，但 $p_c=1/2$。正确的定量上界 $p_c<1$ 来自 Peierls 论证，而不是一阶矩。
 
 **定理 3.5（Peierls 论证）。** 对 $\mathbb{Z}^d$（$d\ge2$）上的键渗流，$p_c<1$。
 
-**证明梗概。** 假设原点的开团簇有限。那么它被一层闭的 $\ast$-连通对偶面片包围：存在一个有限的、由对偶 $(d-1)$-面组成的集合 $S$，把原点与无穷隔开。$S$ 中每块面片都对偶于一条闭键，故 $\mathbb{P}_p(S\text{ is closed})=(1-p)^{|S|}$。
+**证明梗概。** 假设原点的开团簇有限。于是它被一个闭的 $\ast$-连通对偶小片曲面围住：一个把原点与无穷远隔开的有限对偶 $(d-1)$-面集合 $S$。$S$ 的每个小片对偶于一条闭键，故 $\mathbb{P}_p(S\text{ 全闭})=(1-p)^{|S|}$。
 
-剩下的是数这样的曲面。一个由 $n$ 块对偶面片组成的 $\ast$-连通集合，若含有与原点相邻的固定面片，就可以一次一块地长出来；每块新面片沿一个面与当前集合相接，每一步至多有 $c_d$ 种选择，其中 $c_d=4d$（一个粗糙但够用的界）。因此这样的集合至多有 $c_d^{\,n}$ 个，于是
+剩下的是数曲面。含固定小片的 $n$ 个对偶小片的连通集可以用一棵有 $n-1$ 条边的生成树覆盖，而这样一棵树由对偶格中从固定小片出发、长度为 $n-1$ 的游走决定。对偶格有界度，故这样的集合至多 $c_d^{\,n}$ 个，其中 $c_d<\infty$ 只依赖于维数；我们不去优化 $c_d$。于是
 $$
-\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n.
+\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n
+=\frac{x}{1-x},\qquad x=c_d(1-p).
 $$
-当 $1-p<c_d^{-1}$ 时级数收敛且严格小于 $1$，故 $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$。因此 $p_c\le 1-c_d^{-1}<1$。$\blacksquare$
+当 $1-p<1/(2c_d)$ 时 $x<1/2$，右边严格小于 $1$，故 $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$。因此 $p_c\le 1-1/(2c_d)<1$。$\blacksquare$
 
 同一论证还给出一个显式（但很差）的数值界。更好的界来自带权地数曲面，Ising 模型与格点规范理论中的 Peierls 论证正是这样用的。
 

@@ -9,6 +9,7 @@ import {
   poissonDegrees, powerLawDegrees, configurationModel, components, allActive,
   targetedRemoval, kcore, interdependentER, molloyReed, booleanModel,
   cardyCrossing, cardyCrossingVertical, cardyHypergeom, CARDY_CONSTANT,
+  directedCrossing,
 } from '../../lib/js/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -25,6 +26,9 @@ test('shared RNG reproduces the seed-42 golden vectors', () => {
 
   const ints = new Rng(rngGolden.seed);
   assert.deepEqual(Array.from({ length: 8 }, () => ints.int(10)), rngGolden.ints_mod_10);
+
+  const normals = new Rng(rngGolden.seed);
+  assert.deepEqual(Array.from({ length: 6 }, () => normals.normal()), rngGolden.normals);
 
   const stream = new Rng(rngGolden.seed);
   let sum = 0;
@@ -94,6 +98,17 @@ test('parity probe: coupled cascade intersects the two layers', () => {
   assert.ok(last.a <= 1 && last.b <= 1);
 });
 
+test('directed percolation parity probe', () => {
+  const lat = buildLattice('square', 32);
+  for (const [mode, p, want] of [['bond', 0.65, probe('directed_bond_cross_500_seed4242')],
+                                 ['site', 0.70, probe('directed_site_cross_500_seed4242')]]) {
+    const rng = new Rng(4242);
+    let hits = 0;
+    for (let i = 0; i < 500; i++) hits += directedCrossing(lat, p, rng, { mode }).cross ? 1 : 0;
+    assert.equal(hits, want);
+  }
+});
+
 test('percolation extremes and susceptibility', () => {
   const lat = buildLattice('square', 16);
   const model = new Percolation(lat, { mode: 'bond' });
@@ -116,6 +131,41 @@ test('square-lattice self-duality at p = 1/2', () => {
   let hits = 0;
   for (let i = 0; i < 300; i++) hits += model.sample(0.5, rng).crossesLR() ? 1 : 0;
   assert.ok(Math.abs(hits / 300 - 0.5) < 0.08, `crossing rate ${hits / 300}`);
+});
+
+test('k-core exact regression: triangle plus leaf', () => {
+  // Triangle 0-1-2 plus leaf 3-2. Every triangle vertex has degree 2, so the
+  // 3-core is empty. A fixed-size queue used to lose a vertex and leave one.
+  const g = {
+    n: 4,
+    offset: Int32Array.from([0, 2, 4, 7, 8]),
+    adj: Int32Array.from([1, 2, 0, 2, 1, 0, 3, 2]),
+  };
+  const core = kcore(g, allActive(4), 3);
+  assert.equal(core.size, 0);
+  assert.deepEqual(Array.from(core.alive), [0, 0, 0, 0]);
+});
+
+test('cluster sizes are sorted and maxSize agrees', () => {
+  const model = new Percolation(buildLattice('square', 8), { mode: 'bond' });
+  const st = model.sample(0.5, new Rng(1)).analyze();
+  assert.equal(st.sizes[0], st.maxSize);
+  assert.deepEqual(st.sizes, [...st.sizes].sort((a, b) => b - a));
+});
+
+test('reseed clears the cached normal spare', () => {
+  const rng = new Rng(1);
+  rng.normal();
+  rng.seed(42);
+  assert.equal(rng.normal(), new Rng(42).normal());
+});
+
+test('RNG int rejects n > 2^32 and poisson survives a large mean', () => {
+  assert.throws(() => new Rng(1).int(4294967297));
+  const deg = poissonDegrees(4000, 1000, new Rng(2));
+  const mean = deg.reduce((a, b) => a + b, 0) / deg.length;
+  assert.ok(Math.abs(mean - 1000) < 5, `poisson mean ${mean}`);
+  assert.throws(() => powerLawDegrees(10, 1.0, 2, 1000, new Rng(3)));
 });
 
 test('network robustness and k-core', () => {

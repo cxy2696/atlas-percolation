@@ -25,31 +25,33 @@ $$
 $$
 Z_{\text{Potts}}(\beta)=\sum_{\sigma\in\{1,\dots,q\}^V}\exp\Big(-\beta\sum_{e=(u,v)}\big(1-\delta_{\sigma_u\sigma_v}\big)\Big)
 $$
-等于 $Z_G(p,q)$ 乘上一个显式因子，其中 $p=1-e^{-\beta}$。
+恰好等于 $Z_G(p,q)$，其中 $p=1-e^{-\beta}$。
 
 **证明。** 对单条边，恒等式
 $$
-e^{-\beta(1-\delta_{\sigma_u\sigma_v})}=1+\big(e^{\beta}-1\big)\delta_{\sigma_u\sigma_v}
+e^{-\beta(1-\delta_{\sigma_u\sigma_v})}
+=e^{-\beta}+\big(1-e^{-\beta}\big)\delta_{\sigma_u\sigma_v}
+=(1-p)+p\,\delta_{\sigma_u\sigma_v}
 $$
-分两种情况直接验证即可。把所有边乘起来并展开乘积，
+分两种情况直接验证：自旋相同时左边为 $1$，不同时为 $e^{-\beta}$。把所有边乘起来并展开乘积，
 $$
-\prod_{e\in E}\Big(1+(e^\beta-1)\delta_{\sigma_u\sigma_v}\Big)
-=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
+\prod_{e\in E}\Big((1-p)+p\,\delta_{\sigma_u\sigma_v}\Big)
+=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}\prod_{e\in\omega}\delta_{\sigma_u\sigma_v}.
 $$
 对 $\sigma$ 求和时，δ 的乘积迫使 $\sigma$ 在 $(V,\omega)$ 的每个连通分量上为常数，而每个分量可以取 $q$ 种颜色中的任意一种。共有 $q^{k(\omega)}$ 种染色，所以
 $$
-Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}(e^\beta-1)^{|\omega|}q^{k(\omega)}
-=\sum_\omega p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}\cdot(1-p)^{-|E|},
+Z_{\text{Potts}}(\beta)=\sum_{\omega\subseteq E}p^{|\omega|}(1-p)^{|E|-|\omega|}q^{k(\omega)}
+=Z_G(p,q).
 $$
-这里用了 $e^\beta-1=p/(1-p)$。最后一个因子与 $\omega$ 无关，在归一化中消去。$\blacksquare$
+不需要额外的前因子：伯努利权重与团簇权重已经由同一个和归一化。$\blacksquare$
 
-在 $q=2$ 时，这是 Fortuin–Kasteleyn 形式的 Ising 模型，渗流概率变成磁化强度：$\langle\sigma_0\rangle$ 随原点连通到边界的概率单调递增。这种对应是精确的，不是类比；正因为如此，渗流指数可以用自旋模型的技术计算，反过来也一样。
+在 $q=2$ 时，这是 Fortuin–Kasteleyn 形式的 Ising 模型，渗流概率变成磁化强度：在 wired 边界条件下，$\langle\sigma_0\rangle$ 等于原点连通到边界的概率。这种对应是精确的，不是类比；正因为如此，渗流指数可以用自旋模型的技术计算，反过来也一样。
 
 ## 9.3 推论
 
 **共享临界点。** RC 模型在某个值 $p_c(q)$ 处发生相变，该值是 Potts 临界温度的像。对 $\mathbb{Z}^2$ 上的 $q=2$，自对偶点是 $p_c=\sqrt2/(1+\sqrt2)=0.585786\ldots$，它在 $p=1-e^{-2\beta_c}$ 下对应 Ising 临界点 $\sinh(2\beta_c)=1$。这个等式是定理，它不用转移矩阵计算就给出 $\mathbb{Z}^2$ 上的 Ising 临界温度。$p=1/2$ 是 $q=1$（渗流）的特例，不是 Ising 点。
 
-**关于 $q$ 的单调性。** 当 $q\ge1$ 时 RC 测度正关联，满足 FKG；渗流概率关于 $p$ 单调，并且固定 $p$ 时，在适当的耦合下关于 $q$ 单调。这就是为什么增大 $q$ 可以把连续相变变成一级相变：团簇奖励偏向稠密相。
+**关于 $q$ 的单调性。** 当 $q\ge1$ 时 RC 测度正关联，满足 FKG；渗流概率关于 $p$ 单调。增大 $q$ 会奖励团簇形成，可以把连续相变变成一级相变：团簇奖励偏向稠密相。相变阶数对 $q$ 的具体依赖因模型而异，下面的陈述不依赖于关于 $q$ 的单调性。
 
 **对偶。** 在平面图上，RC 模型有一个参数经过变换的对偶模型；在正方格子上，自对偶曲线是 $p=\sqrt q/(1+\sqrt q)$，在 $q=1$ 时化为 $p\leftrightarrow1-p$。这些对偶关系是引理 4.2 的 RC 推广，也是通向正方格子与三角格子上依赖 $q$ 的临界点的最简洁路径。
 

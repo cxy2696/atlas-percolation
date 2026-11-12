@@ -75,37 +75,28 @@ $$
 $$
 Dann gilt
 $$
-\frac{1}{\Delta-1}\ \le\ p_c(G)\ \le\ \frac{1}{\lambda}.
+p_c(G)\ \ge\ \frac{1}{\lambda}\ \ge\ \frac{1}{\Delta-1}.
 $$
-Insbesondere gilt $0<p_c<1$ für jedes Gitter der Dimension $d\ge2$.
+Insbesondere ist $p_c>0$ für jeden Graphen mit Maximalgrad mindestens zwei, und $p_c<1$ für jedes Gitter der Dimension $d\ge2$ nach Satz 3.5. Auf dem $z$-regulären Baum gilt in beiden Ungleichungen Gleichheit.
 
-**Beweis der unteren Schranke (★).** Sei $N_n$ die Anzahl der offenen selbstvermeidenden Pfade der Länge $n$, die im Ursprung beginnen, mit Vielfachheit gezählt, und sei $N=\sum_{n\ge0}N_n$. Ein Pfad der Länge $n$ hat $n$ Kanten, also $\mathbb{E}_p[N_n]\le\Delta(\Delta-1)^{n-1}p^n$; durch Summation der geometrischen Reihe erhält man
+**Beweis (★).** Sei $N_n$ die Anzahl der offenen selbstvermeidenden Pfade der Länge $n$, die im Ursprung beginnen, mit Vielfachheit gezählt, und sei $N=\sum_{n\ge0}N_n$. Ist $\kappa_n$ die Anzahl der selbstvermeidenden Pfade der Länge $n$, so gilt $\mathbb{E}_p[N_n]=\kappa_np^n$. Man fixiere $p<1/\lambda$ und wähle $\varepsilon>0$ mit $p(\lambda+\varepsilon)<1$. Da $\kappa_n^{1/n}\to\lambda$, gilt $\kappa_n\le(\lambda+\varepsilon)^n$ für alle hinreichend großen $n$, also
 $$
-\mathbb{E}_p[N]\ \le\ 1+\frac{\Delta p}{1-(\Delta-1)p}\ <\ \infty\qquad\text{whenever }p<\frac{1}{\Delta-1}.
+\sum_{n\ge0}\mathbb{E}_p[N_n]\ \le\ C(p,\varepsilon)+\sum_{n\ge N}\big(p(\lambda+\varepsilon)\big)^n\ <\ \infty .
 $$
-Jeder Knoten von $C_0$ ist Endpunkt mindestens eines offenen Pfades vom Ursprung, also gilt $|C_0|\le N$ und $\mathbb{E}_p|C_0|<\infty$. Wäre $\theta(p)>0$, so wäre $\mathbb{P}_p(|C_0|=\infty)>0$, was $\mathbb{E}_p|C_0|=\infty$ erzwingt. Widerspruch. Also ist $\theta(p)=0$ für $p<1/(\Delta-1)$, d. h. $p_c\ge1/(\Delta-1)$. $\blacksquare$
+Daher ist $N<\infty$ fast sicher. Jeder Knoten von $C_0$ ist Endpunkt mindestens eines offenen selbstvermeidenden Pfades vom Ursprung, also gilt $|C_0|\le N$ und $\mathbb{E}_p|C_0|<\infty$. Wäre $\theta(p)>0$, so wäre $\mathbb{P}_p(|C_0|=\infty)>0$, was $\mathbb{E}_p|C_0|=\infty$ erzwingt. Widerspruch. Also ist $\theta(p)=0$ für jedes $p<1/\lambda$, d. h. $p_c\ge1/\lambda$. Schließlich ist die Anzahl der selbstvermeidenden Pfade der Länge $n$ höchstens $\Delta(\Delta-1)^{n-1}$, also $\lambda\le\Delta-1$ und damit $1/\lambda\ge1/(\Delta-1)$. $\blacksquare$
 
-**Skizze der oberen Schranke.** Man fixiere $p$ mit $p\lambda>1$. Dann wächst $\mathbb{E}_p[N_n]=\kappa_np^n$ exponentiell, wobei $\kappa_n$ die Anzahl der selbstvermeidenden Pfade der Länge $n$ ist. Die Zweitmomentabschätzung
-$$
-\mathbb{E}_p\big[N_n^2\big]\ \le\ C(p)\,\mathbb{E}_p[N_n]^2
-$$
-gilt für alle $p$ in einer Umgebung von $1$ und erstreckt sich mittels des üblichen Submultiplikativitätsarguments für selbstvermeidende Irrfahrten auf jedes $p>1/\lambda$; die Konstante absorbiert die Anzahl der Paare sich schneidender Pfade; diese Anzahl ist $O(\theta^n)$ mit $\theta<1$, wenn $p$ nahe genug bei $1$ liegt. Ein vollständiger Beweis, einschließlich der Submultiplikativitätsabschätzung, findet sich bei Grimmett (1999). Die rechte Seite der Cauchy–Schwarz-Ungleichung (Paley–Zygmund)
-$$
-\mathbb{P}_p(N_n>0)\ \ge\ \frac{\mathbb{E}_p[N_n]^2}{\mathbb{E}_p[N_n^2]}
-$$
-wird dann durch eine positive, von $n$ unabhängige Konstante $c(p)$ nach unten beschränkt. Da aus $N_n>0$ die Ungleichung $|C_0|\ge n$ folgt, gilt $\mathbb{P}_p(|C_0|\ge n)\ge c(p)$ für jedes $n$. Die Ereignisse $\{|C_0|\ge n\}$ schrumpfen gegen $\{|C_0|=\infty\}$, also ist $\mathbb{P}_p(|C_0|=\infty)\ge c(p)>0$ und $p>p_c$. Damit ist $p_c\le1/\lambda$. $\blacksquare$
-
-**Bemerkung.** Die untere Schranke ist auf Bäumen scharf: Für den $z$-regulären Baum gilt $\Delta=z$ und $\lambda=z-1$, beide Schranken sind also gleich $1/(z-1)$. Auf $\mathbb{Z}^d$ lassen die beiden Schranken eine breite Lücke, und genau das ist der Inhalt der nächsten beiden Kapitel.
+**Bemerkung zur fehlenden oberen Schranke.** Man ist versucht, aus der Zweitmomentmethode die umgekehrte Ungleichung $p_c\le1/\lambda$ zu folgern: Wenn $\mathbb{E}_p[N_n]$ wächst und $\mathbb{E}_p[N_n^2]\le C(p)\,\mathbb{E}_p[N_n]^2$ gilt, dann ist $\mathbb{P}_p(N_n>0)$ nach unten beschränkt, und aus $N_n>0$ folgt $|C_0|\ge n$. Der Schluss ist korrekt, aber die Voraussetzung steht nicht für jedes $p>1/\lambda$ zur Verfügung. Oberhalb von $1/\lambda$ wächst die erwartete Anzahl offener selbstvermeidender Pfade zwar, doch die Pfade überlappen stark und das zweite Moment wächst schneller; die gleichmäßige Schranke ist nur für $p$ hinreichend nahe bei $1$ bewiesen. Die Folgerung $p_c\le1/\lambda$ ist tatsächlich falsch: Auf $\mathbb{Z}^2$ ist $\lambda=2.6381585\ldots$, also $1/\lambda=0.3790\ldots$, während $p_c=1/2$ gilt. Die korrekte quantitative obere Schranke $p_c<1$ stammt aus dem Peierls-Argument, nicht aus dem ersten Moment.
 
 **Satz 3.5 (Peierls-Argument).** Für die Kantenperkolation auf $\mathbb{Z}^d$, $d\ge2$, gilt $p_c<1$.
 
-**Beweisskizze.** Angenommen, der offene Cluster des Ursprungs ist endlich. Dann ist er von einer geschlossenen $\ast$-zusammenhängenden Fläche dualer Plaketten umgeben: einer endlichen Menge $S$ dualer $(d-1)$-Flächen, die den Ursprung vom Unendlichen trennt. Jede Plakette aus $S$ ist dual zu einer geschlossenen Kante, also gilt $\mathbb{P}_p(S\text{ is closed})=(1-p)^{|S|}$.
+**Beweisskizze.** Angenommen, der offene Cluster des Ursprungs ist endlich. Dann ist er von einer geschlossenen $\ast$-zusammenhängenden Fläche dualer Plättchen umgeben: einer endlichen Menge $S$ dualer $(d-1)$-Flächen, die den Ursprung vom Unendlichen trennt. Jedes Plättchen von $S$ ist dual zu einer geschlossenen Kante, also gilt $\mathbb{P}_p(S\text{ geschlossen})=(1-p)^{|S|}$.
 
-Es bleibt, die Flächen zu zählen. Eine $\ast$-zusammenhängende Menge von $n$ dualen Plaketten, die eine feste, dem Ursprung benachbarte Plakette enthält, lässt sich Plakette für Plakette aufbauen; jede neue Plakette berührt die aktuelle Menge entlang einer Fläche, und es gibt höchstens $c_d$ Möglichkeiten pro Schritt mit $c_d=4d$ (eine grobe, aber ausreichende Schranke). Es gibt also höchstens $c_d^{\,n}$ solche Mengen, und
+Es bleibt, die Flächen zu zählen. Eine zusammenhängende Menge von $n$ dualen Plättchen, die ein festes Plättchen enthält, lässt sich durch einen aufspannenden Baum mit $n-1$ Kanten überdecken, und ein solcher Baum wird durch einen Weg der Länge $n-1$ im dualen Gitter vom festen Plättchen aus bestimmt. Da das duale Gitter beschränkten Grad hat, gibt es höchstens $c_d^{\,n}$ solche Mengen mit einer nur von $d$ abhängigen Konstanten $c_d<\infty$; wir optimieren $c_d$ nicht. Also gilt
 $$
-\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n.
+\mathbb{P}_p(0\nleftrightarrow\infty)\ \le\ \sum_{n\ge1}c_d^{\,n}(1-p)^n
+=\frac{x}{1-x},\qquad x=c_d(1-p).
 $$
-Für $1-p<c_d^{-1}$ konvergiert die Reihe und ist echt kleiner als $1$, also $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$. Daher gilt $p_c\le 1-c_d^{-1}<1$. $\blacksquare$
+Für $1-p<1/(2c_d)$ ist $x<1/2$, die rechte Seite also strikt kleiner als $1$, und es folgt $\theta(p)=1-\mathbb{P}_p(0\nleftrightarrow\infty)>0$. Damit ist $p_c\le 1-1/(2c_d)<1$. $\blacksquare$
 
 Die Skizze lässt die geometrische Buchführung aus, die die Flächenzählung rigoros macht; dasselbe Argument liefert eine explizite (sehr grobe) numerische Schranke. Bessere Schranken erhält man, indem man Flächen mit Gewichten zählt; so wird das Peierls-Argument in der Ising- und der Gittereichtheorie verwendet.
 

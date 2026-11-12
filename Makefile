@@ -16,9 +16,9 @@ JULIA  ?= julia
 CXX    ?= c++
 PORT   ?= 8788
 
-.PHONY: test test-js test-py test-cpp test-julia parity bench analyse content site serve clean
+.PHONY: test test-js test-py test-cpp test-julia parity parity-check bench analyse content site serve clean
 
-test: test-js test-py test-cpp test-julia
+test: test-js test-py test-cpp test-julia parity-check
 
 test-js:
 	$(NODE) --test tests/js/*.test.js
@@ -32,7 +32,10 @@ test-cpp:
 test-julia:
 	$(JULIA) --startup-file=no --project=lib/julia lib/julia/test/runtests.jl
 
-parity: test-js test-py test-cpp test-julia
+parity: test-js test-py test-cpp test-julia parity-check
+
+parity-check:
+	PYTHONPATH=lib/python $(PYTHON) scripts/parity.py
 
 bench:
 	mkdir -p build

@@ -26,7 +26,7 @@ Eine Simulation hat endliches $L$ und beobachtet $\theta$ daher nie. Sie beobach
 - der Kreuzungspunkt des Binder-Kumulanten $U_4=1-\langle S^4\rangle/(3\langle S^2\rangle^2)$ für zwei Größen;
 - das $p$, bei dem der Anteil des größten Clusters $S_{\max}(p,L)$ einem festen Bruchteil der Box entspricht.
 
-Jede Konvention hat eine andere Finite-Size-Korrektur. Auf dem Quadratgitter mit Kantenperkolation (Bond-Perkolation) ist die erste besonders: Die Dualität liefert $\pi(1/2,L)=1/2$ exakt für jedes $L$ mit freien Randbedingungen. Das ist ein seltener Luxus, und deshalb ist das Bond-Modell auf dem Quadratgitter der Kalibrierungsfall für jeden neuen Code. Es ist keine Lizenz, dieselbe Abkürzung auf einem anderen Gitter zu verwenden.
+Jede Konvention hat eine andere Finite-Size-Korrektur. Auf dem Quadratgitter mit Bond-Perkolation hat die erste einen nützlichen Grenzwert: Die Dualität erzwingt $\pi(1/2,L)\to1/2$ für $L\to\infty$, aber die Werte bei endlichem $L$ sind nicht exakt $1/2$. Die im Protokoll verzeichneten Raten bei $L=32,64,128$ sind $0.528$, $0.538$ und $0.505$. Man benutzt den Trend oder eine Toleranz, die die Korrektur berücksichtigt, und behandelt den Grenzwert nicht als Identität pro Größe.
 
 Die Unterschiede zwischen den Konventionen sind nicht kosmetisch. Gilt $p_c(L)=p_c+aL^{-1/\nu}(1+bL^{-\omega}+\cdots)$, so hängt der Koeffizient $a$ von der Observablen ab, $p_c$ und $\nu$ dagegen nicht. Zwei Konventionen, die bei $L=64$ um $10^{-2}$ voneinander abweichen, können nach der Extrapolation bis auf $10^{-4}$ übereinstimmen – oder einen Fehler aufdecken. Die Konvention zu nennen, gehört zur Angabe der Zahl.
 
@@ -35,7 +35,7 @@ Die Unterschiede zwischen den Konventionen sind nicht kosmetisch. Gilt $p_c(L)=p
 In der Nähe von $p_c$ lautet der Skalierungsansatz für eine Observable $A$
 
 $$
-A(p,L)=L^{y_A/\nu}\,\mathcal A\!\left((p-p_c)L^{1/\nu}\right)\left(1+cL^{-\omega}+\cdots\right),
+A(p,L)=L^{y_A}\,\mathcal A\!\left((p-p_c)L^{1/\nu}\right)\left(1+cL^{-\omega}+\cdots\right),
 $$
 
 wobei $y_A$ die Skalierungsdimension von $A$ und $\omega$ der führende Korrekturexponent ist. Für die Durchgangswahrscheinlichkeit gilt $y_A=0$, die Kurven für verschiedene $L$ sollten sich also bei $p_c$ kreuzen und zusammenfallen, wenn man sie gegen $(p-p_c)L^{1/\nu}$ aufträgt. Für $S_{\max}$ ist $y_A=d_f$, für $\chi$ ist $y_A=\gamma/\nu$.
@@ -72,7 +72,7 @@ Eine belastbare Aussage hat die Form „Wir erhalten $p_c=0.5927(3)$ aus Größe
 
 ## 11.5 Ein Protokoll
 
-1. **Das Modell festlegen.** Gitter, Site oder Kante (Site oder Bond), Randbedingungen und die Definition des Durchspannens. All das ist vor dem Blick auf die Daten schriftlich festzuhalten.
+1. **Das Modell festlegen.** Gitter, Site- oder Bond-Perkolation, Randbedingungen und die Definition des Durchspannens. All das ist vor dem Blick auf die Daten schriftlich festzuhalten.
 2. **An einem gelösten Fall kalibrieren.** Bond-Perkolation auf dem Quadratgitter bei $p=1/2$ muss eine mit $1/2$ verträgliche Durchgangsrate liefern, und jede Sprachimplementierung muss bei gleichem Seed exakt übereinstimmen.
 3. **Zwei Observablen wählen.** Einen Indikator (Durchgang) und eine Cluster-Statistik ($S_{\max}$ oder $\chi$). Wenn sie sich bei $p_c(L)$ widersprechen, liegt ein Finite-Size-Problem oder ein Fehler vor.
 4. **Genügend Stichproben verwenden.** Man beginnt mit $10^4$ Durchgangsstichproben pro Größe. Bei $\hat\pi=1/2$ ergibt das einen Standardfehler von etwa $0.5\%$; das Ziel sollte als Standardfehler formuliert werden, und die Stichprobe wird erhöht, bis er unter dem Effekt liegt, den man behaupten will.
@@ -85,9 +85,9 @@ Eine belastbare Aussage hat die Form „Wir erhalten $p_c=0.5927(3)$ aus Größe
 
 `scripts/bench.cpp` ist ein eigenständiger C++20-Harness. Er nutzt den gemeinsamen xoshiro128**-Strom, dieselbe Kantenreihenfolge auf dem Gitter wie die Bibliotheken und schreibt Rohzählungen statt angepasster Werte. `scripts/analyse_bench.py` ergänzt die Cardy-Kurve, einen Kollaps-Fit und eine Einarm-Steigung und hält Seed und Erzeugungsdatum in `data/benchmarks.json` fest.
 
-Der Benchmark soll die *Form* einer Finite-Size-Studie zeigen und nicht mit spezialisierter Hochpräzisionsarbeit konkurrieren. Das Durchgangsexperiment verwendet freie Ränder und $L\in\{32,64,128\}$; das Torus-Experiment verwendet $L\le128$; das Cardy-Experiment verwendet ein $96\times H$-Rechteck mit $H/W$ von $0.25$ bis $4$. Jede Zeile trägt ihre eigene Stichprobenzahl. Die Datenansicht auf der Website liest dieselbe Datei; fehlt die Datei, sagt die Seite das, statt eine Kurve zu erfinden.
+Der Benchmark soll die *Form* einer Finite-Size-Studie zeigen und nicht mit spezialisierter Hochpräzisionsarbeit konkurrieren. Das Durchgangsexperiment verwendet freie Ränder und $L\in\{32,64,128\}$; das Torus-Experiment verwendet $L\le128$; das Einarm-Experiment verwendet $L\le512$ und fittet nur $L\ge64$; das Cardy-Experiment verwendet ein $96\times H$-Rechteck mit $H/W$ von $0.25$ bis $4$. Der Kollaps-Fit in der Kopfzeile hält $\nu=4/3$ fest und fittet nur $p_c$; der freie Zwei-Parameter-Fit wird als Diagnose berichtet, weil er bei diesen Größen schlecht konditioniert ist. Jede Zeile trägt ihre eigene Stichprobenzahl. Die Datenansicht auf der Website liest dieselbe Datei; fehlt die Datei, sagt die Seite das, statt eine Kurve zu erfinden.
 
-Die wichtige Prüfung ist nicht, ob der angepasste Wert von $p_c$ auf vier Nachkommastellen genau bei $0.5$ landet. Entscheidend ist, ob die Durchgangsrate bei $p=1/2$ statistisch mit $1/2$ verträglich ist, ob die Kurven mit $L$ schärfer werden und ob derselbe Seed in C++, Julia, Python und JavaScript dieselben ganzzahligen Zählwerte erzeugt. Das sind die Prüfungen, die die Fehler fangen, auf die es ankommt.
+Die wichtige Prüfung ist nicht, ob der angepasste Wert von $p_c$ auf vier Nachkommastellen genau bei $0.5$ landet. Entscheidend ist, ob die Durchgangsrate bei $p=1/2$ dem Finite-Size-Trend gegen $1/2$ folgt, ob die Kurven mit $L$ schärfer werden und ob derselbe Seed in C++, Julia, Python und JavaScript dieselben ganzzahligen Zählwerte erzeugt. Das sind die Prüfungen, die die Fehler fangen, auf die es ankommt.
 
 ## 11.7 Fallstricke, in der Reihenfolge, in der sie gewöhnlich auftreten
 
