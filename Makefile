@@ -64,6 +64,7 @@ api:
 	PYTHONPATH=lib/python $(PYTHON) -m percolation_atlas serve --port $(PORT)
 
 package:
+	@cd lib/python && $(PYTHON) -c "import build" 2>/dev/null || (echo "install build first: $(PYTHON) -m pip install --user build"; exit 1)
 	cd lib/python && $(PYTHON) -m build --wheel --sdist --outdir ../../dist
 
 clean:

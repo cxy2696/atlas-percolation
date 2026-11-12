@@ -1534,3 +1534,8 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
     var(--canvas-bg);
 }
 [data-theme="light"] .canvas-wrap .corner { color: var(--text-faint); }
+
+[data-theme="light"] .source-card h3 { color: #16262d; }
+[data-theme="light"] .source-card:hover { border-color: var(--line-strong); }
+[data-theme="light"] .chip.active { background: var(--cyan); border-color: var(--cyan); color: #fff; }
+[data-theme="light"] .source-card .doi { color: #0a6470; }

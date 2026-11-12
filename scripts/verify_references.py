@@ -161,7 +161,8 @@ def main() -> int:
         "counts": counts,
         "results": sorted(results, key=lambda r: r["id"]),
     }
-    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
+    target = ROOT / "content" / ("reference_schema.json" if args.offline else "reference_audit.json")
+    target.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
     print(f"\n{len(results)} entries -> {counts}")
     bad = [r for r in results if r["status"] not in ("ok", "ok-note", "schema-only")]
     unreachable = [r for r in bad if r["status"] == "unreachable"]

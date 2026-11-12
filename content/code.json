@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12 22:11",
+ "generated": "2026-11-12 22:19",
  "languages": [
   {
    "id": "javascript",
@@ -110,14 +110,14 @@
     {
      "path": "lib/python/build/lib/percolation_atlas/algorithms.py",
      "bucket": "core",
-     "lines": 378,
-     "bytes": 11425
+     "lines": 381,
+     "bytes": 11525
     },
     {
      "path": "lib/python/build/lib/percolation_atlas/api.py",
      "bucket": "core",
      "lines": 324,
-     "bytes": 12523
+     "bytes": 12521
     },
     {
      "path": "lib/python/build/lib/percolation_atlas/cardy.py",
@@ -129,7 +129,7 @@
      "path": "lib/python/build/lib/percolation_atlas/cli.py",
      "bucket": "core",
      "lines": 259,
-     "bytes": 9063
+     "bytes": 9061
     },
     {
      "path": "lib/python/build/lib/percolation_atlas/continuum.py",
