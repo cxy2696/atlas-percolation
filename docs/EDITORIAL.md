@@ -12,7 +12,7 @@ Avoid the tells of generated prose: three-item lists that all say the same thing
 
 - A theorem is attributed to the paper that proves it.
 - An exact value is marked exact; a numerical value carries its uncertainty and source; a conjecture is called a conjecture.
-- Do not add a citation that is not in `content/references.json`. If a new source is needed, add it there with a DOI or a stable publisher URL and add the key to `content/citations.json`.
+- Do not add a citation that is not in `content/references.json`. If a new source is needed, add it there with a DOI or a stable publisher URL (or an explicit note for pre-DOI literature) and add the key to `content/citations.json`.
 - Do not translate author names, journal titles, theorem labels, code identifiers, URLs or DOIs.
 - Equations, displayed formulas, table numbers and section numbers are part of the structure: keep them unchanged.
 
