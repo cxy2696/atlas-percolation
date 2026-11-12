@@ -41,7 +41,7 @@ import { existsSync } from 'node:fs';
 import { ALGORITHM_ORDER, ALGORITHM_GUIDE, guideFor } from '../../assets/js/lib/algorithm-guide.js';
 
 test('algorithm reader covers seven routines in three languages', () => {
-  assert.equal(ALGORITHM_ORDER.length, 7);
+  assert.equal(ALGORITHM_ORDER.length, 8);
   for (const id of ALGORITHM_ORDER) {
     const entry = ALGORITHM_GUIDE[id];
     assert.ok(entry, `missing algorithm ${id}`);

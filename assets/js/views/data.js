@@ -51,7 +51,7 @@ export async function render(root, ctx) {
 
   if (!data) {
     root.querySelector('#data-body').innerHTML = `<div class="panel"><p class="mono small">${t(lang, 'no_data')}</p>
-      <pre class="mono small" style="color:#a8e8ec">clang++ -O3 -std=c++20 -o build/bench scripts/bench.cpp
+      <pre class="mono small" style="color:var(--text)">clang++ -O3 -std=c++20 -o build/bench scripts/bench.cpp
 ./build/bench > data/raw_bench.json
 python3 scripts/analyse_bench.py</pre></div>`;
     return null;
@@ -282,11 +282,11 @@ function canvas(id) {
 
 function pcTable(rows, lang) {
   return `<table class="mono" style="width:100%;border-collapse:collapse;font-size:11px">
-    <thead><tr><th style="text-align:left;color:#2b9aa6;padding:6px 4px">L</th><th style="text-align:left;color:#2b9aa6;padding:6px 4px">p_c (S=0.5)</th><th style="text-align:left;color:#2b9aa6;padding:6px 4px">${t(lang, 'data_deviation')}</th></tr></thead>
+    <thead><tr><th style="text-align:left;color:var(--cyan-dim);padding:6px 4px">L</th><th style="text-align:left;color:var(--cyan-dim);padding:6px 4px">p_c (S=0.5)</th><th style="text-align:left;color:var(--cyan-dim);padding:6px 4px">${t(lang, 'data_deviation')}</th></tr></thead>
     <tbody>${rows
       .map(
         (r) => `<tr><td style="padding:5px 4px;border-top:1px solid rgba(96,190,210,0.12)">${r.L}</td>
-        <td style="padding:5px 4px;border-top:1px solid rgba(96,190,210,0.12);color:#4fe3ea">${fmt(r.pc, 4)}</td>
+        <td style="padding:5px 4px;border-top:1px solid rgba(96,190,210,0.12);color:var(--cyan)">${fmt(r.pc, 4)}</td>
         <td style="padding:5px 4px;border-top:1px solid rgba(96,190,210,0.12);color:${Math.abs(r.pc - 0.5) > 0.004 ? '#ffb454' : '#6ef0a8'}">${fmt(r.pc - 0.5, 4)}</td></tr>`
       )
       .join('')}</tbody></table>

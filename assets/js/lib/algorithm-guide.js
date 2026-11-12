@@ -2,7 +2,7 @@
  *  the cost, the exact code path, and the mistakes that survive a quick read.
  *  The text is written by hand in the three editions; it is not generated. */
 
-export const ALGORITHM_ORDER = ['sampler', 'dsu', 'nz', 'leath', 'bootstrap', 'invasion', 'achlioptas'];
+export const ALGORITHM_ORDER = ['sampler', 'dsu', 'nz', 'leath', 'bootstrap', 'invasion', 'achlioptas', 'kcore'];
 
 export const ALGORITHM_GUIDE = {
   sampler: {
@@ -284,6 +284,46 @@ export const ALGORITHM_GUIDE = {
     },
     tests: ['tests/js/algorithms.test.js', 'lib/python/tests/test_algorithms.py', 'data/golden/algorithms-v3.json'],
   },
+  kcore: {
+    tag: { en: 'Peeling', zh: '剥离', de: 'Peeling' },
+    title: { en: 'k-core: peel the periphery', zh: 'k-core：剥掉外围', de: 'k-core: die Peripherie abschälen' },
+    purpose: {
+      en: ['The k-core is the largest induced subgraph in which every vertex has degree at least k. It is not a giant component and it is not a k-clique: it is what remains after repeatedly deleting every vertex whose current degree is below k. The result is unique, so the order of deletion cannot change it.'],
+      zh: ['k-core 是每个顶点度数至少为 k 的最大诱导子图。它不是巨分量，也不是 k-团：它是反复删除当前度数低于 k 的顶点后剩下的部分。结果唯一，所以删除顺序不会改变它。'],
+      de: ['Der k-Kern ist der größte induzierte Teilgraph, in dem jeder Knoten Grad mindestens k hat. Er ist weder eine Riesenkomponente noch eine k-Clique, sondern das, was nach wiederholtem Löschen aller Knoten mit aktuellem Grad unter k übrig bleibt. Das Ergebnis ist eindeutig.'],
+    },
+    steps: {
+      en: ['Compute the active degree of every vertex.', 'Queue every vertex whose degree is below k.', 'Remove a queued vertex, decrement the degrees of its active neighbours, and queue any neighbour that falls below k.', 'When the queue is empty, the alive set is the k-core.'],
+      zh: ['计算每个顶点的活跃度数。', '把度数低于 k 的顶点入队。', '弹出一个顶点，减少其活跃邻居的度数；低于 k 的邻居入队。', '队列为空时，存活集合就是 k-core。'],
+      de: ['Den aktiven Grad jedes Knotens berechnen.', 'Jeden Knoten mit Grad unter k einreihen.', 'Einen Knoten entfernen, die Grade seiner aktiven Nachbarn senken und Nachbarn unter k einreihen.', 'Ist die Queue leer, ist die Alive-Menge der k-Kern.'],
+    },
+    invariant: {
+      en: 'A vertex deleted at some step has current degree below k, and its degree can only decrease later, so it cannot belong to any subgraph with minimum degree k. Conversely, when the queue empties every surviving vertex has degree at least k, and the surviving set is induced. Hence it is exactly the unique maximal k-core.',
+      zh: '某一步被删除的顶点当前度数低于 k，而之后度数只会更小，所以它不可能属于任何最小度为 k 的子图。反过来，队列空时每个存活顶点度数至少为 k，且存活集合是诱导子图。因此它恰为唯一的最大 k-core。',
+      de: 'Ein gelöschter Knoten hat aktuellen Grad unter k, und sein Grad kann später nur fallen; er kann also in keinem Teilgraphen mit Mindestgrad k liegen. Ist die Queue leer, hat jeder überlebende Knoten Grad mindestens k, und die Menge ist induziert. Sie ist der eindeutige maximale k-Kern.',
+    },
+    complexity: {
+      en: [['time', 'O(n + m)'], ['memory', 'O(n)'], ['queue', 'can exceed n entries']],
+      zh: [['时间', 'O(n + m)'], ['内存', 'O(n)'], ['队列', '条目可超过 n']],
+      de: [['Zeit', 'O(n + m)'], ['Speicher', 'O(n)'], ['Queue', 'kann mehr als n Einträge haben']],
+    },
+    code: [
+      { path: 'lib/js/engine/network.js', label: 'JavaScript kcore' },
+      { path: 'lib/python/percolation_atlas/network.py', label: 'Python kcore' },
+    ],
+    notes: {
+      en: [['deg[v]', 'Counts only active neighbours, not all neighbours in the original graph.'], ['queue.push(w)', 'A vertex can be queued again after each neighbour is peeled, so the queue must be a growable list. A fixed Int32Array(n) silently drops writes.'], ['alive', 'The output mask; size is the number of survivors.']],
+      zh: [['deg[v]', '只统计活跃邻居，不是原图中的全部邻居。'], ['queue.push(w)', '每剥掉一个邻居，顶点可能再次入队，所以队列必须可增长。固定 Int32Array(n) 会静默丢弃写入。'], ['alive', '输出掩码；size 是存活数。']],
+      de: [['deg[v]', 'Zählt nur aktive Nachbarn, nicht alle Nachbarn im Originalgraphen.'], ['queue.push(w)', 'Ein Knoten kann nach jedem entfernten Nachbarn erneut eingereiht werden; die Queue muss wachsen können. Ein festes Int32Array(n) verwirft Schreibvorgänge still.'], ['alive', 'Die Ausgabemaske; size ist die Zahl der Überlebenden.']],
+    },
+    pitfalls: {
+      en: ['k = 0 returns every active vertex; that is the definition, not a bug.', 'A fixed-size queue leaves a non-k-core behind when vertices are requeued.', 'The k-core is not the giant component: a graph can have a large k-core and no giant component, or the reverse.'],
+      zh: ['k = 0 返回所有活跃顶点；这是定义，不是错误。', '固定大小队列在顶点重复入队时会留下非 k-core。', 'k-core 不是巨分量：图可以有很大的 k-core 却没有巨分量，反之亦然。'],
+      de: ['k = 0 liefert alle aktiven Knoten; das ist die Definition, kein Fehler.', 'Eine feste Queue lässt bei erneutem Einreihen einen Nicht-k-Kern zurück.', 'Der k-Kern ist nicht die Riesenkomponente: Ein Graph kann einen großen k-Kern ohne Riesenkomponente haben, oder umgekehrt.'],
+    },
+    tests: ['tests/js/engine.test.js', 'lib/python/tests/test_engine.py', 'assets/js/labs/network.js'],
+  },
+
 };
 
 export function guideFor(id, lang) {

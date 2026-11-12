@@ -1,5 +1,41 @@
 # Changelog
 
+## 3.2.0 — 2026-11-13
+
+A start-here release. The first visit now lands on a short interface guide in
+light English, the module titles in light mode are readable, the algorithm
+reader gains a k-core walkthrough, and the bibliography grows to 105 entries.
+
+**Start here**
+
+- Added the Start view (`#/en/guide`) and made it the default landing page.
+  It maps the four doors (argument, experiments, code, evidence), explains the
+  rail, hash routes, search and `?guide=open`, and gives three reading paths:
+  twenty minutes, an afternoon, and a pre-citation check.
+- The guide is authored in English, Chinese and German; the default remains
+  light/English, while language and theme choices are still remembered.
+- Added the guide to the PWA start URL, sitemap and service-worker shell.
+
+**Light-mode titles**
+
+- Fixed the module titles that inherited pale dark-HUD ink: laboratory cards,
+  library section index, inline data/source labels and compact table labels.
+- The reader headings and KaTeX fixes from 3.1.1 remain in place.
+
+**References**
+
+- Added five verified entries: Grimmett's *The Random-Cluster Model* (2006),
+  Dorogovtsev–Mendes (2002), Newman's SIAM Review article (2003), Albert–
+  Barabási (2002), and Boccaletti et al. (2006).
+- Current audit: 103 verified, 2 explanatory notes, 105 total.
+
+**Housekeeping**
+
+- Removed the stale `lib/python/build` tree from the code inventory and made
+  the inventory builder ignore build, dist and egg-info directories.
+- Kept the patch-level 3.1.1 changelog entry below; that release only changed
+  reader contrast.
+
 ## 3.1.1 — 2026-11-13
 
 A contrast patch for the reader in light mode. The page background was light

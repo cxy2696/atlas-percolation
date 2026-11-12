@@ -88,7 +88,8 @@
   "swendsen1987",
   "edwards1988",
   "grimmett1999",
-  "christensen2005"
+  "christensen2005",
+  "grimmett2006"
  ],
  "10-networks": [
   "molloy1995",
@@ -107,7 +108,12 @@
   "bianconi2018",
   "baxter2010",
   "li2021",
-  "graphtool"
+  "graphtool",
+  "dorogovtsev2002",
+  "newman2003",
+  "albert2002",
+  "boccaletti2006",
+  "grimmett2006"
  ],
  "11-measurement": [
   "newman2000",
@@ -238,7 +244,9 @@
   "boccaletti2014",
   "kivela2014",
   "isichenko1992",
-  "berkowitz1998"
+  "berkowitz1998",
+  "grimmett2006",
+  "newman2003"
  ],
  "20-design": [
   "molloy1995",

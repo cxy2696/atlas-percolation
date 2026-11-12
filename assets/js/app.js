@@ -1,5 +1,6 @@
 import { LANGS, t, partName } from './i18n.js';
 import { getManifest } from './content.js';
+import * as guide from './views/guide.js';
 import * as overview from './views/dashboard.js';
 import * as atlas from './views/atlas.js';
 import * as labs from './views/labs.js';
@@ -12,7 +13,7 @@ import { LABS } from './labs/index.js';
 import { ALGORITHM_ORDER, ALGORITHM_GUIDE } from './lib/algorithm-guide.js';
 import { initTheme, toggleTheme, themeLabel, onTheme } from './theme.js';
 
-const VIEWS = { overview, atlas, labs, code, algorithms, data, library, sources };
+const VIEWS = { guide, overview, atlas, labs, code, algorithms, data, library, sources };
 const state = { lang: 'en', view: 'overview', param: null, manifest: null, cleanup: null };
 
 function parseHash() {
@@ -22,7 +23,7 @@ function parseHash() {
   const parts = path.split('/').filter(Boolean);
   const saved = localStorage.getItem('atlas-lang-v3');
   let lang = LANGS.includes(parts[0]) ? parts[0] : LANGS.includes(saved) ? saved : 'en';
-  const view = parts[1] && VIEWS[parts[1]] ? parts[1] : 'overview';
+  const view = parts[1] && VIEWS[parts[1]] ? parts[1] : 'guide';
   const param = parts.slice(2).join('/') || null;
   return { lang, view, param, query };
 }
@@ -54,7 +55,7 @@ function buildRail() {
   const rail = document.getElementById('rail');
   const lang = state.lang;
   const bits = [];
-  if (state.view === 'overview') {
+  if (state.view === 'overview' || state.view === 'guide') {
     rail.innerHTML = '';
     return;
   }
@@ -104,6 +105,7 @@ function buildRail() {
 function buildNav() {
   const nav = document.getElementById('topnav');
   const items = [
+    ['guide', 'nav_guide'],
     ['overview', 'nav_overview'],
     ['atlas', 'nav_atlas'],
     ['labs', 'nav_labs'],

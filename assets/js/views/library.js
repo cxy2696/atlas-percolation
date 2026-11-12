@@ -45,7 +45,7 @@ export async function render(root, ctx) {
     </div>
     <p class="muted" style="max-width:780px;line-height:1.7;margin-top:-6px">${t(lang, 'library_lead')}</p>
     <div class="searchbox">
-      <span class="mono" style="color:#2b9aa6">⌕</span>
+      <span class="mono" style="color:var(--cyan-dim)">⌕</span>
       <input id="lib-q" type="search" placeholder="${t(lang, 'search_placeholder')}" autocomplete="off" />
       <kbd>/</kbd>
     </div>
@@ -77,17 +77,17 @@ export async function render(root, ctx) {
       if (!byChapter.has(e.chapter)) byChapter.set(e.chapter, []);
       byChapter.get(e.chapter).push(e);
     }
-    results.innerHTML = `<div class="rail-title" style="padding:0 0 10px;color:#4d5f6a;font-family:var(--mono);font-size:9px;letter-spacing:.2em">${t(lang, 'all_sections')}</div>` +
+    results.innerHTML = `<div class="rail-title" style="padding:0 0 10px;color:var(--text-faint);font-family:var(--mono);font-size:9px;letter-spacing:.2em">${t(lang, 'all_sections')}</div>` +
       [...byChapter.entries()]
         .map(
           ([ch, list]) => `<div style="margin-bottom:14px">
-            <div class="path" style="font-family:var(--mono);font-size:10px;color:#7d909c;margin-bottom:4px">
-              <a href="#/${lang}/atlas/${ch}" style="color:#4fe3ea;text-decoration:none">${list[0].chapterTitle}</a>
+            <div class="path" style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">
+              <a href="#/${lang}/atlas/${ch}" style="color:var(--cyan);text-decoration:none">${list[0].chapterTitle}</a>
             </div>
             ${list
               .map(
                 (e) =>
-                  `<a href="#/${lang}/atlas/${ch}" style="display:block;color:#8fa4b0;text-decoration:none;font-size:13px;padding:3px 0 3px 14px;border-left:1px solid rgba(96,190,210,0.16)">${e.heading}</a>`
+                  `<a href="#/${lang}/atlas/${ch}" style="display:block;color:var(--text-dim);text-decoration:none;font-size:13px;padding:3px 0 3px 14px;border-left:1px solid var(--line)">${e.heading}</a>`
               )
               .join('')}
           </div>`

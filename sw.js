@@ -4,7 +4,7 @@
  * assets are stale-while-revalidate.  Content JSON is network-first so a new
  * chapter is visible immediately, while the shell still works offline.
  */
-const VERSION = 'atlas-v3.1.1';
+const VERSION = 'atlas-v3.2.0';
 const SHELL = [
   './',
   'index.html',
@@ -16,6 +16,7 @@ const SHELL = [
   'assets/js/lib/plot.js',
   'assets/js/lib/algorithm-guide.js',
   'assets/js/views/algorithms.js',
+  'assets/js/views/guide.js',
   'assets/vendor/katex/katex.min.css',
   'assets/vendor/katex/katex.min.js',
   'assets/vendor/katex/contrib/auto-render.min.js',

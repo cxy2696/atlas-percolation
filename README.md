@@ -1,18 +1,18 @@
 # Percolation Atlas
 
-A trilingual, source-backed atlas of percolation theory with four reference implementations, thirteen interactive laboratories and a seven-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
+A trilingual, source-backed atlas of percolation theory with four reference implementations, thirteen interactive laboratories and an eight-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
 
-**Live content:** 21 chapters in English, Simplified Chinese and German · 13 laboratories · 7 code walkthroughs · 4 language implementations · 100 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
+**Live content:** 21 chapters in English, Simplified Chinese and German · 13 laboratories · 8 code walkthroughs · 4 language implementations · 105 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
 
 ## What is inside
 
 | Layer | Contents |
 |---|---|
 | Knowledge base | 21 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, the cross-disciplinary map, a proofs appendix, design under uncertainty, and reproducibility |
-| Sources | 100 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (98 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
+| Sources | 105 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (103 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
 | Code | C++20 (header-only), Julia, Python and JavaScript, all consuming the same xoshiro128** stream and the same lattice edge order |
 | Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, and an algorithm studio |
-| Algorithms | A seven-entry reader: Bernoulli sampler, DSU, Newman–Ziff, Leath, bootstrap, invasion and Achlioptas. Each entry gives the idea, invariant, cost, pitfalls and links to the exact source. |
+| Algorithms | An eight-entry reader: Bernoulli sampler, DSU, Newman–Ziff, Leath, bootstrap, invasion, Achlioptas and k-core. Each entry gives the idea, invariant, cost, pitfalls and links to the exact source. |
 | Data | A C++ benchmark harness, a Python analyser, and a JSON record that the Data view reads without hiding missing data |
 | Tests | Integer-exact parity probes across the four implementations, a Python+JavaScript parity contract for the v3 algorithms, RNG golden vectors, property tests, and a reference audit |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md`; the code-reading map: `docs/ALGORITHMS.md`; a CLI and JSON API: `docs/API.md` |
@@ -33,7 +33,7 @@ python3 scripts/serve.py 8788        # http://127.0.0.1:8788/
 
 Open `http://127.0.0.1:8788/`. The site must be served over HTTP; the content loader uses `fetch()`, which browsers block for `file://` URLs.
 
-The default route is the control-room overview. The eight main views are `#/en/overview`, `#/en/atlas`, `#/en/labs`, `#/en/code`, `#/en/algorithms`, `#/en/data`, `#/en/library` and `#/en/sources`. Replace `en` with `zh` or `de` to switch language; the switch is also in the header and is remembered in `localStorage`.
+The default route is the start-here guide (`#/en/guide`), in English and light mode. The nine main views are `#/en/guide`, `#/en/overview`, `#/en/atlas`, `#/en/labs`, `#/en/code`, `#/en/algorithms`, `#/en/data`, `#/en/library` and `#/en/sources`. Replace `en` with `zh` or `de` to switch language; the switch is also in the header and is remembered in `localStorage`.
 
 ## Reproduce the checks
 

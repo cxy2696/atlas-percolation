@@ -52,7 +52,7 @@ export async function render(root, ctx) {
     </div>
     <p class="muted" style="max-width:820px;line-height:1.7;margin-top:-6px">${T('sources_lead')}</p>
     <div class="searchbox">
-      <span class="mono" style="color:#2b9aa6">⌕</span>
+      <span class="mono" style="color:var(--cyan-dim)">⌕</span>
       <input id="src-q" type="search" placeholder="${T('search_sources')}" autocomplete="off" />
       <kbd>/</kbd>
     </div>

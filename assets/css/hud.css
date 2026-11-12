@@ -1344,8 +1344,8 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
   --green: #157847;
   --violet: #6a45bd;
   --text: #1b2b32;
-  --text-dim: #4b616b;
-  --text-faint: #788c95;
+  --text-dim: #40565f;
+  --text-faint: #566b74;
   --canvas-bg: #fcfaf5;
   --canvas-bg-2: #f1ecdf;
   --grid: rgba(20, 90, 105, 0.18);
@@ -1619,3 +1619,57 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
 [data-theme="light"] .toc a.active { color: #075b67; border-left-color: #087e8e; }
 [data-theme="light"] .doc-meta { color: #5d727b; }
 [data-theme="light"] .doc-meta span b { color: #075b67; }
+
+/* Module titles and index links in light mode.  Several views used pale
+   dark-HUD ink directly in markup; these overrides keep the titles legible
+   without changing the dark theme. */
+[data-theme="light"] .card h4 { color: #14232a; }
+[data-theme="light"] .card p { color: #3f555e; }
+[data-theme="light"] .card .tag,
+[data-theme="light"] .card .idx { color: var(--cyan-dim); }
+[data-theme="light"] .result a { color: #14232a; }
+[data-theme="light"] .result a:hover { color: #066a78; }
+[data-theme="light"] .hud-table.compact td:first-child { color: #2a3b43; }
+[data-theme="light"] .panel h3 { color: #3f555e; }
+[data-theme="light"] .module-links span,
+[data-theme="light"] .module-links em { color: #3f555e; }
+[data-theme="light"] .instrument-list b { color: #2a3b43; }
+[data-theme="light"] .rail-title { color: #536a73; }
+[data-theme="light"] .rail .group { color: #6b7f88; }
+
+/* ---------------------------------------------------------------- start-here guide */
+.entry-hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.7fr); gap: 22px; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+.entry-lead { margin: 0; font-size: 17px; line-height: 1.8; color: var(--text); max-width: 760px; }
+.entry-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.entry-key { border-left: 2px solid var(--amber); padding: 2px 0 2px 14px; }
+.entry-key b { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
+.entry-key p { margin: 0; color: var(--text-dim); font-size: 13px; line-height: 1.7; }
+.entry-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+.entry-card { display: block; border: 1px solid var(--line); background: linear-gradient(160deg, rgba(13, 22, 30, 0.9), rgba(8, 13, 18, 0.9)); padding: 16px; text-decoration: none; color: inherit; position: relative; min-height: 190px; transition: border-color 0.15s, transform 0.15s; }
+.entry-card:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+.entry-num { font-family: var(--mono); font-size: 10px; color: var(--cyan-dim); letter-spacing: 0.12em; }
+.entry-card h3 { margin: 10px 0 7px; font-size: 15px; font-weight: 600; color: var(--text); }
+.entry-card p { margin: 0 0 26px; font-size: 12.5px; line-height: 1.65; color: var(--text-dim); }
+.entry-arrow { position: absolute; left: 16px; bottom: 14px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; color: var(--cyan); text-transform: uppercase; }
+.entry-list { margin: 0; padding-left: 20px; color: var(--text-dim); font-size: 13px; line-height: 1.75; }
+.entry-list li { margin-bottom: 7px; }
+.entry-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.path-grid b { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan-dim); margin-bottom: 6px; }
+.path-grid p { margin: 0; color: var(--text-dim); font-size: 13px; line-height: 1.7; }
+.entry-foot { margin: 18px 0 0; color: var(--text-faint); font-size: 13px; line-height: 1.75; }
+[data-theme="light"] .entry-card { background: linear-gradient(160deg, #fdfbf7, #f7f3ea); }
+[data-theme="light"] .entry-lead { color: #1f2f36; }
+[data-theme="light"] .entry-card h3 { color: #14232a; }
+[data-theme="light"] .entry-card p,
+[data-theme="light"] .entry-list,
+[data-theme="light"] .path-grid p { color: #3f555e; }
+[data-theme="light"] .entry-key p { color: #3f555e; }
+[data-theme="light"] .entry-foot { color: #536a73; }
+@media (max-width: 1100px) { .entry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 860px) { .entry-hero { grid-template-columns: 1fr; } .entry-grid { grid-template-columns: 1fr; } .path-grid { grid-template-columns: 1fr; } .entry-card { min-height: 0; } }
+.entry-actions .btn { width: auto; flex: 0 0 auto; padding: 7px 14px; }
+[data-theme="light"] .view-head .meta { color: #536a73; }
+[data-theme="light"] .view-head .kicker { color: #075b67; }
+body[data-view="guide"] #app { grid-template-columns: 0 minmax(0, 1fr); }
+body[data-view="guide"] .rail { display: none; }

@@ -125,6 +125,22 @@ distinction visible, not to sell a discontinuity. Duplicate candidate pairs
 count as additions but do not merge components, and `q = steps / n` is the
 right horizontal axis for this sampling scheme.
 
+
+## 8. k-core peeling
+
+`kcore` in `lib/js/engine/network.js` · `kcore` in
+`lib/python/percolation_atlas/network.py`
+
+The k-core is the largest induced subgraph with minimum degree at least k. It
+is obtained by repeatedly deleting vertices whose current degree is below k.
+The result is unique, so the deletion order cannot change it.
+
+The degree array counts active neighbours, not all neighbours in the original
+graph. The queue must be a growable list: a vertex can be queued again after
+each of its neighbours is peeled. A fixed array of length `n` silently drops
+writes and leaves a non-k-core behind — that was a real regression in the
+first edition. The cost is `O(n + m)` time and `O(n)` memory.
+
 ## Tests and goldens
 
 | Claim | Check |

@@ -1801,6 +1801,96 @@
     "software",
     "algorithms"
    ]
+  },
+  {
+   "id": "grimmett2006",
+   "authors": [
+    "Grimmett, G."
+   ],
+   "year": 2006,
+   "title": "The Random-Cluster Model",
+   "venue": "Springer",
+   "doi": "10.1007/978-3-540-32891-9",
+   "type": "book",
+   "topics": [
+    "random-cluster",
+    "rigorous",
+    "core"
+   ]
+  },
+  {
+   "id": "dorogovtsev2002",
+   "authors": [
+    "Dorogovtsev, S. N.",
+    "Mendes, J. F. F."
+   ],
+   "year": 2002,
+   "title": "Evolution of networks",
+   "venue": "Advances in Physics",
+   "volume": "51",
+   "pages": "1079–1187",
+   "doi": "10.1080/00018730110112519",
+   "type": "article",
+   "topics": [
+    "networks",
+    "review"
+   ]
+  },
+  {
+   "id": "newman2003",
+   "authors": [
+    "Newman, M. E. J."
+   ],
+   "year": 2003,
+   "title": "The structure and function of complex networks",
+   "venue": "SIAM Review",
+   "volume": "45",
+   "pages": "167–256",
+   "doi": "10.1137/S003614450342480",
+   "type": "article",
+   "topics": [
+    "networks",
+    "review"
+   ]
+  },
+  {
+   "id": "albert2002",
+   "authors": [
+    "Albert, R.",
+    "Barabási, A.-L."
+   ],
+   "year": 2002,
+   "title": "Statistical mechanics of complex networks",
+   "venue": "Reviews of Modern Physics",
+   "volume": "74",
+   "pages": "47–97",
+   "doi": "10.1103/RevModPhys.74.47",
+   "type": "article",
+   "topics": [
+    "networks",
+    "review"
+   ]
+  },
+  {
+   "id": "boccaletti2006",
+   "authors": [
+    "Boccaletti, S.",
+    "Latora, V.",
+    "Moreno, Y.",
+    "Chavez, M.",
+    "Hwang, D.-U."
+   ],
+   "year": 2006,
+   "title": "Complex networks: structure and dynamics",
+   "venue": "Physics Reports",
+   "volume": "424",
+   "pages": "175–308",
+   "doi": "10.1016/j.physrep.2005.10.009",
+   "type": "article",
+   "topics": [
+    "networks",
+    "review"
+   ]
   }
  ]
 }
