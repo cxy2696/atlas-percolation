@@ -66,8 +66,9 @@ export async function render(root, ctx) {
 
   const entries = data.entries.slice();
   const auditById = new Map((audit.results || []).map((r) => [r.id, r]));
+  const noteCount = (audit.counts && audit.counts['ok-note']) || 0;
   const auditLine = audit.checked_at
-    ? `${(audit.counts && audit.counts.ok) || 0} / ${audit.total || entries.length} ${T('verified')} · ${audit.checked_at}`
+    ? `${(audit.counts && audit.counts.ok) || 0} ${T('verified')}${noteCount ? ` · ${noteCount} ${T('source_note')}` : ''} / ${audit.total || entries.length} · ${audit.checked_at}`
     : '';
   const titleOf = (chapterId) => {
     const ch = manifest?.chapters?.find((c) => c.id === chapterId);
