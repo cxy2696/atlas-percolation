@@ -58,13 +58,30 @@ def check_doi(entry: dict) -> dict:
         score = difflib.SequenceMatcher(None, found, stored).ratio()
         # Crossref often returns the main title without the subtitle.  A
         # prefix match in either direction is a legitimate match.
-        ok = score >= 0.72 or (bool(found) and (stored.startswith(found) or found.startswith(stored)))
+        title_ok = score >= 0.72 or (bool(found) and (stored.startswith(found) or found.startswith(stored)))
+        year_ok = True
+        stored_year = entry.get("year")
+        if isinstance(stored_year, int) and isinstance(year, int):
+            year_ok = abs(stored_year - year) <= 1
+        first_author = ""
+        authors = msg.get("author") or []
+        if authors:
+            first_author = (authors[0].get("family") or authors[0].get("name") or "").strip()
+        author_ok = True
+        if first_author and entry.get("authors"):
+            stored_family = entry["authors"][0].split(",")[0].strip()
+            author_ok = difflib.SequenceMatcher(None, norm(first_author), norm(stored_family)).ratio() >= 0.6
+        status_value = "ok" if title_ok and year_ok and author_ok else "metadata-mismatch"
         return {
-            "status": "ok" if ok else "title-mismatch",
+            "status": status_value,
             "http": status,
             "resolved_title": title,
             "resolved_year": year,
+            "resolved_first_author": first_author,
             "similarity": round(score, 3),
+            "title_ok": title_ok,
+            "year_ok": year_ok,
+            "author_ok": author_ok,
         }
     except Exception as exc:  # noqa: BLE001 - reported, not raised
         return {"status": "unreachable", "error": str(exc)[:200]}
