@@ -51,7 +51,33 @@ make bench
 python3 scripts/analyse_bench.py
 python3 scripts/build_content.py</pre>
       </section>
-    </div>`;
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <section class="panel">
+        <h3>${T('code_package_title')}</h3>
+        <p class="hint" style="margin-top:0">${T('code_package_lead')}</p>
+        <pre class="mono small" style="margin:8px 0 0;color:#a8e8ec;white-space:pre-wrap">python3 -m pip install -e lib/python
+atlas-perc info
+atlas-perc sample --L 128 --p 0.5 --seed 42
+atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11
+atlas-perc invasion --L 48 --seed 3
+atlas-perc explosive --n 2000 --seed 7</pre>
+      </section>
+      <section class="panel">
+        <h3>${T('code_api_title')}</h3>
+        <p class="hint" style="margin-top:0">${T('code_api_lead')}</p>
+        <pre class="mono small" style="margin:8px 0 0;color:#a8e8ec;white-space:pre-wrap">atlas-perc serve --port 8080
+GET  /api/health
+GET  /api/thresholds
+POST /api/sample
+POST /api/sweep
+POST /api/bootstrap
+POST /api/invasion
+POST /api/explosive
+GET  /api/openapi.json</pre>
+      </section>
+    </div>
+    <p class="hint" style="margin-top:12px">${T('code_audit_note')} · <a href="https://github.com/cxy2696/atlas-percolation/blob/main/docs/API.md" target="_blank" rel="noopener noreferrer">docs/API.md</a></p>`;
 
   const body = root.querySelector('#code-body');
   const pathEl = root.querySelector('#code-path');
