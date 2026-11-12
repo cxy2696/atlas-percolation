@@ -144,3 +144,13 @@ Diese Liste ist keine Schutzklausel, sondern Teil eines ehrlichen Umgangs mit de
 ## 19.12 Die Quellen lesen
 
 Die Primärquellen dieses Anhangs sind Grimmetts *Percolation* (1999) für den strengen Kern, Bollobás und Riordans *Percolation* (2006) für die moderne probabilistische Darstellung sowie die oben zitierten Originalarbeiten. Die Beweise in diesem Kapitel sind Skizzen, wo das vollständige Argument mehrere Seiten füllen würde; sie sind als Skizzen gekennzeichnet. Die Algorithmen werden durch ausführbare Tests geprüft, nicht durch Prosa: siehe `tests/js/algorithms.test.js`, `lib/python/tests/test_algorithms.py` und `data/golden/algorithms-v3.json`.
+
+### Ein kurzes Regal
+
+Wer ein strenges Buch will, nimmt Grimmetts *Percolation*; wer die moderne probabilistische Sicht mit für ein Graduiertenkurs geschriebenen Beweisen will, nimmt Bollobás und Riordan. Stauffer und Aharony bleiben der schnellste Weg in die Sprache der Physiker; Sahimis *Applications of Percolation Theory* ist die Brücke zu porösen Medien, Verbundwerkstoffen und Transport. Meester und Roy sind die Standardreferenz für Kontinuumsperkolation; Hunt, Ewing und Ghanbarian gehen sorgfältig von der Perkolation zum Fluss in realen porösen Medien.
+
+Für Netzwerke ist Newmans *Networks* das allgemeine Lehrbuch, Dorogovtsevs *Lectures on Complex Networks* die kompakte theoretische Darstellung und Bianconis *Multilayer Networks* der richtige Einstieg, wenn eine Schicht nicht reicht. Christensen und Moloney verbinden Perkolation mit Kritikalität, ohne die Physik zu verstecken. Bunde und Havlin, Hughes und Zallen sind ältere Bücher, die sich noch lohnen: Sie enthalten Argumente und experimentellen Kontext, den moderne Reviews wegkürzen.
+
+Unter den Reviews sind Saberi (2015) und Li et al. (2021) breit und gut belegt; D'Souza et al. (2019) ist die ehrliche Darstellung der explosiven Perkolation; Boccaletti et al. (2014) und Kivelä et al. (2014) decken multilayer networks von Struktur bis Dynamik ab. Isichenko (1992) ist noch immer der beste lange Essay über Perkolation, statistische Topographie und Transport in zufälligen Medien; Berkowitz und Ewing (1998) sind eine kompakte Einführung in die bodenphysikalischen Anwendungen.
+
+Das sind Lesevorschläge, keine kanonische Liste. Die Bibliographie in der Sources-Ansicht ist der vollständige Nachweis, mit DOI oder URL für jeden Eintrag und einem Hinweis, wo kein DOI existiert.

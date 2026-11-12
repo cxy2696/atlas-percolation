@@ -144,3 +144,13 @@ Listing these is not a disclaimer; it is part of using the theory honestly. A nu
 ## 19.12 Reading the sources
 
 The primary sources for this appendix are Grimmett's *Percolation* (1999) for the rigorous core, Bollobás and Riordan's *Percolation* (2006) for the modern probabilistic treatment, and the original papers cited above. The proofs in this chapter are sketches where the full argument would run to several pages; they are labelled as sketches. The algorithms are checked by executable tests, not by the prose: see `tests/js/algorithms.test.js`, `lib/python/tests/test_algorithms.py` and `data/golden/algorithms-v3.json`.
+
+### A short shelf
+
+If you want one rigorous book, take Grimmett's *Percolation*; if you want the modern probabilistic viewpoint with the proofs written for a graduate course, take Bollobás and Riordan. Stauffer and Aharony remains the quickest route into the physicists' language of exponents, and Sahimi's *Applications of Percolation Theory* is the bridge to porous media, composites and transport. Meester and Roy are the standard reference for continuum percolation; Hunt, Ewing and Ghanbarian go carefully from percolation to flow in real porous media.
+
+For networks, Newman's *Networks* is the general text, Dorogovtsev's *Lectures on Complex Networks* the compact theoretical one, and Bianconi's *Multilayer Networks* the right starting point when one layer is not enough. Christensen and Moloney connect percolation to criticality without hiding the physics. Bunde and Havlin, Hughes, and Zallen are older books that still repay reading: they contain the arguments and the experimental context that modern reviews compress away.
+
+Among reviews, Saberi (2015) and Li et al. (2021) are broad and well referenced; D'Souza et al. (2019) is the honest account of explosive percolation; Boccaletti et al. (2014) and Kivelä et al. (2014) cover multilayer networks from structure to dynamics. Isichenko (1992) is still the best long essay on percolation, statistical topography and transport in random media, and Berkowitz and Ewing (1998) is a compact introduction to the soil-physics applications.
+
+These are reading suggestions, not a canonical list. The bibliography in the Sources view is the complete record, with a DOI or URL for every entry and a note where a DOI does not exist.

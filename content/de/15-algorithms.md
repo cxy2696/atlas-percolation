@@ -93,19 +93,19 @@ Die Transfermatrix ist für den Streifen exakt; durch Vergleich verschiedener Br
 
 Die ersten drei sind in allen vier Bibliotheken implementiert; die vierte ist ein Forschungswerkzeug und nicht Teil der Referenz-API. Die Paritätsproben in `data/golden/parity.json` vergleichen ganzzahlige Zählwerte bei festem Seed. Nur so lässt sich eine Abweichung in der Kantenordnung oder im Zufallsverbrauch erkennen, bevor sie zu einem falschen Exponenten wird.
 
-## 15.9 Jenseits des Kerns: Bootstrap, explosiv und Invasion
+## 15.8 Jenseits des Kerns: Bootstrap, explosiv und Invasion
 
 Drei weitere Algorithmen sind in den Python- und JavaScript-Referenzbibliotheken implementiert und in den Laboren sichtbar. Sie beantworten andere Fragen und dürfen nicht mit dem Bernoulli-Sampler vermischt werden.
 
 **Bootstrap-Perkolation.** Besetzte Plätze sind zur Zeit null aktiv; ein leerer Platz wird aktiv, wenn mindestens $r$ seiner Nachbarn aktiv sind. Das Update ist ein monotoner Abschluss, die Endmenge also der kleinste Fixpunkt und unabhängig von der Reihenfolge. Die Queue-Implementierung aktiviert jeden Platz in der ersten Runde, in der seine Zahl aktiver Nachbarn $r$ erreicht, in $O(n+m)$ Zeit. Für $r=2$ ist die Schwelle des unendlichen Gitters null, eine endliche Box füllt sich aber oberhalb eines von $L$ abhängigen Crossovers; für $r=3$ und $r=4$ ist die Schwelle positiv. Der Unterschied ist in Labor 10 sichtbar.
 
-**Invasion-Perkolation.** Jede Kante trägt eine i.i.d. Schwelle. Von einem Seed aus akzeptiert der Cluster wiederholt die Randkante mit der kleinsten Schwelle, die zu einem unbesuchten Platz führt. Die akzeptierte Menge ist ein Spannbaum des überfluteten Gebiets; die gierige Regel ist die Definition des Prozesses, keine Näherung an Bernoulli-Perkolation. Ein Binärheap ergibt $O(m\log m)$ im schlechtesten Fall und $O(b\log b)$ in der Randgröße $b$. Kreiskanten werden verworfen; das Labor nennt das Kreisverwerfung, nicht die Trapping-Variante für verteidigende Cluster in porösen Medien.
+**Invasion-Perkolation.** Jede Kante trägt eine i.i.d. Schwelle. Von einem Seed aus akzeptiert der Cluster wiederholt die Randkante mit der kleinsten Schwelle, die zu einem unbesuchten Platz führt. Die akzeptierte Menge ist ein Spannbaum des überfluteten Gebiets; die gierige Regel ist die Definition des Prozesses, keine Näherung an Bernoulli-Perkolation. Ein Binärheap ergibt im schlechtesten Fall $O(m\log m)$; in der Randgröße $b$ schreibt man das oft als $O(b\log b)$. Kreiskanten werden verworfen; das Labor nennt das Kreisverwerfung, nicht die Trapping-Variante für verteidigende Cluster in porösen Medien.
 
 **Achlioptas-Prozess.** In jedem Schritt werden zwei Kandidatenkanten gezogen; die Produkt- (oder Summen-) Regel behält die mit den kleineren Endkomponenten. Auf dem vollständigen Graphen verzögert das die Riesenkomponente und erzeugt einen scharfen Endlichkeitssprung. Der Sprung ist keine thermodynamische Unstetigkeit: Die Produktregel ist im Limes stetig, wie die Skalenprüfung in Labor 11 zeigt. Die Implementierung nutzt dieselbe DSU und berichtet die Trajektorie als exakte Funktion der Kandidatenfolge.
 
-Die drei Algorithmen haben einen zweisprachigen Paritätsvertrag (Python und JavaScript), festgehalten in `data/golden/algorithms-v3.json`. Der viersprachige Vertrag deckt weiterhin den Bernoulli-Kern ab. Die Korrektheitsargumente stehen in Kapitel 19, die Instrumente sind die Labore 10–12.
+Die drei Algorithmen haben einen zweisprachigen Paritätsvertrag (Python und JavaScript), festgehalten in `data/golden/algorithms-v3.json`. Der viersprachige Vertrag deckt weiterhin den Bernoulli-Kern ab. Die Korrektheitsargumente stehen in Kapitel 19, die Instrumente sind die Labore 10–12; das Algorithmen-Lesebuch der Seite verlinkt jede Invariante auf die genaue Quelldatei.
 
-## 15.8 Die Implementierungen lesen
+## 15.9 Die Implementierungen lesen
 
 Die JavaScript-Engine läuft im Browser; das Python-Paket ist die lesbare Referenz; die C++-Header sind der schnelle Pfad; das Julia-Paket ist der typisierte Pfad mit denselben öffentlichen Konventionen. Die Kantenordnung ist durch `build_lattice` festgelegt, der Zufallsstrom durch `docs/RNG.md`, der DSU durch den Pseudocode oben. Eine Änderung an einem der drei ist eine brechende Änderung: Goldwerte neu erzeugen, Version erhöhen und die Korrektur in Kapitel 14 festhalten.
 

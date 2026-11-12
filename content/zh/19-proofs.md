@@ -144,3 +144,13 @@ $$
 ## 19.12 如何读原始文献
 
 本附录的原始来源是 Grimmett 的 *Percolation*（1999，严格核心）、Bollobás 与 Riordan 的 *Percolation*（2006，现代概率处理），以及上文引用的原始论文。完整论证会写好几页，因此本章中的证明是梗概，并已如此标注。算法由可执行测试检查，而不是由文字保证：见 `tests/js/algorithms.test.js`、`lib/python/tests/test_algorithms.py` 与 `data/golden/algorithms-v3.json`。
+
+### 一份简短书架
+
+想要一本严格的书，取 Grimmett 的 *Percolation*；想要现代概率视角、证明按研究生课程写，取 Bollobás 与 Riordan。Stauffer 与 Aharony 仍是进入物理学家指数语言的最快路径；Sahimi 的 *Applications of Percolation Theory* 是通往多孔介质、复合材料与输运的桥。连续渗流的标准参考是 Meester 与 Roy；Hunt、Ewing 与 Ghanbarian 则认真地从渗流走到真实多孔介质中的流动。
+
+网络方面，Newman 的 *Networks* 是通用教材，Dorogovtsev 的 *Lectures on Complex Networks* 是紧凑的理论读本，Bianconi 的 *Multilayer Networks* 是一层不够用时的正确起点。Christensen 与 Moloney 把渗流与临界现象连起来，又不掩盖物理。Bunde 与 Havlin、Hughes、Zallen 是旧书，但仍值得读：它们保留了现代综述压缩掉的论证与实验背景。
+
+综述中，Saberi（2015）与 Li 等（2021）覆盖面广、参考文献扎实；D'Souza 等（2019）是对爆炸渗流的诚实叙述；Boccaletti 等（2014）与 Kivelä 等（2014）从结构到动力学讲多层网络。Isichenko（1992）仍是关于渗流、统计地形与随机介质输运的最好长文；Berkowitz 与 Ewing（1998）是土壤物理应用的紧凑入门。
+
+这些是阅读建议，不是权威清单。来源视图中的文献库才是完整记录：每条都有 DOI 或 URL，没有 DOI 的地方有说明。

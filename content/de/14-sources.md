@@ -76,6 +76,9 @@ Die Paritätssonden in `data/golden/parity.json` sind der Vertrag zwischen den v
 
 **Ein Labor hinzufügen.** Die Engine gehört nur dann in `assets/js/engine/`, wenn sie Teil des gemeinsamen Vertrags ist. Die Seite gehört in `assets/js/labs/` und ist in `LABS` zu registrieren; mindestens der Titel, die Einleitung, jedes Bedienelement-Etikett und die Anzeigebeschriftungen sind zu lokalisieren. Ein Labor, das nur auf Englisch funktioniert, ist nicht fertig.
 
+| 20 | Bibliographie, PRL 106, 225701 | Die Arbeit war da Costa et al. zugeschrieben; Crossref und die Zeitschrift nennen Grassberger, Christensen, Bizhani, Son und Paczuski. | Der Eintrag heißt jetzt `grassberger2011` und ist neu zugeordnet; die Zitationskarte ist aktualisiert. Das Audit prüft nun den ersten Autor, nicht nur den Titel. |
+| 21 | Invasion-Labor und die v3-Golden-Datei | `loops` zählte eine verworfene Kante pro Heap-Eintrag; eine Kante mit zwei besuchten Endpunkten konnte doppelt zählen. Die 16×16-Probe meldete 450 statt 225. | Die Implementierung zählt jede verworfene Kante einmal. Der Golden-Wert ist 225, die Anzeige nutzt den korrigierten Zähler. |
+
 **Eine Sprache hinzufügen.** Der Sprachcode ist zu `LANGS` hinzuzufügen, ein Inhaltsverzeichnis anzulegen, eine UI-Stringtabelle hinzuzufügen und `scripts/build_content.py` zu erweitern. Das Layout ist bei 1280, 1440 und 1920 Pixeln zu prüfen; deutsche Beschriftungen sind länger als englische, chinesische kürzer, und ein Layout, das nur zu einer Sprache passt, ist kein Layout.
 
 **Ein Ergebnis aktualisieren.** Die Markdown-Quelle ist zu ändern, nicht das erzeugte JSON. Betrifft das Ergebnis einen Codepfad, ist zuerst ein Regressionstest hinzuzufügen. Ändert es eine veröffentlichte Zahl, ist eine Zeile in Abschnitt 14.3 zu ergänzen und die Minor-Version zu erhöhen.

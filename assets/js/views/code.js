@@ -13,12 +13,12 @@ const INITIAL = {
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 export async function render(root, ctx) {
-  const { lang } = ctx;
+  const { lang, query } = ctx;
   const T = (k) => t(lang, k);
   root.innerHTML = `
     <div class="view-head">
       <div><div class="kicker">${T('code_kicker')}</div><h2>${T('code_title')}</h2></div>
-      <div class="meta">4 LANGUAGES<br>1 RNG CONTRACT</div>
+      <div class="meta">4 LANGUAGES<br>1 RNG CONTRACT<br><a href="#/${lang}/algorithms" style="color:var(--cyan)">${T('nav_algorithms')} ↗</a></div>
     </div>
     <p class="muted" style="max-width:840px;line-height:1.7;margin-top:-6px">${T('code_lead')}</p>
     <div class="code-workbench">
@@ -46,7 +46,7 @@ export async function render(root, ctx) {
       </section>
       <section class="panel">
         <h3>${T('code_run_title')}</h3>
-        <pre class="mono small" style="margin:0;color:#a8e8ec;white-space:pre-wrap">make test
+        <pre class="mono small" style="margin:0;color:var(--text-dim);white-space:pre-wrap">make test
 make bench
 python3 scripts/analyse_bench.py
 python3 scripts/build_content.py</pre>
@@ -56,7 +56,7 @@ python3 scripts/build_content.py</pre>
       <section class="panel">
         <h3>${T('code_package_title')}</h3>
         <p class="hint" style="margin-top:0">${T('code_package_lead')}</p>
-        <pre class="mono small" style="margin:8px 0 0;color:#a8e8ec;white-space:pre-wrap">python3 -m pip install -e lib/python
+        <pre class="mono small" style="margin:8px 0 0;color:var(--text-dim);white-space:pre-wrap">python3 -m pip install -e lib/python
 atlas-perc info
 atlas-perc sample --L 128 --p 0.5 --seed 42
 atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11
@@ -66,7 +66,7 @@ atlas-perc explosive --n 2000 --seed 7</pre>
       <section class="panel">
         <h3>${T('code_api_title')}</h3>
         <p class="hint" style="margin-top:0">${T('code_api_lead')}</p>
-        <pre class="mono small" style="margin:8px 0 0;color:#a8e8ec;white-space:pre-wrap">atlas-perc serve --port 8080
+        <pre class="mono small" style="margin:8px 0 0;color:var(--text-dim);white-space:pre-wrap">atlas-perc serve --port 8080
 GET  /api/health
 GET  /api/thresholds
 POST /api/sample
@@ -85,8 +85,13 @@ GET  /api/openapi.json</pre>
   const treeEl = root.querySelector('#file-tree');
   const langEl = root.querySelector('#code-langs');
   let inventory = null;
+  const requested = query && query.file ? decodeURIComponent(query.file) : '';
   let activeLang = 'javascript';
-  let activeFile = INITIAL.javascript;
+  if (requested.includes('/python/') || requested.startsWith('lib/python/')) activeLang = 'python';
+  else if (requested.includes('/cpp/') || requested.startsWith('lib/cpp/')) activeLang = 'cpp';
+  else if (requested.includes('/julia/') || requested.startsWith('lib/julia/')) activeLang = 'julia';
+  let activeFile = requested || INITIAL[activeLang];
+  langEl.querySelectorAll('button').forEach((b) => b.classList.toggle('active', b.dataset.lang === activeLang));
   let sourceText = '';
 
   try {

@@ -84,7 +84,10 @@ def code_manifest() -> dict:
         for bucket, patterns in (("core", core_globs), ("tests", test_globs)):
             for pattern in patterns:
                 for path in sorted(ROOT.glob(pattern)):
-                    if not path.is_file() or "__pycache__" in path.parts:
+                    if not path.is_file() or any(
+                        part in {"__pycache__", "build", "dist"} or part.endswith(".egg-info")
+                        for part in path.parts
+                    ):
                         continue
                     rel = path.relative_to(ROOT).as_posix()
                     if rel in seen:

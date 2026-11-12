@@ -4,13 +4,15 @@ import * as overview from './views/dashboard.js';
 import * as atlas from './views/atlas.js';
 import * as labs from './views/labs.js';
 import * as code from './views/code.js';
+import * as algorithms from './views/algorithms.js';
 import * as data from './views/data.js';
 import * as library from './views/library.js';
 import * as sources from './views/sources.js';
 import { LABS } from './labs/index.js';
+import { ALGORITHM_ORDER, ALGORITHM_GUIDE } from './lib/algorithm-guide.js';
 import { initTheme, toggleTheme, themeLabel, onTheme } from './theme.js';
 
-const VIEWS = { overview, atlas, labs, code, data, library, sources };
+const VIEWS = { overview, atlas, labs, code, algorithms, data, library, sources };
 const state = { lang: 'en', view: 'overview', param: null, manifest: null, cleanup: null };
 
 function parseHash() {
@@ -18,7 +20,7 @@ function parseHash() {
   const [path, search = ''] = raw.split('?');
   const query = Object.fromEntries(new URLSearchParams(search));
   const parts = path.split('/').filter(Boolean);
-  const saved = localStorage.getItem('atlas-lang');
+  const saved = localStorage.getItem('atlas-lang-v3');
   let lang = LANGS.includes(parts[0]) ? parts[0] : LANGS.includes(saved) ? saved : 'en';
   const view = parts[1] && VIEWS[parts[1]] ? parts[1] : 'overview';
   const param = parts.slice(2).join('/') || null;
@@ -54,6 +56,20 @@ function buildRail() {
   const bits = [];
   if (state.view === 'overview') {
     rail.innerHTML = '';
+    return;
+  }
+  if (state.view === 'algorithms') {
+    bits.push(`<div class="rail-title">${t(lang, 'algorithms_title')}</div>`);
+    ALGORITHM_ORDER.forEach((id, i) => {
+      const meta = ALGORITHM_GUIDE[id];
+      const title = meta.title[lang] || meta.title.en;
+      const active = state.param === id;
+      bits.push(
+        `<a href="#/${lang}/algorithms/${id}" class="${active ? 'active' : ''}">` +
+          `<span class="num">${String(i + 1).padStart(2, '0')}</span>${title}</a>`
+      );
+    });
+    rail.innerHTML = bits.join('');
     return;
   }
   if (state.view === 'labs') {
@@ -92,6 +108,7 @@ function buildNav() {
     ['atlas', 'nav_atlas'],
     ['labs', 'nav_labs'],
     ['code', 'nav_code'],
+    ['algorithms', 'nav_algorithms'],
     ['data', 'nav_data'],
     ['library', 'nav_library'],
     ['sources', 'nav_sources'],
@@ -117,7 +134,7 @@ async function route() {
   state.lang = lang;
   state.view = view;
   state.param = param;
-  localStorage.setItem('atlas-lang', lang);
+  localStorage.setItem('atlas-lang-v3', lang);
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
   document.body.dataset.view = view;
   document.title = `${t(lang, 'brand')} — ${t(lang, view === 'overview' ? 'nav_overview' : `nav_${view}`)}`;

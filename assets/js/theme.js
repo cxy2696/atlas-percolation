@@ -6,7 +6,7 @@
  *  `onTheme` and redraws, so switching theme never requires a page reload.
  */
 
-const KEY = 'atlas-theme';
+const KEY = 'atlas-theme-v3';
 const META = { dark: '#06090d', light: '#f4f1ea' };
 
 export function currentTheme() {
@@ -40,30 +40,16 @@ export function initTheme() {
   } catch (e) {
     /* private mode */
   }
-  const system = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   let forced = null;
   try {
     forced = new URLSearchParams(location.search).get('theme');
   } catch (e) {
     /* ignore */
   }
-  const theme = forced === 'light' || forced === 'dark' ? forced : saved === 'light' || saved === 'dark' ? saved : system;
+  const theme = forced === 'light' || forced === 'dark' ? forced : saved === 'light' || saved === 'dark' ? saved : 'light';
   document.documentElement.dataset.theme = theme;
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', META[theme]);
-  if (window.matchMedia) {
-    const mq = window.matchMedia('(prefers-color-scheme: light)');
-    const onChange = (e) => {
-      let stored = null;
-      try {
-        stored = localStorage.getItem(KEY);
-      } catch (err) {
-        /* ignore */
-      }
-      if (!stored) setTheme(e.matches ? 'light' : 'dark', false);
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-  }
   return theme;
 }
 

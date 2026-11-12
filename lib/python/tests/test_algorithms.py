@@ -139,6 +139,18 @@ class ExplosiveTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             explosive_sweep(16, lat.eu, lat.ev, order, rule="nope")
 
+    def test_guards(self):
+        lat = build_lattice("square", 4)
+        th = [0.5] * lat.m
+        with self.assertRaises(ValueError):
+            invasion_cluster(lat.n, lat.eu, lat.ev, th, -1)
+        with self.assertRaises(ValueError):
+            invasion_cluster(lat.n, lat.eu, lat.ev, th, lat.n)
+        with self.assertRaises(ValueError):
+            leath_cluster(lat, lat.n, 0.5, Rng(1))
+        with self.assertRaises(ValueError):
+            explosive_random_graph(1, seed=1)
+
     def test_lattice_golden(self):
         lat = build_lattice("square", 4)
         ex = explosive_percolation(16, lat.eu, lat.ev, seed=11, rule="sum")

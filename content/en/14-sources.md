@@ -76,6 +76,9 @@ The parity probes in `data/golden/parity.json` are the contract between the four
 
 **Adding a laboratory.** Put the engine in `assets/js/engine/` only if it is part of the shared contract. Put the page in `assets/js/labs/`, register it in `LABS`, and localise at least the title, the lead, every control label and the readout captions. A lab that only works in English is not finished.
 
+| 20 | Bibliography, PRL 106, 225701 | The paper was attributed to da Costa et al.; the Crossref record and the journal give Grassberger, Christensen, Bizhani, Son and Paczuski. | The entry is renamed `grassberger2011` and re-attributed; the citation map is updated. The audit now checks the first author, not only the title. |
+| 21 | Invasion laboratory and the v3 golden file | `loops` counted a rejected edge once per heap entry, so an edge with two visited endpoints could be counted twice; the 16×16 probe reported 450 instead of 225. | The implementation records each rejected edge once. The golden value is 225, and the readout uses the corrected count. |
+
 **Adding a language.** Add the language code to `LANGS`, add a content directory, add a UI string table, and extend `scripts/build_content.py`. The layout must be checked at 1280, 1440 and 1920 pixels; German labels are longer than English and Chinese labels are shorter, and a layout that only fits one language is not a layout.
 
 **Updating a result.** Change the Markdown source, not the generated JSON. If the result affects a code path, add a regression test first. If it changes a published number, add a row to Section 14.3 and bump the minor version.

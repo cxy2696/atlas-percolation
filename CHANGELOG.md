@@ -1,5 +1,56 @@
 # Changelog
 
+## 3.1.0 — 2026-11-12
+
+A readability and evidence release. The site now opens light and English on a
+first visit, the algorithm code has a reader of its own, and the bibliography
+grew from 81 to 100 entries.
+
+**Default and navigation**
+
+- First visit lands on `#/en/overview` with the light theme. A saved choice
+  still wins; `?theme=dark` / `?theme=light` force a theme for links and
+  screenshots. The inline boot script, the `<html>` attribute and the theme
+  module all agree on the default, so there is no dark flash.
+- Added an **Algorithms** view to the top bar and rail. It covers seven
+  routines with the idea, the invariant, the cost, the common mistakes, the
+  exact source links and the tests that check them.
+- The Code workbench accepts `?file=...` deep links, so an algorithm page can
+  open the real file instead of a paraphrase.
+
+**Algorithm and code readability**
+
+- Added `assets/js/lib/algorithm-guide.js` and `assets/js/views/algorithms.js`;
+  the guide is authored in English, Chinese and German.
+- Added `docs/ALGORITHMS.md`, a repository-level map of the seven routines and
+  their correctness arguments.
+- Removed the unused `trapping` flag from the invasion interface. The code and
+  the guide now say plainly that the implementation uses loop rejection and is
+  not the trapping variant.
+- Kept the v3 contract honest: bootstrap, invasion, Leath and Achlioptas are
+  Python + JavaScript; the Bernoulli core remains four-language.
+
+**References**
+
+- Added 19 verified entries: books by Dorogovtsev, Newman, Christensen and
+  Moloney, Zallen, Bunde and Havlin, Hughes, and Bianconi; reviews by Li et al.,
+  Saberi, D'Souza et al., Boccaletti et al., Kivelä et al. and Isichenko;
+  papers by Nienhuis, Smirnov, Baxter et al., De Domenico et al. and Berkowitz
+  and Ewing; plus the graph-tool software entry.
+- The audit now checks the DOI title, year and first author. Current count:
+  98 verified, 2 explanatory notes, 100 total.
+- The chapters that use these sources cite them: two dimensions, exponents,
+  networks, multilayer networks, applications, transport, proofs and design.
+
+**Small corrections and polish**
+
+- Light-theme contrast fixes for source cards, code file trees and canvas
+  wrappers.
+- The code view explains the parity scope in one sentence rather than letting
+  the old “four languages” headline overstate it.
+- The algorithm reader states the bootstrap `r = 2` zero-threshold and the
+  Achlioptas continuity caveats in place, next to the code.
+
 ## 3.0.0 — 2026-11-12
 
 The algorithm and application release. The atlas grows from 18 to 21 chapters,

@@ -139,6 +139,8 @@ def explosive_sweep(n: int, eu, ev, candidate_order, rule: str = "product") -> E
     """
     if rule not in ("product", "sum"):
         raise ValueError("rule must be product or sum")
+    if candidate_order and (min(candidate_order) < 0 or max(candidate_order) >= len(eu)):
+        raise ValueError("candidate_order contains an edge index outside 0..m-1")
     dsu = Dsu(n)
     sum2 = n
     steps = []
@@ -205,6 +207,8 @@ def explosive_random_graph(n: int, rule: str = "product", steps: int | None = No
     """Achlioptas process on the complete graph (two random candidate edges)."""
     if rule not in ("product", "sum"):
         raise ValueError("rule must be product or sum")
+    if not isinstance(n, int) or n < 2:
+        raise ValueError("explosive_random_graph needs n >= 2")
     rng = Rng(seed)
     dsu = Dsu(n)
     sum2 = n
@@ -273,19 +277,20 @@ class InvasionResult:
     visited: list
     size: int
     loops: int
-    trapping: bool
     last_threshold: float
     threshold: list | None = None
 
 
-def invasion_cluster(n: int, eu, ev, threshold, seed: int = 0, trapping: bool = False) -> InvasionResult:
-    """Invasion percolation without trapping correction.
+def invasion_cluster(n: int, eu, ev, threshold, seed: int = 0) -> InvasionResult:
+    """Invasion percolation with loop rejection.
 
     Every edge has an i.i.d. threshold.  Starting from the seed, repeatedly
     accept the lowest-threshold boundary edge leading to an unvisited site.
     Loops are discarded.  The accepted set is a spanning tree of the invaded
-    cluster; the option only labels loop rejection, not full trapping.
+    cluster.  This is not the trapping variant used for defending clusters.
     """
+    if not isinstance(seed, int) or seed < 0 or seed >= n:
+        raise ValueError("invasion seed must be a site index")
     m = len(eu)
     start, adj, edge_of, _deg = neighbours_from_edges(n, eu, ev)
     visited = [0] * n
@@ -323,15 +328,14 @@ def invasion_cluster(n: int, eu, ev, threshold, seed: int = 0, trapping: bool = 
         visited=visited,
         size=len(order),
         loops=loops,
-        trapping=trapping,
         last_threshold=keys[-1] if keys else 0.0,
     )
 
 
-def invasion_percolation(n: int, eu, ev, seed: int = 1, rng_seed: int = 1, trapping: bool = False) -> InvasionResult:
+def invasion_percolation(n: int, eu, ev, seed: int = 1, rng_seed: int = 1) -> InvasionResult:
     rng = Rng(rng_seed)
     threshold = [rng.random() for _ in range(len(eu))]
-    result = invasion_cluster(n, eu, ev, threshold, seed, trapping)
+    result = invasion_cluster(n, eu, ev, threshold, seed)
     result.threshold = threshold
     return result
 
@@ -348,6 +352,8 @@ class LeathResult:
 def leath_cluster(lattice, seed: int, p: float, rng: Rng, max_size: int = 1 << 60) -> LeathResult:
     """Grow the cluster of `seed` in bond percolation at p."""
     n = lattice.n
+    if not isinstance(seed, int) or seed < 0 or seed >= n:
+        raise ValueError("Leath seed must be a site index")
     start, adj, edge_of, _deg = neighbours_from_edges(n, lattice.eu, lattice.ev)
     visited = [0] * n
     tested = [0] * lattice.m

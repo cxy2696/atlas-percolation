@@ -36,3 +36,25 @@ test('guideHTML emits an openable details block with the read pane active', () =
   assert.match(html, /data-tab="params"/);
   assert.equal(guideHTML('not-a-lab', 'en'), '');
 });
+
+import { existsSync } from 'node:fs';
+import { ALGORITHM_ORDER, ALGORITHM_GUIDE, guideFor } from '../../assets/js/lib/algorithm-guide.js';
+
+test('algorithm reader covers seven routines in three languages', () => {
+  assert.equal(ALGORITHM_ORDER.length, 7);
+  for (const id of ALGORITHM_ORDER) {
+    const entry = ALGORITHM_GUIDE[id];
+    assert.ok(entry, `missing algorithm ${id}`);
+    for (const lang of ['en', 'zh', 'de']) {
+      const g = guideFor(id, lang);
+      assert.ok(g.purpose.length >= 1, `${id}.${lang}.purpose`);
+      assert.ok(g.steps.length >= 3, `${id}.${lang}.steps`);
+      assert.ok(g.invariant.length > 40, `${id}.${lang}.invariant`);
+      assert.ok(g.complexity.length >= 2, `${id}.${lang}.complexity`);
+      assert.ok(g.notes.length >= 2, `${id}.${lang}.notes`);
+      assert.ok(g.pitfalls.length >= 2, `${id}.${lang}.pitfalls`);
+    }
+    assert.ok(entry.code.length >= 1);
+    for (const c of entry.code) assert.ok(existsSync(c.path), `missing source ${c.path}`);
+  }
+});

@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-11-12 22:23",
+ "checked_at": "2026-11-12 23:06",
  "method": "crossref-doi+http-url",
- "total": 81,
+ "total": 100,
  "counts": {
-  "ok": 79,
+  "ok": 98,
   "ok-note": 2
  },
  "results": [
@@ -80,6 +80,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Bootstrap percolation on complex networks",
+   "resolved_year": 2010,
+   "resolved_first_author": "Baxter",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "baxter2010",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Diffusion and Reactions in Fractals and Disordered Systems",
    "resolved_year": 2000,
    "resolved_first_author": "ben-Avraham",
@@ -94,6 +108,34 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Percolation Theory and Network Modeling Applications in Soil Physics",
+   "resolved_year": 1998,
+   "resolved_first_author": "Berkowitz",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "berkowitz1998",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Multilayer Networks",
+   "resolved_year": 2018,
+   "resolved_first_author": "Bianconi",
+   "similarity": 0.623,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "bianconi2018",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Inequalities with applications to percolation and reliability",
    "resolved_year": 1985,
    "resolved_first_author": "Van Den Berg",
@@ -102,6 +144,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "bk1985",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "The structure and dynamics of multilayer networks",
+   "resolved_year": 2014,
+   "resolved_first_author": "Boccaletti",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "boccaletti2014",
    "source": "doi",
    "problems": []
   },
@@ -150,6 +206,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Fractals and Disordered Systems",
+   "resolved_year": 1996,
+   "resolved_first_author": "",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "bunde1996",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Density and uniqueness in percolation",
    "resolved_year": 1989,
    "resolved_first_author": "Burton",
@@ -192,6 +262,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Complexity and Criticality",
+   "resolved_year": 2005,
+   "resolved_first_author": "Christensen",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "christensen2005",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Resilience of the Internet to Random Breakdowns",
    "resolved_year": 2000,
    "resolved_first_author": "Cohen",
@@ -223,6 +307,20 @@
    "resolved_title": "[1502.03051] A new proof of the sharpness of the phase transition for Bernoulli percolation on $\\mathbb Z^d$",
    "id": "dct2016",
    "source": "url",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Mathematical Formulation of Multilayer Networks",
+   "resolved_year": 2013,
+   "resolved_first_author": "De Domenico",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "dedomenico2013",
+   "source": "doi",
    "problems": []
   },
   {
@@ -264,6 +362,34 @@
    "year_ok": true,
    "author_ok": true,
    "id": "dorogovtsev2008",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Lectures on Complex Networks",
+   "resolved_year": 2010,
+   "resolved_first_author": "Dorogovtsev",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "dorogovtsev2010",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Explosive phenomena in complex networks",
+   "resolved_year": 2019,
+   "resolved_first_author": "D'Souza",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "dsouza2019",
    "source": "doi",
    "problems": []
   },
@@ -377,6 +503,14 @@
    "author_ok": true,
    "id": "gilbert1961",
    "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "graph-tool: Efficient network analysis with Python",
+   "id": "graphtool",
+   "source": "url",
    "problems": []
   },
   {
@@ -550,6 +684,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Random Walks And Random Environments",
+   "resolved_year": 1995,
+   "resolved_first_author": "Hughes",
+   "similarity": 0.766,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "hughes1995",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Percolation Theory for Flow in Porous Media",
    "resolved_year": 2014,
    "resolved_first_author": "Hunt",
@@ -558,6 +706,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "hunt2013",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Percolation, statistical topography, and transport in random media",
+   "resolved_year": 1992,
+   "resolved_first_author": "Isichenko",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "isichenko1992",
    "source": "doi",
    "problems": []
   },
@@ -642,6 +804,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Multilayer networks",
+   "resolved_year": 2014,
+   "resolved_first_author": "Kivela",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "kivela2014",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Conformal invariance in two-dimensional percolation",
    "resolved_year": 1994,
    "resolved_first_author": "Langlands",
@@ -664,6 +840,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "leath1976",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Percolation on complex networks: Theory and application",
+   "resolved_year": 2021,
+   "resolved_first_author": "Li",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "li2021",
    "source": "doi",
    "problems": []
   },
@@ -824,6 +1014,34 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Networks",
+   "resolved_year": 2018,
+   "resolved_first_author": "Newman",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "newman2018",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Analytical calculation of two leading exponents of the dilute Potts model",
+   "resolved_year": 1982,
+   "resolved_first_author": "Nienhuis",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "nienhuis1982",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Maths Museum - Jan Olucha Fuentes",
    "id": "olucha_nd",
    "source": "url",
@@ -902,6 +1120,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Recent advances in percolation theory and its applications",
+   "resolved_year": 2015,
+   "resolved_first_author": "Saberi",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "saberi2015",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Applications Of Percolation Theory",
    "resolved_year": 1994,
    "resolved_first_author": "Sahini",
@@ -966,6 +1198,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "smirnov2001",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Conformal invariance in random cluster models. I. Holmorphic fermions in the Ising model",
+   "resolved_year": 2010,
+   "resolved_first_author": "Smirnov",
+   "similarity": 0.994,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "smirnov2010",
    "source": "doi",
    "problems": []
   },
@@ -1106,6 +1352,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "wierman1981",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "The Physics of Amorphous Solids",
+   "resolved_year": 1983,
+   "resolved_first_author": "Zallen",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "zallen1983",
    "source": "doi",
    "problems": []
   }

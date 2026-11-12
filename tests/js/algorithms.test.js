@@ -156,3 +156,12 @@ test('explosive lattice golden', () => {
   assert.equal(ex.maxJump, expected.explosive_lattice_4x4_seed11_sum.maxJump);
   assert.equal(ex.jumpAt, expected.explosive_lattice_4x4_seed11_sum.jumpAt);
 });
+
+test('algorithm guards reject impossible seeds and tiny graphs', () => {
+  const lat = buildLattice('square', 4);
+  const th = new Float64Array(lat.m).fill(0.5);
+  assert.throws(() => invasionCluster(lat.n, lat.eu, lat.ev, th, -1));
+  assert.throws(() => invasionCluster(lat.n, lat.eu, lat.ev, th, lat.n));
+  assert.throws(() => leathCluster(lat, lat.n, 0.5, new Rng(1)));
+  assert.throws(() => explosiveRandomGraph(1, { seed: 1 }));
+});

@@ -1,6 +1,6 @@
 {
   "name": "atlas-percolation",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Trilingual atlas of percolation theory with 13 interactive laboratories, four-language core code and a distributable algorithm package",
   "type": "module",
   "private": true,

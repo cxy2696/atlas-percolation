@@ -64,7 +64,8 @@
   "smirnov2001",
   "lsw2001a",
   "lsw2001b",
-  "grimmett1999"
+  "grimmett1999",
+  "nienhuis1982"
  ],
  "07-two-dimensions": [
   "cardy1992",
@@ -72,7 +73,9 @@
   "smirnov2001",
   "lsw2001a",
   "lsw2001b",
-  "grimmett1999"
+  "grimmett1999",
+  "nienhuis1982",
+  "smirnov2010"
  ],
  "08-high-dimensions": [
   "hara1990",
@@ -84,7 +87,8 @@
   "fortuin1972",
   "swendsen1987",
   "edwards1988",
-  "grimmett1999"
+  "grimmett1999",
+  "christensen2005"
  ],
  "10-networks": [
   "molloy1995",
@@ -94,7 +98,16 @@
   "buldyrev2010",
   "parshani2010",
   "dorogovtsev2006",
-  "dorogovtsev2008"
+  "dorogovtsev2008",
+  "newman2018",
+  "dorogovtsev2010",
+  "boccaletti2014",
+  "kivela2014",
+  "dedomenico2013",
+  "bianconi2018",
+  "baxter2010",
+  "li2021",
+  "graphtool"
  ],
  "11-measurement": [
   "newman2000",
@@ -112,7 +125,15 @@
   "newman2002",
   "buldyrev2010",
   "parshani2010",
-  "stauffer1994"
+  "stauffer1994",
+  "berkowitz1998",
+  "isichenko1992",
+  "zallen1983",
+  "bunde1996",
+  "hughes1995",
+  "christensen2005",
+  "saberi2015",
+  "sahimi2023"
  ],
  "13-map": [
   "fortuin1972",
@@ -123,12 +144,15 @@
   "buldyrev2010",
   "dorogovtsev2008",
   "hinrichsen2000",
-  "kirkpatrick1973"
+  "kirkpatrick1973",
+  "saberi2015",
+  "li2021"
  ],
  "14-sources": [
   "grimmett1999",
   "bollobas2006",
-  "stauffer1994"
+  "stauffer1994",
+  "grassberger2011"
  ],
  "15-algorithms": [
   "tarjan1975",
@@ -158,7 +182,11 @@
   "gefen1983",
   "havlin2002",
   "redner2001",
-  "benavraham2000"
+  "benavraham2000",
+  "hughes1995",
+  "isichenko1992",
+  "berkowitz1998",
+  "bunde1996"
  ],
  "19-proofs": [
   "harris1960",
@@ -192,7 +220,25 @@
   "grassberger2011",
   "riordan2011",
   "meester1996",
-  "sahimi2023"
+  "sahimi2023",
+  "nienhuis1982",
+  "smirnov2010",
+  "saberi2015",
+  "dsouza2019",
+  "stauffer1994",
+  "hunt2013",
+  "newman2018",
+  "dorogovtsev2010",
+  "bianconi2018",
+  "christensen2005",
+  "bunde1996",
+  "hughes1995",
+  "zallen1983",
+  "li2021",
+  "boccaletti2014",
+  "kivela2014",
+  "isichenko1992",
+  "berkowitz1998"
  ],
  "20-design": [
   "molloy1995",
@@ -213,7 +259,16 @@
   "hunt2013",
   "mertens2012",
   "gilbert1961",
-  "johndcook2015"
+  "johndcook2015",
+  "li2021",
+  "boccaletti2014",
+  "kivela2014",
+  "dedomenico2013",
+  "bianconi2018",
+  "dsouza2019",
+  "baxter2010",
+  "berkowitz1998",
+  "isichenko1992"
  ],
  "21-reproducibility": [
   "newman2000",
