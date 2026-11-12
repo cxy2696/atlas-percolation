@@ -32,7 +32,7 @@ jobs:
       - name: Python package build
         run: |
           python3 -m pip install build
-          python3 -m build --wheel --outdir dist lib/python
+          cd lib/python && python3 -m build --wheel --sdist --outdir ../../dist
       - name: API smoke test
         run: |
           PYTHONPATH=lib/python python3 -m percolation_atlas serve --port 8099 &

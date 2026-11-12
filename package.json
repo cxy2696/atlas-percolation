@@ -13,6 +13,6 @@
     "parity": "python3 scripts/parity.py",
     "parity-algorithms": "python3 scripts/parity_algorithms.py",
     "audit": "python3 scripts/verify_references.py",
-    "package": "python3 -m build --wheel --sdist --outdir dist lib/python"
+    "package": "cd lib/python && python3 -m build --wheel --sdist --outdir ../../dist"
   }
 }

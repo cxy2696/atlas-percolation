@@ -64,7 +64,7 @@ api:
 	PYTHONPATH=lib/python $(PYTHON) -m percolation_atlas serve --port $(PORT)
 
 package:
-	$(PYTHON) -m build --wheel --sdist --outdir dist lib/python
+	cd lib/python && $(PYTHON) -m build --wheel --sdist --outdir ../../dist
 
 clean:
 	$(MAKE) -C lib/cpp clean

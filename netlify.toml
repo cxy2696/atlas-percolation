@@ -1,6 +1,5 @@
 [build]
   publish = "."
-  command = "python3 scripts/build_content.py"
 
 [[headers]]
   for = "/*"
