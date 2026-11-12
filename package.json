@@ -1,0 +1,15 @@
+{
+  "name": "atlas-percolation",
+  "version": "2.0.0",
+  "description": "Three-language atlas of percolation theory with four-language reference implementations",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "python3 scripts/parity.py && node --test tests/js/*.test.js",
+    "content": "python3 scripts/build_content.py",
+    "bench": "make bench",
+    "serve": "python3 scripts/serve.py 8788",
+    "parity": "python3 scripts/parity.py"
+  }
+}

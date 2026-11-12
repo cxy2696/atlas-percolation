@@ -1,0 +1,245 @@
+{
+ "generated": "2026-11-12 19:58",
+ "languages": [
+  {
+   "id": "javascript",
+   "group": "lib/js",
+   "files": [
+    {
+     "path": "lib/js/engine/cardy.js",
+     "bucket": "core",
+     "lines": 81,
+     "bytes": 2651
+    },
+    {
+     "path": "lib/js/engine/continuum.js",
+     "bucket": "core",
+     "lines": 74,
+     "bytes": 2035
+    },
+    {
+     "path": "lib/js/engine/dsu.js",
+     "bucket": "core",
+     "lines": 61,
+     "bytes": 1270
+    },
+    {
+     "path": "lib/js/engine/lattice.js",
+     "bucket": "core",
+     "lines": 92,
+     "bytes": 2858
+    },
+    {
+     "path": "lib/js/engine/network.js",
+     "bucket": "core",
+     "lines": 289,
+     "bytes": 8382
+    },
+    {
+     "path": "lib/js/engine/percolation.js",
+     "bucket": "core",
+     "lines": 239,
+     "bytes": 6504
+    },
+    {
+     "path": "lib/js/engine/rng.js",
+     "bucket": "core",
+     "lines": 126,
+     "bytes": 3144
+    },
+    {
+     "path": "lib/js/engine/stats.js",
+     "bucket": "core",
+     "lines": 65,
+     "bytes": 1735
+    },
+    {
+     "path": "lib/js/index.js",
+     "bucket": "core",
+     "lines": 19,
+     "bytes": 698
+    },
+    {
+     "path": "tests/js/engine.test.js",
+     "bucket": "tests",
+     "lines": 172,
+     "bytes": 6839
+    }
+   ]
+  },
+  {
+   "id": "python",
+   "group": "lib/python",
+   "files": [
+    {
+     "path": "lib/python/percolation_atlas/__init__.py",
+     "bucket": "core",
+     "lines": 68,
+     "bytes": 1836
+    },
+    {
+     "path": "lib/python/percolation_atlas/cardy.py",
+     "bucket": "core",
+     "lines": 83,
+     "bytes": 2715
+    },
+    {
+     "path": "lib/python/percolation_atlas/continuum.py",
+     "bucket": "core",
+     "lines": 55,
+     "bytes": 1559
+    },
+    {
+     "path": "lib/python/percolation_atlas/lattice.py",
+     "bucket": "core",
+     "lines": 85,
+     "bytes": 2831
+    },
+    {
+     "path": "lib/python/percolation_atlas/network.py",
+     "bucket": "core",
+     "lines": 245,
+     "bytes": 6868
+    },
+    {
+     "path": "lib/python/percolation_atlas/percolation.py",
+     "bucket": "core",
+     "lines": 190,
+     "bytes": 5525
+    },
+    {
+     "path": "lib/python/percolation_atlas/rng.py",
+     "bucket": "core",
+     "lines": 88,
+     "bytes": 2245
+    },
+    {
+     "path": "lib/python/tests/test_engine.py",
+     "bucket": "core",
+     "lines": 208,
+     "bytes": 6924
+    }
+   ]
+  },
+  {
+   "id": "cpp",
+   "group": "lib/cpp",
+   "files": [
+    {
+     "path": "lib/cpp/include/percolation_atlas/atlas.hpp",
+     "bucket": "core",
+     "lines": 10,
+     "bytes": 322
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/cardy.hpp",
+     "bucket": "core",
+     "lines": 98,
+     "bytes": 2969
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/continuum.hpp",
+     "bucket": "core",
+     "lines": 126,
+     "bytes": 4129
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/lattice.hpp",
+     "bucket": "core",
+     "lines": 149,
+     "bytes": 4670
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/network.hpp",
+     "bucket": "core",
+     "lines": 419,
+     "bytes": 15149
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/percolation.hpp",
+     "bucket": "core",
+     "lines": 320,
+     "bytes": 9896
+    },
+    {
+     "path": "lib/cpp/include/percolation_atlas/rng.hpp",
+     "bucket": "core",
+     "lines": 119,
+     "bytes": 3628
+    },
+    {
+     "path": "lib/cpp/src/bench.cpp",
+     "bucket": "core",
+     "lines": 73,
+     "bytes": 2916
+    },
+    {
+     "path": "lib/cpp/tests/test_main.cpp",
+     "bucket": "core",
+     "lines": 288,
+     "bytes": 9159
+    },
+    {
+     "path": "scripts/bench.cpp",
+     "bucket": "core",
+     "lines": 666,
+     "bytes": 20265
+    }
+   ]
+  },
+  {
+   "id": "julia",
+   "group": "lib/julia",
+   "files": [
+    {
+     "path": "lib/julia/src/PercolationAtlas.jl",
+     "bucket": "core",
+     "lines": 48,
+     "bytes": 1639
+    },
+    {
+     "path": "lib/julia/src/cardy.jl",
+     "bucket": "core",
+     "lines": 80,
+     "bytes": 2553
+    },
+    {
+     "path": "lib/julia/src/continuum.jl",
+     "bucket": "core",
+     "lines": 87,
+     "bytes": 2789
+    },
+    {
+     "path": "lib/julia/src/lattice.jl",
+     "bucket": "core",
+     "lines": 148,
+     "bytes": 4840
+    },
+    {
+     "path": "lib/julia/src/network.jl",
+     "bucket": "core",
+     "lines": 408,
+     "bytes": 12902
+    },
+    {
+     "path": "lib/julia/src/percolation.jl",
+     "bucket": "core",
+     "lines": 388,
+     "bytes": 10192
+    },
+    {
+     "path": "lib/julia/src/rng.jl",
+     "bucket": "core",
+     "lines": 170,
+     "bytes": 4423
+    },
+    {
+     "path": "lib/julia/test/runtests.jl",
+     "bucket": "tests",
+     "lines": 291,
+     "bytes": 9458
+    }
+   ]
+  }
+ ]
+}

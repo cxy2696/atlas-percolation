@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Percolation Atlas — interactive knowledge base</title>
+  <meta name="description" content="A trilingual atlas of percolation theory: rigorous derivations, exact thresholds, four-language reference code, and interactive HUD-style laboratories." />
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <link rel="stylesheet" href="assets/css/hud.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23060a0e'/%3E%3Cpath d='M6 26 26 6M6 6l20 20' stroke='%234fe3ea' stroke-width='2'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1 data-i18n="brand">Percolation Atlas</h1>
+          <span>v2.0 · 2026</span>
+        </div>
+      </div>
+      <nav class="topnav" id="topnav" aria-label="Primary"></nav>
+      <div class="langswitch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+        <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+    </header>
+
+    <aside class="rail" id="rail" aria-label="Chapters"></aside>
+
+    <main id="view" tabindex="-1">
+      <div class="view-head">
+        <div>
+          <div class="kicker">loading</div>
+          <h2>Initialising…</h2>
+        </div>
+      </div>
+    </main>
+
+    <footer class="statusbar">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="status-mode">SYS OK</span>
+      <span class="sep">/</span>
+      <span id="status-info">BOOT</span>
+      <span class="right">SEED 20241112 · RNG XOSHIRO128** · <span id="status-clock">--:--:--</span></span>
+    </footer>
+  </div>
+
+  <noscript>
+    <p style="padding:24px;color:#ffb454">This atlas needs JavaScript for the interactive laboratories. The chapter sources are plain Markdown in <code>content/</code>.</p>
+  </noscript>
+
+  <script src="assets/vendor/katex/katex.min.js" defer></script>
+  <script src="assets/vendor/katex/contrib/auto-render.min.js" defer></script>
+  <script src="assets/vendor/marked/marked.min.js" defer></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

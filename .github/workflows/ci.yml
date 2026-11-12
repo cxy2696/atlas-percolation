@@ -1,0 +1,41 @@
+name: atlas
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  js-python-cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build content and validate citations
+        run: python3 scripts/build_content.py
+      - name: JavaScript suite
+        run: node --test tests/js/*.test.js
+      - name: Python suite
+        run: PYTHONPATH=lib/python python3 -m unittest discover -s lib/python/tests -v
+      - name: C++ suite
+        run: make -C lib/cpp test
+      - name: Benchmark smoke test
+        run: |
+          make bench
+          python3 -c "import json; d=json.load(open('data/raw_bench.json')); assert d['crossing'] and d['interdependent']['points']; print('bench ok')"
+
+  julia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1.11"
+      - name: Julia suite
+        run: julia --startup-file=no --project=lib/julia lib/julia/test/runtests.jl

@@ -1,0 +1,361 @@
+{
+ "generated": "2026-11-12 19:58",
+ "languages": [
+  "en",
+  "zh",
+  "de"
+ ],
+ "references": 47,
+ "chapters": [
+  {
+   "id": "01-foundations",
+   "order": 1,
+   "part": "foundations",
+   "title": {
+    "en": "What percolation is",
+    "zh": "渗流是什么",
+    "de": "Was Perkolation ist"
+   },
+   "subtitle": {
+    "en": "One parameter, one threshold, a whole geometry of chance",
+    "zh": "一个参数，一个阈值，一整套随机性的几何",
+    "de": "Ein Parameter, eine Schwelle, eine ganze Geometrie des Zufalls"
+   },
+   "reading": {
+    "en": 11,
+    "zh": 11,
+    "de": 12
+   },
+   "files": {
+    "en": "content/en/01-foundations.md",
+    "zh": "content/zh/01-foundations.md",
+    "de": "content/de/01-foundations.md"
+   }
+  },
+  {
+   "id": "02-history",
+   "order": 2,
+   "part": "foundations",
+   "title": {
+    "en": "A short history",
+    "zh": "一段简史",
+    "de": "Eine kurze Geschichte"
+   },
+   "subtitle": {
+    "en": "From coffee grounds to conformal invariance",
+    "zh": "从咖啡渣到共形不变性",
+    "de": "Vom Kaffeesatz zur konformen Invarianz"
+   },
+   "reading": {
+    "en": 9,
+    "zh": 9,
+    "de": 10
+   },
+   "files": {
+    "en": "content/en/02-history.md",
+    "zh": "content/zh/02-history.md",
+    "de": "content/de/02-history.md"
+   }
+  },
+  {
+   "id": "03-monotonicity",
+   "order": 3,
+   "part": "core",
+   "title": {
+    "en": "Monotonicity and the existence of a threshold",
+    "zh": "单调性与阈值的存在性",
+    "de": "Monotonie und die Existenz einer Schwelle"
+   },
+   "subtitle": {
+    "en": "FKG, coupling, and why p_c must exist",
+    "zh": "FKG、耦合，以及 p_c 为何必然存在",
+    "de": "FKG, Kopplung und warum p_c existieren muss"
+   },
+   "reading": {
+    "en": 14,
+    "zh": 13,
+    "de": 15
+   },
+   "files": {
+    "en": "content/en/03-monotonicity.md",
+    "zh": "content/zh/03-monotonicity.md",
+    "de": "content/de/03-monotonicity.md"
+   }
+  },
+  {
+   "id": "04-duality",
+   "order": 4,
+   "part": "core",
+   "title": {
+    "en": "Duality, matching, and the exact thresholds",
+    "zh": "对偶、匹配与精确阈值",
+    "de": "Dualität, Paarung und die exakten Schwellen"
+   },
+   "subtitle": {
+    "en": "From Harris to Kesten, and the star–triangle correction",
+    "zh": "从 Harris 到 Kesten，以及星–三角变换的更正",
+    "de": "Von Harris zu Kesten und die Stern-Dreieck-Korrektur"
+   },
+   "reading": {
+    "en": 18,
+    "zh": 17,
+    "de": 19
+   },
+   "files": {
+    "en": "content/en/04-duality.md",
+    "zh": "content/zh/04-duality.md",
+    "de": "content/de/04-duality.md"
+   }
+  },
+  {
+   "id": "05-sharpness",
+   "order": 5,
+   "part": "core",
+   "title": {
+    "en": "Sharpness and uniqueness",
+    "zh": "锐性与唯一性",
+    "de": "Schärfe und Eindeutigkeit"
+   },
+   "subtitle": {
+    "en": "Exponential decay below p_c, and one infinite cluster above it",
+    "zh": "p_c 以下的指数衰减，与 p_c 以上的唯一无限团簇",
+    "de": "Exponentieller Abfall unterhalb von p_c und ein einziger unendlicher Cluster oberhalb"
+   },
+   "reading": {
+    "en": 13,
+    "zh": 13,
+    "de": 13
+   },
+   "files": {
+    "en": "content/en/05-sharpness.md",
+    "zh": "content/zh/05-sharpness.md",
+    "de": "content/de/05-sharpness.md"
+   }
+  },
+  {
+   "id": "06-exponents",
+   "order": 6,
+   "part": "critical",
+   "title": {
+    "en": "Exponents, scaling relations, and universality",
+    "zh": "指数、标度关系与普适性",
+    "de": "Exponenten, Skalierungsrelationen und Universalität"
+   },
+   "subtitle": {
+    "en": "What the numbers mean and which of them are theorems",
+    "zh": "这些数字的含义，以及其中哪些是定理",
+    "de": "Was die Zahlen bedeuten und welche von ihnen Sätze sind"
+   },
+   "reading": {
+    "en": 17,
+    "zh": 17,
+    "de": 17
+   },
+   "files": {
+    "en": "content/en/06-exponents.md",
+    "zh": "content/zh/06-exponents.md",
+    "de": "content/de/06-exponents.md"
+   }
+  },
+  {
+   "id": "07-two-dimensions",
+   "order": 7,
+   "part": "critical",
+   "title": {
+    "en": "Two dimensions: Cardy, Smirnov, SLE",
+    "zh": "二维：Cardy、Smirnov 与 SLE",
+    "de": "Zwei Dimensionen: Cardy, Smirnov, SLE"
+   },
+   "subtitle": {
+    "en": "The one dimension with an exact conformal solution",
+    "zh": "唯一具有精确共形解的维度",
+    "de": "Die einzige Dimension mit einer exakten konformen Lösung"
+   },
+   "reading": {
+    "en": 19,
+    "zh": 19,
+    "de": 19
+   },
+   "files": {
+    "en": "content/en/07-two-dimensions.md",
+    "zh": "content/zh/07-two-dimensions.md",
+    "de": "content/de/07-two-dimensions.md"
+   }
+  },
+  {
+   "id": "08-high-dimensions",
+   "order": 8,
+   "part": "critical",
+   "title": {
+    "en": "High dimensions and the lace expansion",
+    "zh": "高维与花边展开",
+    "de": "Hohe Dimensionen und die Lace-Expansion"
+   },
+   "subtitle": {
+    "en": "Mean-field behaviour, the triangle condition, and why six",
+    "zh": "平均场行为、三角形条件，以及为什么是六维",
+    "de": "Molekularfeld-Verhalten, die Dreiecksbedingung und warum sechs"
+   },
+   "reading": {
+    "en": 14,
+    "zh": 14,
+    "de": 14
+   },
+   "files": {
+    "en": "content/en/08-high-dimensions.md",
+    "zh": "content/zh/08-high-dimensions.md",
+    "de": "content/de/08-high-dimensions.md"
+   }
+  },
+  {
+   "id": "09-random-cluster",
+   "order": 9,
+   "part": "critical",
+   "title": {
+    "en": "The random-cluster model",
+    "zh": "随机簇模型",
+    "de": "Das Random-Cluster-Modell"
+   },
+   "subtitle": {
+    "en": "One model that contains percolation, Ising, and Potts",
+    "zh": "一个同时包含渗流、Ising 与 Potts 的模型",
+    "de": "Ein Modell, das Perkolation, Ising und Potts enthält"
+   },
+   "reading": {
+    "en": 10,
+    "zh": 10,
+    "de": 10
+   },
+   "files": {
+    "en": "content/en/09-random-cluster.md",
+    "zh": "content/zh/09-random-cluster.md",
+    "de": "content/de/09-random-cluster.md"
+   }
+  },
+  {
+   "id": "10-networks",
+   "order": 10,
+   "part": "networks",
+   "title": {
+    "en": "Networks: degrees, cores, and coupling",
+    "zh": "网络：度、核与耦合",
+    "de": "Netzwerke: Grade, Kerne und Kopplung"
+   },
+   "subtitle": {
+    "en": "Molloy–Reed, k-core, and the 2.4554 constant",
+    "zh": "Molloy–Reed 判据、k-核与 2.4554 常数",
+    "de": "Molloy–Reed, k-Kern und die Konstante 2,4554"
+   },
+   "reading": {
+    "en": 18,
+    "zh": 17,
+    "de": 19
+   },
+   "files": {
+    "en": "content/en/10-networks.md",
+    "zh": "content/zh/10-networks.md",
+    "de": "content/de/10-networks.md"
+   }
+  },
+  {
+   "id": "11-measurement",
+   "order": 11,
+   "part": "networks",
+   "title": {
+    "en": "Measuring a threshold without fooling yourself",
+    "zh": "如何测量阈值而不自欺",
+    "de": "Eine Schwelle messen, ohne sich selbst zu täuschen"
+   },
+   "subtitle": {
+    "en": "Finite-size scaling, Newman–Ziff, and the arithmetic of honest error bars",
+    "zh": "有限尺度标度、纽曼–齐夫算法，以及诚实误差棒的算术",
+    "de": "Finite-Size-Skalierung, Newman–Ziff und die Arithmetik ehrlicher Fehlerbalken"
+   },
+   "reading": {
+    "en": 15,
+    "zh": 14,
+    "de": 16
+   },
+   "files": {
+    "en": "content/en/11-measurement.md",
+    "zh": "content/zh/11-measurement.md",
+    "de": "content/de/11-measurement.md"
+   }
+  },
+  {
+   "id": "12-applications",
+   "order": 12,
+   "part": "networks",
+   "title": {
+    "en": "Applications, and how to use the theory without abusing it",
+    "zh": "应用：如何用这套理论而不滥用它",
+    "de": "Anwendungen – und wie man die Theorie nutzt, ohne sie zu missbrauchen"
+   },
+   "subtitle": {
+    "en": "A protocol, four case studies, and the questions to ask first",
+    "zh": "一套规程、四个案例，以及应当先问的问题",
+    "de": "Ein Protokoll, vier Fallstudien und die Fragen, die zuerst zu stellen sind"
+   },
+   "reading": {
+    "en": 16,
+    "zh": 15,
+    "de": 17
+   },
+   "files": {
+    "en": "content/en/12-applications.md",
+    "zh": "content/zh/12-applications.md",
+    "de": "content/de/12-applications.md"
+   }
+  },
+  {
+   "id": "13-map",
+   "order": 13,
+   "part": "reference",
+   "title": {
+    "en": "The cross-disciplinary map, and what is still open",
+    "zh": "跨学科地图，以及仍然敞开的问题",
+    "de": "Die fächerübergreifende Landkarte und was noch offen ist"
+   },
+   "subtitle": {
+    "en": "Where the same mathematics reappears, and where it does not",
+    "zh": "同一套数学在哪里重现，在哪里并不重现",
+    "de": "Wo dieselbe Mathematik wieder auftaucht und wo nicht"
+   },
+   "reading": {
+    "en": 12,
+    "zh": 11,
+    "de": 13
+   },
+   "files": {
+    "en": "content/en/13-map.md",
+    "zh": "content/zh/13-map.md",
+    "de": "content/de/13-map.md"
+   }
+  },
+  {
+   "id": "14-sources",
+   "order": 14,
+   "part": "reference",
+   "title": {
+    "en": "Sources, corrections, and maintenance",
+    "zh": "来源、更正与维护",
+    "de": "Quellen, Korrekturen und Pflege"
+   },
+   "subtitle": {
+    "en": "How the numbers are checked, what changed, and how to keep the atlas alive",
+    "zh": "数字如何核查、改动了什么，以及如何让图谱活下去",
+    "de": "Wie die Zahlen geprüft werden, was sich geändert hat und wie man den Atlas am Leben hält"
+   },
+   "reading": {
+    "en": 13,
+    "zh": 12,
+    "de": 14
+   },
+   "files": {
+    "en": "content/en/14-sources.md",
+    "zh": "content/zh/14-sources.md",
+    "de": "content/de/14-sources.md"
+   }
+  }
+ ]
+}

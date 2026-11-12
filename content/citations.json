@@ -1,0 +1,128 @@
+{
+  "01-foundations": [
+    "broadbent1957",
+    "hammersley1957b",
+    "sykes1964",
+    "kesten1980",
+    "grimmett1999",
+    "stauffer1994"
+  ],
+  "02-history": [
+    "broadbent1957",
+    "hammersley1957b",
+    "harris1960",
+    "sykes1964",
+    "russo1978",
+    "seymour1978",
+    "kesten1980",
+    "aizenman1987",
+    "burton1989",
+    "hara1990",
+    "fitzner2017",
+    "cardy1992",
+    "langlands1994",
+    "smirnov2001",
+    "lsw2001a",
+    "lsw2001b",
+    "cohen2000",
+    "molloy1995",
+    "buldyrev2010"
+  ],
+  "03-monotonicity": [
+    "harris1960",
+    "fortuin1971",
+    "aizenman1987",
+    "grimmett1999"
+  ],
+  "04-duality": [
+    "harris1960",
+    "sykes1964",
+    "wierman1981",
+    "kesten1980",
+    "grimmett1999",
+    "bollobas2006",
+    "jacobsen2014",
+    "lorenz1998",
+    "vandermarck1997",
+    "wang2013",
+    "galam1996"
+  ],
+  "05-sharpness": [
+    "aizenman1987",
+    "burton1989",
+    "kesten1980",
+    "grimmett1999"
+  ],
+  "06-exponents": [
+    "stauffer1994",
+    "wang2013",
+    "smirnov2001",
+    "lsw2001a",
+    "lsw2001b",
+    "grimmett1999"
+  ],
+  "07-two-dimensions": [
+    "cardy1992",
+    "langlands1994",
+    "smirnov2001",
+    "lsw2001a",
+    "lsw2001b",
+    "grimmett1999"
+  ],
+  "08-high-dimensions": [
+    "hara1990",
+    "fitzner2017",
+    "wang2013",
+    "aizenman1987"
+  ],
+  "09-random-cluster": [
+    "fortuin1972",
+    "swendsen1987",
+    "edwards1988",
+    "grimmett1999"
+  ],
+  "10-networks": [
+    "molloy1995",
+    "cohen2000",
+    "cohen2001",
+    "albert2000",
+    "buldyrev2010",
+    "parshani2010",
+    "dorogovtsev2006",
+    "dorogovtsev2008"
+  ],
+  "11-measurement": [
+    "newman2000",
+    "newman2001",
+    "grimmett1999",
+    "lorenz1998",
+    "wang2013"
+  ],
+  "12-applications": [
+    "sahimi1994",
+    "kirkpatrick1973",
+    "grassberger1999",
+    "mertens2012",
+    "pastor2001",
+    "newman2002",
+    "buldyrev2010",
+    "parshani2010",
+    "stauffer1994"
+  ],
+  "13-map": [
+    "fortuin1972",
+    "grimmett1999",
+    "grassberger1999",
+    "pastor2001",
+    "newman2002",
+    "buldyrev2010",
+    "dorogovtsev2008",
+    "hinrichsen2000",
+    "kirkpatrick1973"
+  ],
+  "14-sources": [
+    "grimmett1999",
+    "bollobas2006",
+    "stauffer1994"
+  ]
+}
