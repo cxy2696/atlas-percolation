@@ -3,7 +3,7 @@
 ## 3.0.0 — 2026-11-12
 
 The algorithm and application release. The atlas grows from 18 to 21 chapters,
-from 9 to 13 laboratories, and from 64 to 81 audited references (80 Crossref/HTTP-verified, 1 pre-DOI note); the core
+from 9 to 13 laboratories, and from 64 to 81 audited references (79 Crossref/HTTP-verified, 2 with explanatory notes); the core
 engine gains a second algorithm family with its own parity contract, and the
 Python package becomes a distributable CLI plus JSON API.
 

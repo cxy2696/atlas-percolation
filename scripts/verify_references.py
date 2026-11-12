@@ -71,7 +71,12 @@ def check_doi(entry: dict) -> dict:
         if first_author and entry.get("authors"):
             stored_family = entry["authors"][0].split(",")[0].strip()
             author_ok = difflib.SequenceMatcher(None, norm(first_author), norm(stored_family)).ratio() >= 0.6
-        status_value = "ok" if title_ok and year_ok and author_ok else "metadata-mismatch"
+        if not title_ok or not author_ok:
+            status_value = "metadata-mismatch"
+        elif not year_ok:
+            status_value = "ok-note" if entry.get("note") else "year-mismatch"
+        else:
+            status_value = "ok"
         return {
             "status": status_value,
             "http": status,

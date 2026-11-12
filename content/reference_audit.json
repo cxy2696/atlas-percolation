@@ -1,12 +1,10 @@
 {
- "checked_at": "2026-11-12 22:21",
+ "checked_at": "2026-11-12 22:23",
  "method": "crossref-doi+http-url",
  "total": 81,
  "counts": {
-  "ok": 77,
-  "unreachable": 2,
-  "metadata-mismatch": 1,
-  "ok-note": 1
+  "ok": 79,
+  "ok-note": 2
  },
  "results": [
   {
@@ -52,8 +50,15 @@
    "problems": []
   },
   {
-   "status": "unreachable",
-   "error": "The read operation timed out",
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Error and attack tolerance of complex networks",
+   "resolved_year": 2000,
+   "resolved_first_author": "Albert",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
    "id": "albert2000",
    "source": "doi",
    "problems": []
@@ -209,13 +214,6 @@
    "year_ok": true,
    "author_ok": true,
    "id": "cohen2001",
-   "source": "doi",
-   "problems": []
-  },
-  {
-   "status": "unreachable",
-   "error": "The read operation timed out",
-   "id": "dacosta2011",
    "source": "doi",
    "problems": []
   },
@@ -420,6 +418,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "grassberger2003",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Explosive Percolation is Continuous, but with Unusual Finite Size Behavior",
+   "resolved_year": 2011,
+   "resolved_first_author": "Grassberger",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "grassberger2011",
    "source": "doi",
    "problems": []
   },
@@ -958,7 +970,7 @@
    "problems": []
   },
   {
-   "status": "metadata-mismatch",
+   "status": "ok-note",
    "http": 200,
    "resolved_title": "Introduction To Percolation Theory",
    "resolved_year": 2018,

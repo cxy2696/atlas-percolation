@@ -9,7 +9,7 @@ A trilingual, source-backed atlas of percolation theory with four reference impl
 | Layer | Contents |
 |---|---|
 | Knowledge base | 21 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, the cross-disciplinary map, a proofs appendix, design under uncertainty, and reproducibility |
-| Sources | 81 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (80 verified, 1 pre-DOI note), per-chapter source lists, and an errata table |
+| Sources | 81 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (79 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
 | Code | C++20 (header-only), Julia, Python and JavaScript, all consuming the same xoshiro128** stream and the same lattice edge order |
 | Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, and an algorithm studio |
 | Data | A C++ benchmark harness, a Python analyser, and a JSON record that the Data view reads without hiding missing data |

@@ -721,7 +721,7 @@
     "critical-phenomena"
    ],
    "doi": "10.1201/9781315274386",
-   "note": "Second edition, Taylor & Francis, 1994; the DOI resolves to the 2018 reissue."
+   "note": "The second edition is dated 1994; the DOI identifies a later CRC reissue (2018). The citation year follows the edition used in this atlas."
   },
   {
    "id": "sahimi1994",
@@ -1199,12 +1199,13 @@
    ]
   },
   {
-   "id": "dacosta2011",
+   "id": "grassberger2011",
    "authors": [
-    "da Costa, R. A.",
-    "Dorogovtsev, S. N.",
-    "Goltsev, A. V.",
-    "Mendes, J. F. F."
+    "Grassberger, P.",
+    "Christensen, C.",
+    "Bizhani, G.",
+    "Son, S.-W.",
+    "Paczuski, M."
    ],
    "year": 2011,
    "title": "Explosive percolation is continuous, but with unusual finite size behavior",
