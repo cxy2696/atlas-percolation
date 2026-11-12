@@ -153,13 +153,13 @@ end
 
 @testset "Regression checks" begin
     # Triangle 0-1-2 plus leaf 3-2: the 3-core is empty.
-    g = Graph(4, 8, Int32[0, 2, 4, 7, 8], Int32[1, 2, 0, 2, 1, 0, 3, 2])
+    g = Graph(4, 8, Int32[1, 3, 5, 8, 9], Int32[1, 2, 0, 2, 1, 0, 3, 2])
     @test kcore(g, [1, 1, 1, 1], 3).size == 0
 
     # Site p=0 leaves no occupied component.
     model = Percolation(build_lattice("square", 8), "site")
-    model.sample(0.0, Rng(2))
-    model.build()
+    sample!(model, 0.0, Rng(2))
+    build!(model)
     @test model.dsu.count == 0
     @test model.dsu.max_size == 0
 
