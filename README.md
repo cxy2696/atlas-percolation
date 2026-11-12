@@ -1,5 +1,7 @@
 # Percolation Atlas
 
+[![CI](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml) [![Pages](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml) [![Release](https://img.shields.io/github/v/release/cxy2696/atlas-percolation?label=release)](https://github.com/cxy2696/atlas-percolation/releases)
+
 A trilingual, source-backed atlas of percolation theory with four reference implementations, thirteen interactive laboratories and an eight-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
 
 **Live content:** 21 chapters in English, Simplified Chinese and German · 13 laboratories · 8 code walkthroughs · 4 language implementations · 105 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
@@ -17,7 +19,7 @@ A trilingual, source-backed atlas of percolation theory with four reference impl
 | Tests | Integer-exact parity probes across the four implementations, a Python+JavaScript parity contract for the v3 algorithms, RNG golden vectors, property tests, and a reference audit |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md`; the code-reading map: `docs/ALGORITHMS.md`; a CLI and JSON API: `docs/API.md` |
 
-**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Source:** <https://github.com/cxy2696/atlas-percolation> · **Package:** `pip install -e lib/python`
+**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Release:** [v3.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.0) · **Package:** `pip install -e lib/python`
 
 ## Quick start
 

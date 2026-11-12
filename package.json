@@ -1,7 +1,7 @@
 {
   "name": "atlas-percolation",
   "version": "3.2.0",
-  "description": "Trilingual atlas of percolation theory with 13 interactive laboratories, four-language core code and a distributable algorithm package",
+  "description": "Trilingual percolation atlas: 21 chapters, 13 interactive laboratories, 8 algorithm walkthroughs, 105 audited references and a reproducible Python package",
   "type": "module",
   "private": true,
   "license": "MIT",
