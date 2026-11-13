@@ -98,9 +98,9 @@ directed_crossing(build_lattice("square", 32), 0.65, Rng(4242); mode = "bond").c
 
 The RNG and observation order are documented in `docs/RNG.md`; the full API is in `docs/API.md`.
 
-## v3 algorithms: bootstrap, invasion and the Achlioptas process
+## Algorithm zoo: bootstrap, invasion and the Achlioptas process
 
-The v3 routines are exposed in Python and JavaScript. They share the Dsu and
+The zoo and the v4 solvers are exposed in all four languages. They share the Dsu and
 Rng types with the core, and their parity file is
 `data/golden/algorithms-v3.json`.
 
@@ -150,3 +150,59 @@ atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11
 atlas-perc invasion --L 64 --seed 3
 atlas-perc explosive --n 2000 --rule product --seed 7
 ```
+
+## Trees and the SIR final size
+
+The same fixed point in four languages. The values are the golden probes in
+`data/golden/algorithms-v3.json`.
+
+```js
+import { bethePercolation, poissonPmf, sirFinalSize } from './lib/js/index.js';
+console.log(bethePercolation(3, 0.6).theta);          // 0.7037037037...
+console.log(sirFinalSize(poissonPmf(2), 1).finalSize); // 0.7968121300...
+```
+
+```python
+from percolation_atlas import bethe_percolation, poisson_pmf, sir_final_size
+print(bethe_percolation(3, 0.6).theta)                 # 0.7037037037...
+print(sir_final_size(poisson_pmf(2), 1).final_size)    # 0.7968121300...
+```
+
+```cpp
+#include <percolation_atlas/atlas.hpp>
+#include <iostream>
+int main() {
+  std::cout << atlas::bethe_percolation(3, 0.6).theta << "\n";
+  std::cout << atlas::sir_final_size(atlas::poisson_pmf(2), 1.0).final_size << "\n";
+}
+```
+
+```julia
+using PercolationAtlas
+println(bethe_percolation(3, 0.6).theta)
+println(sir_final_size(poisson_pmf(2), 1.0).final_size)
+```
+
+## Site Newman–Ziff and message passing
+
+```js
+import { Rng, buildLattice, newmanZiffSite, messagePassingPercolation } from './lib/js/index.js';
+const z = newmanZiffSite(buildLattice('square', 8), new Rng(5), { checkpoints: 16 });
+console.log(z.smax[z.smax.length - 1]);                 // 64
+const eu = [];
+const ev = [];
+for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) { eu.push(i); ev.push(j); }
+console.log(messagePassingPercolation(5, eu, ev, 0.4).S); // 0.5415026221...
+```
+
+```python
+from percolation_atlas import Rng, build_lattice, newman_ziff_site, message_passing_percolation
+z = newman_ziff_site(build_lattice("square", 8), Rng(5), checkpoints=16)
+print(z["smax"][-1])                                    # 64
+eu = [(i, j) for i in range(5) for j in range(i + 1, 5)]
+print(message_passing_percolation(5, [a for a, _ in eu], [b for _, b in eu], 0.4)["S"])
+```
+
+The K5 edge list is every unordered pair of five vertices. The golden probes
+are `nz_site_square8_seed5_cp16` and `message_k5_T04` in
+`data/golden/algorithms-v3.json`.

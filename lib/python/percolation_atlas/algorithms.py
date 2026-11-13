@@ -385,3 +385,48 @@ def leath_cluster(lattice, seed: int, p: float, rng: Rng, max_size: int = 1 << 6
         perimeter=perimeter,
         truncated=len(queue) > max_size,
     )
+
+
+@dataclass
+class LabelResult:
+    labels: list
+    sizes: list
+    count: int
+    max_size: int
+    max_label: int
+
+
+def label_clusters(n: int, eu, ev, open_edges=None, active=None) -> LabelResult:
+    """Label the connected components of open edges in scan order.
+
+    This is the graph form of Hoshen-Kopelman labelling: edges are visited
+    once in their given order, an equivalence table (the DSU) is maintained,
+    and the labels are compressed in one final pass.  With ``active`` supplied
+    the routine labels site percolation (edges count only when both endpoints
+    are active); without it, every vertex is present and only ``open_edges``
+    matters.  Inactive vertices get label -1.
+
+    The cost is O((n + m) alpha(n)) time and O(n) memory.
+    """
+    dsu = Dsu(n)
+    present = [1] * n if active is None else [1 if a else 0 for a in active]
+    dsu.count = sum(present)
+    dsu.max_size = 1 if dsu.count else 0
+    m = len(eu)
+    for e in range(m):
+        if open_edges is not None and not open_edges[e]:
+            continue
+        a, b = eu[e], ev[e]
+        if present[a] and present[b]:
+            dsu.union(a, b)
+    labels = [-1] * n
+    sizes = [0] * n
+    for v in range(n):
+        if present[v]:
+            r = dsu.find(v)
+            labels[v] = r
+            sizes[r] += 1
+    count = sum(1 for s in sizes if s > 0)
+    max_size = max(sizes) if sizes else 0
+    max_label = max(labels) if labels else -1
+    return LabelResult(labels=labels, sizes=sizes, count=count, max_size=max_size, max_label=max_label)

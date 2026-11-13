@@ -8,7 +8,7 @@ const LANGS = ['en', 'zh', 'de'];
 const SECTIONS = ['read', 'params', 'dynamics', 'try', 'caveat'];
 
 test('every registered laboratory has a complete guide in every language', () => {
-  assert.equal(LABS.length, 13);
+  assert.equal(LABS.length, 15);
   for (const lab of LABS) {
     const guide = GUIDES[lab.id];
     assert.ok(guide, `missing guide for ${lab.id}`);
@@ -40,8 +40,8 @@ test('guideHTML emits an openable details block with the read pane active', () =
 import { existsSync } from 'node:fs';
 import { ALGORITHM_ORDER, ALGORITHM_GUIDE, guideFor } from '../../assets/js/lib/algorithm-guide.js';
 
-test('algorithm reader covers seven routines in three languages', () => {
-  assert.equal(ALGORITHM_ORDER.length, 8);
+test('algorithm reader covers thirteen routines in three languages', () => {
+  assert.equal(ALGORITHM_ORDER.length, 13);
   for (const id of ALGORITHM_ORDER) {
     const entry = ALGORITHM_GUIDE[id];
     assert.ok(entry, `missing algorithm ${id}`);

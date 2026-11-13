@@ -65,7 +65,8 @@
   "lsw2001a",
   "lsw2001b",
   "grimmett1999",
-  "nienhuis1982"
+  "nienhuis1982",
+  "stauffer1979"
  ],
  "07-two-dimensions": [
   "cardy1992",
@@ -113,7 +114,9 @@
   "newman2003",
   "albert2002",
   "boccaletti2006",
-  "grimmett2006"
+  "grimmett2006",
+  "newman2005",
+  "benjamini2001"
  ],
  "11-measurement": [
   "newman2000",
@@ -152,7 +155,8 @@
   "hinrichsen2000",
   "kirkpatrick1973",
   "saberi2015",
-  "li2021"
+  "li2021",
+  "pastorsatorras2015"
  ],
  "14-sources": [
   "grimmett1999",
@@ -192,7 +196,9 @@
   "hughes1995",
   "isichenko1992",
   "berkowitz1998",
-  "bunde1996"
+  "bunde1996",
+  "coniglio1982",
+  "alexander1982"
  ],
  "19-proofs": [
   "harris1960",
@@ -291,5 +297,37 @@
   "kesten1980",
   "grimmett1999",
   "bollobas2006"
+ ],
+ "22-trees": [
+  "hammersley1957b",
+  "harris1963",
+  "molloy1995",
+  "newman2002",
+  "benjamini2001",
+  "hofstad2017",
+  "durrett2007",
+  "janson2000",
+  "lyons2016",
+  "mezard2009",
+  "karrer2010",
+  "grimmett1999"
+ ],
+ "23-epidemics": [
+  "newman2002",
+  "pastor2001",
+  "pastorsatorras2015",
+  "cohen2000",
+  "cohen2001",
+  "callaway2000",
+  "kiss2017",
+  "keeling2008",
+  "anderson1991",
+  "lloydsmith2005",
+  "holme2012",
+  "valdano2015",
+  "boguna2003",
+  "newman2005",
+  "durrett2007",
+  "hofstad2017"
  ]
 }

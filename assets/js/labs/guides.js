@@ -623,6 +623,107 @@ export const GUIDES = {
       caveat: `<p>Wanduhrzeiten in einem Browser sind verrauscht und nicht portabel. Die Tabelle dient der Größenordnung und der Unterscheidung „eine Stichprobe“ vs. „ganze Kurve“; für publikationsfähige Messungen den C++-Harness nutzen.</p>`,
     },
   },
+
+  tree: {
+    en: {
+      read: `<p>A complete z-ary tree of depth four, drawn edge by edge, beside the exact curve for the infinite z-regular tree. <b>Cyan</b> edges are open and connected to the root; <b>amber</b> edges are open but their branch is cut off from the root; grey edges are closed. The lower plot is θ(p) for the infinite tree, with the current p marked.</p>
+        <p>The finite drawing is a preview of the branching recursion, not a sample from the infinite tree. It shows why the recursion closes: each child branch is independent once the root is fixed.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Degree z</dt><dd>The number of children of every vertex. The infinite-tree threshold is exactly 1/(z−1). z = 2 is a chain and p_c = 1.</dd>
+        <dt>Open probability p</dt><dd>The independent probability of each edge. The interesting window is p near 1/(z−1).</dd>
+        <dt>New draw</dt><dd>Changes the deterministic edge draw without changing p, so two configurations at the same p can be compared.</dd>
+      </dl>`,
+      dynamics: `<p>Below p_c almost every branch dies before depth four and the readout “root reaches depth 4” is small. At p_c the reach probability is still small on a finite tree but the infinite θ is zero: the critical tree has no infinite cluster. Above p_c a positive fraction of branches survives at every depth and θ grows linearly in p − p_c with β = 1.</p>
+        <p>The mean cluster size χ diverges as p ↑ p_c with γ = 1; the readout reports ∞ above p_c because the mean then includes the infinite cluster.</p>`,
+      try: `<div class="guide-try"><b>1.</b> Set z = 2. The tree is a chain, p_c = 1, and no p below 1 reaches depth 4 with probability one. Increase z and watch p_c fall.</div>
+        <div class="guide-try"><b>2.</b> Set z = 3, p = 0.5. The double root at u = 1 is the critical point; θ = 0 exactly. Move to p = 0.6 and check θ = 19/27 ≈ 0.7037.</div>
+        <div class="guide-try"><b>3.</b> Compare the finite reach readout with the exact θ at p = 0.6. They differ: the finite tree can only report a depth-four event, while θ is a statement about infinity.</div>`,
+      caveat: `<p>The tree has no cycles. On Z² the same degree gives p_c = 1/2, not 1/3, because dual closed crossings block the cluster. A Bethe approximation to a two-dimensional material is not controlled; it is exact only on trees and asymptotically on locally tree-like sparse graphs.</p>`,
+    },
+    zh: {
+      read: `<p>一棵深度为四的完整 z 叉树，逐边绘制；旁边是无限 z 正则树的精确曲线。<b>青色</b>边是打开且与根连通的边；<b>琥珀色</b>边是打开但分支被根截断的边；灰色边是闭边。下方是无限树的 θ(p)，并标出当前 p。</p>
+        <p>有限图只是分支递推的预览，不是无限树的样本。它展示了递推为何封闭：根固定后，各孩子分支相互独立。</p>`,
+      params: `<dl class="guide-key">
+        <dt>度数 z</dt><dd>每个顶点的孩子数。无限树的阈值精确为 1/(z−1)。z = 2 是链，p_c = 1。</dd>
+        <dt>开放概率 p</dt><dd>每条边独立开放的概率。有信息量的窗口在 1/(z−1) 附近。</dd>
+        <dt>重新抽样</dt><dd>在不改变 p 的情况下换一组确定性边抽样，便于比较同一 p 下的两张构型。</dd>
+      </dl>`,
+      dynamics: `<p>p_c 以下几乎所有分支都在深度四之前消亡，“根触及深度 4”的读数很小。在 p_c 处，有限树上的可达概率仍然不大，而无限树的 θ 为零：临界树没有无限团簇。p_c 以上，每个深度都有正比例分支存活，θ 随 p − p_c 线性增长，β = 1。</p>
+        <p>平均团簇尺寸 χ 在 p ↑ p_c 时以 γ = 1 发散；p_c 以上读数报 ∞，因为此时均值包含无限团簇。</p>`,
+      try: `<div class="guide-try"><b>1.</b> 取 z = 2。树退化为链，p_c = 1，任何 p < 1 都不能以概率一触及深度 4。增大 z，看 p_c 下降。</div>
+        <div class="guide-try"><b>2.</b> 取 z = 3、p = 0.5。u = 1 处的重根就是临界点，θ 精确为零。移到 p = 0.6，核对 θ = 19/27 ≈ 0.7037。</div>
+        <div class="guide-try"><b>3.</b> 比较有限可达读数与精确 θ（p = 0.6）。二者不同：有限树只能报告深度四事件，而 θ 是关于无穷的陈述。</div>`,
+      caveat: `<p>树没有环。在 Z² 上同度数给出 p_c = 1/2 而不是 1/3，因为对偶闭横穿会阻挡团簇。对二维材料做 Bethe 近似不受控；它只在树上精确，在局部树状稀疏图上渐近精确。</p>`,
+    },
+    de: {
+      read: `<p>Ein vollständiger z-facher Baum der Tiefe vier, Kante für Kante gezeichnet, neben der exakten Kurve des unendlichen z-regulären Baums. <b>Cyan</b> sind offene, mit der Wurzel verbundene Kanten; <b>bernsteinfarben</b> offene, aber von der Wurzel abgeschnittene; grau geschlossene. Das untere Diagramm ist θ(p) für den unendlichen Baum mit markiertem p.</p>
+        <p>Die endliche Zeichnung ist eine Vorschau der Verzweigungsrekursion, keine Stichprobe aus dem unendlichen Baum. Sie zeigt, warum die Rekursion schließt: Ist die Wurzel fixiert, sind die Kindzweige unabhängig.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Grad z</dt><dd>Die Zahl der Kinder jedes Knotens. Die Schwelle des unendlichen Baums ist exakt 1/(z−1). z = 2 ist eine Kette mit p_c = 1.</dd>
+        <dt>Öffnungswahrscheinlichkeit p</dt><dd>Die unabhängige Wahrscheinlichkeit jeder Kante. Interessant ist das Fenster um 1/(z−1).</dd>
+        <dt>Neu zeichnen</dt><dd>Wechselt die deterministische Kantenziehung bei gleichem p, sodass zwei Konfigurationen verglichen werden können.</dd>
+      </dl>`,
+      dynamics: `<p>Unterhalb von p_c stirbt fast jeder Zweig vor Tiefe vier, und die Anzeige „Wurzel erreicht Tiefe 4“ ist klein. Bei p_c ist die Erreichbarkeit im endlichen Baum noch klein, aber das unendliche θ ist null: Der kritische Baum hat keinen unendlichen Cluster. Oberhalb von p_c überlebt in jeder Tiefe ein positiver Anteil, und θ wächst linear in p − p_c mit β = 1.</p>
+        <p>Die mittlere Clustergröße χ divergiert für p ↑ p_c mit γ = 1; oberhalb von p_c zeigt die Anzeige ∞, weil der unendliche Cluster dann in den Mittelwert eingeht.</p>`,
+      try: `<div class="guide-try"><b>1.</b> z = 2 setzen: Der Baum ist eine Kette, p_c = 1, und kein p < 1 erreicht Tiefe vier mit Wahrscheinlichkeit eins. z erhöhen und p_c fallen sehen.</div>
+        <div class="guide-try"><b>2.</b> z = 3, p = 0.5 setzen. Die doppelte Wurzel bei u = 1 ist der kritische Punkt; θ = 0 exakt. Bei p = 0.6 gilt θ = 19/27 ≈ 0.7037.</div>
+        <div class="guide-try"><b>3.</b> Die endliche Erreichbarkeitsanzeige mit dem exakten θ bei p = 0.6 vergleichen. Sie unterscheiden sich: Der endliche Baum meldet nur ein Tiefe-vier-Ereignis, θ ist eine Aussage über die Unendlichkeit.</div>`,
+      caveat: `<p>Der Baum hat keine Zyklen. Auf Z² liefert derselbe Grad p_c = 1/2 statt 1/3, weil duale geschlossene Durchgänge den Cluster blockieren. Die Bethe-Näherung für ein zweidimensionales Material ist nicht kontrolliert; exakt ist sie nur auf Bäumen und asymptotisch auf lokal baumartigen dünnen Graphen.</p>`,
+    },
+  },
+  epidemic: {
+    en: {
+      read: `<p>The curve is the final size R∞ of an SIR epidemic in the Poisson configuration model, as a function of the effective reproduction number. The red dot is the current state. The histogram below shows 3,000 branching-process outbreak sizes at the same effective R; the horizontal axis is logarithmic, so sizes 1, 10, 100 and 800 are equally spaced. Amber bars are outbreaks of at least 100 cases.</p>
+        <p>The threshold R = 1 is drawn as a vertical line. Left of it the curve is flat at zero; right of it the final size rises steeply and then approaches one slowly.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Mean degree c</dt><dd>The Poisson contact-network mean. It fixes κ = c + 1 and the per-edge threshold T_c = 1/c.</dd>
+        <dt>Transmissibility T</dt><dd>The probability that an infectious contact transmits. R₀ = cT in the homogeneous Poisson model.</dd>
+        <dt>Vaccinated fraction v</dt><dd>Random immunisation of a fraction v. It multiplies the effective branching factor by (1 − ve).</dd>
+        <dt>Vaccine efficacy e</dt><dd>All-or-nothing or leaky efficacy; to first order both give the same mean-field coverage target (1 − 1/R₀)/e.</dd>
+        <dt>Resample outbreaks</dt><dd>Draws a fresh set of 3,000 branching-process outbreaks at the current parameters.</dd>
+      </dl>`,
+      dynamics: `<p>At R_eff below one almost every outbreak dies out and the histogram is concentrated at small sizes. At R_eff just above one the distribution is bimodal: most runs still die, but a few reach a macroscopic size, and the mean is dominated by the survivors. Well above one almost every run is large.</p>
+        <p>Vaccination shifts the red dot left. The readout “coverage needed” is the fraction that must be immunised at efficacy e to push R_eff to one; the readout “herd immunity” is the same number at e = 1.</p>`,
+      try: `<div class="guide-try"><b>1.</b> c = 4, T = 0.5, v = 0. Then R₀ = 2 and R∞ = 0.7968. The histogram should be dominated by large outbreaks, with a small extinct mode.</div>
+        <div class="guide-try"><b>2.</b> c = 2, T = 0.5, v = 0. Then R₀ = 1 exactly. The curve sits at zero and the histogram is a broad critical distribution with no macroscopic mode.</div>
+        <div class="guide-try"><b>3.</b> From case 1, raise v until R_eff = 1. The required v is 0.5 at e = 1 and 0.556 at e = 0.9; compare with the readout.</div>`,
+      caveat: `<p>The histogram is a branching process, not a network simulation: it ignores finite population size, clustering and the depletion of susceptibles beyond the percolation limit. The curve assumes a static Poisson network and independent transmission per edge. Temporal ordering, behaviour and the time course are outside the model.</p>`,
+    },
+    zh: {
+      read: `<p>曲线是 Poisson 配置模型中 SIR 流行的最终规模 R∞，横轴是有效再生数。红点是当前状态。下方柱状图给出同一有效 R 下 3,000 次分支过程暴发的规模；横轴为对数坐标，因此规模 1、10、100、800 等距。琥珀色柱是至少 100 例的暴发。</p>
+        <p>阈值 R = 1 画成竖线。它的左侧曲线恒为零；右侧最终规模先陡升，再缓慢趋近一。</p>`,
+      params: `<dl class="guide-key">
+        <dt>平均度 c</dt><dd>Poisson 接触网络的均值。它固定 κ = c + 1 与逐边阈值 T_c = 1/c。</dd>
+        <dt>传播概率 T</dt><dd>一次感染性接触发生传播的概率。在均匀 Poisson 模型中 R₀ = cT。</dd>
+        <dt>接种比例 v</dt><dd>随机免疫比例 v。它把有效分支因子乘以 (1 − ve)。</dd>
+        <dt>疫苗效力 e</dt><dd>全或无或渗漏型效力；在一阶近似下，两者给出相同的平均场覆盖率目标 (1 − 1/R₀)/e。</dd>
+        <dt>重新抽样暴发</dt><dd>在当前参数下重新抽取 3,000 次分支过程暴发。</dd>
+      </dl>`,
+      dynamics: `<p>R_eff 小于一时，几乎每次暴发都熄灭，柱状图集中在小规模。R_eff 刚超过一时，分布是双峰的：大多数运行仍然熄灭，少数达到宏观规模，均值由幸存者主导。远高于一时，几乎每次运行都很大。</p>
+        <p>接种把红点向左移。读数“所需覆盖率”是在效力 e 下把 R_eff 压到一所需的免疫比例；读数“群体免疫”是 e = 1 时的同一个数。</p>`,
+      try: `<div class="guide-try"><b>1.</b> 取 c = 4、T = 0.5、v = 0。此时 R₀ = 2、R∞ = 0.7968。柱状图应由大暴发主导，只留一个很小的熄灭峰。</div>
+        <div class="guide-try"><b>2.</b> 取 c = 2、T = 0.5、v = 0。此时 R₀ 恰为一。曲线停在零，柱状图是宽泛的临界分布，没有宏观峰。</div>
+        <div class="guide-try"><b>3.</b> 从情形 1 出发，增大 v 直到 R_eff = 1。e = 1 时需要 v = 0.5，e = 0.9 时需要 0.556；与读数对照。</div>`,
+      caveat: `<p>柱状图是分支过程，不是网络模拟：它忽略有限人口、聚集性，以及渗流极限之外易感者的耗尽。曲线假设静态 Poisson 网络与逐边独立传播。时序、行为与时间进程都在模型之外。</p>`,
+    },
+    de: {
+      read: `<p>Die Kurve ist die Endgröße R∞ einer SIR-Epidemie im Poisson-Konfigurationsmodell als Funktion der effektiven Reproduktionszahl. Der rote Punkt ist der aktuelle Zustand. Das Histogramm darunter zeigt 3.000 Ausbrüche eines Verzweigungsprozesses beim selben effektiven R; die Achse ist logarithmisch, sodass 1, 10, 100 und 800 gleich weit auseinanderliegen. Bernsteinfarbene Balken sind Ausbrüche mit mindestens 100 Fällen.</p>
+        <p>Die Schwelle R = 1 ist als senkrechte Linie eingezeichnet. Links davon ist die Kurve null; rechts steigt die Endgröße steil und nähert sich dann langsam eins.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Mittlerer Grad c</dt><dd>Der Mittelwert des Poisson-Kontaktnetzes. Er legt κ = c + 1 und die Kantenschwelle T_c = 1/c fest.</dd>
+        <dt>Übertragbarkeit T</dt><dd>Die Wahrscheinlichkeit, dass ein infektiöser Kontakt überträgt. Im homogenen Poisson-Modell ist R₀ = cT.</dd>
+        <dt>Geimpfter Anteil v</dt><dd>Zufällige Immunisierung eines Anteils v. Sie multipliziert den effektiven Verzweigungsfaktor mit (1 − ve).</dd>
+        <dt>Impfstoffwirksamkeit e</dt><dd>Alles-oder-nichts oder durchlässig; in erster Ordnung ergeben beide dasselbe Mean-Field-Ziel (1 − 1/R₀)/e.</dd>
+        <dt>Ausbrüche neu ziehen</dt><dd>Zieht bei den aktuellen Parametern 3.000 neue Verzweigungsprozess-Ausbrüche.</dd>
+      </dl>`,
+      dynamics: `<p>Unter R_eff = 1 stirbt fast jeder Ausbruch aus, und das Histogramm konzentriert sich auf kleine Größen. Knapp über eins ist die Verteilung bimodal: Die meisten Läufe sterben noch, wenige erreichen eine makroskopische Größe, und der Mittelwert wird von den Überlebenden dominiert. Deutlich über eins ist fast jeder Lauf groß.</p>
+        <p>Die Impfung verschiebt den roten Punkt nach links. Die Anzeige „nötige Abdeckung“ ist der Anteil, der bei Wirksamkeit e immun sein muss, um R_eff auf eins zu drücken; „Herdenimmunität“ ist dieselbe Zahl für e = 1.</p>`,
+      try: `<div class="guide-try"><b>1.</b> c = 4, T = 0.5, v = 0: Dann ist R₀ = 2 und R∞ = 0.7968. Das Histogramm sollte von großen Ausbrüchen dominiert sein, mit einem kleinen erloschenen Modus.</div>
+        <div class="guide-try"><b>2.</b> c = 2, T = 0.5, v = 0: Dann ist R₀ genau eins. Die Kurve bleibt bei null, und das Histogramm ist eine breite kritische Verteilung ohne makroskopischen Modus.</div>
+        <div class="guide-try"><b>3.</b> Von Fall 1 aus v erhöhen, bis R_eff = 1. Nötig sind v = 0.5 bei e = 1 und v = 0.556 bei e = 0.9; mit der Anzeige vergleichen.</div>`,
+      caveat: `<p>Das Histogramm ist ein Verzweigungsprozess, keine Netzwerksimulation: Es ignoriert endliche Populationsgröße, Clustering und die Erschöpfung der Empfänglichen jenseits des Perkolationslimits. Die Kurve setzt ein statisches Poisson-Netz und unabhängige Übertragung pro Kante voraus. Zeitliche Ordnung, Verhalten und Zeitverlauf liegen außerhalb des Modells.</p>`,
+    },
+  },
 };
 
 export function guideHTML(id, lang) {

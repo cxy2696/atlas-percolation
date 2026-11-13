@@ -14,7 +14,7 @@ Ein Ergebnis, das sich nicht reproduzieren lässt, ist eine Geschichte. Dieses K
 Das Repository ist das Artefakt. Fünf Dinge werden gemeinsam versioniert.
 
 1. **Quellen.** Markdown-Kapitel, JSON-Bibliographie, Zitationskarte.
-2. **Engine.** C++20, Julia, Python und JavaScript für den Kern; Python und JavaScript für die v3-Algorithmensammlung.
+2. **Engine.** C++20, Julia, Python und JavaScript für den Bernoulli-Kern, die v3-Algorithmensammlung, die Etikettierungsroutine und die Baum-/Epidemielöser.
 3. **Goldens.** `data/golden/parity.json` für den viersprachigen Kern, `data/golden/rng-seed42.json` für den Zufallsstrom, `data/golden/algorithms-v3.json` für die neuen Algorithmen.
 4. **Daten.** Rohe Benchmark-Zählungen und der analysierte Datensatz, samt Harness.
 5. **Build und Deployment.** Content-Builder, statischer Server, Python-Paket, API, Dockerfile und CI-Workflows.
@@ -37,7 +37,7 @@ Jede Implementierung folgt dieser Ordnung. Die Golden-Datei speichert Rohausgabe
 
 Der Kernvertrag ist viersprachig. `scripts/parity.py` berechnet die Python-Proben, startet `scripts/parity_probe.mjs` für JavaScript und vergleicht beides mit `data/golden/parity.json`; die C++- und Julia-Suiten prüfen dieselben Werte aus derselben Datei.
 
-Die v3-Algorithmensammlung hat einen zweisprachigen Vertrag. `scripts/parity_algorithms.py` vergleicht Python und JavaScript bei Bootstrap-Aktivierungszeiten, Invasionsreihenfolge, Leath-Clustergröße und Achlioptas-Trajektorien. Der Umfang steht in der Golden-Datei; der Atlas behauptet nicht, dass die C++- und Julia-Bibliotheken diese Routinen implementieren.
+Die Algorithmensammlung hat einen viersprachigen Vertrag. `scripts/parity_algorithms.py` vergleicht Python und JavaScript bei Bootstrap-Aktivierungszeiten, Invasionsreihenfolge, Leath-Clustergröße und Achlioptas-Trajektorien; die C++- und Julia-Suiten prüfen dieselben Werte aus `data/golden/algorithms-v3.json`, zusammen mit den deterministischen Hoshen–Kopelman-, Bethe- und SIR-Proben.
 
 Ausführen mit:
 

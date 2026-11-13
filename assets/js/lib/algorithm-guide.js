@@ -2,7 +2,7 @@
  *  the cost, the exact code path, and the mistakes that survive a quick read.
  *  The text is written by hand in the three editions; it is not generated. */
 
-export const ALGORITHM_ORDER = ['sampler', 'dsu', 'nz', 'leath', 'bootstrap', 'invasion', 'achlioptas', 'kcore'];
+export const ALGORITHM_ORDER = ['sampler', 'dsu', 'nz', 'nz-site', 'leath', 'bootstrap', 'invasion', 'achlioptas', 'kcore', 'hoshen', 'bethe', 'sir', 'message'];
 
 export const ALGORITHM_GUIDE = {
   sampler: {
@@ -324,6 +324,215 @@ export const ALGORITHM_GUIDE = {
     tests: ['tests/js/engine.test.js', 'lib/python/tests/test_engine.py', 'assets/js/labs/network.js'],
   },
 
+  hoshen: {
+    tag: { en: 'Cluster labelling', zh: '团簇标号', de: 'Cluster-Etikettierung' },
+    title: { en: 'Hoshen–Kopelman labelling', zh: 'Hoshen–Kopelman 标号', de: 'Hoshen–Kopelman-Etikettierung' },
+    purpose: {
+      en: ['The DSU maintains components; Hoshen–Kopelman feeds it in one scan. Visit the elements in a fixed order, look only at the already-visited neighbours, and maintain an equivalence table between provisional labels. After the scan, compress the table once and read the cluster sizes. The graph form in the libraries visits the edge list once and assigns each vertex its root as a label.'],
+      zh: ['并查集维护分量；Hoshen–Kopelman 用一次扫描为它提供输入。按固定顺序访问元素，只看已经访问过的邻居，并在临时标号之间维护等价表。扫描结束后压缩一次标号表，读出团簇大小。库中的图形式只遍历一次边表，把每个顶点的根作为标号。'],
+      de: ['Die DSU pflegt Komponenten; Hoshen–Kopelman speist sie in einem Scan. Man besucht die Elemente in fester Reihenfolge, betrachtet nur bereits besuchte Nachbarn und pflegt eine Äquivalenztabelle provisorischer Labels. Nach dem Scan wird die Tabelle einmal komprimiert und die Clustergrößen gelesen. Die Graphvariante der Bibliotheken läuft einmal über die Kantenliste und vergibt die Wurzel als Label.'],
+    },
+    steps: {
+      en: ['Initialise the DSU; every present vertex is its own component.', 'Visit each edge (or each site and its west/north neighbours) in scan order.', 'If the edge is open and both endpoints are present, union their provisional labels.', 'Compress the labels in one pass and accumulate the size of each root.'],
+      zh: ['初始化并查集；每个存在的顶点自成一个分量。', '按扫描顺序访问每条边（或每个位点及其西/北邻居）。', '若边打开且两端都存在，合并它们的临时标号。', '一趟压缩标号，并累加每个根的大小。'],
+      de: ['DSU initialisieren; jeder vorhandene Knoten ist seine eigene Komponente.', 'Jede Kante (oder jeden Platz mit West-/Nordnachbarn) in Scanreihenfolge besuchen.', 'Ist die Kante offen und beide Endpunkte vorhanden, ihre provisorischen Labels vereinigen.', 'Labels in einem Durchlauf komprimieren und die Größe jeder Wurzel aufsummieren.'],
+    },
+    invariant: {
+      en: 'Two vertices receive the same compressed label iff they are connected by a path of open edges through present vertices. The number of distinct labels equals the number of clusters, and the size array sums to the number of present vertices. Inactive vertices are labelled -1.',
+      zh: '两个顶点得到相同压缩标号，当且仅当它们通过存在顶点之间的开边路径连通。不同标号数等于团簇数，大小数组之和等于存在顶点数。非活跃顶点标为 -1。',
+      de: 'Zwei Knoten erhalten dasselbe komprimierte Label genau dann, wenn sie durch einen Pfad offener Kanten über vorhandene Knoten verbunden sind. Die Zahl verschiedener Labels ist die Clusterzahl, und die Größen summieren sich zur Zahl vorhandener Knoten. Inaktive Knoten erhalten -1.',
+    },
+    complexity: {
+      en: [['scan', 'O(n + m)'], ['unions', 'O(m α(n))'], ['label compression', 'O(n)'], ['memory', 'O(n)']],
+      zh: [['扫描', 'O(n + m)'], ['合并', 'O(m α(n))'], ['标号压缩', 'O(n)'], ['内存', 'O(n)']],
+      de: [['Scan', 'O(n + m)'], ['Vereinigungen', 'O(m α(n))'], ['Label-Kompression', 'O(n)'], ['Speicher', 'O(n)']],
+    },
+    code: [
+      { path: 'lib/js/engine/algorithms.js', label: 'JavaScript labelClusters' },
+      { path: 'lib/python/percolation_atlas/algorithms.py', label: 'Python label_clusters' },
+      { path: 'lib/cpp/include/percolation_atlas/algorithms.hpp', label: 'C++ label_clusters' },
+      { path: 'lib/julia/src/algorithms.jl', label: 'Julia label_clusters' },
+    ],
+    notes: {
+      en: [['labelClusters(n, eu, ev, openEdges, active)', 'Both modes in one routine: active = null labels every vertex (bond), active given labels site percolation.'], ['sizes[root]', 'Only roots have a nonzero size; a vertex that is not a root must not be used as a cluster identifier before find().'], ['inactive label -1', 'The sentinel makes the site mode explicit; treating a closed site as its own cluster is the classic off-by-one-component error.']],
+      zh: [['labelClusters(n, eu, ev, openEdges, active)', '一个例程覆盖两种模式：active = null 标注所有顶点（键渗流），给定 active 则标注位点渗流。'], ['sizes[root]', '只有根的大小非零；非根顶点在 find() 之前不能当作团簇标识。'], ['非活跃标号 -1', '哨兵值让位点模式显式化；把闭位点当成独立团簇是经典的“多算一个分量”错误。']],
+      de: [['labelClusters(n, eu, ev, openEdges, active)', 'Beide Modi in einer Routine: active = null etikettiert alle Knoten (Kantenperkolation), mit active wird Platzperkolation etikettiert.'], ['sizes[root]', 'Nur Wurzeln haben eine von null verschiedene Größe; ein Nicht-Wurzelknoten darf vor find() nicht als Clusterkennung dienen.'], ['inaktives Label -1', 'Der Sentineltwert macht den Platzmodus explizit; einen geschlossenen Platz als eigenen Cluster zu zählen ist der klassische Fehler.']],
+    },
+    pitfalls: {
+      en: ['Using a provisional label after the scan without compressing it gives the wrong cluster count.', 'Forgetting the inactive sentinel makes every empty site a singleton and inflates the cluster count.', 'Visiting an edge twice (from both endpoints) is harmless for union but changes the stated cost; the scan must be one pass.'],
+      zh: ['扫描后不压缩临时标号就使用，会得到错误的团簇数。', '忘记非活跃哨兵，会把每个空位点算成单点团簇，虚增团簇数。', '从两端各访问一次边对合并无害，但会改变所述代价；扫描必须是一趟。'],
+      de: ['Ein provisorisches Label nach dem Scan ohne Kompression zu nutzen ergibt eine falsche Clusterzahl.', 'Den inaktiven Sentineltwert zu vergessen macht jeden leeren Platz zu einem Singleton und bläht die Clusterzahl auf.', 'Eine Kante von beiden Enden zu besuchen ist für die Union harmlos, ändert aber die angegebene Kostenaussage; der Scan muss ein Durchlauf sein.'],
+    },
+    tests: ['tests/js/trees.test.js', 'lib/python/tests/test_trees.py', 'data/golden/algorithms-v3.json'],
+  },
+
+  bethe: {
+    tag: { en: 'Exact tree', zh: '精确树', de: 'Exakter Baum' },
+    title: { en: 'Bethe fixed point', zh: 'Bethe 不动点', de: 'Bethe-Fixpunkt' },
+    purpose: {
+      en: ['On a z-regular tree the open cluster is a branching process, and the percolation probability is the smallest fixed point of u = (1 − p + pu)^(z−1). The routine solves that equation by bisection on the first sign change, reports θ = 1 − (1 − p + pu)^z, and returns the exact threshold 1/(z−1).'],
+      zh: ['在 z 正则树上，开团簇是分支过程，渗流概率是 u = (1 − p + pu)^(z−1) 的最小不动点。该例程用首次变号的二分法求解，报告 θ = 1 − (1 − p + pu)^z，并返回精确阈值 1/(z−1)。'],
+      de: ['Auf einem z-regulären Baum ist der offene Cluster ein Verzweigungsprozess, und die Perkolationswahrscheinlichkeit ist der kleinste Fixpunkt von u = (1 − p + pu)^(z−1). Die Routine löst diese Gleichung per Bisektion auf den ersten Vorzeichenwechsel, meldet θ = 1 − (1 − p + pu)^z und liefert die exakte Schwelle 1/(z−1).'],
+    },
+    steps: {
+      en: ['Compute p_c = 1/(z−1); if p ≤ p_c, return θ = 0 and u = 1.', 'Otherwise bisect u ∈ [0,1] on the sign of (1 − p + pu)^(z−1) − u, keeping the smallest root.', 'Evaluate θ = 1 − (1 − p + pu)^z and clamp a tiny negative value to zero.', 'Report χ = 1 + zp/(1 − p(z−1)) below p_c and ∞ above it.'],
+      zh: ['计算 p_c = 1/(z−1)；若 p ≤ p_c，返回 θ = 0、u = 1。', '否则在 u ∈ [0,1] 上按 (1 − p + pu)^(z−1) − u 的符号二分，保留最小根。', '计算 θ = 1 − (1 − p + pu)^z，把极小的负值截为零。', 'p_c 以下报告 χ = 1 + zp/(1 − p(z−1))，以上报告 ∞。'],
+      de: ['p_c = 1/(z−1) berechnen; für p ≤ p_c gilt θ = 0 und u = 1.', 'Sonst u ∈ [0,1] nach dem Vorzeichen von (1 − p + pu)^(z−1) − u halbieren und die kleinste Wurzel behalten.', 'θ = 1 − (1 − p + pu)^z auswerten und einen winzigen negativen Wert auf null setzen.', 'Unter p_c χ = 1 + zp/(1 − p(z−1)) melden, darüber ∞.'],
+    },
+    invariant: {
+      en: 'The returned u is the smallest fixed point, so it is the physical finite-branch probability; the trivial fixed point u = 1 is never selected when p > p_c. θ is monotone in p, vanishes at p_c and tends to one as p → 1.',
+      zh: '返回的 u 是最小不动点，因此是物理的有限分支概率；p > p_c 时不会选到平凡不动点 u = 1。θ 关于 p 单调，在 p_c 处为零，并在 p → 1 时趋于一。',
+      de: 'Das zurückgegebene u ist der kleinste Fixpunkt und damit die physikalische Wahrscheinlichkeit eines endlichen Zweigs; der triviale Fixpunkt u = 1 wird für p > p_c nie gewählt. θ ist monoton in p, verschwindet bei p_c und strebt für p → 1 gegen eins.',
+    },
+    complexity: {
+      en: [['bisection', 'O(log(1/tol))'], ['one evaluation', 'O(1)'], ['memory', 'O(1)']],
+      zh: [['二分', 'O(log(1/tol))'], ['单次求值', 'O(1)'], ['内存', 'O(1)']],
+      de: [['Bisektion', 'O(log(1/tol))'], ['eine Auswertung', 'O(1)'], ['Speicher', 'O(1)']],
+    },
+    code: [
+      { path: 'lib/js/engine/trees.js', label: 'JavaScript bethePercolation' },
+      { path: 'lib/python/percolation_atlas/trees.py', label: 'Python bethe_percolation' },
+      { path: 'lib/cpp/include/percolation_atlas/algorithms.hpp', label: 'C++ bethe_percolation' },
+      { path: 'lib/julia/src/algorithms.jl', label: 'Julia bethe_percolation' },
+    ],
+    notes: {
+      en: [['firstRoot(g)', 'Bisection selects the first sign change, not a fixed point from an arbitrary starting value.'], ['p ≤ p_c branch', 'Returns exactly zero instead of a numerically small θ; the critical tree has no infinite cluster.'], ['chi', 'The mean cluster size is finite only below p_c; above it the infinite cluster makes the mean infinite, so ∞ is the honest value.']],
+      zh: [['firstRoot(g)', '二分选择首次变号，而不是从任意初值迭代到某个不动点。'], ['p ≤ p_c 分支', '返回精确的零，而不是数值上很小的 θ；临界树没有无限团簇。'], ['chi', '平均团簇尺寸只在 p_c 以下有限；以上无限团簇使均值无穷，所以 ∞ 才是诚实的值。']],
+      de: [['firstRoot(g)', 'Die Bisektion wählt den ersten Vorzeichenwechsel, nicht einen Fixpunkt von einem beliebigen Startwert.'], ['p ≤ p_c-Zweig', 'Liefert exakt null statt eines numerisch kleinen θ; der kritische Baum hat keinen unendlichen Cluster.'], ['chi', 'Die mittlere Clustergröße ist nur unter p_c endlich; darüber macht der unendliche Cluster den Mittelwert unendlich.']],
+    },
+    pitfalls: {
+      en: ['Iterating from u = 1 stays at the trivial fixed point and reports θ = 0 above p_c.', 'Using 1/m for the z-regular tree with m = z forgets that the root has z neighbours but every other vertex has z−1 forward neighbours.', 'Applying the tree threshold to Z² (1/3 instead of 1/2) ignores the dual cycles.'],
+      zh: ['从 u = 1 迭代会停在平凡不动点，在 p_c 以上误报 θ = 0。', '对 z 正则树用 1/m（m = z）会忘记根有 z 个邻居、其余顶点只有 z−1 个前向邻居。', '把树阈值套到 Z²（1/3 而非 1/2）忽略了对偶环。'],
+      de: ['Iteration von u = 1 bleibt am trivialen Fixpunkt und meldet oberhalb von p_c fälschlich θ = 0.', '1/m für den z-regulären Baum mit m = z zu verwenden übersieht, dass die Wurzel z Nachbarn hat, jeder andere Knoten aber z−1 Vorwärtsnachbarn.', 'Die Baumschwelle auf Z² anzuwenden (1/3 statt 1/2) ignoriert die dualen Zyklen.'],
+    },
+    tests: ['tests/js/trees.test.js', 'lib/python/tests/test_trees.py', 'data/golden/algorithms-v3.json'],
+  },
+
+  sir: {
+    tag: { en: 'Epidemics', zh: '流行病', de: 'Epidemien' },
+    title: { en: 'SIR final size', zh: 'SIR 最终规模', de: 'SIR-Endgröße' },
+    purpose: {
+      en: ['The final size of an SIR epidemic on a static network is the giant component of the network after each edge is kept with transmissibility T. The routine evaluates the configuration-model fixed point S = 1 − G0(1 − T + Tu), u = G1(1 − T + Tu), and returns R0 = T(κ−1), the percolation threshold and the herd-immunity fraction.'],
+      zh: ['静态网络上 SIR 流行的最终规模，等于每条边以传播概率 T 保留后网络的巨分量。该例程计算配置模型不动点 S = 1 − G0(1 − T + Tu)、u = G1(1 − T + Tu)，并返回 R0 = T(κ−1)、渗流阈值与群体免疫比例。'],
+      de: ['Die Endgröße einer SIR-Epidemie auf einem statischen Netz ist die Riesenkomponente, nachdem jede Kante mit Übertragbarkeit T behalten wurde. Die Routine löst den Fixpunkt S = 1 − G0(1 − T + Tu), u = G1(1 − T + Tu) und liefert R0 = T(κ−1), die Perkolationsschwelle und die Herdenimmunitätsfraktion.'],
+    },
+    steps: {
+      en: ['Normalise the degree pmf and compute G0, G1, ⟨k⟩ and κ.', 'Solve u = G1(1 − T + Tu) by bisection on the first sign change.', 'Evaluate S = 1 − G0(1 − T + Tu) and clamp to [0,1].', 'Return R0 = T(κ−1), T_c = 1/(κ−1), and v_c = 1 − 1/R0 when R0 > 1.'],
+      zh: ['归一化度分布，计算 G0、G1、⟨k⟩ 与 κ。', '用首次变号的二分法解 u = G1(1 − T + Tu)。', '计算 S = 1 − G0(1 − T + Tu)，截到 [0,1]。', '返回 R0 = T(κ−1)、T_c = 1/(κ−1)，以及 R0 > 1 时的 v_c = 1 − 1/R0。'],
+      de: ['Die Gradverteilung normalisieren und G0, G1, ⟨k⟩ sowie κ berechnen.', 'u = G1(1 − T + Tu) per Bisektion auf den ersten Vorzeichenwechsel lösen.', 'S = 1 − G0(1 − T + Tu) auswerten und auf [0,1] begrenzen.', 'R0 = T(κ−1), T_c = 1/(κ−1) und für R0 > 1 v_c = 1 − 1/R0 zurückgeben.'],
+    },
+    invariant: {
+      en: 'The returned S is the fraction outside the giant component’s complement, i.e. the final size; it is zero below T_c and strictly increasing above it. R0 is the mean number of transmissions per index case in the branching limit, and v_c is the random-immunisation fraction that makes the effective R equal one.',
+      zh: '返回的 S 是巨分量补集之外的比例，即最终规模；它在 T_c 以下为零，以上严格递增。R0 是分支极限下每个指示病例的平均传播数，v_c 是使有效 R 等于一的随机免疫比例。',
+      de: 'Das zurückgegebene S ist der Anteil außerhalb des Komplements der Riesenkomponente, also die Endgröße; unterhalb von T_c ist es null, darüber streng wachsend. R0 ist die mittlere Übertragungszahl pro Indexfall im Verzweigungsgrenzfall, und v_c ist der Anteil zufälliger Immunisierung, der das effektive R auf eins bringt.',
+    },
+    complexity: {
+      en: [['pmf evaluation', 'O(k_max)'], ['bisection', 'O(log(1/tol)) evaluations'], ['memory', 'O(k_max)']],
+      zh: [['分布求值', 'O(k_max)'], ['二分', 'O(log(1/tol)) 次求值'], ['内存', 'O(k_max)']],
+      de: [['Verteilungsauswertung', 'O(k_max)'], ['Bisektion', 'O(log(1/tol)) Auswertungen'], ['Speicher', 'O(k_max)']],
+    },
+    code: [
+      { path: 'lib/js/engine/trees.js', label: 'JavaScript sirFinalSize' },
+      { path: 'lib/python/percolation_atlas/trees.py', label: 'Python sir_final_size' },
+      { path: 'lib/cpp/include/percolation_atlas/algorithms.hpp', label: 'C++ sir_final_size' },
+      { path: 'lib/julia/src/algorithms.jl', label: 'Julia sir_final_size' },
+    ],
+    notes: {
+      en: [['configurationGiantComponent(pmf, T)', 'The engine underneath; sirFinalSize only adds R0 and the herd-immunity fraction.'], ['T vs p', 'T is a transmissibility, not a bond occupancy. The two coincide only when the epidemic has been reduced to percolation.'], ['herdImmunity', 'Defined as 1 − 1/R0, and only meaningful when R0 > 1; the routine returns zero otherwise.']],
+      zh: [['configurationGiantComponent(pmf, T)', '底层引擎；sirFinalSize 只额外给出 R0 与群体免疫比例。'], ['T 与 p', 'T 是传播概率，不是键占据概率。只有在流行病被归约为渗流时二者才相同。'], ['herdImmunity', '定义为 1 − 1/R0，只在 R0 > 1 时有意义；否则返回零。']],
+      de: [['configurationGiantComponent(pmf, T)', 'Die Engine darunter; sirFinalSize ergänzt nur R0 und die Herdenimmunitätsfraktion.'], ['T vs. p', 'T ist eine Übertragbarkeit, keine Kantenbesetzung. Beide stimmen nur überein, wenn die Epidemie auf Perkolation reduziert wurde.'], ['herdImmunity', 'Definiert als 1 − 1/R0 und nur für R0 > 1 sinnvoll; sonst liefert die Routine null.']],
+    },
+    pitfalls: {
+      en: ['Starting the fixed-point iteration at u = 1 stays at the trivial root and reports zero final size.', 'Using R0 = T⟨k⟩ instead of T(κ−1) is the homogeneous-mixing approximation, not the configuration-model answer.', 'Applying the static formula to a temporal network is an upper bound; it can overstate spread by a large factor.'],
+      zh: ['从 u = 1 开始不动点迭代会停在平凡根，把最终规模报成零。', '用 R0 = T⟨k⟩ 而不是 T(κ−1)，是均匀混合近似，不是配置模型答案。', '把静态公式用于时序网络只是上界；它可能大幅高估传播。'],
+      de: ['Die Fixpunktiteration bei u = 1 zu starten bleibt an der trivialen Wurzel und meldet Endgröße null.', 'R0 = T⟨k⟩ statt T(κ−1) zu verwenden ist die Homogen-Mixing-Näherung, nicht die Antwort des Konfigurationsmodells.', 'Die statische Formel auf ein zeitliches Netz anzuwenden ist eine Oberschranke; sie kann die Ausbreitung stark überschätzen.'],
+    },
+    tests: ['tests/js/trees.test.js', 'lib/python/tests/test_trees.py', 'data/golden/algorithms-v3.json'],
+  },
+  'nz-site': {
+    tag: { en: 'Sweep (site)', zh: '扫描（位点）', de: 'Sweep (Platz)' },
+    title: { en: 'Newman–Ziff for sites', zh: '位点 Newman–Ziff', de: 'Newman–Ziff für Plätze' },
+    purpose: {
+      en: ['The bond sweep adds edges; the site sweep adds vertices. Draw one random order of the sites, occupy them one at a time, and union each new site with the neighbours that have already appeared. After k sites the occupied set is a uniform k-subset, so the state is a site-percolation sample at p = k/n.'],
+      zh: ['键扫描逐条加边；位点扫描逐个加顶点。抽一条随机的位点顺序，依次占据，并把每个新位点与已经出现的邻居合并。加入 k 个位点后，占据集是均匀 k-子集，因此该状态就是 p = k/n 处的位点渗流样本。'],
+      de: ['Der Kanten-Sweep fügt Kanten hinzu; der Platz-Sweep fügt Knoten hinzu. Man zieht eine zufällige Reihenfolge der Plätze, besetzt sie einzeln und vereinigt jeden neuen Platz mit den bereits erschienenen Nachbarn. Nach k Plätzen ist die besetzte Menge ein uniformes k-Tupel, also eine Platzperkolations-Stichprobe bei p = k/n.'],
+    },
+    steps: {
+      en: ['Shuffle the n site indices once with the shared RNG.', 'Activate the next site; increment the active cluster count and M₂ by one.', 'Union it with every neighbour that is already active; each union adds 2ab to M₂.', 'At checkpoints record p = k/n, S_max, M₂/n and the number of occupied clusters.'],
+      zh: ['用共享 RNG 洗牌 n 个位点索引一次。', '激活下一个位点；活跃团簇数与 M₂ 各加一。', '把它与所有已激活邻居合并；每次合并给 M₂ 增加 2ab。', '在检查点记录 p = k/n、S_max、M₂/n 与占据团簇数。'],
+      de: ['Die n Platzindizes einmal mit dem gemeinsamen RNG mischen.', 'Den nächsten Platz aktivieren; aktive Clusterzahl und M₂ um eins erhöhen.', 'Ihn mit jedem bereits aktiven Nachbarn vereinigen; jede Vereinigung addiert 2ab zu M₂.', 'An Checkpoints p = k/n, S_max, M₂/n und die Zahl besetzter Cluster notieren.'],
+    },
+    invariant: {
+      en: 'After k steps the active set is a uniform k-subset of the vertices, and the DSU contains exactly the connected components of the induced subgraph. Edges are never sampled, so the random stream depends only on n, not on m.',
+      zh: 'k 步之后，活跃集是顶点的均匀 k-子集，并查集恰好包含诱导子图的连通分量。整个过程不抽边，因此随机流只依赖 n，不依赖 m。',
+      de: 'Nach k Schritten ist die aktive Menge ein uniformes k-Tupel der Knoten, und die DSU enthält genau die Zusammenhangskomponenten des induzierten Teilgraphen. Kanten werden nie gezogen; der Zufallsstrom hängt nur von n ab, nicht von m.',
+    },
+    complexity: {
+      en: [['shuffle', 'O(n)'], ['one sweep', 'O(n + m α(n))'], ['memory', 'O(n + m)']],
+      zh: [['洗牌', 'O(n)'], ['一次扫描', 'O(n + m α(n))'], ['内存', 'O(n + m)']],
+      de: [['Mischen', 'O(n)'], ['ein Sweep', 'O(n + m α(n))'], ['Speicher', 'O(n + m)']],
+    },
+    code: [
+      { path: 'lib/js/engine/percolation.js', label: 'JavaScript newmanZiffSite' },
+      { path: 'lib/python/percolation_atlas/percolation.py', label: 'Python newman_ziff_site' },
+      { path: 'lib/cpp/include/percolation_atlas/percolation.hpp', label: 'C++ newman_ziff_site' },
+      { path: 'lib/julia/src/percolation.jl', label: 'Julia newman_ziff_site' },
+    ],
+    notes: {
+      en: [['rng.shuffle(order)', 'The site order is the entire experiment. The edge order is irrelevant in site mode.'], ['union with active neighbours', 'A neighbour that has not appeared yet is ignored; it will union later when it appears and sees this site as active.'], ['chi2 = M₂/n', 'The denominator is the box size n, not the occupied count, so the curve is comparable to the bond sweep.']],
+      zh: [['rng.shuffle(order)', '位点顺序就是整个实验。位点模式下边序无关。'], ['与活跃邻居合并', '尚未出现的邻居被忽略；它出现时会反过来看到当前位点已激活，再完成合并。'], ['chi2 = M₂/n', '分母是盒子大小 n，而不是占据数，因此曲线可与键扫描比较。']],
+      de: [['rng.shuffle(order)', 'Die Platzordnung ist das ganze Experiment. Im Platzmodus ist die Kantenordnung irrelevant.'], ['Vereinigung mit aktiven Nachbarn', 'Ein noch nicht erschienener Nachbar wird ignoriert; er vereinigt später, wenn er erscheint und diesen Platz aktiv sieht.'], ['chi2 = M₂/n', 'Der Nenner ist die Boxgröße n, nicht die Zahl besetzter Plätze, damit die Kurve mit dem Kanten-Sweep vergleichbar bleibt.']],
+    },
+    pitfalls: {
+      en: ['Sampling edges as well consumes a different random stream and breaks the uniform k-subset property.', 'Using the occupied count as the denominator changes chi2 and makes the curve incomparable with the bond sweep.', 'Forgetting to union a new site with all earlier neighbours undercounts the cluster size.'],
+      zh: ['同时抽边会消耗不同的随机流，并破坏均匀 k-子集性质。', '用占据数作分母会改变 chi2，使曲线无法与键扫描比较。', '忘记把新位点与所有更早的邻居合并，会低估团簇大小。'],
+      de: ['Auch Kanten zu ziehen verbraucht einen anderen Zufallsstrom und zerstört die uniforme k-Tupel-Eigenschaft.', 'Die Zahl besetzter Plätze als Nenner zu nehmen ändert chi2 und macht die Kurve mit dem Kanten-Sweep unvergleichbar.', 'Einen neuen Platz nicht mit allen früheren Nachbarn zu vereinigen unterschätzt die Clustergröße.'],
+    },
+    tests: ['tests/js/message.test.js', 'lib/python/tests/test_message.py', 'data/golden/algorithms-v3.json'],
+  },
+
+  message: {
+    tag: { en: 'Fixed point', zh: '不动点', de: 'Fixpunkt' },
+    title: { en: 'Message passing', zh: '消息传递', de: 'Botschaftspassage' },
+    purpose: {
+      en: ['Message passing computes the giant-component probability from local cavity messages. On a tree it is exact; on a graph with cycles it is the Bethe approximation, whose error is governed by the short-loop density. The implementation uses prefix/suffix products, so one sweep is O(n + m), not O(sum deg²).'],
+      zh: ['消息传递用局部空腔消息计算巨分量概率。在树上精确；在有环的图上是 Bethe 近似，误差由短环密度控制。实现使用前缀/后缀乘积，使一趟扫描为 O(n + m)，而不是 O(Σdeg²)。'],
+      de: ['Botschaftspassage berechnet die Riesenkomponenten-Wahrscheinlichkeit aus lokalen Cavity-Botschaften. Auf einem Baum ist sie exakt; auf einem Graphen mit Zyklen ist sie die Bethe-Näherung, deren Fehler von der Dichte kurzer Schleifen abhängt. Die Implementierung nutzt Präfix-/Suffixprodukte, sodass ein Durchlauf O(n + m) statt O(Σdeg²) kostet.'],
+    },
+    steps: {
+      en: ['Build a CSR with a mate array pairing the two half-edges of every edge.', 'Initialise every message to zero, which selects the physical fixed point.', 'At each vertex compute prefix and suffix products of 1 − T + T·msg over incident half-edges.', 'Write the product excluding k to the opposite half-edge; iterate to tolerance.', 'Compute outside[v] and S = 1 − mean(outside).'],
+      zh: ['建立 CSR，并用 mate 数组配对每条边的两条半边。', '把所有消息初始化为零，以选出物理不动点。', '在每个顶点对入射半边的 1 − T + T·msg 计算前缀与后缀乘积。', '把排除 k 的乘积写到对侧半边；迭代到容差。', '计算 outside[v] 与 S = 1 − mean(outside)。'],
+      de: ['CSR mit einem mate-Array aufbauen, das die beiden Halbkanten jeder Kante paart.', 'Alle Botschaften auf null setzen; das wählt den physikalischen Fixpunkt.', 'An jedem Knoten Präfix- und Suffixprodukte von 1 − T + T·msg über die einfallenden Halbkanten berechnen.', 'Das Produkt ohne k auf die gegenüberliegende Halbkante schreiben; bis zur Toleranz iterieren.', 'outside[v] und S = 1 − mean(outside) berechnen.'],
+    },
+    invariant: {
+      en: 'At a fixed point, msg[k] is the probability that the branch behind half-edge k does not connect to the giant component. On a tree the product factorisation is exact; on a graph with cycles it assumes independent branches and is the Bethe approximation. Starting from zero avoids the trivial all-ones solution.',
+      zh: '在不动点处，msg[k] 是半边 k 背后的分支不连到巨分量的概率。树上乘积分解精确；有环图上它假设分支独立，是 Bethe 近似。从零出发避免了全一平凡解。',
+      de: 'Am Fixpunkt ist msg[k] die Wahrscheinlichkeit, dass der Zweig hinter Halbkante k nicht an die Riesenkomponente anschließt. Auf einem Baum ist die Produktzerlegung exakt; auf einem Graphen mit Zyklen nimmt sie unabhängige Zweige an und ist die Bethe-Näherung. Der Start bei null vermeidet die triviale Eins-Lösung.',
+    },
+    complexity: {
+      en: [['one sweep', 'O(n + m)'], ['iterations', 'graph-dependent, capped by max_iter'], ['memory', 'O(n + m)']],
+      zh: [['一趟', 'O(n + m)'], ['迭代次数', '依赖图，受 max_iter 限制'], ['内存', 'O(n + m)']],
+      de: [['ein Durchlauf', 'O(n + m)'], ['Iterationen', 'graphabhängig, durch max_iter begrenzt'], ['Speicher', 'O(n + m)']],
+    },
+    code: [
+      { path: 'lib/js/engine/message.js', label: 'JavaScript messagePassingPercolation' },
+      { path: 'lib/python/percolation_atlas/message.py', label: 'Python message_passing_percolation' },
+      { path: 'lib/cpp/include/percolation_atlas/algorithms.hpp', label: 'C++ message_passing_percolation' },
+      { path: 'lib/julia/src/algorithms.jl', label: 'Julia message_passing_percolation' },
+    ],
+    notes: {
+      en: [['mate[k]', 'The message into v from adj[k] lives at k; the message v sends back lives at the opposite half-edge. Reading and writing the same index is the classic sign error.'], ['prefix / suffix', 'The two scans give every excluded product in O(deg), so a sweep is linear in the edge count.'], ['initialise at zero', 'Starting at one stays at the trivial fixed point and reports no giant component even when one exists.']],
+      zh: [['mate[k]', '从 adj[k] 进入 v 的消息存在 k；v 发回去的消息存在对侧半边。读写同一个索引是经典符号错误。'], ['前缀 / 后缀', '两趟扫描以 O(deg) 给出每个排除乘积，因此一趟与边数线性。'], ['从零初始化', '从一出发会停在平凡不动点，即使存在巨分量也会报零。']],
+      de: [['mate[k]', 'Die Botschaft von adj[k] nach v liegt bei k; die zurückgesandte Botschaft liegt an der gegenüberliegenden Halbkante. Derselbe Index zum Lesen und Schreiben ist der klassische Vorzeichenfehler.'], ['Präfix / Suffix', 'Die beiden Scans liefern jedes Ausschlussprodukt in O(deg); ein Durchlauf ist linear in der Kantenzahl.'], ['Start bei null', 'Der Start bei eins bleibt am trivialen Fixpunkt und meldet keine Riesenkomponente, auch wenn eine existiert.']],
+    },
+    pitfalls: {
+      en: ['Updating msg[k] in place instead of mate[k] reverses every message.', 'Iterating from one reports S = 0 for a graph with a giant component.', 'On a lattice with short loops the answer is a Bethe approximation, not the lattice percolation probability.'],
+      zh: ['原地更新 msg[k] 而不是 mate[k]，会把所有消息方向弄反。', '从一迭代会对有巨分量的图报 S = 0。', '在含短环的格子上，答案是 Bethe 近似，不是格子渗流概率。'],
+      de: ['msg[k] statt mate[k] in place zu aktualisieren kehrt jede Botschaft um.', 'Iteration von eins meldet S = 0 für einen Graphen mit Riesenkomponente.', 'Auf einem Gitter mit kurzen Schleifen ist das Ergebnis eine Bethe-Näherung, nicht die Gitter-Perkolationswahrscheinlichkeit.'],
+    },
+    tests: ['tests/js/message.test.js', 'lib/python/tests/test_message.py', 'data/golden/algorithms-v3.json'],
+  },
+
 };
 
 export function guideFor(id, lang) {
@@ -342,5 +551,6 @@ export function guideFor(id, lang) {
     pitfalls: pick('pitfalls') || [],
     code: entry.code,
     tests: entry.tests,
-  };
+
+};
 }

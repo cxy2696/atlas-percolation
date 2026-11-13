@@ -21,7 +21,7 @@ version favours readability.
 
 from .rng import Rng
 from .lattice import build_lattice, degree_histogram, LATTICE_KINDS
-from .percolation import Percolation, ClusterStats, newman_ziff, cluster_size_distribution
+from .percolation import Percolation, ClusterStats, newman_ziff, newman_ziff_site, cluster_size_distribution
 from .network import (
     Graph,
     poisson_degrees,
@@ -40,6 +40,7 @@ from .directed import directed_crossing, directed_crossing_rate, directed_crosse
 from .cardy import cardy_crossing, cardy_crossing_vertical, cardy_hypergeom, cardy_modulus, CARDY_CONSTANT
 from .algorithms import (
     neighbours_from_edges,
+    label_clusters,
     bootstrap_activation,
     bootstrap_lattice,
     explosive_sweep,
@@ -53,9 +54,21 @@ from .algorithms import (
     ExplosiveGraphResult,
     InvasionResult,
     LeathResult,
+    LabelResult,
+)
+from .message import message_passing_percolation
+from .trees import (
+    BetheResult,
+    GiantComponentResult,
+    SirResult,
+    bethe_threshold,
+    bethe_percolation,
+    poisson_pmf,
+    configuration_giant_component,
+    sir_final_size,
 )
 
-__version__ = "3.2.1"
+__version__ = "4.1.0"
 
 __all__ = [
     "Rng",
@@ -65,6 +78,7 @@ __all__ = [
     "Percolation",
     "ClusterStats",
     "newman_ziff",
+    "newman_ziff_site",
     "cluster_size_distribution",
     "Graph",
     "poisson_degrees",
@@ -101,4 +115,15 @@ __all__ = [
     "ExplosiveGraphResult",
     "InvasionResult",
     "LeathResult",
+    "label_clusters",
+    "LabelResult",
+    "BetheResult",
+    "GiantComponentResult",
+    "SirResult",
+    "bethe_threshold",
+    "bethe_percolation",
+    "poisson_pmf",
+    "configuration_giant_component",
+    "sir_final_size",
+    "message_passing_percolation",
 ]

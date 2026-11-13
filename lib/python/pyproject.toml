@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "percolation-atlas"
-version = "3.2.1"
+version = "4.1.0"
 description = "Reference percolation algorithms and a reproducible algorithm package: Bernoulli, Newman-Ziff, Leath, bootstrap, invasion and Achlioptas processes"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -24,10 +24,11 @@ The Makefile uses `-O2 -std=c++20 -Wall -Wextra -Wpedantic`.
 | `percolation_atlas/continuum.hpp` | `poisson_points`, `boolean_model` |
 | `percolation_atlas/cardy.hpp` | `cardy_crossing`, `cardy_crossing_vertical`, `cardy_hypergeom`, `cardy_modulus` |
 | `percolation_atlas/directed.hpp` | `directed_crossing`, `directed_crosses_lr`, `directed_crossing_rate` |
+| `percolation_atlas/algorithms.hpp` | bootstrap closure, Achlioptas process, invasion, Leath growth, Hoshen–Kopelman labels, Bethe fixed point, configuration-model giant component, SIR final size |
 | `percolation_atlas/atlas.hpp` | umbrella header for all of the above |
 
 All types live in `namespace atlas`.  `make test` checks the golden RNG
 vectors (including the six normals), every `parity.json` probe (including
 directed percolation), Cardy values, edge-case regressions, sanity checks and
-crossing duality; the golden values are embedded, so the test binary runs
-standalone.
+crossing duality, the algorithm zoo and the v4 tree/epidemic solvers; the
+golden values are embedded, so the test binary runs standalone.

@@ -4,7 +4,8 @@
 //
 // RNG consumption order is part of the public contract:
 //   - site mode: n uniforms, site order 0..n-1;
-//   - bond mode: m uniforms, edge order as produced by build_lattice().
+//   - bond mode: m uniforms, edge order as produced by build_lattice();
+//   - newman_ziff_site: one Fisher-Yates permutation of the n site indices.
 
 #pragma once
 
@@ -67,6 +68,14 @@ class Dsu {
       max_size_ = size_[static_cast<std::size_t>(ra)];
     }
     return true;
+  }
+
+  // Mark one previously inactive site as a new singleton cluster.  The site
+  // Newman-Ziff sweep starts from an empty DSU (count = max_size = 0) and
+  // activates one site per step, exactly like the reference counters.
+  void activate() {
+    ++count_;
+    if (max_size_ < 1) max_size_ = 1;
   }
 
   int n() const noexcept { return n_; }
@@ -311,6 +320,77 @@ inline NewmanZiffResult newman_ziff(const Lattice& lat, Rng& rng, int checkpoint
       out.p.push_back(static_cast<double>(k + 1) / m);
       out.smax.push_back(dsu.max_size());
       out.chi2.push_back(static_cast<double>(total2) / n);
+      out.nclusters.push_back(dsu.count());
+    }
+  }
+  return out;
+}
+
+// One random site order yields the whole site-percolation curve S_max(p),
+// chi2(p), n_clusters(p).  Edges are never sampled: the site order is the only
+// random object, and an edge is active exactly when both endpoints have
+// appeared.  After k sites the occupied set is a uniform k-subset, hence a
+// site-percolation sample at p = k/n.  chi2 is sum |C|^2 / n over the whole
+// box and the cluster count counts occupied clusters only, so both match
+// newman_ziff()'s conventions.
+inline NewmanZiffResult newman_ziff_site(const Lattice& lat, Rng& rng, int checkpoints = 400) {
+  if (checkpoints < 1) throw std::invalid_argument("checkpoints must be at least 1");
+  const int n = lat.n;
+  const int m = lat.m;
+  std::vector<int> order(static_cast<std::size_t>(n));
+  std::iota(order.begin(), order.end(), 0);
+  rng.shuffle(order);
+
+  // Symmetric CSR neighbour list, half-edges emitted in edge order exactly as
+  // in the reference: for edge e list b at a and a at b.
+  std::vector<int> start(static_cast<std::size_t>(n) + 1, 0);
+  for (int e = 0; e < m; ++e) {
+    ++start[static_cast<std::size_t>(lat.eu[static_cast<std::size_t>(e)]) + 1];
+    ++start[static_cast<std::size_t>(lat.ev[static_cast<std::size_t>(e)]) + 1];
+  }
+  for (int v = 0; v < n; ++v) {
+    start[static_cast<std::size_t>(v) + 1] += start[static_cast<std::size_t>(v)];
+  }
+  std::vector<int> pos(start.begin(), start.end() - 1);
+  std::vector<int> adj(static_cast<std::size_t>(2) * static_cast<std::size_t>(m), 0);
+  for (int e = 0; e < m; ++e) {
+    const int a = lat.eu[static_cast<std::size_t>(e)];
+    const int b = lat.ev[static_cast<std::size_t>(e)];
+    adj[static_cast<std::size_t>(pos[static_cast<std::size_t>(a)]++)] = b;
+    adj[static_cast<std::size_t>(pos[static_cast<std::size_t>(b)]++)] = a;
+  }
+
+  std::vector<std::uint8_t> active(static_cast<std::size_t>(n), 0);
+  Dsu dsu(n);
+  dsu.reset(0);  // empty active set: no clusters, no sites
+  long long total2 = 0;  // sum of |C|^2 over the occupied clusters
+  const int every = std::max(1, n / checkpoints);
+
+  NewmanZiffResult out;
+  out.m = m;
+  out.n = n;
+  for (int k = 0; k < n; ++k) {
+    const int v = order[static_cast<std::size_t>(k)];
+    active[static_cast<std::size_t>(v)] = 1;
+    dsu.activate();
+    total2 += 1;
+    for (int j = start[static_cast<std::size_t>(v)];
+         j < start[static_cast<std::size_t>(v) + 1]; ++j) {
+      const int u = adj[static_cast<std::size_t>(j)];
+      if (!active[static_cast<std::size_t>(u)]) continue;
+      const int ra = dsu.find(v);
+      const int rb = dsu.find(u);
+      if (ra != rb) {
+        const long long sa = dsu.root_size(ra);
+        const long long sb = dsu.root_size(rb);
+        dsu.unite(ra, rb);
+        total2 += 2LL * sa * sb;
+      }
+    }
+    if ((k + 1) % every == 0 || k == n - 1) {
+      out.p.push_back(static_cast<double>(k + 1) / static_cast<double>(n));
+      out.smax.push_back(dsu.max_size());
+      out.chi2.push_back(static_cast<double>(total2) / static_cast<double>(n));
       out.nclusters.push_back(dsu.count());
     }
   }

@@ -132,4 +132,24 @@ export const LABS = [
     },
     mount: (el, ctx) => import('./random-cluster.js').then((m) => m.mount(el, ctx)),
   },
+  {
+    id: 'tree',
+    title: { en: 'Bethe tree', zh: 'Bethe 树', de: 'Bethe-Baum' },
+    blurb: {
+      en: 'A finite branching tree beside the exact infinite-tree recursion, with p_c = 1/(z−1).',
+      zh: '有限分支树与精确无限树递推并列，p_c = 1/(z−1)。',
+      de: 'Ein endlicher Verzweigungsbaum neben der exakten Rekursion des unendlichen Baums, p_c = 1/(z−1).',
+    },
+    mount: (el, ctx) => import('./tree.js').then((m) => m.mount(el, ctx)),
+  },
+  {
+    id: 'epidemic',
+    title: { en: 'SIR as percolation', zh: 'SIR 即渗流', de: 'SIR als Perkolation' },
+    blurb: {
+      en: 'Final size, herd immunity and outbreak-size fluctuations from the percolation mapping.',
+      zh: '由渗流对应得到最终规模、群体免疫与暴发规模涨落。',
+      de: 'Endgröße, Herdenimmunität und Ausbruchsgrößen-Schwankungen aus der Perkolationsabbildung.',
+    },
+    mount: (el, ctx) => import('./epidemic.js').then((m) => m.mount(el, ctx)),
+  },
 ];

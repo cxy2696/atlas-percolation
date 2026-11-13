@@ -336,3 +336,292 @@ end
     @test count(!iszero, dilute(all_active(1000), 0.5, Rng(4))) == 480
 end
 
+# Floats in the v3/v4 zoo contract agree to 1e-9; integers must be exact.
+close_to(a, b) = isapprox(a, b; atol = 1e-9, rtol = 1e-9)
+
+@testset "Algorithm zoo and trees" begin
+    # z = 2 at p = 1 is the boundary: the chain is fully open.
+    chain = bethe_percolation(2, 1.0)
+    @test chain.theta == 1.0
+    @test chain.u == 0.0
+    @test chain.supercritical
+
+    # ---- bootstrap_3x3_corners_r2
+    lat3 = build_lattice("square", 3)
+    nb3 = neighbours_from_edges(lat3.n, lat3.eu, lat3.ev)
+    @test length(nb3.start) == 10
+    @test length(nb3.adj) == 2 * lat3.m
+    @test nb3.degree[1] == 2 && nb3.degree[5] == 4
+    corners = zeros(UInt8, 9)
+    for v in (0, 2, 6, 8)
+        corners[v + 1] = 0x01
+    end
+    b3 = bootstrap_activation(9, nb3, corners, 2)
+    @test b3.active_count == 9
+    @test length(b3.rounds) == 2
+    @test b3.time == [0, 1, 0, 1, 2, 1, 0, 1, 0]
+    @test b3.fraction == 1.0
+    @test b3.converged
+    @test b3.max_degree == 4
+    @test b3.rounds[1].newly == 4 && b3.rounds[2].newly == 1
+
+    # ---- bootstrap_32x32_p055_r3_seed123
+    lat32 = build_lattice("square", 32)
+    nb32 = neighbours_from_edges(lat32.n, lat32.eu, lat32.ev)
+    rng = Rng(123)
+    init32 = UInt8[random(rng) < 0.55 ? 0x01 : 0x00 for _ in 1:lat32.n]
+    b32 = bootstrap_activation(lat32.n, nb32, init32, 3)
+    @test b32.active_count == 811
+    @test length(b32.rounds) == 10
+    @test b32.fraction == 0.7919921875
+    @test b32.max_degree == 4
+
+    # Bootstrap is the least fixed point of the synchronous closure.
+    for seed in 1:12
+        lat = build_lattice("square", 8)
+        nb = neighbours_from_edges(lat.n, lat.eu, lat.ev)
+        rng = Rng(seed)
+        init = UInt8[random(rng) < 0.4 ? 0x01 : 0x00 for _ in 1:lat.n]
+        r = 1 + (seed % 3)
+        fast = bootstrap_activation(lat.n, nb, init, r)
+
+        active = copy(init)
+        for _ in 1:lat.n
+            nxt = copy(active)
+            for v in 1:lat.n
+                active[v] != 0 && continue
+                c = 0
+                for k in (Int(nb.start[v]) + 1):Int(nb.start[v + 1])
+                    c += Int(active[Int(nb.adj[k]) + 1])
+                end
+                c >= r && (nxt[v] = 0x01)
+            end
+            nxt == active && break
+            active = nxt
+        end
+        @test fast.active == active
+        @test fast.active_count == count(!iszero, active)
+    end
+    # A threshold above every degree never adds sites beyond the initial set.
+    nb5 = neighbours_from_edges(25, build_lattice("square", 5).eu,
+                               build_lattice("square", 5).ev)
+    tall = bootstrap_activation(25, nb5, ones(UInt8, 25), 5)
+    @test tall.active_count == 25
+    @test isempty(tall.rounds)
+
+    # ---- invasion_2x2_thresholds
+    lat2 = build_lattice("square", 2)
+    inv2 = invasion_cluster(4, lat2.eu, lat2.ev, [0.1, 0.9, 0.2, 0.8], 0)
+    @test inv2.order == [0, 1, 3, 2]
+    @test inv2.thresholds == [0.1, 0.2, 0.8]
+    @test inv2.loops == 1
+    @test inv2.size == 4
+    @test inv2.last_threshold == 0.8
+
+    # ---- invasion_16x16_seed5_rng13
+    lat16 = build_lattice("square", 16)
+    rng13 = Rng(13)
+    th16 = [random(rng13) for _ in 1:lat16.m]
+    inv16 = invasion_cluster(lat16.n, lat16.eu, lat16.ev, th16, 5)
+    @test inv16.size == 256
+    @test inv16.loops == 225
+    @test close_to(inv16.last_threshold, 0.7136381922622188)
+    @test sum(inv16.accepted) == lat16.n - 1
+    @test length(inv16.thresholds) == lat16.n - 1
+
+    # ---- leath_6x6_seed3_p05
+    lat6 = build_lattice("square", 6)
+    le = leath_cluster(lat6, 3, 0.5, Rng(3))
+    @test le.size == 4
+    @test le.open_edges == 3
+    @test le.perimeter == 5
+    @test !le.truncated
+    @test le.sites[1] == 3
+    @test leath_cluster(lat6, 0, 1.0, Rng(1)).size == lat6.n
+    empty_leath = leath_cluster(lat6, 0, 0.0, Rng(1))
+    @test empty_leath.size == 1 && empty_leath.open_edges == 0
+
+    # ---- explosive_graph_500_seed7
+    ex = explosive_random_graph(500, seed = 7)
+    @test ex.points[end].smax == 1.0
+    @test close_to(ex.max_jump, 0.312)
+    @test ex.jump_at == 464
+    @test ex.added == 499
+    @test ex.steps == 2000
+    @test length(ex.points) == 2000
+    @test all(p -> p.smax <= 1.0, ex.points)
+
+    # ---- explosive_lattice_4x4_seed11_sum
+    lat4 = build_lattice("square", 4)
+    exl = explosive_percolation(16, lat4.eu, lat4.ev, seed = 11, rule = "sum")
+    @test length(exl.steps) == 12
+    @test close_to(exl.steps[end].smax, 0.375)
+    @test close_to(exl.max_jump, 0.0625)
+    @test exl.jump_at == 1
+    @test exl.candidates_used == 24
+    @test exl.rule == "sum"
+    @test length(explosive_sweep(16, lat4.eu, lat4.ev, 0:(lat4.m - 1)).steps) == 12
+
+    # ---- bethe_z3_p06
+    bethe3 = bethe_percolation(3, 0.6)
+    @test close_to(bethe3.theta, 0.7037037037036935)
+    @test close_to(bethe3.u, 0.4444444444444571)
+    @test bethe3.pc == 0.5
+    @test isinf(bethe3.chi)
+    @test bethe3.supercritical
+    @test bethe3.z == 3
+
+    # ---- bethe_z4_p04
+    bethe4 = bethe_percolation(4, 0.4)
+    @test close_to(bethe4.theta, 0.5415026221291449)
+    @test close_to(bethe4.u, 0.557189138830779)
+    @test bethe4.pc == 0.3333333333333333
+    @test isinf(bethe4.chi)
+    @test bethe4.supercritical
+
+    # Bethe threshold is exact, and the critical point has zero order parameter.
+    for z in (2, 3, 4, 10)
+        @test bethe_threshold(z) == 1.0 / (z - 1)
+    end
+    @test bethe_threshold(3) == 0.5
+    crit = bethe_percolation(3, 0.5)
+    @test crit.theta == 0.0 && crit.u == 1.0 && isinf(crit.chi)
+    sub = bethe_percolation(3, 0.4)
+    @test sub.theta == 0.0 && !sub.supercritical
+    @test close_to(sub.chi, 7.0)
+    @test_throws ArgumentError bethe_percolation(1, 0.5)
+    @test_throws ArgumentError bethe_percolation(3, 1.5)
+    @test_throws ArgumentError bethe_threshold(1)
+
+    # ---- config_poisson_c2_T1 and sir_poisson_c2_T1
+    pmf2 = poisson_pmf(2.0)
+    @test close_to(sum(pmf2), 1.0)
+    cfg = configuration_giant_component(pmf2, 1.0)
+    @test close_to(cfg.S, 0.7968121300200065)
+    @test close_to(cfg.u, 0.20318786998001315)
+    @test close_to(cfg.kappa, 3.0)
+    @test close_to(cfg.tc, 0.5)
+    @test close_to(cfg.r0, 2.0)
+    @test close_to(cfg.mean_degree, 2.0)
+
+    sir = sir_final_size(pmf2, 1.0)
+    @test close_to(sir.final_size, 0.7968121300200065)
+    @test close_to(sir.r0, 2.0)
+    @test close_to(sir.herd_immunity, 0.5)
+    @test sir.final_size == cfg.S
+    @test configuration_giant_component(pmf2, 0.4).S == 0.0
+
+    # ---- labels_square6_p05_seed42
+    lat6b = build_lattice("square", 6)
+    rng42 = Rng(42)
+    open6 = UInt8[random(rng42) < 0.5 ? 0x01 : 0x00 for _ in 1:lat6b.m]
+    lab = label_clusters(lat6b.n, lat6b.eu, lat6b.ev, open6)
+    @test lab.count == 6
+    @test lab.max_size == 30
+    @test lab.labels == [3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+                         3, 3, 3, 3, 3, 3, 3, 3, 3, 25, 26, 3, 3, 29, 3, 3,
+                         3, 3, 3, 35]
+    @test sum(lab.sizes) == lat6b.n
+    @test count(>(0), lab.sizes) == lab.count
+    @test lab.max_label == maximum(lab.labels)
+
+    # Labelling agrees with the independent union-find statistics.
+    lat8 = build_lattice("square", 8)
+    model = Percolation(lat8, "bond")
+    sample!(model, 0.5, Rng(7))
+    st = analyze!(model)
+    lab8 = label_clusters(lat8.n, lat8.eu, lat8.ev, model.open)
+    @test lab8.count == st.count
+    @test lab8.max_size == st.max_size
+    @test sum(lab8.sizes) == lat8.n
+    @test sort(filter(>(0), lab8.sizes); rev = true) == Int.(st.sizes)
+    for e in 1:lat8.m
+        if model.open[e] != 0
+            @test lab8.labels[Int(lat8.eu[e]) + 1] ==
+                  lab8.labels[Int(lat8.ev[e]) + 1]
+        end
+    end
+
+    # Site labels skip inactive vertices and use -1 for them.
+    lat4b = build_lattice("square", 4)
+    active = UInt8[v % 3 != 0 ? 0x01 : 0x00 for v in 0:(lat4b.n - 1)]
+    site_lab = label_clusters(lat4b.n, lat4b.eu, lat4b.ev, nothing, active)
+    @test sum(site_lab.sizes) == sum(active)
+    for v in 0:(lat4b.n - 1)
+        if active[v + 1] == 0
+            @test site_lab.labels[v + 1] == -1
+        end
+    end
+end
+
+@testset "Site Newman-Ziff and message passing" begin
+    # ---- nz_site_square8_seed5_cp16 (data/golden/algorithms-v3.json)
+    lat8 = build_lattice("square", 8)
+    site = newman_ziff_site(lat8, Rng(5); checkpoints = 16)
+    @test site.n == 64
+    @test site.p == [0.0625, 0.125, 0.1875, 0.25, 0.3125, 0.375, 0.4375, 0.5,
+                     0.5625, 0.625, 0.6875, 0.75, 0.8125, 0.875, 0.9375, 1.0]
+    @test site.smax == [1, 2, 6, 8, 13, 15, 17, 22, 26, 34, 41, 45, 52, 56, 60, 64]
+    @test site.nclusters == [4, 7, 5, 4, 5, 5, 5, 5, 5, 3, 2, 2, 1, 1, 1, 1]
+    golden_chi2 = [0.0625, 0.15625, 0.71875, 1.40625, 2.875, 3.875, 5.0, 8.0,
+                   11.0, 18.34375, 26.40625, 31.78125, 42.25, 49.0, 56.25, 64.0]
+    @test length(site.chi2) == length(golden_chi2)
+    for i in eachindex(golden_chi2)
+        @test isapprox(site.chi2[i], golden_chi2[i]; atol = 1e-12, rtol = 0)
+    end
+
+    # One checkpoint records the full box; an empty lattice stays empty.
+    one = newman_ziff_site(build_lattice("square", 6), Rng(1); checkpoints = 1)
+    @test one.p[end] == 1.0
+    @test one.smax[end] == 36
+    @test one.nclusters[end] == 1
+    # The 1x1 lattice has one site and no edges: the single checkpoint is p = 1.
+    tiny = newman_ziff_site(build_lattice("square", 1), Rng(1); checkpoints = 4)
+    @test tiny.p == [1.0] && tiny.smax == [1]
+    @test tiny.chi2 == [1.0] && tiny.nclusters == [1]
+
+    # ---- message_k5_T04: complete graph on 5 sites, T = 0.4
+    k5u = Int[]
+    k5v = Int[]
+    for i in 0:4
+        for j in (i + 1):4
+            push!(k5u, i)
+            push!(k5v, j)
+        end
+    end
+    mp = message_passing_percolation(5, k5u, k5v, 0.4)
+    @test mp.converged
+    @test mp.iterations >= 1
+    @test isapprox(mp.S, 0.5415026221328071; atol = 1e-10, rtol = 0)
+    @test length(mp.outside) == 5
+    for value in mp.outside
+        @test isapprox(value, 0.45849737786719297; atol = 1e-10, rtol = 0)
+    end
+
+    # A finite tree has no giant component; T = 1 on a connected graph has all.
+    tree = message_passing_percolation(4, [0, 1, 2], [1, 2, 3], 0.5)
+    @test tree.S == 0.0
+    for value in tree.outside
+        @test isapprox(value, 1.0; atol = 1e-12, rtol = 0)
+    end
+    @test tree.converged
+
+    tri = message_passing_percolation(3, [0, 1, 2], [1, 2, 0], 1.0)
+    @test tri.S == 1.0
+    @test all(iszero, tri.outside)
+    @test tri.converged
+
+    # Degenerate sizes and input validation.
+    none = message_passing_percolation(0, Int[], Int[], 0.5)
+    @test none.S == 0.0 && isempty(none.outside) && none.converged
+    isolated = message_passing_percolation(3, Int[], Int[], 0.5)
+    @test isolated.S == 0.0 && isolated.outside == ones(3)
+
+    @test_throws ArgumentError message_passing_percolation(2, [0], [1], 1.5)
+    @test_throws ArgumentError message_passing_percolation(2, [0], [1], -0.1)
+    @test_throws ArgumentError message_passing_percolation(2, [0], [1], 0.5;
+                                                           max_iter = 0)
+    @test_throws ArgumentError newman_ziff_site(lat8, Rng(1); checkpoints = 0)
+    @test_throws ArgumentError newman_ziff_site(lat8, Rng(1); checkpoints = -3)
+end
+

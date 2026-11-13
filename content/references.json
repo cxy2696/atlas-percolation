@@ -1,7 +1,7 @@
 {
- "version": 1,
- "updated": "2026-11-12",
- "note": "Primary sources used by the atlas. DOIs were checked against Crossref on 2026-11-12. The year is the year of the version consulted.",
+ "version": "4",
+ "updated": "2026-11-13",
+ "note": "Primary sources used by the atlas. DOIs were checked against Crossref on 2026-11-13. The year is the year of the edition consulted; book years follow the published edition when Crossref differs by one.",
  "entries": [
   {
    "id": "broadbent1957",
@@ -1890,6 +1890,352 @@
    "topics": [
     "networks",
     "review"
+   ]
+  },
+  {
+   "id": "benjamini2001",
+   "authors": [
+    "Benjamini, I.",
+    "Schramm, O."
+   ],
+   "year": 2001,
+   "title": "Recurrence of distributional limits of finite planar graphs",
+   "venue": "Electronic Journal of Probability",
+   "volume": "6",
+   "pages": "1–13",
+   "doi": "10.1214/EJP.v6-96",
+   "type": "article",
+   "topics": [
+    "networks",
+    "foundations"
+   ]
+  },
+  {
+   "id": "lyons2016",
+   "authors": [
+    "Lyons, R.",
+    "Peres, Y."
+   ],
+   "year": 2016,
+   "title": "Probability on trees and networks",
+   "venue": "Cambridge University Press",
+   "doi": "10.1017/9781316672815",
+   "type": "book",
+   "topics": [
+    "trees",
+    "networks"
+   ]
+  },
+  {
+   "id": "mezard2009",
+   "authors": [
+    "Mézard, M.",
+    "Montanari, A."
+   ],
+   "year": 2009,
+   "title": "Information, physics, and computation",
+   "venue": "Oxford University Press",
+   "doi": "10.1093/acprof:oso/9780198570837.001.0001",
+   "type": "book",
+   "topics": [
+    "trees",
+    "networks",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "karrer2010",
+   "authors": [
+    "Karrer, B.",
+    "Newman, M. E. J."
+   ],
+   "year": 2010,
+   "title": "Message passing approach for general epidemic models",
+   "venue": "Physical Review E",
+   "volume": "82",
+   "pages": "016101",
+   "doi": "10.1103/PhysRevE.82.016101",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "trees",
+    "networks"
+   ]
+  },
+  {
+   "id": "durrett2007",
+   "authors": [
+    "Durrett, R."
+   ],
+   "year": 2007,
+   "title": "Random graph dynamics",
+   "venue": "Cambridge University Press",
+   "doi": "10.1017/CBO9780511546594",
+   "type": "book",
+   "topics": [
+    "networks",
+    "trees"
+   ]
+  },
+  {
+   "id": "hofstad2017",
+   "authors": [
+    "van der Hofstad, R."
+   ],
+   "year": 2017,
+   "title": "Random graphs and complex networks",
+   "venue": "Cambridge University Press",
+   "doi": "10.1017/9781316779422",
+   "type": "book",
+   "topics": [
+    "networks",
+    "trees"
+   ]
+  },
+  {
+   "id": "janson2000",
+   "authors": [
+    "Janson, S.",
+    "Łuczak, T.",
+    "Ruciński, A."
+   ],
+   "year": 2000,
+   "title": "Random graphs",
+   "venue": "Wiley",
+   "doi": "10.1002/9781118032718",
+   "type": "book",
+   "topics": [
+    "networks",
+    "trees"
+   ]
+  },
+  {
+   "id": "harris1963",
+   "authors": [
+    "Harris, T. E."
+   ],
+   "year": 1963,
+   "title": "The theory of branching processes",
+   "venue": "Springer",
+   "doi": "10.1007/978-3-642-51866-9",
+   "type": "book",
+   "topics": [
+    "trees",
+    "foundations"
+   ]
+  },
+  {
+   "id": "kiss2017",
+   "authors": [
+    "Kiss, I. Z.",
+    "Miller, J. C.",
+    "Simon, P. L."
+   ],
+   "year": 2017,
+   "title": "Mathematics of epidemics on networks",
+   "venue": "Springer",
+   "doi": "10.1007/978-3-319-50806-1",
+   "type": "book",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "lloydsmith2005",
+   "authors": [
+    "Lloyd-Smith, J. O.",
+    "Schreiber, S. J.",
+    "Kopp, P. E.",
+    "Getz, W. M."
+   ],
+   "year": 2005,
+   "title": "Superspreading and the effect of individual variation on disease emergence",
+   "venue": "Nature",
+   "volume": "438",
+   "pages": "355–359",
+   "doi": "10.1038/nature04153",
+   "type": "article",
+   "topics": [
+    "epidemics"
+   ]
+  },
+  {
+   "id": "holme2012",
+   "authors": [
+    "Holme, P.",
+    "Saramäki, J."
+   ],
+   "year": 2012,
+   "title": "Temporal networks",
+   "venue": "Physics Reports",
+   "volume": "519",
+   "pages": "97–125",
+   "doi": "10.1016/j.physrep.2012.03.001",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks",
+    "directed"
+   ]
+  },
+  {
+   "id": "valdano2015",
+   "authors": [
+    "Valdano, E.",
+    "Ferreri, L.",
+    "Poletto, C.",
+    "Colizza, V."
+   ],
+   "year": 2015,
+   "title": "Analytical computation of the epidemic threshold on temporal networks",
+   "venue": "Physical Review X",
+   "volume": "5",
+   "pages": "021005",
+   "doi": "10.1103/PhysRevX.5.021005",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks",
+    "directed"
+   ]
+  },
+  {
+   "id": "pastorsatorras2015",
+   "authors": [
+    "Pastor-Satorras, R.",
+    "Castellano, C.",
+    "Van Mieghem, P.",
+    "Vespignani, A."
+   ],
+   "year": 2015,
+   "title": "Epidemic processes in complex networks",
+   "venue": "Reviews of Modern Physics",
+   "volume": "87",
+   "pages": "925–979",
+   "doi": "10.1103/RevModPhys.87.925",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "boguna2003",
+   "authors": [
+    "Boguñá, M.",
+    "Pastor-Satorras, R.",
+    "Vespignani, A."
+   ],
+   "year": 2003,
+   "title": "Absence of epidemic threshold in scale-free networks with degree correlations",
+   "venue": "Physical Review Letters",
+   "volume": "90",
+   "pages": "028701",
+   "doi": "10.1103/PhysRevLett.90.028701",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "keeling2008",
+   "authors": [
+    "Keeling, M. J.",
+    "Rohani, P."
+   ],
+   "year": 2008,
+   "title": "Modeling infectious diseases in humans and animals",
+   "venue": "Princeton University Press",
+   "doi": "10.1515/9781400841035",
+   "type": "book",
+   "topics": [
+    "epidemics"
+   ]
+  },
+  {
+   "id": "anderson1991",
+   "authors": [
+    "Anderson, R. M.",
+    "May, R. M."
+   ],
+   "year": 1991,
+   "title": "Infectious diseases of humans: dynamics and control",
+   "venue": "Oxford University Press",
+   "doi": "10.1093/oso/9780198545996.001.0001",
+   "type": "book",
+   "topics": [
+    "epidemics"
+   ]
+  },
+  {
+   "id": "stauffer1979",
+   "authors": [
+    "Stauffer, D."
+   ],
+   "year": 1979,
+   "title": "Scaling theory of percolation clusters",
+   "venue": "Physics Reports",
+   "volume": "54",
+   "pages": "1–74",
+   "doi": "10.1016/0370-1573(79)90060-7",
+   "type": "article",
+   "topics": [
+    "critical-phenomena",
+    "foundations"
+   ]
+  },
+  {
+   "id": "coniglio1982",
+   "authors": [
+    "Coniglio, A."
+   ],
+   "year": 1982,
+   "title": "Cluster structure near the percolation threshold",
+   "venue": "Journal of Physics A: Mathematical and General",
+   "volume": "15",
+   "pages": "3829–3844",
+   "doi": "10.1088/0305-4470/15/12/032",
+   "type": "article",
+   "topics": [
+    "transport",
+    "critical-phenomena"
+   ]
+  },
+  {
+   "id": "alexander1982",
+   "authors": [
+    "Alexander, S.",
+    "Orbach, R."
+   ],
+   "year": 1982,
+   "title": "Density of states on fractals: fractons",
+   "venue": "Journal de Physique Lettres",
+   "volume": "43",
+   "pages": "625–631",
+   "doi": "10.1051/jphyslet:019820043017062500",
+   "type": "article",
+   "topics": [
+    "transport",
+    "critical-phenomena"
+   ]
+  },
+  {
+   "id": "newman2005",
+   "authors": [
+    "Newman, M. E. J."
+   ],
+   "year": 2005,
+   "title": "Threshold effects for two pathogens spreading on a network",
+   "venue": "Physical Review Letters",
+   "volume": "95",
+   "pages": "108701",
+   "doi": "10.1103/PhysRevLett.95.108701",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
    ]
   }
  ]

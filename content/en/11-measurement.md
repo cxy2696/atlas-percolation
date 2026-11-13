@@ -26,7 +26,7 @@ A simulation has finite $L$, so it never observes $\theta$. Instead it observes 
 - the crossing point of the Binder cumulant $U_4=1-\langle S^4\rangle/(3\langle S^2\rangle^2)$ for two sizes;
 - the $p$ at which the largest-cluster fraction $S_{\max}(p,L)$ equals a fixed fraction of the box.
 
-Each convention has a different finite-size correction. On the square lattice with bond percolation, the first has a useful limit: duality forces $\pi(1/2,L)\to1/2$ as $L\to\infty$, but the finite-$L$ values are not exactly $1/2$. The recorded rates at $L=32,64,128$ are $0.528$, $0.538$ and $0.505$. Use the trend, or a tolerance that accounts for the correction, and do not treat the limit as a per-size identity.
+Each convention has a different finite-size correction. On the square lattice with bond percolation, the first has a useful limit: duality forces $\pi(1/2,L)\to1/2$ as $L\to\infty$, but the finite-$L$ values are not exactly $1/2$. The recorded rates at $L=32,64,128$ are $0.5275$, $0.5375$ and $0.505$. Use the trend, or a tolerance that accounts for the correction, and do not treat the limit as a per-size identity.
 
 The differences between conventions are not cosmetic. If $p_c(L)=p_c+aL^{-1/\nu}(1+bL^{-\omega}+\cdots)$, then the coefficient $a$ depends on the observable, while $p_c$ and $\nu$ do not. Two conventions that disagree by $10^{-2}$ at $L=64$ can agree to $10^{-4}$ after extrapolation, or can reveal a bug. Reporting the convention is part of reporting the number.
 
@@ -56,7 +56,7 @@ Maintain a union-find structure and the sum of squared cluster sizes. When an ed
 
 Two cautions. First, the curve from one edge order is one sample path, not an ensemble average; the visible smoothness comes from the monotone construction, not from averaging. Second, the samples at nearby $p$ are almost identical, so the effective number of independent configurations is much smaller than the number of plotted points. Error bars computed as if each point were independent are far too small.
 
-The algorithm extends to site percolation by adding sites and their incident edges in a random order, but the bookkeeping is more delicate: an edge is active only when both endpoints have appeared. The JavaScript engine in this repository implements the bond version only.
+The algorithm extends to site percolation by adding sites in a random order: an edge is active exactly when both endpoints have appeared, and the four libraries implement this as `newmanZiffSite` / `newman_ziff_site`. The site sweep consumes a permutation of the $n$ sites; the bond sweep consumes a permutation of the $m$ edges.
 
 ## 11.4 Uncertainty that survives review
 

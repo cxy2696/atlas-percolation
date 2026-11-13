@@ -371,6 +371,102 @@ end
 newman_ziff(lat::Lattice, rng::Rng, checkpoints::Integer) =
     newman_ziff(lat, rng; checkpoints = checkpoints)
 
+"""
+    newman_ziff_site(lattice, rng; checkpoints=400)
+
+One random *site* order yields the whole site-percolation curve on the grid
+`k/n`: `p`, `smax`, `chi2 = sum|C|^2 / n` and `nclusters`, sampled every
+`max(1, n ÷ checkpoints)` steps and at the final step.
+
+After `k` sites the occupied set is a uniform `k`-subset of the vertices, so it
+is a site-percolation sample at `p = k/n`.  No edge array is sampled: an edge
+is active exactly when both endpoints have already appeared.  The occupation
+order is the only random object (`shuffle!(rng, order)` over the 0-based site
+indices), matching the Python and JavaScript references.  `chi2` uses the same
+normalisation as [`newman_ziff`](@ref): the sum runs over the whole box.
+"""
+function newman_ziff_site(lat::Lattice, rng::Rng; checkpoints::Integer = 400)
+    checkpoints >= 1 || throw(ArgumentError("checkpoints must be positive"))
+    n = lat.n
+    m = lat.m
+    order = Vector{Int32}(undef, n)
+    @inbounds for v in 1:n
+        order[v] = Int32(v - 1)
+    end
+    shuffle!(rng, order)
+
+    # Symmetric CSR neighbour list (a vertex appears once per incident edge).
+    start = zeros(Int32, n + 1)
+    eu = lat.eu
+    ev = lat.ev
+    @inbounds for e in 1:m
+        start[Int(eu[e]) + 2] += Int32(1)
+        start[Int(ev[e]) + 2] += Int32(1)
+    end
+    @inbounds for v in 1:n
+        start[v + 1] += start[v]
+    end
+    pos = copy(start[1:n])
+    adj = Vector{Int32}(undef, 2 * m)
+    @inbounds for e in 1:m
+        a = Int(eu[e])
+        b = Int(ev[e])
+        pa = Int(pos[a + 1]) + 1
+        adj[pa] = Int32(b)
+        pos[a + 1] += Int32(1)
+        pb = Int(pos[b + 1]) + 1
+        adj[pb] = Int32(a)
+        pos[b + 1] += Int32(1)
+    end
+
+    active = zeros(UInt8, n)
+    dsu = Dsu(n)
+    dsu.count = 0
+    dsu.max_size = 0
+    total2 = 0
+
+    every = max(1, n ÷ Int(checkpoints))
+    cap = n == 0 ? 0 : min(n, Int(checkpoints) + 1)
+    ps = Float64[]
+    smax = Int[]
+    chis = Float64[]
+    ncl = Int[]
+    sizehint!(ps, cap)
+    sizehint!(smax, cap)
+    sizehint!(chis, cap)
+    sizehint!(ncl, cap)
+
+    @inbounds for k in 1:n
+        v = Int(order[k])
+        active[v + 1] = 0x01
+        dsu.count += 1
+        dsu.max_size < 1 && (dsu.max_size = 1)
+        total2 += 1
+        for j in (Int(start[v + 1]) + 1):Int(start[v + 2])
+            u = Int(adj[j])
+            active[u + 1] == 0 && continue
+            ra = _find(dsu, v + 1)
+            rb = _find(dsu, u + 1)
+            if ra != rb
+                sa = Int(dsu.size[ra])
+                sb = Int(dsu.size[rb])
+                _union_roots!(dsu, ra, rb)
+                total2 += 2 * sa * sb
+            end
+        end
+        if k % every == 0 || k == n
+            push!(ps, k / n)
+            push!(smax, dsu.max_size)
+            push!(chis, total2 / n)
+            push!(ncl, dsu.count)
+        end
+    end
+    return (p = ps, smax = smax, chi2 = chis, nclusters = ncl, n = n)
+end
+
+newman_ziff_site(lat::Lattice, rng::Rng, checkpoints::Integer) =
+    newman_ziff_site(lat, rng; checkpoints = checkpoints)
+
 """Cluster-size histogram at a fixed `p` over `samples` configurations."""
 function cluster_size_distribution(lat::Lattice, p::Real, rng::Rng;
                                    mode::Union{AbstractString,Symbol} = "bond",

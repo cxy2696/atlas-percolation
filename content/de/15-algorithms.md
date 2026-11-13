@@ -95,7 +95,7 @@ Die ersten drei sind in allen vier Bibliotheken implementiert; die vierte ist ei
 
 ## 15.8 Jenseits des Kerns: Bootstrap, explosiv und Invasion
 
-Drei weitere Algorithmen sind in den Python- und JavaScript-Referenzbibliotheken implementiert und in den Laboren sichtbar. Sie beantworten andere Fragen und dürfen nicht mit dem Bernoulli-Sampler vermischt werden.
+Drei weitere Algorithmen sind in allen vier Referenzbibliotheken implementiert und in den Laboren sichtbar. Sie beantworten andere Fragen und dürfen nicht mit dem Bernoulli-Sampler vermischt werden.
 
 **Bootstrap-Perkolation.** Besetzte Plätze sind zur Zeit null aktiv; ein leerer Platz wird aktiv, wenn mindestens $r$ seiner Nachbarn aktiv sind. Das Update ist ein monotoner Abschluss, die Endmenge also der kleinste Fixpunkt und unabhängig von der Reihenfolge. Die Queue-Implementierung aktiviert jeden Platz in der ersten Runde, in der seine Zahl aktiver Nachbarn $r$ erreicht, in $O(n+m)$ Zeit. Für $r=2$ ist die Schwelle des unendlichen Gitters null, eine endliche Box füllt sich aber oberhalb eines von $L$ abhängigen Crossovers; für $r=3$ und $r=4$ ist die Schwelle positiv. Der Unterschied ist in Labor 10 sichtbar.
 
@@ -103,7 +103,9 @@ Drei weitere Algorithmen sind in den Python- und JavaScript-Referenzbibliotheken
 
 **Achlioptas-Prozess.** In jedem Schritt werden zwei Kandidatenkanten gezogen; die Produkt- (oder Summen-) Regel behält die mit den kleineren Endkomponenten. Auf dem vollständigen Graphen verzögert das die Riesenkomponente und erzeugt einen scharfen Endlichkeitssprung. Der Sprung ist keine thermodynamische Unstetigkeit: Die Produktregel ist im Limes stetig, wie die Skalenprüfung in Labor 11 zeigt. Die Implementierung nutzt dieselbe DSU und berichtet die Trajektorie als exakte Funktion der Kandidatenfolge.
 
-Die drei Algorithmen haben einen zweisprachigen Paritätsvertrag (Python und JavaScript), festgehalten in `data/golden/algorithms-v3.json`. Der viersprachige Vertrag deckt weiterhin den Bernoulli-Kern ab. Die Korrektheitsargumente stehen in Kapitel 19, die Instrumente sind die Labore 10–12; das Algorithmen-Lesebuch der Seite verlinkt jede Invariante auf die genaue Quelldatei.
+Die drei Algorithmen teilen den viersprachigen Paritätsvertrag in `data/golden/algorithms-v3.json`: Python und JavaScript erzeugen die Proben, die C++- und Julia-Suiten prüfen dieselbe Datei. Der Bernoulli-Kern behält seinen eigenen Vertrag in `data/golden/parity.json`. Die Korrektheitsargumente stehen in Kapitel 19, die Instrumente sind die Labore 10–12; das Algorithmen-Lesebuch der Seite verlinkt jede Invariante auf die genaue Quelldatei.
+
+Die 4.x-Versionen ergänzen sechs weitere Routinen: Hoshen–Kopelman-Etikettierung, den Bethe-Fixpunkt, die Riesenkomponente des Konfigurationsmodells, die SIR-Endgröße, den Platz-Newman–Ziff-Sweep und die Botschaftspassage. Von diesen sind Hoshen–Kopelman, der Bethe-Fixpunkt, die Riesenkomponente des Konfigurationsmodells, die SIR-Endgröße und die Botschaftspassage deterministisch; der Platz-Sweep verbraucht eine zufällige Platzordnung. Die ersten vier sind in den Kapiteln 22–23 beschrieben, der Platz-Sweep ist das Platz-Gegenstück zu §15.5, und die Botschaftspassage ist die endliche-Graphen-Form der Bethe-Rekursion aus §22.5. Alle sechs haben Golden-Proben in derselben Datei `algorithms-v3.json`.
 
 ## 15.9 Die Implementierungen lesen
 

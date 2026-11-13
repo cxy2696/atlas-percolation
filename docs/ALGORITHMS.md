@@ -141,13 +141,79 @@ each of its neighbours is peeled. A fixed array of length `n` silently drops
 writes and leaves a non-k-core behind — that was a real regression in the
 first edition. The cost is `O(n + m)` time and `O(n)` memory.
 
+## 9. Hoshen–Kopelman labelling
+
+`labelClusters` in `lib/js/engine/algorithms.js` · `label_clusters` in
+`lib/python/percolation_atlas/algorithms.py` · `label_clusters` in the C++ and
+Julia editions.
+
+The scan visits the edge list once and unions an open edge whose two endpoints
+are present. Labels are compressed in a final pass: a vertex's label is its
+DSU root. In site mode an inactive vertex receives `-1`; treating it as its
+own singleton is the classic error that inflates the cluster count. The
+routine is `O((n + m) α(n))` time and `O(n)` memory.
+
+The golden probe `labels_square6_p05_seed42` pins the full label array, not
+just the count, because two implementations can agree on the count and
+disagree on which vertices belong together.
+
+## 10. Bethe fixed point
+
+`bethePercolation` in `lib/js/engine/trees.js` · `bethe_percolation` in
+`lib/python/percolation_atlas/trees.py` (and C++/Julia).
+
+On the z-regular tree, `u = (1 - p + pu)^(z-1)` and
+`θ = 1 - (1 - p + pu)^z`. The physical solution is the smallest fixed point;
+bisection on the first sign change selects it. The threshold is exactly
+`1/(z-1)`. Above `p_c` the mean cluster size including the infinite cluster is
+infinite, so `chi` is reported as infinity rather than as a negative number
+from the subcritical formula.
+
+## 11. SIR final size
+
+`sirFinalSize` in `lib/js/engine/trees.js` · `sir_final_size` in
+`lib/python/percolation_atlas/trees.py` (and C++/Julia).
+
+The final size is the configuration-model fixed point
+`S = 1 - G0(1 - T + Tu)`, `u = G1(1 - T + Tu)`. Start from `u = 0`; starting
+from `u = 1` stays at the trivial root and reports zero. The routine also
+returns `R0 = T(κ-1)`, `T_c = 1/(κ-1)` and the herd-immunity fraction
+`1 - 1/R0`. It is the same computation as the giant component, with the
+transmissibility interpretation of Chapter 23.
+
+## 12. Site Newman–Ziff
+
+`newmanZiffSite` in `lib/js/engine/percolation.js` · `newman_ziff_site` in
+`lib/python/percolation_atlas/percolation.py` (and C++/Julia).
+
+The site sweep adds vertices rather than edges. Draw one random order of the
+`n` sites, occupy them one at a time, and union each new site with the
+neighbours that have already appeared. After `k` sites the occupied set is a
+uniform `k`-subset, so the state is a site-percolation sample at `p = k/n`.
+Edges are never sampled; the random stream depends on `n`, not on `m`. The
+reported `chi2` uses `M₂/n` so the curve is comparable with the bond sweep.
+
+## 13. Message passing
+
+`messagePassingPercolation` in `lib/js/engine/message.js` ·
+`message_passing_percolation` in
+`lib/python/percolation_atlas/message.py` (and C++/Julia).
+
+Cavity messages solve `u[i→j] = Π_{k≠j}(1 − T + T u[k→i])`. On a tree the
+factorisation is exact; on a graph with cycles it is the Bethe approximation,
+controlled by the density of short loops. The implementation stores the
+opposite half-edge in a `mate` array, computes each vertex's excluded product
+with a prefix/suffix scan in `O(deg)`, and starts from zero to select the
+physical fixed point. Reading and writing the same half-edge instead of its
+mate reverses every message — the classic sign error.
+
 ## Tests and goldens
 
 | Claim | Check |
 |---|---|
 | RNG stream | `data/golden/rng-seed42.json` |
 | core parity | `data/golden/parity.json`, `scripts/parity.py` |
-| v3 algorithms | `data/golden/algorithms-v3.json`, `scripts/parity_algorithms.py` |
+| algorithm zoo, v4 solvers, site sweep, message passing | `data/golden/algorithms-v3.json`, all four suites |
 | least fixed point | `tests/js/algorithms.test.js` (naive closure comparison) |
 | invasion tree | `tests/js/algorithms.test.js` (spanning-tree count) |
 | Leath extremes | `tests/js/algorithms.test.js` (`p = 0`, `p = 1`) |

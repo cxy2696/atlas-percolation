@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Compare the Python and JavaScript implementations of the v3 algorithms.
+"""Compare Python and JavaScript on the algorithm zoo and the v4 solvers.
 
-The core engine has a four-language contract (parity.json).  The newer
-algorithm zoo is exposed in Python and JavaScript; this runner checks both
-against data/golden/algorithms-v3.json and fails on any field mismatch.
+The core engine has a four-language contract (parity.json).  The algorithm
+zoo and the deterministic tree/epidemic routines are implemented in all four
+languages; this runner checks the Python and JavaScript values against
+data/golden/algorithms-v3.json, and the C++/Julia suites assert the same file.
 """
 from __future__ import annotations
 
@@ -24,6 +25,13 @@ from percolation_atlas import (  # noqa: E402
     leath_cluster,
     explosive_random_graph,
     explosive_percolation,
+    label_clusters,
+    bethe_percolation,
+    configuration_giant_component,
+    poisson_pmf,
+    sir_final_size,
+    newman_ziff_site,
+    message_passing_percolation,
 )
 
 
@@ -54,6 +62,23 @@ def python_probes():
     ex = explosive_random_graph(500, seed=7)
     lat4 = build_lattice("square", 4)
     exl = explosive_percolation(16, lat4.eu, lat4.ev, seed=11, rule="sum")
+    b3tree = bethe_percolation(3, 0.6)
+    b4tree = bethe_percolation(4, 0.4)
+    pmf2 = poisson_pmf(2.0)
+    cfg = configuration_giant_component(pmf2, 1.0)
+    sir = sir_final_size(pmf2, 1.0)
+    rng42 = Rng(42)
+    lat6lab = build_lattice("square", 6)
+    open42 = [1 if rng42.random() < 0.5 else 0 for _ in range(lat6lab.m)]
+    lab = label_clusters(lat6lab.n, lat6lab.eu, lat6lab.ev, open42)
+    nz_site = newman_ziff_site(build_lattice("square", 8), Rng(5), checkpoints=16)
+    k5u, k5v = [], []
+    for i in range(5):
+        for j in range(i + 1, 5):
+            k5u.append(i)
+            k5v.append(j)
+    mp = message_passing_percolation(5, k5u, k5v, 0.4)
+    mp_path = message_passing_percolation(4, [0, 1, 2], [1, 2, 3], 0.5)
     return {
         "bootstrap_3x3_corners_r2": {
             "activeCount": b3.active_count,
@@ -87,6 +112,47 @@ def python_probes():
             "smax": exl.steps[-1]["smax"],
             "maxJump": exl.max_jump,
             "jumpAt": exl.jump_at,
+        },
+        "bethe_z3_p06": {
+            "theta": b3tree.theta,
+            "u": b3tree.u,
+            "pc": b3tree.pc,
+            "chiInfinite": b3tree.chi == float("inf"),
+        },
+        "bethe_z4_p04": {
+            "theta": b4tree.theta,
+            "u": b4tree.u,
+            "pc": b4tree.pc,
+            "chiInfinite": b4tree.chi == float("inf"),
+        },
+        "config_poisson_c2_T1": {
+            "S": cfg.S,
+            "u": cfg.u,
+            "kappa": cfg.kappa,
+            "tc": cfg.tc,
+            "r0": cfg.r0,
+            "meanDegree": cfg.mean_degree,
+        },
+        "sir_poisson_c2_T1": {
+            "finalSize": sir.final_size,
+            "r0": sir.r0,
+            "herdImmunity": sir.herd_immunity,
+        },
+        "labels_square6_p05_seed42": {
+            "count": lab.count,
+            "maxSize": lab.max_size,
+            "labels": lab.labels,
+        },
+        "nz_site_square8_seed5_cp16": nz_site,
+        "message_k5_T04": {
+            "S": mp["S"],
+            "outside": mp["outside"],
+            "converged": mp["converged"],
+        },
+        "message_path4_T05": {
+            "S": mp_path["S"],
+            "outside": mp_path["outside"],
+            "converged": mp_path["converged"],
         },
     }
 
@@ -136,7 +202,7 @@ def main():
     if failures:
         print("\n".join(failures), file=sys.stderr)
         return 1
-    print("Python and JavaScript match all v3 algorithm probes.")
+    print("Python and JavaScript match all algorithm-zoo and v4 solver probes.")
     return 0
 
 

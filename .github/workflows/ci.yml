@@ -19,13 +19,17 @@ jobs:
           python-version: "3.12"
       - name: Build content and validate citations
         run: python3 scripts/build_content.py
+      - name: Translation structure check
+        run: python3 scripts/check_translations.py
+      - name: Prose claim verification
+        run: python3 scripts/verify_claims.py
       - name: JavaScript suite
         run: node --test tests/js/*.test.js
       - name: Python suite
         run: PYTHONPATH=lib/python python3 -m unittest discover -s lib/python/tests -v
       - name: Cross-language parity runner
         run: make parity-check
-      - name: v3 algorithm parity runner
+      - name: Algorithm parity runner
         run: python3 scripts/parity_algorithms.py
       - name: Reference audit (schema)
         run: python3 scripts/verify_references.py --offline

@@ -57,11 +57,11 @@ Uniqueness is what lets one speak of “the” infinite cluster and of the perco
 
 ## 19.5 Duality and exact thresholds
 
-On the square lattice, the dual of a bond configuration is another bond configuration on the shifted lattice: an edge is open in the dual exactly when the primal edge is closed. A left–right open crossing exists iff there is no top–bottom closed dual crossing. This gives
+On the square lattice, the dual of a bond configuration is another bond configuration on the shifted lattice: an edge is open in the dual exactly when the primal edge is closed. For a box $\Lambda_n$, a left–right open crossing of $\Lambda_n$ exists iff there is no top–bottom closed crossing of the matching box $\Lambda_n^\dagger$. This gives the finite-box identity
 $$
-\mathbb{P}_{1/2}(\text{left--right crossing})+\mathbb{P}_{1/2}(\text{top--bottom crossing})=1,
+\mathbb{P}_{1/2}(A_n)+\mathbb{P}_{1/2}(B_n^\dagger)=1 .
 $$
-and by symmetry both terms equal $1/2$. Harris used this to prove $p_c\ge 1/2$; Kesten (1980) proved $p_c\le 1/2$ by a more delicate argument, so $p_c=1/2$ exactly.
+At $p=1/2$ colour symmetry makes $B_n^\dagger$ an open top–bottom crossing of the dual box. The dual box does not have the same vertex count as $\Lambda_n$, so the two probabilities are not equal at finite $n$; their difference is a boundary term. Taking $n\to\infty$ and using Proposition 4.3 gives $\mathbb{P}_{1/2}(A_n)\to1/2$. Harris used this limiting statement to prove $p_c\ge 1/2$; Kesten (1980) proved $p_c\le 1/2$ by a more delicate argument, so $p_c=1/2$ exactly. At finite $n$ the crossing probability is *not* $1/2$: exact enumeration gives $3/4$, $43/64$ and $82623/131072$ on the $2\times2$, $3\times3$ and $4\times4$ vertex boxes.
 
 The triangular and honeycomb thresholds follow from the star–triangle transformation. The bond thresholds are
 $$
@@ -77,7 +77,7 @@ No such identity is known for site percolation on the square lattice; the numeri
 Duality gives the threshold on special lattices; it does not show that the transition is sharp on a general graph. The modern route has three steps.
 
 1. **RSW.** For Bernoulli percolation on the square lattice, crossing probabilities of rectangles are bounded above and below uniformly in the aspect ratio, at $p=1/2$ (Russo 1978; Seymour and Welsh 1978).
-2. **Sharpness.** Aizenman and Barsky (1987) and Menshikov (1986) proved that $\theta(p)$ decays exponentially below $p_c$ and that the susceptibility diverges above it. Duminil-Copin and Tassion (2016) gave a short proof for transitive graphs using a differential inequality.
+2. **Sharpness.** Aizenman and Barsky (1987) and Menshikov (1986) proved that for $p<p_c$ the cluster tail decays exponentially and $\chi(p)<\infty$, while $\theta(p)>0$ for $p>p_c$; in particular $\chi(p)\to\infty$ as $p\uparrow p_c$. Duminil-Copin and Tassion (2016) gave a short proof for transitive graphs using a differential inequality.
 3. **Critical window.** Finite-size scaling predicts that the transition is rounded over a window of width $L^{-1/\nu}$. The exponent $\nu$ is not obtained from sharpness; in two dimensions it comes from conformal invariance, and in high dimensions from the lace expansion.
 
 RSW is also the reason a finite box has a well-defined crossing probability: the bound is uniform in the shape, so the limit as the box grows exists along rectangles.
@@ -149,7 +149,7 @@ The primary sources for this appendix are Grimmett's *Percolation* (1999) for th
 
 If you want one rigorous book, take Grimmett's *Percolation*; if you want the modern probabilistic viewpoint with the proofs written for a graduate course, take Bollobás and Riordan. Stauffer and Aharony remains the quickest route into the physicists' language of exponents, and Sahimi's *Applications of Percolation Theory* is the bridge to porous media, composites and transport. Meester and Roy are the standard reference for continuum percolation; Hunt, Ewing and Ghanbarian go carefully from percolation to flow in real porous media.
 
-For networks, Newman's *Networks* is the general text, Dorogovtsev's *Lectures on Complex Networks* the compact theoretical one, and Bianconi's *Multilayer Networks* the right starting point when one layer is not enough. Christensen and Moloney connect percolation to criticality without hiding the physics. Bunde and Havlin, Hughes, and Zallen are older books that still repay reading: they contain the arguments and the experimental context that modern reviews compress away.
+For networks, Newman's *Networks* is the general text, Dorogovtsev's *Lectures on Complex Networks* the compact theoretical one, and Bianconi's *Multilayer Networks* the right starting point when one layer is not enough. Lyons and Peres is the rigorous reference for trees and branching processes; Kiss, Miller and Simon, and Keeling and Rohani, are the right next step for epidemics. Christensen and Moloney connect percolation to criticality without hiding the physics. Bunde and Havlin, Hughes, and Zallen are older books that still repay reading: they contain the arguments and the experimental context that modern reviews compress away.
 
 Among reviews, Saberi (2015) and Li et al. (2021) are broad and well referenced; D'Souza et al. (2019) is the honest account of explosive percolation; Boccaletti et al. (2014) and Kivelä et al. (2014) cover multilayer networks from structure to dynamics. Isichenko (1992) is still the best long essay on percolation, statistical topography and transport in random media, and Berkowitz and Ewing (1998) is a compact introduction to the soil-physics applications.
 

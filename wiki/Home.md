@@ -1,8 +1,8 @@
 # Percolation Atlas — wiki
 
-**Version 3.2.1** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.1)
+**Version 4.1.0** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.1.0)
 
-A trilingual atlas of percolation theory: 21 chapters, 13 interactive laboratories, 8 algorithm walkthroughs, 105 audited references, four-language core code and a Python package.
+A trilingual atlas of percolation theory: 23 chapters, 15 interactive laboratories, 13 algorithm walkthroughs, 125 audited references, four-language core code and a Python package.
 
 The site opens in **light mode, English**, on the start-here guide at `#/en/guide`. The guide is the right first page; this wiki is the slower reference for the parts that are easier to read as text.
 
@@ -20,10 +20,10 @@ The site opens in **light mode, English**, on the start-here guide at `#/en/guid
 
 ## The four doors
 
-1. **Argument** — 21 chapters in English, Simplified Chinese and German. The core is 01–13; 19 is the proof appendix; 20 is design under uncertainty; 21 is the reproducibility protocol.
-2. **Experiment** — 13 laboratories. Every instrument has an authored reading guide: what you see, what each control does, what to try, and where the model stops.
-3. **Code** — the Bernoulli core is C++20, Julia, Python and JavaScript. The v3 algorithms are Python and JavaScript, with a separate golden file.
-4. **Evidence** — seeded data, a bibliography of 105 entries (103 verified against Crossref or the publisher, 2 with explanatory notes), and an errata table.
+1. **Argument** — 23 chapters in English, Simplified Chinese and German. The core is 01–13; 19 is the proof appendix; 20 is design under uncertainty; 21 is the reproducibility protocol; 22 covers trees and generating functions; 23 covers epidemics as percolation.
+2. **Experiment** — 15 laboratories. Every instrument has an authored reading guide: what you see, what each control does, what to try, and where the model stops.
+3. **Code** — the Bernoulli core, the algorithm zoo (bootstrap, invasion, Leath, Achlioptas), bond and site Newman–Ziff, the labelling routine, the tree/epidemic solvers and message passing are implemented in C++20, Julia, Python and JavaScript.
+4. **Evidence** — seeded data, a bibliography of 125 entries (123 verified against Crossref or the publisher, 2 with explanatory notes), and an errata table.
 
 ## What “verified” means here
 

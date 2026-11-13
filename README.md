@@ -1,25 +1,27 @@
 # Percolation Atlas
 
+**English** · [简体中文](README_cn.md) · [Deutsch](README_de.md)
+
 [![CI](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml) [![Pages](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml) [![Release](https://img.shields.io/github/v/release/cxy2696/atlas-percolation?label=release)](https://github.com/cxy2696/atlas-percolation/releases)
 
-A trilingual, source-backed atlas of percolation theory with four reference implementations, thirteen interactive laboratories and an eight-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
+A trilingual, source-backed atlas of percolation theory with four reference implementations, fifteen interactive laboratories and a thirteen-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
 
-**Live content:** 21 chapters in English, Simplified Chinese and German · 13 laboratories · 8 code walkthroughs · 4 language implementations · 105 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
+**Live content:** 23 chapters in English, Simplified Chinese and German · 15 laboratories · 13 code walkthroughs · 4 language implementations · 125 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
 
 ## What is inside
 
 | Layer | Contents |
 |---|---|
-| Knowledge base | 21 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, the cross-disciplinary map, a proofs appendix, design under uncertainty, and reproducibility |
-| Sources | 105 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (103 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
+| Knowledge base | 23 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, the cross-disciplinary map, a proofs appendix, design under uncertainty, reproducibility, trees and generating functions, and epidemics as percolation |
+| Sources | 125 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (123 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
 | Code | C++20 (header-only), Julia, Python and JavaScript, all consuming the same xoshiro128** stream and the same lattice edge order |
-| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, and an algorithm studio |
-| Algorithms | An eight-entry reader: Bernoulli sampler, DSU, Newman–Ziff, Leath, bootstrap, invasion, Achlioptas and k-core. Each entry gives the idea, invariant, cost, pitfalls and links to the exact source. |
+| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, an algorithm studio, the Bethe tree, and SIR as percolation |
+| Algorithms | A thirteen-entry reader: Bernoulli sampler, DSU, bond and site Newman–Ziff, Leath, bootstrap, invasion, Achlioptas, k-core, Hoshen–Kopelman, the Bethe fixed point, the SIR final size and message passing. Each entry gives the idea, invariant, cost, pitfalls and links to the exact source. |
 | Data | A C++ benchmark harness, a Python analyser, and a JSON record that the Data view reads without hiding missing data |
-| Tests | Integer-exact parity probes across the four implementations, a Python+JavaScript parity contract for the v3 algorithms, RNG golden vectors, property tests, and a reference audit |
+| Tests | Integer-exact parity probes across all four implementations, including the algorithm zoo, the v4 tree/epidemic solvers, the site sweep and message passing; RNG golden vectors, property tests, and a reference audit |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md`; the code-reading map: `docs/ALGORITHMS.md`; a CLI and JSON API: `docs/API.md` |
 
-**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v3.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v3.2.1) · **Package:** `pip install -e lib/python`
+**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v4.1.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.1.0) · **Package:** `pip install -e lib/python`
 
 ## Quick start
 
@@ -40,7 +42,8 @@ The default route is the start-here guide (`#/en/guide`), in English and light m
 ## Reproduce the checks
 
 ```sh
-make test          # JS + Python + C++ + Julia + both parity contracts
+make test          # four suites + parity + translation structure + prose claims
+make verify        # translation structure + prose claims + reference audit
 make bench         # C++ harness -> data/raw_bench.json
 make analyse       # raw JSON -> data/benchmarks.json
 make content       # rebuild manifest/search/code inventory
@@ -57,7 +60,7 @@ make -C lib/cpp test
 julia --project=lib/julia lib/julia/test/runtests.jl
 ```
 
-The parity contract is in `data/golden/parity.json`; the random-stream vectors are in `data/golden/rng-seed42.json`. A change to the RNG, the lattice edge order or the consumption order is a breaking change: regenerate the goldens, bump the version and record it in Chapter 14.
+The parity contract is in `data/golden/parity.json`; the random-stream vectors are in `data/golden/rng-seed42.json`; the algorithm-zoo, v4 solver, site-sweep and message-passing probes are in `data/golden/algorithms-v3.json` and are asserted by all four suites. A change to the RNG, the lattice edge order or the consumption order is a breaking change: regenerate the goldens, bump the version and record it in Chapter 14. The exact check matrix and its limits are in [`docs/VERIFICATION.md`](docs/VERIFICATION.md).
 
 ## Benchmark pipeline
 
@@ -112,6 +115,7 @@ so a theme switch redraws every plot without a reload.
 ## Repository layout
 
 ```
+README.md / README_cn.md / README_de.md  repository guide in English, Chinese and German
 content/
   en/ zh/ de/           chapter Markdown, one file per chapter and language
   reference_audit.json  generated by scripts/verify_references.py
@@ -129,19 +133,21 @@ lib/
   julia/                Julia package + tests
   python/               Python package + tests
   js/                   ES-module engine shared with the site
-                        (percolation, networks, continuum, Cardy, directed,
-                         bootstrap, invasion, explosive, Leath)
+                        (percolation, site/bond Newman–Ziff, networks,
+                         continuum, Cardy, directed, bootstrap, invasion,
+                         explosive, Leath, trees and message passing)
 assets/
   js/views/             overview, atlas reader, labs, code, algorithms, data, library, sources
-  js/labs/              thirteen instruments, with authored guides
+  js/labs/              fifteen instruments, with authored guides
   css/hud.css           the HUD shell
 scripts/
   build_content.py      validates content and generates JSON
+  check_translations.py compares section numbers, equation tags and display blocks across editions
   bench.cpp             C++ raw-data harness
   analyse_bench.py      derived data and fits
   serve.py              static preview server
   verify_references.py  Crossref/HTTP bibliography audit
-  parity_algorithms.py  Python+JavaScript v3 algorithm parity
+  parity_algorithms.py  algorithm-zoo, v4 solver and message-parity runner
 tests/js/               Node test suite
 docs/                   API, RNG, algorithms, data, scaling and editorial notes
 wiki/                  GitHub wiki source, published by scripts/push_wiki.sh
@@ -150,8 +156,8 @@ wiki/                  GitHub wiki source, published by scripts/push_wiki.sh
 ## Design and maintenance
 
 - **UI.** Dark graphite/cyan HUD, thin instrumentation lines, monospace readouts. The overview is a live isometric bond-percolation map with a regime slider. It uses no images, no web fonts and no runtime framework; the only third-party front-end files are the vendored KaTeX and marked builds.
-- **Content.** Markdown with YAML front matter. Every chapter has a stable id and the same order in every language. `scripts/build_content.py` refuses to build a partial translation, a duplicate order or an unresolved citation.
-- **Translations.** Authored, not machine-translated at runtime. The glossary and voice rules are in `docs/EDITORIAL.md`. Technical terms are kept consistent so that a search for a threshold finds the same concept in all three editions. The language list, UI tables and content directories are data-driven; adding a fourth edition is a content and review task, not an engine change.
+- **Content.** Markdown with YAML front matter. Every chapter has a stable id and the same order in every language. `scripts/build_content.py` refuses to build a partial translation, a duplicate order or an unresolved citation, and `scripts/check_translations.py` refuses a chapter whose section numbers, equation tags or display-block count drift between editions.
+- **Translations.** Authored, not machine-translated at runtime. The repository README is available in [English](README.md), [简体中文](README_cn.md) and [Deutsch](README_de.md); the site switch changes all three editions. The glossary and voice rules are in `docs/EDITORIAL.md`. Technical terms are kept consistent so that a search for a threshold finds the same concept in all three editions. The language list, UI tables and content directories are data-driven; adding a fourth edition is a content and review task, not an engine change.
 - **Accessibility.** Keyboard navigation, visible focus states, semantic headings, a skip-friendly main region, and charts with textual readouts. The colour palette is not the only carrier of meaning: every stage readout has a text label. Light and dark themes both keep a contrast-checked palette.
 - **Browser support.** Current Chrome, Firefox and Safari with ES modules and `IntersectionObserver`. The site degrades to readable Markdown when JavaScript is disabled. Complexity and memory limits are documented in `docs/SCALING.md`.
 

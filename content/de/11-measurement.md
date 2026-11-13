@@ -26,7 +26,7 @@ Eine Simulation hat endliches $L$ und beobachtet $\theta$ daher nie. Sie beobach
 - der Kreuzungspunkt des Binder-Kumulanten $U_4=1-\langle S^4\rangle/(3\langle S^2\rangle^2)$ für zwei Größen;
 - das $p$, bei dem der Anteil des größten Clusters $S_{\max}(p,L)$ einem festen Bruchteil der Box entspricht.
 
-Jede Konvention hat eine andere Finite-Size-Korrektur. Auf dem Quadratgitter mit Bond-Perkolation hat die erste einen nützlichen Grenzwert: Die Dualität erzwingt $\pi(1/2,L)\to1/2$ für $L\to\infty$, aber die Werte bei endlichem $L$ sind nicht exakt $1/2$. Die im Protokoll verzeichneten Raten bei $L=32,64,128$ sind $0.528$, $0.538$ und $0.505$. Man benutzt den Trend oder eine Toleranz, die die Korrektur berücksichtigt, und behandelt den Grenzwert nicht als Identität pro Größe.
+Jede Konvention hat eine andere Finite-Size-Korrektur. Auf dem Quadratgitter mit Bond-Perkolation hat die erste einen nützlichen Grenzwert: Die Dualität erzwingt $\pi(1/2,L)\to1/2$ für $L\to\infty$, aber die Werte bei endlichem $L$ sind nicht exakt $1/2$. Die im Protokoll verzeichneten Raten bei $L=32,64,128$ sind $0.5275$, $0.5375$ und $0.505$. Man benutzt den Trend oder eine Toleranz, die die Korrektur berücksichtigt, und behandelt den Grenzwert nicht als Identität pro Größe.
 
 Die Unterschiede zwischen den Konventionen sind nicht kosmetisch. Gilt $p_c(L)=p_c+aL^{-1/\nu}(1+bL^{-\omega}+\cdots)$, so hängt der Koeffizient $a$ von der Observablen ab, $p_c$ und $\nu$ dagegen nicht. Zwei Konventionen, die bei $L=64$ um $10^{-2}$ voneinander abweichen, können nach der Extrapolation bis auf $10^{-4}$ übereinstimmen – oder einen Fehler aufdecken. Die Konvention zu nennen, gehört zur Angabe der Zahl.
 
@@ -56,7 +56,7 @@ Man führe eine Union-Find-Struktur und die Summe der quadrierten Clustergröße
 
 Zwei Warnungen. Erstens ist die Kurve aus einer Kantenreihenfolge ein einzelner Stichprobenpfad, kein Ensemblemittel; die sichtbare Glätte stammt aus der monotonen Konstruktion, nicht aus einer Mittelung. Zweitens sind die Stichproben bei benachbarten $p$ nahezu identisch, die effektive Zahl unabhängiger Konfigurationen ist also viel kleiner als die Zahl der aufgetragenen Punkte. Fehlerbalken, die so berechnet werden, als wäre jeder Punkt unabhängig, sind weit zu klein.
 
-Der Algorithmus lässt sich auf die Site-Perkolation erweitern, indem man Plätze und ihre inzidenten Kanten in zufälliger Reihenfolge hinzufügt; die Buchführung ist jedoch heikler: Eine Kante ist nur aktiv, wenn beide Endpunkte aufgetreten sind. Die JavaScript-Engine in diesem Repository implementiert nur die Bond-Version.
+Der Algorithmus lässt sich auf die Site-Perkolation erweitern, indem man Plätze in zufälliger Reihenfolge hinzufügt: Eine Kante ist genau dann aktiv, wenn beide Endpunkte aufgetreten sind; die vier Bibliotheken implementieren dies als `newmanZiffSite` / `newman_ziff_site`. Der Platz-Sweep verbraucht eine Permutation der n Plätze, der Kanten-Sweep eine Permutation der m Kanten.
 
 ## 11.4 Unsicherheit, die eine Begutachtung übersteht
 

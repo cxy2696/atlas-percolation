@@ -1,7 +1,7 @@
 name = "PercolationAtlas"
 uuid = "08424d24-804a-4b23-be40-ae268c8cce41"
 authors = ["Atlas Percolation contributors"]
-version = "2.1.0"
+version = "4.1.0"
 
 [compat]
 julia = "1.9"

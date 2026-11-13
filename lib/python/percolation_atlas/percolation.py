@@ -191,3 +191,69 @@ def cluster_size_distribution(lat: Lattice, p: float, rng: Rng, mode: str = "bon
         for s in each:
             hist[s] = hist.get(s, 0) + 1
     return dict(sorted(hist.items()))
+
+
+def _csr_neighbours(n: int, eu, ev):
+    """Minimal CSR neighbour list, kept local to avoid an import cycle."""
+    deg = [0] * n
+    m = len(eu)
+    for e in range(m):
+        deg[eu[e]] += 1
+        deg[ev[e]] += 1
+    start = [0] * (n + 1)
+    for v in range(n):
+        start[v + 1] = start[v] + deg[v]
+    pos = start[:-1].copy()
+    adj = [0] * (2 * m)
+    for e in range(m):
+        a, b = eu[e], ev[e]
+        adj[pos[a]] = b
+        pos[a] += 1
+        adj[pos[b]] = a
+        pos[b] += 1
+    return start, adj
+
+
+def newman_ziff_site(lat: Lattice, rng: Rng, checkpoints: int = 400):
+    """One random *site* order -> S_max(p), chi2(p) and cluster count.
+
+    After ``k`` sites the occupied set is a uniform ``k``-subset of the
+    vertices, hence a site-percolation sample at ``p = k/n``.  Edges are never
+    sampled: an edge is active exactly when both endpoints have appeared, so
+    the random object is the site order alone.  The returned arrays use the
+    same convention as :func:`newman_ziff`: ``chi2`` is ``sum |C|^2 / n`` over
+    the whole box, and the cluster count counts occupied clusters only.
+    """
+    if checkpoints < 1:
+        raise ValueError("checkpoints must be positive")
+    n = lat.n
+    order = list(range(n))
+    rng.shuffle(order)
+    start, adj = _csr_neighbours(n, lat.eu, lat.ev)
+    active = bytearray(n)
+    dsu = Dsu(n)
+    dsu.count = 0
+    dsu.max_size = 0
+    total2 = 0
+    every = max(1, n // checkpoints)
+    ps, smax, chi2, ncl = [], [], [], []
+    for k, v in enumerate(order):
+        active[v] = 1
+        dsu.count += 1
+        if dsu.max_size < 1:
+            dsu.max_size = 1
+        total2 += 1
+        for j in range(start[v], start[v + 1]):
+            u = adj[j]
+            if active[u]:
+                ra, rb = dsu.find(v), dsu.find(u)
+                if ra != rb:
+                    sa, sb = dsu.size[ra], dsu.size[rb]
+                    dsu.union(ra, rb)
+                    total2 += 2 * sa * sb
+        if (k + 1) % every == 0 or k == n - 1:
+            ps.append((k + 1) / n)
+            smax.append(dsu.max_size)
+            chi2.append(total2 / n)
+            ncl.append(dsu.count)
+    return {"p": ps, "smax": smax, "chi2": chi2, "nclusters": ncl, "n": n}

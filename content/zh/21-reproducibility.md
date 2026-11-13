@@ -14,7 +14,7 @@ reading: 18 min
 仓库就是制品。五类东西一起版本化。
 
 1. **源。** Markdown 章节、JSON 文献库、引用映射。
-2. **引擎。** 核心的 C++20、Julia、Python、JavaScript 实现；v3 算法库的 Python 与 JavaScript 实现。
+2. **引擎。** Bernoulli 核心、v3 算法库、标号例程与树/流行病求解器都有 C++20、Julia、Python 与 JavaScript 实现。
 3. **金标。** `data/golden/parity.json` 对应四语言核心，`data/golden/rng-seed42.json` 对应随机流，`data/golden/algorithms-v3.json` 对应新算法。
 4. **数据。** 原始基准计数、分析后的记录，以及产生它们的工具。
 5. **构建与部署。** 内容构建器、静态服务器、Python 包、API、Dockerfile 与 CI 工作流。
@@ -37,7 +37,7 @@ reading: 18 min
 
 核心契约是四语言的。`scripts/parity.py` 计算 Python 探针，运行 `scripts/parity_probe.mjs` 得到 JavaScript 结果，并与 `data/golden/parity.json` 比较；C++ 与 Julia 套件从同一文件断言相同值。
 
-v3 算法库是两语言契约。`scripts/parity_algorithms.py` 比较 Python 与 JavaScript 的自举激活时间、侵入顺序、Leath 团簇大小与 Achlioptas 轨迹。范围写在金标文件里；图册不假装 C++ 与 Julia 库实现了这些例程。
+算法库是四语言契约。`scripts/parity_algorithms.py` 比较 Python 与 JavaScript 的自举激活时间、侵入顺序、Leath 团簇大小与 Achlioptas 轨迹；C++ 与 Julia 套件断言同一份 `data/golden/algorithms-v3.json` 的值，并覆盖确定性的 Hoshen–Kopelman、Bethe 与 SIR 探针。
 
 运行：
 

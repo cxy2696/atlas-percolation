@@ -57,8 +57,8 @@ def cmd_info(args) -> int:
         payload(
             command="info",
             thresholds=THRESHOLDS,
-            algorithms=["percolation", "newman-ziff", "leath", "bootstrap", "invasion", "explosive"],
-            notes="Core engine is four-language; the v3 algorithm zoo is Python+JavaScript.",
+            algorithms=["percolation", "newman-ziff", "leath", "bootstrap", "invasion", "explosive", "hoshen-kopelman", "bethe", "configuration-model", "sir-final-size"],
+            notes="Core engine, algorithm zoo and tree/epidemic solvers are implemented in C++, Julia, Python and JavaScript.",
         ),
         args.json,
     )

@@ -105,13 +105,13 @@ for seed 11. The lab and the C++ benchmark use the same update.
   `gamma > 1` and keeps the even-sum fix inside `[kmin, kmax]`.
 
 
-## v3 algorithm zoo
+## Algorithm zoo
 
-These routines live in `lib/python/percolation_atlas/algorithms.py` and
-`lib/js/engine/algorithms.js`. They share the `Dsu` and `Rng` types with the
-Bernoulli core but have their own parity contract
-(`data/golden/algorithms-v3.json`); the C++ and Julia libraries do not
-implement them.
+These routines live in all four libraries: `lib/python/percolation_atlas/algorithms.py`,
+`lib/js/engine/algorithms.js`, `lib/cpp/include/percolation_atlas/algorithms.hpp`
+and `lib/julia/src/algorithms.jl`. They share the `Dsu` and `Rng` types with
+the Bernoulli core and have their own four-language parity contract
+(`data/golden/algorithms-v3.json`).
 
 - `neighbours_from_edges(n, eu, ev)` → `(start, adj, edge_of, degree)` CSR.
   Python returns a tuple; JavaScript returns an object with the same fields.
@@ -172,3 +172,38 @@ bounded, and errors are `{"ok": false, "error": "..."}` with status 400/404/500.
 The API is a reference service with no authentication and no persistence. It
 does not expose a job queue; long runs should be done with the CLI or the
 Python API directly. The Dockerfile runs `atlas-perc serve` on port 8080.
+
+## Trees, configuration models and epidemics
+
+Deterministic fixed-point routines; no random stream is consumed.
+
+- `bethe_threshold(z)` — exact threshold `1/(z-1)` of the z-regular tree.
+- `bethe_percolation(z, p)` — returns `theta`, `u`, `pc`, `chi` and
+  `supercritical`. `chi` is infinite at and above `p_c` (the mean includes the
+  infinite cluster).
+- `poisson_pmf(c, kmax=None)` — truncated, normalised Poisson probabilities.
+- `configuration_giant_component(pmf, T=1)` — returns `S`, `u`, `kappa`, `tc`,
+  `mean_degree` and `r0` for the configuration model after bond dilution.
+- `sir_final_size(pmf, T)` — returns `final_size`, `r0`, `kappa`, `tc` and
+  `herd_immunity`. The final size is the giant component with transmissibility
+  `T`; see Chapters 22–23.
+- `newman_ziff_site(lattice, rng, checkpoints=400)` — site-mode Newman–Ziff;
+  returns `p`, `smax`, `chi2` (with denominator `n`), `nclusters` and `n`.
+- `message_passing_percolation(n, eu, ev, T, max_iter=10000, tol=1e-12)` —
+  cavity iteration; returns `S`, `outside`, `iterations`, `converged` and
+  `maxChange`. Exact on trees, the Bethe approximation on graphs with cycles.
+- `label_clusters(n, eu, ev, open_edges=None, active=None)` — Hoshen–Kopelman
+  labelling. Inactive vertices get label `-1`; returns `labels`, `sizes`,
+  `count`, `max_size` and `max_label`.
+
+The algorithm zoo (`bootstrap_activation`, `invasion_cluster`,
+`leath_cluster`, `explosive_*`, `neighbours_from_edges`) is implemented in all
+four languages; its golden probes are in `data/golden/algorithms-v3.json`.
+
+## Errors and validation
+
+All routines reject out-of-range probabilities, negative sizes, non-integer
+thresholds and empty degree distributions. The Python package raises
+`ValueError`; JavaScript throws `Error`; C++ throws `std::invalid_argument`;
+Julia throws `ArgumentError`. The parity tests do not depend on the exception
+text.

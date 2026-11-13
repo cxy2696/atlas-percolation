@@ -57,11 +57,11 @@ $$
 
 ## 19.5 对偶与精确阈值
 
-在方格上，一个键构型的对偶是平移格上的另一个键构型：对偶边开当且仅当原边闭。存在左右开横穿，当且仅当不存在上下闭的对偶横穿。因此
+在方格上，一个键构型的对偶是平移格上的另一个键构型：对偶边开当且仅当原边闭。对盒子 $\Lambda_n$，$\Lambda_n$ 存在左右开横穿，当且仅当匹配盒 $\Lambda_n^\dagger$ 不存在上下闭横穿。因此有有限盒恒等式
 $$
-\mathbb{P}_{1/2}(\text{左右横穿})+\mathbb{P}_{1/2}(\text{上下横穿})=1,
+\mathbb{P}_{1/2}(A_n)+\mathbb{P}_{1/2}(B_n^\dagger)=1 .
 $$
-由对称性两项都等于 $1/2$。Harris 用它证明 $p_c\ge1/2$；Kesten（1980）用更精细的论证证明 $p_c\le1/2$，所以 $p_c=1/2$ 是精确的。
+在 $p=1/2$ 时，颜色对称使 $B_n^\dagger$ 成为对偶盒的上下开横穿。对偶盒与 $\Lambda_n$ 的顶点数不同，所以两个概率在有限 $n$ 时不相等；它们的差是一个边界项。令 $n\to\infty$ 并用命题 4.3 得 $\mathbb{P}_{1/2}(A_n)\to1/2$。Harris 用这个极限陈述证明 $p_c\ge1/2$；Kesten（1980）用更精细的论证证明 $p_c\le1/2$，因此 $p_c=1/2$ 精确成立。在有限 $n$ 时，横穿概率并不等于 $1/2$：精确枚举给出 $2\times2$、$3\times3$、$4\times4$ 顶点盒的值分别为 $3/4$、$43/64$、$82623/131072$。
 
 三角与蜂窝的阈值来自星–三角变换：
 $$
@@ -77,7 +77,7 @@ $$
 对偶只给出特殊格子上的阈值，并不说明一般图上的转变是锐利的。现代路线分三步。
 
 1. **RSW。** 方格上的 Bernoulli 渗流，在 $p=1/2$ 处，矩形的横穿概率对纵横比有一致上下界（Russo 1978；Seymour 与 Welsh 1978）。
-2. **锐利性。** Aizenman 与 Barsky（1987）、Menshikov（1986）证明：$p<p_c$ 时 $\theta(p)$ 指数衰减，$p>p_c$ 时磁化率发散。Duminil-Copin 与 Tassion（2016）用微分不等式给出了传递图上的短证明。
+2. **锐利性。** Aizenman 与 Barsky（1987）、Menshikov（1986）证明：$p<p_c$ 时团簇尾部指数衰减且 $\chi(p)<\infty$，而 $p>p_c$ 时 $\theta(p)>0$；特别地，$p\uparrow p_c$ 时 $\chi(p)\to\infty$。Duminil-Copin 与 Tassion（2016）用微分不等式给出了传递图上的短证明。
 3. **临界窗口。** 有限尺度标度预测转变在宽度 $L^{-1/\nu}$ 的窗口内被抹圆。$\nu$ 不能由锐利性得到：二维来自共形不变性，高维来自花边展开。
 
 RSW 也是有限盒子中横穿概率有良好定义的原因：界对形状一致，所以盒子增大时沿矩形的极限存在。
@@ -149,7 +149,7 @@ $$
 
 想要一本严格的书，取 Grimmett 的 *Percolation*；想要现代概率视角、证明按研究生课程写，取 Bollobás 与 Riordan。Stauffer 与 Aharony 仍是进入物理学家指数语言的最快路径；Sahimi 的 *Applications of Percolation Theory* 是通往多孔介质、复合材料与输运的桥。连续渗流的标准参考是 Meester 与 Roy；Hunt、Ewing 与 Ghanbarian 则认真地从渗流走到真实多孔介质中的流动。
 
-网络方面，Newman 的 *Networks* 是通用教材，Dorogovtsev 的 *Lectures on Complex Networks* 是紧凑的理论读本，Bianconi 的 *Multilayer Networks* 是一层不够用时的正确起点。Christensen 与 Moloney 把渗流与临界现象连起来，又不掩盖物理。Bunde 与 Havlin、Hughes、Zallen 是旧书，但仍值得读：它们保留了现代综述压缩掉的论证与实验背景。
+网络方面，Newman 的 *Networks* 是通用教材，Dorogovtsev 的 *Lectures on Complex Networks* 是紧凑的理论读本，Bianconi 的 *Multilayer Networks* 是一层不够用时的正确起点。Lyons 与 Peres 是树与分支过程的严格参考；流行病方面，Kiss、Miller、Simon 以及 Keeling、Rohani 是合适的下一步。Christensen 与 Moloney 把渗流与临界现象连起来，又不掩盖物理。Bunde 与 Havlin、Hughes、Zallen 是旧书，但仍值得读：它们保留了现代综述压缩掉的论证与实验背景。
 
 综述中，Saberi（2015）与 Li 等（2021）覆盖面广、参考文献扎实；D'Souza 等（2019）是对爆炸渗流的诚实叙述；Boccaletti 等（2014）与 Kivelä 等（2014）从结构到动力学讲多层网络。Isichenko（1992）仍是关于渗流、统计地形与随机介质输运的最好长文；Berkowitz 与 Ewing（1998）是土壤物理应用的紧凑入门。
 

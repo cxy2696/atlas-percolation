@@ -68,6 +68,6 @@ If you want intuition, read this chapter and Chapter 4, then open the *Lattice* 
 
 If you want the rigorous core, read Chapters 3–5 in order (monotonicity and existence, duality and exact thresholds, sharpness and uniqueness), then Chapter 7 for the two-dimensional limit.
 
-If you are here for applications, Chapters 10 and 12 carry the network and materials material, and Chapter 11 is the numerical methodology that keeps an application from producing a plausible but wrong threshold.
+If you are here for networks or epidemics, read Chapters 10, 22 and 23 in that order: degree distributions, generating functions and the SIR mapping. Chapter 11 is the numerical methodology that keeps an application from producing a plausible but wrong threshold.
 
 If you want to check a claim, every theorem that is proved in full is marked ★, every numerical value carries its source and precision, and Chapter 14 indexes the proofs, records the corrections made in this edition, and lists the sources used throughout.

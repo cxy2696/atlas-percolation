@@ -32,7 +32,7 @@ The lemma is the two-dimensional replacement for the absence of a "monotone coup
 $$
 \lim_{n\to\infty}\mathbb{P}_{1/2}\big(\text{open left–right crossing of }\Lambda_n\big)=\tfrac12.
 $$
-The convergence is not exact at finite $n$. A $3\times3$ vertex box already gives $43/64=0.671875$, and a $4\times4$ box gives $3/4$. The identity is asymptotic, and it must not be used as a per-size calibration.
+The convergence is not exact at finite $n$. Exact enumeration at $p=1/2$ gives $3/4$ on the $2\times2$ vertex box, $43/64=0.671875$ on the $3\times3$ box, and $82623/131072=0.63036\ldots$ on the $4\times4$ box. The sequence decreases slowly towards $1/2$; the identity is asymptotic, and it must not be used as a per-size calibration.
 
 **Proof sketch.** Lemma 4.2 gives
 $$
@@ -40,7 +40,7 @@ $$
 $$
 for every $p$ and $n$. At $p=1/2$, colour exchange turns the closed top–bottom crossing $B_n^\ast$ of the dual box into an open top–bottom crossing. The dual box has side $2n$ faces, while $A_n$ lives on a $(2n+1)\times(2n+1)$ vertex box; the two crossing probabilities are therefore not equal at finite $n$, but their difference is a boundary term that vanishes as $n\to\infty$. RSW bounds both sequences away from $0$ and $1$, so every subsequential limit exists and is bounded away from the endpoints. The boundary term forces any such limit $\pi$ to satisfy $2\pi=1$, hence $\pi=1/2$; the full sequence converges to the same value. A complete proof identifies the limit through the Harris–Kesten theorem or Cardy's formula. $\blacksquare$
 
-The finite-size values are the reason the benchmark in `data/benchmarks.json` reports the crossing rate with its sample count rather than asserting $1/2$. At $L=32,64,128$ the recorded rates at $p=1/2$ are $0.528$, $0.538$ and $0.505$; they approach $1/2$ but are not equal to it at any of these sizes.
+The finite-size values are the reason the benchmark in `data/benchmarks.json` reports the crossing rate with its sample count rather than asserting $1/2$. At $L=32,64,128$ the recorded rates at $p=1/2$ are $0.5275$, $0.5375$ and $0.505$; they approach $1/2$ but are not equal to it at any of these sizes.
 
 What Proposition 4.3 does **not** give is $p_c=1/2$. It says that $p=1/2$ is a fixed point of the duality in the infinite-volume limit, not that it is the critical point. A model could in principle have a first-order transition elsewhere and still satisfy the limiting identity. Closing that gap is the Harris–Kesten theorem.
 

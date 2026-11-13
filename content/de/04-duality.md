@@ -28,24 +28,21 @@ Das Lemma ist der zweidimensionale Ersatz für das Fehlen einer „monotonen Kop
 
 ## 4.2 Warum der selbstduale Punkt $1/2$ ist
 
-**Proposition 4.3 (★).** Für die Kantenperkolation auf $\mathbb{Z}^2$ bei $p=1/2$ gilt für jedes $n$
+**Proposition 4.3 (★).** Für die Kantenperkolation auf $\mathbb{Z}^2$ bei $p=1/2$ gilt
 $$
-\mathbb{P}_{1/2}\big(\text{open left–right crossing of }\Lambda_n\big)=\tfrac12.
+\lim_{n\to\infty}\mathbb{P}_{1/2}\big(\text{offener Links-rechts-Durchgang von }\Lambda_n\big)=\tfrac12.
 $$
+Die Konvergenz ist bei endlichem $n$ nicht exakt. Exakte Abzählung bei $p=1/2$ ergibt $3/4$ für die $2\times2$-Box, $43/64=0.671875$ für die $3\times3$-Box und $82623/131072=0.63036\ldots$ für die $4\times4$-Box. Die Folge fällt langsam gegen $1/2$; die Identität ist asymptotisch und darf nicht als Kalibrierung pro Größe verwendet werden.
 
-**Beweis.** Lemma 4.2 liefert
+**Beweisskizze.** Lemma 4.2 liefert
 $$
-\mathbb{P}_p(A)+\mathbb{P}_p(B^\ast)=1
+\mathbb{P}_p(A_n)+\mathbb{P}_p(B_n^\ast)=1
 $$
-für jedes $p$. Unter $p\mapsto1-p$ und Farbtausch wird $B^\ast$ zu einem offenen Durchgang von oben nach unten; wegen der vierfachen Symmetrie des Quadrats und der Farbsymmetrie bei $p=1/2$ gilt
-$$
-\mathbb{P}_{1/2}(B^\ast)=\mathbb{P}_{1/2}(\text{open top–bottom crossing})=\mathbb{P}_{1/2}(\text{open left–right crossing}).
-$$
-Also ist $2\mathbb{P}_{1/2}(A)=1$. $\blacksquare$
+für jedes $p$ und $n$. Bei $p=1/2$ macht der Farbtausch aus dem geschlossenen Oben-unten-Durchgang $B_n^\ast$ der dualen Box einen offenen Oben-unten-Durchgang. Die duale Box hat nicht dieselbe Knotenzahl wie $\Lambda_n$; die beiden Durchgangswahrscheinlichkeiten sind daher bei endlichem $n$ nicht gleich, sondern unterscheiden sich um einen Randterm, der für $n\to\infty$ verschwindet. RSW hält beide Folgen von $0$ und $1$ fern, also existiert jeder Teilfolgenlimes und ist von den Endpunkten entfernt. Der Randterm erzwingt $2\pi=1$ für jeden solchen Limes, also $\pi=1/2$; die ganze Folge konvergiert gegen denselben Wert. Ein vollständiger Beweis identifiziert den Limes über den Satz von Harris–Kesten oder Cardys Formel. $\blacksquare$
 
-Das ist eine bemerkenswerte Identität: Für jede Größe ist die Durchgangswahrscheinlichkeit bei $p=1/2$ exakt die Hälfte, nicht nur näherungsweise. Sie ist ein scharfer Finite-Size-Test für einen zweidimensionalen Code, und die Benchmark-Suite in `data/benchmarks.json` verwendet sie als primäre Validierung des Samplers.
+Die Werte bei endlichem $L$ sind der Grund, warum der Benchmark in `data/benchmarks.json` die Durchgangsrate zusammen mit ihrem Stichprobenumfang angibt und nicht $1/2$ behauptet. Bei $L=32,64,128$ sind die verzeichneten Raten bei $p=1/2$ gleich $0.5275$, $0.5375$ und $0.505$; sie nähern sich $1/2$, sind aber bei keiner dieser Größen gleich $1/2$.
 
-Was Proposition 4.3 **nicht** liefert, ist $p_c=1/2$. Sie besagt, dass $p=1/2$ ein Fixpunkt der Dualität ist, nicht dass es der kritische Punkt ist. Ein Modell könnte prinzipiell anderswo einen Übergang erster Ordnung haben und die Identität dennoch erfüllen. Diese Lücke schließt der Satz von Harris–Kesten.
+Was Proposition 4.3 **nicht** liefert, ist $p_c=1/2$. Sie besagt, dass $p=1/2$ im Unendlichkeitslimes ein Fixpunkt der Dualität ist, nicht dass es der kritische Punkt ist. Ein Modell könnte prinzipiell anderswo einen Übergang erster Ordnung haben und die Grenzidentität dennoch erfüllen. Diese Lücke schließt der Satz von Harris–Kesten.
 
 ## 4.3 Harris–Kesten: die Architektur
 
@@ -53,22 +50,21 @@ Was Proposition 4.3 **nicht** liefert, ist $p_c=1/2$. Sie besagt, dass $p=1/2$ e
 
 Der Beweis besteht aus zwei Hälften, die unterschiedliche Hilfsmittel verwenden.
 
-**Untere Hälfte, $p_c\ge1/2$ (Harris).** Angenommen, $\theta(1/2)>0$. Dann existiert mit positiver Wahrscheinlichkeit ein unendlicher offener Cluster, und nach dem Eindeutigkeitssatz (Satz 5.3, der nicht vom Wert von $p_c$ abhängt) ist er fast sicher eindeutig. Eine Standardfolgerung aus Eindeutigkeit und positiver Dichte ist, dass die Wahrscheinlichkeit eines offenen Links-rechts-Durchgangs von $\Lambda_n$ für $n\to\infty$ gegen $1$ strebt: Der unendliche Cluster hat positive Dichte, trifft also beide Seiten einer großen Box, und das Durchgangsereignis scheitert nur, wenn der Cluster im Inneren der Box unterbrochen ist, ein Ereignis von exponentiell kleiner Wahrscheinlichkeit. Das widerspricht Proposition 4.3, die die Wahrscheinlichkeit für jedes $n$ auf $1/2$ festlegt. Also ist $\theta(1/2)=0$ und $p_c\ge1/2$.
+**Untere Hälfte, $p_c\ge1/2$ (Harris).** Angenommen, $\theta(1/2)>0$. Dann existiert mit positiver Wahrscheinlichkeit ein unendlicher offener Cluster, und nach dem Eindeutigkeitssatz (Satz 5.3, der nicht vom Wert von $p_c$ abhängt) ist er fast sicher eindeutig. Eine Standardfolgerung aus Eindeutigkeit und positiver Dichte ist, dass die Wahrscheinlichkeit eines offenen Links-rechts-Durchgangs von $\Lambda_n$ für $n\to\infty$ gegen $1$ strebt: Der unendliche Cluster hat positive Dichte, trifft also beide Seiten einer großen Box, und das Durchgangsereignis scheitert nur, wenn der Cluster im Inneren der Box unterbrochen ist, ein Ereignis von exponentiell kleiner Wahrscheinlichkeit. Das widerspricht dem Grenzwert in Proposition 4.3, der die Durchgangswahrscheinlichkeit gegen $1/2$ zwingt. Also ist $\theta(1/2)=0$ und $p_c\ge1/2$.
 
 Der Schritt von der Eindeutigkeit zu „die Durchgangswahrscheinlichkeit strebt gegen eins“ ist der einzige nicht elementare Bestandteil; er wird in Grimmetts *Percolation*, Kapitel 8, bewiesen, und dort geht die Voraussetzung der Amenabilität ein. Alles Übrige in der unteren Hälfte ist Proposition 4.3.
 
 **Obere Hälfte, $p_c\le1/2$ (Kesten).** Der Motor ist die RSW-Ungleichung.
 
-**Satz 4.5 (Russo 1978; Seymour–Welsh 1978).** Es gibt eine Konstante $\delta>0$, sodass für alle $p$ und alle $n$ gilt:
+**Satz 4.5 (Russo 1978; Seymour–Welsh 1978).** Es gibt eine Konstante $\eta>0$, sodass für alle $p$ und alle $n$ gilt:
 $$
-\mathbb{P}_p\big(\Lambda_n\text{ is crossed left–right}\big)\ \ge\ \delta
-\quad\text{whenever}\quad
-\mathbb{P}_p\big([0,2n]\times[0,n]\text{ is crossed left–right}\big)\ \ge\ \tfrac12 .
+\mathbb{P}_p\big(\Lambda_n\text{ wird links--rechts durchquert}\big)\ \ge\ \tfrac12
+\quad\Longrightarrow\quad
+\mathbb{P}_p\big([0,3n]\times[0,n]\text{ wird links--rechts durchquert}\big)\ \ge\ \eta .
 $$
+Die Implikation ist die nichttriviale Richtung von RSW: Ein Quadratdurchgang mit Wahrscheinlichkeit mindestens ein halb erzwingt einen Langrechteck-Durchgang mit einer von $n$ unabhängigen positiven Unterschranke. Der Beweis ist ein Grobkörnungsargument. Man legt drei überlappende $n\times n$-Quadrate entlang des langen Rechtecks. Ein Links-rechts-Durchgang des Langrechtecks lässt sich aus Durchgängen der drei Quadrate zusammensetzen, und FKG verwandelt eine Unterschranke für die Wahrscheinlichkeit jedes Quadratdurchgangs in eine Unterschranke für die Wahrscheinlichkeit der Zusammensetzung. Die Konstante $\eta$ hängt nur vom Wert $1/2$ ab, nicht von $n$.
 
-Der Beweis ist ein Grobkörnungsargument: Man teile das $2n\times n$-Rechteck in vier $n\times n$-Quadrate; wird das lange Rechteck durchquert, so werden entweder zwei benachbarte Quadrate in derselben Richtung durchquert, oder es existiert ein dualer Durchgang in der komplementären Richtung; FKG verwandelt die Alternative in eine untere Schranke für ein einzelnes Quadrat, und die Iteration der Ungleichung verbessert $\delta$ zu einer von $n$ unabhängigen Konstante.
-
-Mit der RSW-Ungleichung zur Hand ist Kestens Argument eine Blockkonstruktion. Man nehme $p=1/2+\varepsilon$. Für $n$ groß im Vergleich zu $1/\varepsilon$ ist die Wahrscheinlichkeit, dass ein gegebenes $n\times n$-Quadrat von links nach rechts durchquert wird, mindestens $\delta$, und nach FKG verstärken sich die Durchgänge horizontal benachbarter Blöcke gegenseitig. Klebt man eine Kette solcher Blöcke quer durch ein Rechteck der Breite $N$, so ergibt sich ein Links-rechts-Durchgang des gesamten Rechtecks mit einer Wahrscheinlichkeit, die exponentiell in $N/n$ gegen $1$ strebt. Das Stapeln dieser Rechtecke und ein „Leiter“-Argument liefern für jede Skala mit einer durch eine Konstante nach unten beschränkten Wahrscheinlichkeit einen offenen Pfad, der die Distanz $2^k$ erreicht; ein Borel–Cantelli-Argument ergibt dann $\theta(1/2+\varepsilon)>0$. Also ist $p_c\le1/2+\varepsilon$ für jedes $\varepsilon>0$.
+Mit RSW zur Hand hat Kestens Argument drei Schritte. Man nehme $p=1/2+\varepsilon$. Erstens zeigen Dualität und die Harris-Unterschranke $p_c\ge1/2$, dass ein geschlossener dualer Durchgang eines Langrechtecks mit Wahrscheinlichkeit gegen null geht; äquivalent geht die primale Durchgangswahrscheinlichkeit des Langrechtecks gegen eins. Zweitens liefert RSW eine uniforme Unterschranke für Durchgänge von Rechtecken jeder Skala. Drittens verwandelt das Standard-Leiterargument (Renormierung) diese skalenuniformen Schranken in einen unendlichen offenen Pfad mit positiver Wahrscheinlichkeit, also $\theta(1/2+\varepsilon)>0$. Somit ist $p_c\le1/2+\varepsilon$ für jedes $\varepsilon>0$. Der zweite und der dritte Schritt sind die langen Teile des Beweises; der erste ist der Teil, der die Dualität am kritischen Punkt verwendet.
 
 **Bemerkung 4.6.** Der Beweis wurde wiederholt vereinfacht. Der Weg bei Bollobás und Riordan (2006) verwendet den Sharp-Threshold-Satz von Friedgut–Kalai; er ist begrifflich sauberer, stützt sich aber auf ein anderes schweres Resultat. Kein Beweis ist kurz. Was für diesen Atlas zählt, ist die Struktur: Dualität liefert den Fixpunkt, RSW liefert Starrheit am Fixpunkt, und die Starrheit hebt den Fixpunkt zum kritischen Punkt.
 

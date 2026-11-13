@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-13 00:34",
+ "generated": "2026-11-13 14:43",
  "languages": [
   "en",
   "zh",
   "de"
  ],
- "references": 105,
+ "references": 125,
  "chapters": [
   {
    "id": "01-foundations",
@@ -530,6 +530,56 @@
     "en": "content/en/21-reproducibility.md",
     "zh": "content/zh/21-reproducibility.md",
     "de": "content/de/21-reproducibility.md"
+   }
+  },
+  {
+   "id": "22-trees",
+   "order": 22,
+   "part": "critical",
+   "title": {
+    "en": "Trees, generating functions, and message passing",
+    "zh": "树、生成函数与消息传递",
+    "de": "Bäume, erzeugende Funktionen und Botschaftspassage"
+   },
+   "subtitle": {
+    "en": "Exact percolation on branching structures, and what sparse networks inherit",
+    "zh": "分支结构上的精确渗流，以及稀疏网络从中继承了什么",
+    "de": "Exakte Perkolation auf Verzweigungsstrukturen und was dünn besetzte Netzwerke davon erben"
+   },
+   "reading": {
+    "en": 17,
+    "zh": 17,
+    "de": 17
+   },
+   "files": {
+    "en": "content/en/22-trees.md",
+    "zh": "content/zh/22-trees.md",
+    "de": "content/de/22-trees.md"
+   }
+  },
+  {
+   "id": "23-epidemics",
+   "order": 23,
+   "part": "networks",
+   "title": {
+    "en": "Epidemics as percolation",
+    "zh": "流行病即渗流",
+    "de": "Epidemien als Perkolation"
+   },
+   "subtitle": {
+    "en": "Final size, herd immunity, and where the mapping stops",
+    "zh": "最终规模、群体免疫，以及这一对应的边界",
+    "de": "Endgröße, Herdenimmunität und wo die Abbildung endet"
+   },
+   "reading": {
+    "en": 16,
+    "zh": 16,
+    "de": 16
+   },
+   "files": {
+    "en": "content/en/23-epidemics.md",
+    "zh": "content/zh/23-epidemics.md",
+    "de": "content/de/23-epidemics.md"
    }
   }
  ]

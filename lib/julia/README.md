@@ -18,7 +18,8 @@ julia --project=lib/julia lib/julia/test/runtests.jl
 ```
 
 The suite reproduces `data/golden/rng-seed42.json`, all `parity.json` probes,
-the Cardy reference values and the duality crossing rate.
+the Cardy reference values, the duality crossing rate, and the algorithm-zoo
+and v4 tree/epidemic probes in `data/golden/algorithms-v3.json`.
 
 ## API map
 | area | API |
@@ -29,6 +30,7 @@ the Cardy reference values and the duality crossing rate.
 | Network | `poisson_degrees`, `power_law_degrees`, `configuration_model`, `components`, `kcore`, `interdependent_er`, `molloy_reed` |
 | Continuum / Cardy | `boolean_model`, `poisson_points`; `cardy_crossing`, `cardy_hypergeom`, `cardy_modulus` |
 | Directed | `directed_crossing`, `directed_crosses_lr`, `directed_crossing_rate` |
+| Algorithms / trees | `bootstrap_activation`, `explosive_*`, `invasion_*`, `leath_cluster`, `label_clusters`, `bethe_percolation`, `configuration_giant_component`, `sir_final_size` |
 
 ## Parity notes
 * xoshiro128** + SplitMix32, pure `UInt32` arithmetic; site draws `n`

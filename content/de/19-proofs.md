@@ -57,11 +57,11 @@ Die Eindeutigkeit erlaubt es, von „dem“ unendlichen Cluster und von der Perk
 
 ## 19.5 Dualität und exakte Schwellen
 
-Auf dem Quadratgitter ist das Dual einer Bondkonfiguration eine Bondkonfiguration auf dem verschobenen Gitter: Eine duale Kante ist offen genau dann, wenn die primale Kante geschlossen ist. Ein offener Links-rechts-Durchgang existiert genau dann, wenn es keinen geschlossenen dualen Oben-unten-Durchgang gibt. Damit
+Auf dem Quadratgitter ist das Dual einer Bondkonfiguration eine Bondkonfiguration auf dem verschobenen Gitter: Eine duale Kante ist offen genau dann, wenn die primale Kante geschlossen ist. Für eine Box $\Lambda_n$ existiert ein offener Links-rechts-Durchgang von $\Lambda_n$ genau dann, wenn es keinen geschlossenen Oben-unten-Durchgang der Paarungsbox $\Lambda_n^\dagger$ gibt. Das ergibt die Identität für endliche Boxen
 $$
-\mathbb{P}_{1/2}(\text{links--rechts})+\mathbb{P}_{1/2}(\text{oben--unten})=1,
+\mathbb{P}_{1/2}(A_n)+\mathbb{P}_{1/2}(B_n^\dagger)=1 .
 $$
-und aus Symmetrie sind beide Terme $1/2$. Harris bewies damit $p_c\ge1/2$; Kesten (1980) bewies $p_c\le1/2$ mit einem feineren Argument, also $p_c=1/2$ exakt.
+Bei $p=1/2$ macht die Farbsymmetrie aus $B_n^\dagger$ einen offenen Oben-unten-Durchgang der dualen Box. Die duale Box hat eine andere Knotenzahl als $\Lambda_n$, daher sind die beiden Wahrscheinlichkeiten bei endlichem $n$ nicht gleich; ihre Differenz ist ein Randterm. Mit $n\to\infty$ und Proposition 4.3 folgt $\mathbb{P}_{1/2}(A_n)\to1/2$. Harris nutzte diese Grenzaussage für $p_c\ge1/2$; Kesten (1980) bewies $p_c\le1/2$ mit einem feineren Argument, also $p_c=1/2$ exakt. Bei endlichem $n$ ist die Durchgangswahrscheinlichkeit nicht $1/2$: Exakte Abzählung ergibt $3/4$, $43/64$ und $82623/131072$ für die $2\times2$-, $3\times3$- und $4\times4$-Knotenbox.
 
 Die Schwellen von Dreieck und Bienenwabe folgen aus der Stern-Dreieck-Transformation:
 $$
@@ -77,7 +77,7 @@ Für Platzperkolation auf dem Quadratgitter ist keine solche Identität bekannt;
 Dualität liefert die Schwelle auf speziellen Gittern, aber nicht die Schärfe des Übergangs auf einem allgemeinen Graphen. Der moderne Weg hat drei Schritte.
 
 1. **RSW.** Für Bernoulli-Perkolation auf dem Quadratgitter sind die Durchgangswahrscheinlichkeiten von Rechtecken bei $p=1/2$ uniform im Seitenverhältnis nach oben und unten beschränkt (Russo 1978; Seymour und Welsh 1978).
-2. **Schärfe.** Aizenman und Barsky (1987) sowie Menshikov (1986) zeigten, dass $\theta(p)$ unterhalb von $p_c$ exponentiell abfällt und die Suszeptibilität darüber divergiert. Duminil-Copin und Tassion (2016) gaben mit einer Differentialungleichung einen kurzen Beweis für transitive Graphen.
+2. **Schärfe.** Aizenman und Barsky (1987) sowie Menshikov (1986) zeigten: Für $p<p_c$ fällt der Cluster-Schwanz exponentiell ab und $\chi(p)<\infty$, während $\theta(p)>0$ für $p>p_c$; insbesondere gilt $\chi(p)\to\infty$ für $p\uparrow p_c$. Duminil-Copin und Tassion (2016) gaben mit einer Differentialungleichung einen kurzen Beweis für transitive Graphen.
 3. **Kritisches Fenster.** Finite-Size-Scaling sagt, dass der Übergang über ein Fenster der Breite $L^{-1/\nu}$ verschmiert wird. $\nu$ folgt nicht aus der Schärfe: In zwei Dimensionen kommt es aus der konformen Invarianz, in hohen Dimensionen aus der Spitzenentwicklung.
 
 RSW ist auch der Grund, warum eine endliche Box eine wohldefinierte Durchgangswahrscheinlichkeit hat: Die Schranke ist uniform in der Form, also existiert der Limes für wachsende Boxen entlang Rechtecken.
@@ -149,7 +149,7 @@ Die Primärquellen dieses Anhangs sind Grimmetts *Percolation* (1999) für den s
 
 Wer ein strenges Buch will, nimmt Grimmetts *Percolation*; wer die moderne probabilistische Sicht mit für ein Graduiertenkurs geschriebenen Beweisen will, nimmt Bollobás und Riordan. Stauffer und Aharony bleiben der schnellste Weg in die Sprache der Physiker; Sahimis *Applications of Percolation Theory* ist die Brücke zu porösen Medien, Verbundwerkstoffen und Transport. Meester und Roy sind die Standardreferenz für Kontinuumsperkolation; Hunt, Ewing und Ghanbarian gehen sorgfältig von der Perkolation zum Fluss in realen porösen Medien.
 
-Für Netzwerke ist Newmans *Networks* das allgemeine Lehrbuch, Dorogovtsevs *Lectures on Complex Networks* die kompakte theoretische Darstellung und Bianconis *Multilayer Networks* der richtige Einstieg, wenn eine Schicht nicht reicht. Christensen und Moloney verbinden Perkolation mit Kritikalität, ohne die Physik zu verstecken. Bunde und Havlin, Hughes und Zallen sind ältere Bücher, die sich noch lohnen: Sie enthalten Argumente und experimentellen Kontext, den moderne Reviews wegkürzen.
+Für Netzwerke ist Newmans *Networks* das allgemeine Lehrbuch, Dorogovtsevs *Lectures on Complex Networks* die kompakte theoretische Darstellung und Bianconis *Multilayer Networks* der richtige Einstieg, wenn eine Schicht nicht reicht. Lyons und Peres ist die rigorose Referenz für Bäume und Verzweigungsprozesse; für Epidemien sind Kiss, Miller und Simon sowie Keeling und Rohani der richtige nächste Schritt. Christensen und Moloney verbinden Perkolation mit Kritikalität, ohne die Physik zu verstecken. Bunde und Havlin, Hughes und Zallen sind ältere Bücher, die sich noch lohnen: Sie enthalten Argumente und experimentellen Kontext, den moderne Reviews wegkürzen.
 
 Unter den Reviews sind Saberi (2015) und Li et al. (2021) breit und gut belegt; D'Souza et al. (2019) ist die ehrliche Darstellung der explosiven Perkolation; Boccaletti et al. (2014) und Kivelä et al. (2014) decken multilayer networks von Struktur bis Dynamik ab. Isichenko (1992) ist noch immer der beste lange Essay über Perkolation, statistische Topographie und Transport in zufälligen Medien; Berkowitz und Ewing (1998) sind eine kompakte Einführung in die bodenphysikalischen Anwendungen.
 

@@ -68,6 +68,6 @@ Wer Intuition sucht, liest dieses Kapitel und Kapitel 4 und öffnet dann das *La
 
 Wer den rigorosen Kern sucht, liest die Kapitel 3–5 der Reihe nach (Monotonie und Existenz, Dualität und exakte Schwellen, Schärfe und Eindeutigkeit) und danach Kapitel 7 zum zweidimensionalen Grenzfall.
 
-Wer wegen der Anwendungen hier ist, findet in den Kapiteln 10 und 12 das Material zu Netzwerken und Werkstoffen; Kapitel 11 beschreibt die numerische Methodik, die verhindert, dass eine Anwendung eine plausible, aber falsche Schwelle produziert.
+Wer wegen Netzwerken oder Epidemien hier ist, liest die Kapitel 10, 22 und 23 in dieser Reihenfolge: Gradverteilungen, erzeugende Funktionen und die SIR-Abbildung. Kapitel 11 beschreibt die numerische Methodik, die verhindert, dass eine Anwendung eine plausible, aber falsche Schwelle produziert.
 
 Wer eine Behauptung überprüfen will: Jeder vollständig bewiesene Satz ist mit ★ markiert, jeder numerische Wert trägt Quelle und Genauigkeit, und Kapitel 14 verzeichnet die Beweise, dokumentiert die in dieser Ausgabe vorgenommenen Korrekturen und listet die durchgängig verwendeten Quellen auf.

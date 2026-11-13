@@ -95,7 +95,7 @@ The first three are implemented in all four libraries; the fourth is a research 
 
 ## 15.8 Beyond the core: bootstrap, explosive and invasion
 
-Three further algorithms are implemented in the Python and JavaScript reference libraries and exposed in the laboratories. They answer different questions and should not be mixed with the Bernoulli sampler.
+Three further algorithms are implemented in all four reference libraries and exposed in the laboratories. They answer different questions and should not be mixed with the Bernoulli sampler.
 
 **Bootstrap percolation.** Occupied sites are active at time zero; an empty site activates when at least $r$ of its neighbours are active. The update is a monotone closure, so the final set is the least fixed point and is independent of the update order. The queue implementation activates each site at the first round in which its active-neighbour count reaches $r$, in $O(n+m)$ time. For $r=2$ the infinite-lattice threshold is zero, but a finite box fills above a crossover that depends on $L$; for $r=3$ and $r=4$ the threshold is positive. The distinction is visible in laboratory 10.
 
@@ -103,7 +103,9 @@ Three further algorithms are implemented in the Python and JavaScript reference 
 
 **Achlioptas process.** At each step two candidate edges are drawn and the product (or sum) rule keeps the one whose endpoint components are smaller. On the complete graph this delays the giant component and produces a sharp finite-size jump. The jump is not a thermodynamic discontinuity: the product rule is continuous in the limit, as the scaling check in laboratory 11 shows. The implementation uses the same DSU and reports the trajectory as an exact function of the candidate sequence.
 
-The three algorithms have a two-language parity contract (Python and JavaScript), recorded in `data/golden/algorithms-v3.json`. The four-language contract still covers the Bernoulli core. The correctness arguments are in Chapter 19, the instruments are laboratories 10–12, and the site's Algorithm reader links each invariant to the exact source file.
+The three algorithms share the four-language parity contract recorded in `data/golden/algorithms-v3.json`: Python and JavaScript generate the probes, and the C++ and Julia suites assert the same file. The Bernoulli core keeps its own contract in `data/golden/parity.json`. The correctness arguments are in Chapter 19, the instruments are laboratories 10–12, and the site's Algorithm reader links each invariant to the exact source file.
+
+Six further routines were added in the 4.x releases: Hoshen–Kopelman labelling, the Bethe fixed point, the configuration-model giant component, the SIR final size, the site-mode Newman–Ziff sweep and message passing. Of these, Hoshen–Kopelman, the Bethe fixed point, the configuration giant component, the SIR final size and message passing are deterministic; the site sweep consumes one random site order. The first four are described in Chapters 22–23, the site sweep is the site counterpart of §15.5, and message passing is the finite-graph form of the Bethe recursion in §22.5. All six have golden probes in the same `algorithms-v3.json` file.
 
 ## 15.9 Reading the implementations
 

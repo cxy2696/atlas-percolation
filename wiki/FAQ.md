@@ -4,9 +4,9 @@
 
 It is the default for a first visit. A saved language/theme choice wins; `?theme=light` and `?theme=dark` override the theme for a link. The storage keys are versioned so an old preference does not silently override the new default.
 
-### Are all 105 references verified?
+### Are all 125 references verified?
 
-103 are verified against Crossref (title, year, first author) or an HTTP fetch. Two carry explanatory notes: Menshikov (1986) has no DOI for the translation; Stauffer & Aharony is the 1994 edition while the DOI identifies a later reissue. The audit record lists every result.
+123 are verified against Crossref (title, year, first author) or an HTTP fetch. Two carry explanatory notes: Menshikov (1986) has no DOI for the translation; Stauffer & Aharony is the 1994 edition while the DOI identifies a later reissue. The audit record lists every result.
 
 ### Is `p_c = 1/2` exact?
 
@@ -26,7 +26,7 @@ No. Pages serves the static site. Use `atlas-perc serve` or the Docker image for
 
 ### Why are only some algorithms in C++ and Julia?
 
-The Bernoulli core is four-language. The v3 algorithm zoo (bootstrap, invasion, Leath, Achlioptas, random-graph baseline) is Python + JavaScript and has its own golden file. The site states this rather than overclaiming.
+The Bernoulli core, the v3 algorithm zoo (bootstrap, invasion, Leath, Achlioptas, random-graph baseline), the labelling routine and the tree/epidemic solvers are four-language. Their golden probes are in `data/golden/parity.json` and `data/golden/algorithms-v3.json`.
 
 ### Why do timings differ between runs?
 
@@ -34,7 +34,7 @@ Browser wall-clock timings include JIT, cache and scheduling noise. The algorith
 
 ### I changed the theme and the page still looks old.
 
-The service worker caches the shell. It is versioned (`atlas-v3.2.1`); refresh once, or hard-refresh with `Cmd/Ctrl + Shift + R`.
+The service worker caches the shell. It is versioned (`atlas-v4.1.0`); refresh once, or hard-refresh with `Cmd/Ctrl + Shift + R`.
 
 ### Where do I start?
 

@@ -71,16 +71,18 @@ The benchmark harness is single-threaded. The C++ union-find is the obvious plac
 
 These are honest boundaries, not omissions to be papered over. The cross-disciplinary chapter marks which extensions are exact, which are approximate, and which are metaphors.
 
-## v3 laboratories
+## Laboratory bounds
 
-The four new instruments are deliberately bounded so that a laptop browser
-stays responsive:
+The instruments are deliberately bounded so that a laptop browser stays
+responsive:
 
 | Instrument | Bound | Memory | Time |
 |---|---|---|---|
 | Bootstrap percolation | L ≤ 128, r ≤ 4 | O(L²) byte arrays | O(L²) per closure |
 | Explosive percolation | n ≤ 4 000, 4n candidate steps | O(n) DSU | O(n α(n)) |
 | Invasion percolation | L ≤ 64 | O(L²) + binary heap | O(m log m) |
+| Bethe tree | z ≤ 4, depth 4 | O(z⁴) nodes | redraw on input |
+| SIR as percolation | 3 000 branching trials, cap 800 | O(1) | O(3 000 × 800) worst case, debounced |
 | Algorithm studio | L ≤ 128 for replay; scaling sweep to 128 | O(L²) | seconds |
 
 The explosive laboratory samples two candidate pairs per step and can add up

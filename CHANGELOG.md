@@ -1,5 +1,143 @@
 # Changelog
 
+## 4.1.0 — 2026-11-13
+
+A verification and algorithm edition. The atlas keeps 23 chapters, 15
+laboratories and 125 references, and grows to 13 algorithm walkthroughs.
+
+**New algorithms (all four languages)**
+
+- **Site-mode Newman–Ziff.** `newmanZiffSite` / `newman_ziff_site` adds
+  vertices rather than edges; after k sites the state is a uniform k-subset,
+  so it is a site-percolation sample at p = k/n. It is the site counterpart
+  of the bond sweep and uses the same observable conventions.
+- **Message passing.** `messagePassingPercolation` /
+  `message_passing_percolation` computes cavity messages
+  `u[i→j] = Π_{k≠j}(1 − T + T u[k→i])` with prefix/suffix products in
+  O(n + m) per sweep. It is exact on trees and the Bethe approximation on
+  graphs with cycles; starting from zero selects the physical fixed point.
+- Both have golden probes (`nz_site_square8_seed5_cp16`, `message_k5_T04`),
+  four-language tests and algorithm-reader entries. The reader now has 13
+  routines.
+
+**Verification**
+
+- Added `scripts/verify_claims.py`, which independently checks exact 2×2 and
+  3×3 crossing counts, Cardy values, the two-dimensional exponent identities,
+  Bethe and configuration-model fixed points, threshold relations, the stored
+  benchmark rates and the audit totals. It is part of `make test`,
+  `make verify` and CI.
+- Added [`docs/VERIFICATION.md`](docs/VERIFICATION.md): the check matrix,
+  provenance rules, current record and explicit limits.
+- Re-ran the full reference audit: 125 entries, 123 verified, 2 explanatory
+  notes, 0 unresolved. The audit retries Crossref 429/5xx responses.
+- The translation structure check (section numbers, equation tags, display
+  blocks) covers all 23 chapters in three editions.
+
+**Documentation and language switch**
+
+- Added complete [简体中文](README_cn.md) and [Deutsch](README_de.md) editions
+  of the README, with a language switch in all three files and in the site
+  header/rail.
+- Updated README, wiki, docs, package metadata, citation metadata and service
+  worker to 4.1.0 and to the new algorithm counts.
+- The German and Chinese READMEs preserve the commands, counts, paths and
+  provenance rules of the English edition.
+
+**Content and code refinements**
+
+- Corrected the Poisson-tree worked example in Chapter 22 to the recursion
+  `u = e^{-cp(1-u)} = e^{-1.2(1-u)}`, and made the finite-variance condition
+  explicit in the singularity statement.
+- Documented the z = 2 Bethe endpoint (p_c = 1, θ(1) = 1) in the text, the
+  lab and the tests.
+- Site and message-passing implementations are covered by the same integer
+  parity discipline as the existing algorithms.
+
+
+## 4.0.0 — 2026-11-13
+
+A content, algorithm and interface release. The atlas grows to 23 chapters,
+15 laboratories, 11 algorithm walkthroughs and 125 audited references, and the
+algorithm zoo becomes a four-language contract.
+
+**New chapters (English, Chinese, German)**
+
+- **22 — Trees, generating functions, and message passing.** Exact bond
+  percolation on Galton–Watson and z-regular trees, the cluster generating
+  function, local weak convergence of sparse graphs, the configuration-model
+  equations `u = G1(1 − T + Tu)`, `S = 1 − G0(1 − T + Tu)`, the threshold
+  `1/(κ − 1)`, the Bethe approximation and message passing, and a table that
+  separates where the tree answer is exact from where it is only local.
+- **23 — Epidemics as percolation.** The SIR-to-bond-percolation mapping with
+  the directed out-component caveat, the final-size equation, `R0 = T(κ − 1)`,
+  herd immunity, vaccine efficacy (all-or-nothing and leaky), superspreading,
+  temporal networks, the fixed-point algorithm and a reporting checklist.
+
+**New laboratories**
+
+- **14 — Bethe tree.** A finite z-ary tree drawn edge by edge beside the exact
+  infinite-tree curve, with `p_c = 1/(z − 1)`, θ, u and the subcritical χ.
+- **15 — SIR as percolation.** Final size against the effective reproduction
+  number, vaccination and efficacy controls, and a log-binned histogram of
+  3,000 branching-process outbreaks. The lab says explicitly that the
+  histogram is a mean-field illustration, not a contact-network simulation.
+
+**Algorithms**
+
+- The v3 zoo (bootstrap, invasion, Leath, Achlioptas) is now implemented in
+  C++20 and Julia as well as Python and JavaScript, with the same RNG
+  consumption and edge order. The golden file is asserted by all four suites.
+- Added Hoshen–Kopelman labelling (`labelClusters` / `label_clusters`) in all
+  four languages, with the inactive-vertex sentinel and a full label-array
+  golden probe.
+- Added the Bethe fixed point (`bethePercolation`), the Poisson pmf, the
+  configuration-model giant component and the SIR final size
+  (`sirFinalSize`) in all four languages.
+- Added three algorithm-reader entries (Hoshen–Kopelman, Bethe fixed point,
+  SIR final size), for 11 total.
+
+**References**
+
+- Added 20 verified entries, including Benjamini–Schramm, Lyons–Peres,
+  Mézard–Montanari, Karrer–Newman, Durrett, van der Hofstad, Janson–Łuczak–
+  Ruciński, Harris's branching-process book, Kiss–Miller–Simon, Keeling–
+  Rohani, Anderson–May, Lloyd-Smith et al., Holme–Saramäki, Valdano et al.,
+  Pastor-Satorras et al., Boguñá et al., Stauffer (1979), Coniglio,
+  Alexander–Orbach and Newman (2005).
+- Current audit: 123 verified, 2 explanatory notes, 125 total. The audit
+  script now retries Crossref 429/5xx responses with bounded backoff instead
+  of recording a transient rate limit as an unreachable source.
+
+**Errata and translation repair**
+
+- Chapter 4, Proposition 4.3: the finite-box crossing values were listed in
+  the wrong order (a 4×4 box was said to give 3/4). Exact enumeration gives
+  3/4 on 2×2, 43/64 on 3×3 and 82623/131072 on 4×4. The Chinese and German
+  editions still carried the superseded *finite-n identity* and its incorrect
+  proof; both now match the corrected limit statement.
+- Chapter 19, duality proof sketch: the same finite-n identity had survived
+  there. It now derives only the n → ∞ statement and points to Proposition
+  4.3 for the finite-size caveat. The sharpness sentence about the
+  susceptibility diverging "above" p_c is corrected to "as p ↑ p_c".
+- Chapter 14: rows 20–21 of the corrections table had been displaced below the
+  maintenance section; they are back in the table, joined by row 22 for the
+  Chapter 19 repair, in all three languages.
+- Benchmark crossing rates at p = 1/2 are now quoted as 0.5275, 0.5375 and
+  0.505 for L = 32, 64, 128, matching the raw record instead of rounding to
+  three digits.
+
+**Interface and housekeeping**
+
+- New laboratories are registered in the rail and the index; both have
+  authored reading guides in English, Chinese and German.
+- Plot corner labels that duplicated axis labels were removed from the new
+  instruments; the tree and outbreak views use a single, unambiguous label
+  per axis.
+- Version bumped to 4.0.0 across the site, package metadata, Python and Julia
+  packages, service worker and citation file.
+
+
 ## 3.2.1 — 2026-11-13
 
 A layout fix for the Start view. The full-width desktop rule for the guide

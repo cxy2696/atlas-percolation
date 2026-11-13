@@ -20,6 +20,7 @@ import json
 import pathlib
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -36,10 +37,30 @@ def norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
-def fetch(url: str, timeout: float = 15.0):
+def fetch(url: str, timeout: float = 20.0, attempts: int = 4):
+    """GET with bounded retries for rate limits and transient server errors.
+
+    Crossref returns 429 when a burst exceeds its polite pool; a single retry
+    with backoff is enough, and it keeps the audit record free of spurious
+    "unreachable" rows.  Client errors other than 429 are not retried.
+    """
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json,text/html;q=0.9,*/*;q=0.8"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.status, r.read(800_000)
+    last = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status, r.read(800_000)
+        except urllib.error.HTTPError as exc:
+            last = exc
+            if exc.code != 429 and exc.code < 500:
+                raise
+            retry_after = exc.headers.get("Retry-After") if exc.headers else None
+            delay = float(retry_after) if retry_after and retry_after.isdigit() else 1.5 * (2**attempt)
+            time.sleep(min(delay, 15.0))
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last = exc
+            time.sleep(1.0 * (2**attempt))
+    raise last if last is not None else RuntimeError("fetch failed")
 
 
 def check_doi(entry: dict) -> dict:
@@ -159,7 +180,7 @@ def main() -> int:
                 res["status"] = "schema-error"
             return res
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
             for res in pool.map(work, entries):
                 results.append(res)
                 print(f"{res['status']:<16} {res['id']:<22} {res.get('resolved_title', res.get('error', ''))[:70]}")

@@ -16,9 +16,9 @@ JULIA  ?= julia
 CXX    ?= c++
 PORT   ?= 8788
 
-.PHONY: test test-js test-py test-cpp test-julia parity parity-check parity-alg audit bench analyse content site serve package api clean
+.PHONY: test test-js test-py test-cpp test-julia parity parity-check parity-alg check-translations check-claims verify audit bench analyse content site serve package api clean
 
-test: test-js test-py test-cpp test-julia parity-check parity-alg
+test: test-js test-py test-cpp test-julia parity-check parity-alg check-translations check-claims
 
 test-js:
 	$(NODE) --test tests/js/*.test.js
@@ -40,6 +40,14 @@ parity-check:
 parity-alg:
 	$(PYTHON) scripts/parity_algorithms.py
 
+check-translations:
+	$(PYTHON) scripts/check_translations.py
+
+check-claims:
+	$(PYTHON) scripts/verify_claims.py
+
+verify: check-translations check-claims audit
+
 audit:
 	$(PYTHON) scripts/verify_references.py
 
@@ -53,6 +61,7 @@ analyse:
 
 content:
 	$(PYTHON) scripts/build_content.py
+	$(PYTHON) scripts/check_translations.py
 
 site: content
 	@test -f data/benchmarks.json || echo "note: data/benchmarks.json missing; run 'make bench && make analyse'"

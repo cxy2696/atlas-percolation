@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "percolation_atlas/algorithms.hpp"
 #include "percolation_atlas/cardy.hpp"
 #include "percolation_atlas/continuum.hpp"
 #include "percolation_atlas/directed.hpp"

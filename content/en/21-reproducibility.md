@@ -14,7 +14,7 @@ A result that cannot be reproduced is a story. This chapter states the contract 
 The repository is the artifact. Five things are versioned together.
 
 1. **Sources.** Markdown chapters, JSON bibliography, citation map.
-2. **Engine.** C++20, Julia, Python and JavaScript implementations of the core; Python and JavaScript for the v3 algorithm zoo.
+2. **Engine.** C++20, Julia, Python and JavaScript implementations of the Bernoulli core, the v3 algorithm zoo, the labelling routine and the tree/epidemic solvers.
 3. **Goldens.** `data/golden/parity.json` for the four-language core, `data/golden/rng-seed42.json` for the random stream, `data/golden/algorithms-v3.json` for the new algorithms.
 4. **Data.** Raw benchmark counts and the analysed record, with the harness that produced them.
 5. **Build and deploy.** The content builder, the static server, the Python package, the API, the Dockerfile and the CI workflows.
@@ -37,7 +37,7 @@ Every implementation follows this order. The golden file stores raw outputs afte
 
 The core parity contract is four-language. `scripts/parity.py` computes the Python probes, runs `scripts/parity_probe.mjs` for JavaScript, and compares both with `data/golden/parity.json`; the C++ and Julia suites assert the same values from the same file.
 
-The v3 algorithm zoo has a two-language contract. `scripts/parity_algorithms.py` compares Python and JavaScript on bootstrap activation times, invasion order, Leath cluster size, and the Achlioptas trajectories. The scope is stated in the golden file; the atlas does not pretend that the C++ and Julia libraries implement these routines.
+The algorithm zoo has a four-language contract. `scripts/parity_algorithms.py` compares Python and JavaScript on bootstrap activation times, invasion order, Leath cluster size and the Achlioptas trajectories; the C++ and Julia suites assert the same `data/golden/algorithms-v3.json` values, together with the deterministic Hoshen–Kopelman, Bethe and SIR probes.
 
 Run them with:
 

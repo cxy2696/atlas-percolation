@@ -115,6 +115,7 @@ Before committing a translation:
 
 ```sh
 python3 scripts/build_content.py     # fails on missing languages or bad front matter
+python3 scripts/check_translations.py  # section/equation structure must match across editions
 ```
 
 The build checks that every chapter exists in every language, that the order is contiguous, and that every citation key resolves. It does not check prose quality; that is the editor's job.

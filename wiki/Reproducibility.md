@@ -19,7 +19,7 @@ Every implementation follows this order. `docs/RNG.md` is the specification; `da
 | Contract | Languages | Golden file |
 |---|---|---|
 | Bernoulli core | C++20, Julia, Python, JavaScript | `data/golden/parity.json` |
-| v3 algorithm zoo | Python, JavaScript | `data/golden/algorithms-v3.json` |
+| v3 zoo, v4 solvers, site sweep, message passing | C++, Julia, Python, JavaScript | `data/golden/algorithms-v3.json` |
 
 Run:
 
