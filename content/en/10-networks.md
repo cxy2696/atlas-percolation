@@ -84,7 +84,7 @@ t=\frac{(1-e^{-t})^2}{2(1-e^{-t})e^{-t}}=\frac{e^{t}-1}{2},
 $$
 so $e^{t}=1+2t$. The nonzero root is $t^\ast=1.256431\ldots$, giving
 $$
-p_c=\frac{1}{2c\,(1-e^{-t^\ast})e^{-t^\ast}}=\frac{2.45538\ldots}{c}.
+p_c=\frac{1}{2c\,(1-e^{-t^\ast})e^{-t^\ast}}=\frac{2.4554075\ldots}{c}.
 $$
 For comparison, a single Erdős–Rényi layer has $p_c=1/c$. Coupling therefore raises the threshold by a factor $2.4554$, and the transition is **first order**: at $p_c$ the mutual component jumps from zero to a finite size $\mu^\ast=t^\ast/c$, because the nontrivial branch is born by a saddle-node bifurcation, not by a continuous bifurcation from zero.
 

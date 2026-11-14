@@ -32,6 +32,11 @@ MIME = {
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    # HTTP/1.1 with Content-Length keeps the browser's module requests on
+    # well-defined connections. The default HTTP/1.0 close can surface as
+    # ERR_CONNECTION_RESET when a page opens several ES modules at once.
+    protocol_version = "HTTP/1.1"
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
@@ -45,6 +50,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def log_message(self, fmt, *args):
         sys.stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
+
+    def copyfile(self, source, outputfile):
+        try:
+            super().copyfile(source, outputfile)
+        except (BrokenPipeError, ConnectionResetError):
+            # The browser may close a speculative module request. That is a
+            # client decision, not a server error worth a traceback.
+            pass
 
 
 def main() -> None:

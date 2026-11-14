@@ -248,10 +248,10 @@ class TestCardy(unittest.TestCase):
         self.assertAlmostEqual(cardy_crossing(1.0), 0.5, places=12)
 
     def test_reference_values(self):
-        self.assertAlmostEqual(cardy_crossing(0.1), 4.0394890895707114e-05, places=13)
-        self.assertAlmostEqual(cardy_crossing(10.0), 0.9999596051091043, places=10)
-        self.assertAlmostEqual(cardy_crossing(0.25), 0.02163002909086475, places=12)
-        self.assertAlmostEqual(cardy_crossing(2.0), 0.8243531061993461, places=12)
+        self.assertAlmostEqual(cardy_crossing(0.1), 4.039284061265219e-05, places=13)
+        self.assertAlmostEqual(cardy_crossing(10.0), 0.9999596071593873, places=10)
+        self.assertAlmostEqual(cardy_crossing(0.25), 0.02163002909086675, places=12)
+        self.assertAlmostEqual(cardy_crossing(2.0), 0.8243531061993448, places=12)
 
     def test_monotone(self):
         vals = [cardy_crossing(l) for l in (0.1, 0.3, 1.0, 3.0, 10.0, 100.0)]

@@ -1,5 +1,65 @@
 # Changelog
 
+## 4.4.0 — 2026-11-14
+
+A readability and verification edition. The chapter structure is unchanged;
+the reading layer, the experiment interface and the provenance checks are new.
+The release also corrects several claims found by a line-by-line audit, and the
+errata table records each correction.
+
+**Reading and presentation**
+
+- Added `assets/css/reading.css`: a 720 px serif measure for chapters, larger
+  UI type, a warmer high-contrast light palette, sentence-case labels and no
+  scanline texture. The light theme is still the default.
+- Fixed a mobile grid bug that let chapter text overflow the viewport.
+- Rewrote the start page, overview copy and README files in plain language;
+  removed the "instrument/feed" and "mission control" framing.
+- Increased chart typography from 9 px monospace to 11 px sans, moved legends
+  out of the data area, and fixed the Cardy/crossing axis labels.
+
+**Experiments**
+
+- Added three guided experiments at the top of the experiment index: measure
+  the crossing probability at `p = 1/2`, collapse three lattice sizes, and find
+  the susceptibility peak.
+- The lattice experiment now draws independent configurations, reports a
+  Wilson 95% interval, accepts `?p=`, `?L=`, `?mode=`, `?lattice=` and
+  `?samples=` parameters, and has threshold presets.
+- The crossing experiment has a movable collapse exponent ν, a dedicated
+  `p_c` estimator with a standard error, a "add 2 000 samples" action, and
+  error bars on the threshold counters.
+- The Newman–Ziff experiment accepts a lattice size, reports the χ peak and
+  exports the curve as CSV.
+- Every experiment carries a run record: controls, seed, readouts, app version
+  and source links. It can be downloaded as JSON or saved to a local notebook
+  (`localStorage`, exportable as JSON/CSV).
+
+**Verification and corrections**
+
+- Corrected the SIR mapping in Chapter 23: averaging over infectious periods
+  does not make edges independent. The exact object is the epidemic
+  percolation network; the simple final-size equation is exact only for a
+  constant period or in the Poisson-degree mean-field reduction. Added Kenah
+  and Robins (2007).
+- Corrected the triangular-site attribution (Kesten 1982, not Wierman 1981),
+  the square bond attribution (Kesten 1980), the diamond thresholds (van der
+  Marck erratum), the coupled-cascade constant (2.4554075…), and the tree
+  table header.
+- Replaced the `d=4` and `d=5` exponent rows with current effective estimates
+  compiled in Borinsky et al. (2021), and changed the `d≥6` status to the
+  theorem range `d≥11`/spread-out `d>6` with unsettled `d=6` logs.
+- Restricted the exact 2D exponent theorem to triangular-lattice site
+  percolation; star–triangle transformations transfer thresholds, not scaling
+  limits.
+- Fixed the Cardy evaluation near small aspect ratios by computing `K(1−m)`
+  with a complementary AGM. `π(0.1)` is now `4.0392840613×10⁻⁵`; all four
+  implementations, goldens and tests were updated.
+- Added a consistency check for version and count statements, deterministic
+  generated JSON (content fingerprint instead of wall-clock time), and a
+  HTTP/1.1 preview server that no longer drops parallel module requests.
+- Bibliography now 142 entries: 140 verified, 2 explanatory notes.
+
 ## 4.3.0 — 2026-11-14
 
 A reading-order edition. The content is unchanged; the site is reorganised so

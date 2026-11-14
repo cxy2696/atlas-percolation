@@ -3,7 +3,7 @@
 # With aspect ratio l = H/W, the left-right crossing probability is
 #
 #   P(l) = C * m^(1/3) * 2F1(1/3, 2/3; 4/3; m),
-#   C    = 3*Gamma(2/3) / Gamma(1/3)^2 = 0.5660466803631552,
+#   C    = 3*Gamma(2/3) / Gamma(1/3)^2 = 0.5660466803631597,
 #
 # where m solves l = K(m) / K(1-m).  For l > 1 the identity
 # P(l) = 1 - P(1/l) is used, so the series is evaluated at m <= 1/2.
@@ -11,12 +11,22 @@
 # The first edition substituted -l directly into the hypergeometric; that is
 # a different function and is wrong at moderate aspect ratios.
 
-const CARDY_CONSTANT = 0.5660466803631552
+const CARDY_CONSTANT = 0.5660466803631597
 
 # Complete elliptic integral K(m), parameter convention, via the AGM.
 function _ellip_k(m::Float64)
     a = 1.0
     b = sqrt(1.0 - m)
+    for _ in 1:80
+        a, b = 0.5 * (a + b), sqrt(a * b)
+    end
+    return pi / (2.0 * a)
+end
+
+# K(1-m) without forming 1-m; keeps tiny moduli resolvable.
+function _ellip_k_complement(m::Float64)
+    a = 1.0
+    b = sqrt(m)
     for _ in 1:80
         a, b = 0.5 * (a + b), sqrt(a * b)
     end
@@ -43,7 +53,7 @@ function cardy_modulus(l::Real)
     lo, hi = 0.0, 0.5
     for _ in 1:90
         mid = 0.5 * (lo + hi)
-        if _ellip_k(mid) / _ellip_k(1.0 - mid) < lf
+        if _ellip_k(mid) / _ellip_k_complement(mid) < lf
             lo = mid
         else
             hi = mid

@@ -38,7 +38,7 @@ In sechs Größen steckt nahezu die gesamte Theorie. Es lohnt sich, ihre Definit
 
 **Durchgangswahrscheinlichkeit.** In einer endlichen Box $\Lambda$ gilt $\pi_\Lambda(p)=\mathbb{P}_p(\text{open left–right crossing of }\Lambda)$. Diese Observable wird in Finite-Size-Studien tatsächlich gemessen, denn sie ist ein Indikator mit einer scharfen Schwelle in $L$ und benötigt kein unendliches Gitter.
 
-Eine sechste Größe, die Clusterzahldichte $n_s(p)=\mathbb{P}_p(|C_0|=s)/s$ pro Platz, ist das natürliche Objekt der Skalierungstheorie; sie erscheint in Kapitel 6 und ist der Grund dafür, dass $\delta$ existiert.
+Eine verwandte Größe, die Clusterzahldichte $n_s(p)=\mathbb{P}_p(|C_0|=s)/s$ pro Platz, ist das natürliche Objekt der Skalierungstheorie; sie erscheint in Kapitel 6 und ist der Grund dafür, dass $\delta$ existiert.
 
 ## Warum ein Parameter genügt
 
@@ -58,9 +58,9 @@ Das Thema wird üblicherweise als Stapel gelehrt, und es hilft, den ganzen Stape
 
 ## Wegmarken
 
-Drei Ergebnisse geben eine erste Orientierung. Auf dem quadratischen Gitter gilt für die Kantenperkolation exakt $p_c=1/2$ (Kesten 1980). Auf dem Dreiecksgitter gilt für die Site-Perkolation exakt $p_c=1/2$; dafür gibt es einen kurzen Stern-Dreieck-Beweis (Kapitel 4). Für das Dreiecksgitter und seine Stern-Dreieck-Verwandten sind die kritischen Exponenten in zwei Dimensionen exakt bekannt: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. In drei Dimensionen sind weder Schwellen noch Exponenten exakt bekannt; die besten numerischen Werte sind $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, mit Fehlerbalken in der letzten angegebenen Stelle. Oberhalb von sechs Dimensionen werden die Molekularfeldwerte $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ erwartet; für $d\ge11$ sind sie bewiesen (Kapitel 8), bei $d=6$ gelten sie mit logarithmischen Korrekturen.
+Drei Ergebnisse geben eine erste Orientierung. Auf dem quadratischen Gitter gilt für die Kantenperkolation exakt $p_c=1/2$ (Kesten 1980). Auf dem Dreiecksgitter gilt für die Site-Perkolation exakt $p_c=1/2$; dafür gibt es einen kurzen Stern-Dreieck-Beweis (Kapitel 4). Für die Site-Perkolation auf dem Dreiecksgitter sind die kritischen Exponenten in zwei Dimensionen exakt bekannt: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. Derselbe Exponentensatz wird auf anderen planaren Gittern erwartet, ist dort aber eine Vermutung. In drei Dimensionen sind weder Schwellen noch Exponenten exakt bekannt; die besten numerischen Werte sind $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, mit Fehlerbalken in der letzten angegebenen Stelle. Oberhalb von sechs Dimensionen werden die Molekularfeldwerte $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ erwartet; für $d\ge11$ sind sie bewiesen (Kapitel 8), bei $d=6$ gelten sie mit logarithmischen Korrekturen.
 
-Die Kluft zwischen den exakten Ergebnissen und der numerischen Mitte ist die ungeschönte Gestalt des Feldes: exakt in zwei Dimensionen, streng für $d\ge11$, numerisch dazwischen.
+Die Kluft zwischen den exakten Ergebnissen und der numerischen Mitte beschreibt die Lage des Feldes: exakt in zwei Dimensionen, streng für $d\ge11$, dazwischen numerisch.
 
 ## Wie dieser Atlas zu lesen ist
 

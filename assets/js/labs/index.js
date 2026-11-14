@@ -194,3 +194,94 @@ export const LABS = [
     mount: (el, ctx) => import('./algorithm-studio.js').then((m) => m.mount(el, ctx)),
   },
 ];
+
+/** Where each experiment comes from and where a reader can check it.
+ *  Chapter ids are stable; algorithm ids match assets/js/lib/algorithm-guide.js.
+ *  The `cli` string is shown in the run record when a command-line equivalent
+ *  exists. It is documentation, not something the browser executes. */
+export const LAB_SOURCES = {
+  lattice: {
+    chapters: ['01-foundations', '04-duality', '11-measurement'],
+    algorithms: ['dsu', 'sampler'],
+    cli: 'atlas-perc sample --lattice square --mode bond --L 64 --p 0.5 --seed 1001',
+  },
+  crossing: {
+    chapters: ['04-duality', '07-two-dimensions', '11-measurement'],
+    algorithms: ['nz'],
+    cli: 'atlas-perc sweep --lattice square --L 64 --seed 7',
+  },
+  'newman-ziff': {
+    chapters: ['11-measurement', '15-algorithms'],
+    algorithms: ['nz'],
+    cli: 'atlas-perc sweep --lattice square --L 256 --seed 777',
+  },
+  'three-d': {
+    chapters: ['01-foundations', '08-high-dimensions', '11-measurement'],
+    algorithms: ['nz-site'],
+    cli: '',
+  },
+  cardy: {
+    chapters: ['07-two-dimensions'],
+    algorithms: [],
+    cli: '',
+  },
+  directed: {
+    chapters: ['16-directed'],
+    algorithms: [],
+    cli: '',
+  },
+  'random-cluster': {
+    chapters: ['09-random-cluster'],
+    algorithms: [],
+    cli: '',
+  },
+  bootstrap: {
+    chapters: ['15-algorithms'],
+    algorithms: ['bootstrap'],
+    cli: 'atlas-perc bootstrap --L 64 --p 0.55 --r 3 --seed 11',
+  },
+  explosive: {
+    chapters: ['15-algorithms'],
+    algorithms: ['achlioptas'],
+    cli: 'atlas-perc explosive --n 2000 --rule product --seed 7',
+  },
+  invasion: {
+    chapters: ['15-algorithms'],
+    algorithms: ['invasion'],
+    cli: 'atlas-perc invasion --L 48 --seed 3',
+  },
+  network: {
+    chapters: ['10-networks', '22-trees'],
+    algorithms: ['kcore', 'message'],
+    cli: '',
+  },
+  interdependent: {
+    chapters: ['10-networks'],
+    algorithms: [],
+    cli: '',
+  },
+  continuum: {
+    chapters: ['17-continuum'],
+    algorithms: [],
+    cli: '',
+  },
+  tree: {
+    chapters: ['22-trees'],
+    algorithms: ['bethe'],
+    cli: '',
+  },
+  epidemic: {
+    chapters: ['23-epidemics'],
+    algorithms: ['sir'],
+    cli: '',
+  },
+  'algorithm-studio': {
+    chapters: ['15-algorithms'],
+    algorithms: ['nz', 'leath'],
+    cli: '',
+  },
+};
+
+export function labSources(id) {
+  return LAB_SOURCES[id] || { chapters: [], algorithms: [], cli: '' };
+}

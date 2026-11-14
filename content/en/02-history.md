@@ -7,7 +7,7 @@ subtitle: From coffee grounds to conformal invariance
 reading: 9 min
 ---
 
-The history of percolation is unusually clean: a definite starting paper, a definite golden age, and a definite resolution in two dimensions. What follows is a timeline with the primary sources attached, so that each claim can be traced.
+Percolation has a clear starting paper, a productive middle period and a two-dimensional solution. What follows is a timeline with the primary sources attached, so that each claim can be traced.
 
 ## 1957: the founding paper
 
@@ -39,7 +39,7 @@ In parallel, J. L. Cardy, *Critical percolation in finite geometries*, **J. Phys
 
 ## 2001: the two-dimensional revolution
 
-S. Smirnov, *Critical percolation in the plane: conformal invariance, Cardy's formula, scaling limits*, **C. R. Acad. Sci. Paris Sér. I Math.** 333 (2001), 239–244, proved Cardy's formula for critical site percolation on the triangular lattice. The proof is short enough to be read in an afternoon and deep enough to have changed the subject: it identifies the continuum limit of the exploration interface as a conformally invariant object.
+S. Smirnov, *Critical percolation in the plane: conformal invariance, Cardy's formula, scaling limits*, **C. R. Acad. Sci. Paris Sér. I Math.** 333 (2001), 239–244, proved Cardy's formula for critical site percolation on the triangular lattice. The proof is short, and it changed the subject: it identifies the continuum limit of the exploration interface as a conformally invariant object.
 
 G. F. Lawler, O. Schramm and W. Werner, *Values of Brownian intersection exponents I, II*, **Acta Math.** 187 (2001), 237–273 and 275–308, and their subsequent work, identified the interface limit as SLE$_6$ and derived the exact exponent set. The chain Cardy → Smirnov → SLE is the most complete solution of a critical model in two dimensions after the Ising model.
 

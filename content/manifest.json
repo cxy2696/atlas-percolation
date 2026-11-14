@@ -1,11 +1,13 @@
 {
- "generated": "2026-11-14 20:19",
+ "generated": "content-18a01f1ff508ff73",
+ "fingerprint": "18a01f1ff508ff73",
+ "version": "4.4.0",
  "languages": [
   "en",
   "zh",
   "de"
  ],
- "references": 140,
+ "references": 142,
  "chapters": [
   {
    "id": "01-foundations",

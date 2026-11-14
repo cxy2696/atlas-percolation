@@ -60,7 +60,7 @@ Three checks fix the constants and the orientation.
 
 *Limits.* As $\ell\to0$, $m\to0$ and $\pi\to0$; as $\ell\to\infty$, $\pi\to1$. Both limits are consistent with the geometry: a very wide, short rectangle is unlikely to be crossed left–right, while a very tall one is almost surely crossed.
 
-*Values.* $\pi(0.1)=4.0394890896\times10^{-5}$, $\pi(0.25)=0.0216300291$, $\pi(0.5)=0.1756468938$, $\pi(1)=0.5$, $\pi(2)=0.8243531062$, $\pi(4)=0.9783699709$, $\pi(10)=0.9999596051$. The steepness is real; it is why a simulation at a fixed narrow width needs large aspect ratios before the asymptotic curve is visible.
+*Values.* $\pi(0.1)=4.0392840613\times10^{-5}$, $\pi(0.25)=0.0216300291$, $\pi(0.5)=0.1756468938$, $\pi(1)=0.5$, $\pi(2)=0.8243531062$, $\pi(4)=0.9783699709$, $\pi(10)=0.9999596072$. The steepness is real; it is why a simulation at a fixed narrow width needs large aspect ratios before the asymptotic curve is visible.
 
 **Numerical evaluation.** The modulus is found by bisection on $m\in[0,1/2]$ using the arithmetic–geometric mean for $K$. Because the evaluation only needs $m\le1/2$, the hypergeometric series converges rapidly. The code in `lib/js/engine/cardy.js`, `lib/python/percolation_atlas/cardy.py`, `lib/cpp/include/percolation_atlas/cardy.hpp` and `lib/julia/src/cardy.jl` follows this route; the regression values above are part of the four test suites.
 
@@ -107,7 +107,7 @@ A reported exponent of $n^{-2/3}$ is not consistent with this value, and the dis
 
 ## 7.5 What the two-dimensional solution does and does not give
 
-It gives the exponents, the crossing probabilities, the arm exponents, and the conformal invariance of the scaling limit — for the triangular lattice, and for lattices connected to it by star–triangle transformations. It gives, in principle, the full continuum description of the critical geometry.
+It gives the exponents, the crossing probabilities, the arm exponents, and the conformal invariance of the scaling limit — for site percolation on the triangular lattice. Star–triangle transformations transfer thresholds between matching lattices, not the scaling limit; for other planar lattices the same exponents are expected but not proved. It gives, in principle, the full continuum description of the critical geometry.
 
 It does not give the threshold on an arbitrary lattice. Cardy's formula is about the critical point; it says nothing about where the critical point is. The threshold remains a lattice-dependent quantity, known exactly for a handful of lattices (Chapter 4) and numerically for the rest.
 

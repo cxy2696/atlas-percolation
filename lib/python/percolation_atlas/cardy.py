@@ -17,13 +17,27 @@ from __future__ import annotations
 
 import math
 
-CARDY_CONSTANT = 0.5660466803631552
+CARDY_CONSTANT = 0.5660466803631597
 
 
 def _ellip_k(m: float) -> float:
     """Complete elliptic integral K(m), parameter convention, by the AGM."""
     a = 1.0
     b = math.sqrt(1.0 - m)
+    for _ in range(80):
+        a, b = 0.5 * (a + b), math.sqrt(a * b)
+    return math.pi / (2.0 * a)
+
+
+def _ellip_k_complement(m: float) -> float:
+    """K(1-m) without forming 1-m.
+
+    For the small moduli used by l < 0.2, the subtraction 1-m loses the
+    difference between neighbouring roots. The AGM for K(1-m) starts from
+    sqrt(m), so the root can be resolved down to the double-precision limit.
+    """
+    a = 1.0
+    b = math.sqrt(m)
     for _ in range(80):
         a, b = 0.5 * (a + b), math.sqrt(a * b)
     return math.pi / (2.0 * a)
@@ -51,7 +65,7 @@ def cardy_modulus(l: float) -> float:
     lo, hi = 0.0, 0.5
     for _ in range(90):
         mid = 0.5 * (lo + hi)
-        if _ellip_k(mid) / _ellip_k(1.0 - mid) < l:
+        if _ellip_k(mid) / _ellip_k_complement(mid) < l:
             lo = mid
         else:
             hi = mid

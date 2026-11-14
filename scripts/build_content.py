@@ -11,7 +11,7 @@ any chapter.
 
 from __future__ import annotations
 
-import datetime as dt
+import hashlib
 import json
 import pathlib
 import re
@@ -20,6 +20,32 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 LANGS = ["en", "zh", "de"]
+
+def source_fingerprint() -> str:
+    """A deterministic fingerprint of the content sources.
+
+    The build output used to carry a wall-clock timestamp, so every run dirtied
+    the working tree. The fingerprint identifies the inputs instead and keeps
+    generated JSON reproducible.
+    """
+    digest = hashlib.sha256()
+    sources: list[pathlib.Path] = []
+    for lang in LANGS:
+        sources.extend(sorted((CONTENT / lang).glob("*.md")))
+    sources.extend([CONTENT / "references.json", CONTENT / "citations.json"])
+    for path in sources:
+        digest.update(path.relative_to(ROOT).as_posix().encode("utf-8"))
+        digest.update(path.read_bytes())
+    return digest.hexdigest()[:16]
+
+
+def package_version() -> str:
+    try:
+        pkg = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+        return str(pkg.get("version", "0.0.0"))
+    except (OSError, json.JSONDecodeError):
+        return "0.0.0"
+
 
 PART_MAP = {
     "foundations": "foundations",
@@ -100,8 +126,10 @@ def code_manifest() -> dict:
                         "bytes": path.stat().st_size,
                     })
         languages.append({"id": lang_id, "group": group, "files": files})
+    fingerprint = source_fingerprint()
     return {
-        "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "generated": f"code-{fingerprint}",
+        "fingerprint": fingerprint,
         "languages": languages,
     }
 
@@ -224,15 +252,18 @@ def main() -> int:
     for cid in all_ids:
         if cid not in citations:
             problems.append(f"citations.json: no entry for chapter {cid}")
+    fingerprint = source_fingerprint()
     manifest = {
-        "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "generated": f"content-{fingerprint}",
+        "fingerprint": fingerprint,
+        "version": package_version(),
         "languages": LANGS,
         "references": len(ref_ids),
         "chapters": ordered,
     }
     (CONTENT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     (CONTENT / "search.json").write_text(
-        json.dumps({"generated": manifest["generated"], "entries": search}, ensure_ascii=False),
+        json.dumps({"generated": manifest["generated"], "fingerprint": manifest["fingerprint"], "entries": search}, ensure_ascii=False),
         encoding="utf-8",
     )
     code = code_manifest()

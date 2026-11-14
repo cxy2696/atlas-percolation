@@ -1,8 +1,8 @@
 # Percolation Atlas — wiki
 
-**Version 4.3.0** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.3.0)
+**Version 4.4.0** · [Live site](https://cxy2696.github.io/atlas-percolation/) · [Repository](https://github.com/cxy2696/atlas-percolation) · [Release](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.4.0)
 
-A trilingual atlas of percolation theory: 23 chapters, 16 interactive laboratories, 13 algorithm walkthroughs, 140 audited references, four-language core code and a Python package.
+A trilingual atlas of percolation theory: 23 chapters, 16 interactive experiments, 13 algorithm walkthroughs, 142 audited references, four-language core code and a Python package.
 
 The site opens in **light mode, English**, on the start-here guide at `#/en/guide`. The guide is the right first page; this wiki is the slower reference for the parts that are easier to read as text.
 
@@ -22,9 +22,9 @@ The site opens in **light mode, English**, on the start-here guide at `#/en/guid
 ## The four doors
 
 1. **Argument** — 23 chapters in English, Simplified Chinese and German. The core is 01–13; 19 is the proof appendix; 20 is design under uncertainty; 21 is the reproducibility protocol; 22 covers trees and generating functions; 23 covers epidemics as percolation. Chapter 12 ends with a domain-by-domain field guide and the claims that most often go wrong.
-2. **Experiment** — 16 laboratories. Every instrument has an authored reading guide: what you see, what each control does, what to try, and where the model stops.
+2. **Experiment** — 16 experiments. Each one has an authored reading guide: what you see, what each control does, what to try, and where the model stops.
 3. **Code** — the Bernoulli core, bond and site Newman–Ziff, the labelling routine, the tree/epidemic solvers and message passing are implemented in C++20, Julia, Python and JavaScript. The v3 algorithm zoo (bootstrap, invasion, Leath, Achlioptas) is Python + JavaScript and has its own golden file.
-4. **Evidence** — seeded data, a bibliography of 140 entries (138 verified against Crossref or the publisher, 2 with explanatory notes), and an errata table.
+4. **Evidence** — seeded data, a bibliography of 142 entries (140 verified against Crossref or the publisher, 2 with explanatory notes), and an errata table.
 
 ## What “verified” means here
 

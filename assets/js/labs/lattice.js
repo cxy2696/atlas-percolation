@@ -1,5 +1,6 @@
 import { Rng, buildLattice, Percolation, degreeHistogram } from '../../../lib/js/index.js';
-import { labHead, control, select, readout, panel, canvasBox, bindRange, clusterColor, fmt, setText } from './ui.js';
+import { labHead, control, select, readout, panel, canvasBox, bindRange, clusterColor, fmt, setText, queryNumber, queryChoice } from './ui.js';
+import { wilsonInterval } from '../lib/experiment.js';
 import { t } from '../i18n.js';
 import { palette, onTheme } from '../theme.js';
 
@@ -36,6 +37,18 @@ const LABELS = {
     square: 'square',
     triangular: 'triangular',
     honeycomb: 'honeycomb',
+    presetCritical: 'At threshold',
+    presetBelow: 'Below threshold',
+    presetAbove: 'Above threshold',
+    presetSite: 'Site, p = 0.55',
+    estimate: 'Crossing estimate',
+    estimateLead: 'Draw independent configurations at the current p. The 95% interval is Wilson’s score interval and covers Monte Carlo error only.',
+    configs: 'Configurations',
+    runEstimate: 'Run estimate',
+    piHat: 'Crossing rate π̂',
+    interval: '95% interval',
+    draws: 'Crossings / draws',
+    stale: 'p changed — run the estimate again.',
   },
   zh: {
     title: '格子渗流',
@@ -60,6 +73,18 @@ const LABELS = {
     square: '方格',
     triangular: '三角',
     honeycomb: '蜂窝',
+    presetCritical: '在阈值',
+    presetBelow: '阈值以下',
+    presetAbove: '阈值以上',
+    presetSite: '位点，p = 0.55',
+    estimate: '横穿率估计',
+    estimateLead: '在当前 p 下独立抽取构型。95% 区间是 Wilson 得分区间，只涵盖蒙特卡洛误差。',
+    configs: '构型数',
+    runEstimate: '运行估计',
+    piHat: '横穿率 π̂',
+    interval: '95% 区间',
+    draws: '横穿次数 / 抽样数',
+    stale: 'p 已改变，请重新运行估计。',
   },
   de: {
     title: 'Gitterperkolation',
@@ -84,6 +109,18 @@ const LABELS = {
     square: 'Quadrat',
     triangular: 'Dreieck',
     honeycomb: 'Bienenwabe',
+    presetCritical: 'Bei der Schwelle',
+    presetBelow: 'Unter der Schwelle',
+    presetAbove: 'Über der Schwelle',
+    presetSite: 'Platz bei 0.55',
+    estimate: 'Durchgangs-Schätzung',
+    estimateLead: 'Unabhängige Konfigurationen beim aktuellen p ziehen. Das 95%-Intervall ist Wilsons Score-Intervall und deckt nur den Monte-Carlo-Fehler ab.',
+    configs: 'Konfigurationen',
+    runEstimate: 'Schätzung starten',
+    piHat: 'Durchgangsrate π̂',
+    interval: '95%-Intervall',
+    draws: 'Treffer / Ziehungen',
+    stale: 'p geändert – Schätzung erneut starten.',
   },
 };
 
@@ -116,6 +153,12 @@ export function mount(root, ctx) {
       </div>
       <aside class="panel">
         <h3>${L.controls}</h3>
+        <div class="chip-row preset-row">
+          <button type="button" class="chip" data-preset="critical">${L.presetCritical}</button>
+          <button type="button" class="chip" data-preset="below">${L.presetBelow}</button>
+          <button type="button" class="chip" data-preset="above">${L.presetAbove}</button>
+          <button type="button" class="chip" data-preset="site">${L.presetSite}</button>
+        </div>
         ${select({ id: 'lat-kind', label: t(lang, 'lattice'), value: 'square', options: [
           { value: 'square', label: L.square },
           { value: 'triangular', label: L.triangular },
@@ -138,15 +181,52 @@ export function mount(root, ctx) {
         </div>
         <p class="hint" style="margin-top:14px">${t(lang, 'engine_note')}</p>
       </aside>
-    </div>`;
+    </div>
+    <section class="panel estimate-panel">
+      <div class="estimate-head">
+        <div><h3>${L.estimate}</h3><p class="hint">${L.estimateLead}</p></div>
+        <div class="estimate-form">
+          <label for="lat-samples">${L.configs}</label>
+          <select id="lat-samples">
+            <option value="100">100</option>
+            <option value="400" selected>400</option>
+            <option value="1000">1 000</option>
+          </select>
+          <button type="button" class="btn primary" id="lat-estimate">${L.runEstimate}</button>
+        </div>
+      </div>
+      <div class="estimate-readouts">
+        ${readout('lat-pi', L.piHat)}
+        ${readout('lat-ci', L.interval)}
+        ${readout('lat-draws', L.draws)}
+      </div>
+      <p class="hint" id="lat-estimate-note">${L.estimateLead}</p>
+    </section>`;
 
   const canvas = root.querySelector('#lat-canvas');
-  const state = { kind: 'square', mode: 'bond', L: 64, p: 0.5, seed: 1001 };
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', 'A random lattice configuration. The largest open cluster is drawn in cyan, the second largest in amber.');
+  const state = {
+    kind: queryChoice(ctx.query, 'lattice', ['square', 'triangular', 'honeycomb'], 'square'),
+    mode: queryChoice(ctx.query, 'mode', ['bond', 'site'], 'bond'),
+    L: queryChoice(ctx.query, 'L', ['32', '64', '128', '256'], '64') | 0,
+    p: Math.min(1, Math.max(0, queryNumber(ctx.query, 'p', 0.5))),
+    seed: 1001,
+  };
   let lat = null;
   let model = null;
   let stats = null;
   let lastMs = 0;
+  let lastSeed = state.seed;
   let sweeping = null;
+  let estimate = null;
+
+  // Restore the values from a shared link before the first sample.
+  root.querySelector('#lat-kind').value = state.kind;
+  root.querySelector('#lat-mode').value = state.mode;
+  root.querySelector('#lat-size').value = String(state.L);
+  root.querySelector('#lat-p-slider').value = String(state.p);
+  root.querySelector('#lat-p-slider-val').textContent = state.p.toFixed(3);
 
   const pixelCanvas = document.createElement('canvas');
   const pixelCtx = pixelCanvas.getContext('2d');
@@ -157,14 +237,81 @@ export function mount(root, ctx) {
     model = new Percolation(lat, { mode: state.mode });
   }
 
+  function estimateKey() {
+    return `${state.kind}|${state.mode}|${state.L}|${state.p.toFixed(6)}`;
+  }
+
+  function clearEstimate(message = '—') {
+    estimate = null;
+    setText('lat-pi', '—');
+    setText('lat-ci', '—');
+    setText('lat-draws', '—');
+    setText('lat-estimate-note', message);
+  }
+
   function resample() {
     if (state.mode === 'bond' && state.L > 256) return;
+    if (estimate && estimate.key !== estimateKey()) clearEstimate(L.stale);
     const t0 = performance.now();
-    const rng = new Rng(state.seed++);
+    lastSeed = state.seed++;
+    const rng = new Rng(lastSeed);
     stats = model.sample(state.p, rng).analyze();
     lastMs = performance.now() - t0;
     draw();
     readouts();
+    publishRun();
+  }
+
+  function publishRun() {
+    if (!ctx.setRun) return;
+    const result = {};
+    if (estimate) {
+      result.crossingRate = Number(estimate.ci.p.toFixed(6));
+      result.interval95 = [Number(estimate.ci.lower.toFixed(6)), Number(estimate.ci.upper.toFixed(6))];
+      result.draws = estimate.n;
+    }
+    ctx.setRun({
+      seed: estimate ? estimate.seed : lastSeed,
+      params: {
+        lattice: state.kind,
+        mode: state.mode,
+        L: state.L,
+        p: Number(state.p.toFixed(6)),
+        ...(estimate ? { samples: estimate.n } : {}),
+      },
+      result,
+    });
+  }
+
+  function runEstimate(n) {
+    if (!Number.isInteger(n) || n < 1) return;
+    const seed = 900000 + (state.seed++);
+    const rng = new Rng(seed);
+    const t0 = performance.now();
+    let hits = 0;
+    for (let i = 0; i < n; i++) {
+      model.sample(state.p, rng);
+      if (model.crossesLR()) hits++;
+    }
+    const ci = wilsonInterval(hits, n);
+    estimate = {
+      seed,
+      n,
+      hits,
+      ci,
+      key: estimateKey(),
+      ms: performance.now() - t0,
+    };
+    setText('lat-pi', fmt(ci.p, 4));
+    setText('lat-ci', `[${fmt(ci.lower, 3)}, ${fmt(ci.upper, 3)}]`);
+    setText('lat-draws', `${hits} / ${n}`);
+    setText(
+      'lat-estimate-note',
+      `seed ${seed} · ${n} draws · ${estimate.ms.toFixed(0)} ms · Wilson 95%`
+    );
+    draw();
+    readouts();
+    publishRun();
   }
 
   function readouts() {
@@ -178,7 +325,10 @@ export function mount(root, ctx) {
     const ratio = state.p / pc;
     setText('lat-ratio', `${fmt(ratio, 3)}×`);
     const rEl = document.getElementById('lat-ratio');
-    if (rEl) rEl.parentElement.className = `readout ${ratio > 1 ? 'ok' : 'alert'}`;
+    if (rEl) {
+      const cls = ratio > 1.001 ? 'ok' : ratio < 0.999 ? 'alert' : '';
+      rEl.parentElement.className = `readout ${cls}`;
+    }
     setText('lat-time', `${lastMs.toFixed(1)}`);
     const cross = model.crossesLR();
     setText('lat-cross', cross ? t(lang, 'yes') : t(lang, 'no'));
@@ -401,11 +551,54 @@ export function mount(root, ctx) {
     }, 90);
   });
 
+  root.querySelector('#lat-estimate').addEventListener('click', (e) => {
+    const button = e.currentTarget;
+    const n = parseInt(root.querySelector('#lat-samples').value, 10) || 400;
+    button.disabled = true;
+    const old = button.textContent;
+    button.textContent = `${L.runEstimate}…`;
+    setTimeout(() => {
+      runEstimate(n);
+      button.disabled = false;
+      button.textContent = old;
+    }, 30);
+  });
+
+  root.querySelectorAll('[data-preset]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const preset = button.dataset.preset;
+      if (preset === 'site') {
+        state.kind = 'square';
+        state.mode = 'site';
+        state.L = 64;
+        state.p = 0.55;
+      } else {
+        state.kind = 'square';
+        state.mode = 'bond';
+        state.L = 64;
+        state.p = preset === 'below' ? 0.4 : preset === 'above' ? 0.6 : 0.5;
+      }
+      root.querySelector('#lat-kind').value = state.kind;
+      root.querySelector('#lat-mode').value = state.mode;
+      root.querySelector('#lat-size').value = String(state.L);
+      root.querySelector('#lat-p-slider').value = String(state.p);
+      root.querySelector('#lat-p-slider-val').textContent = state.p.toFixed(3);
+      clearEstimate();
+      applyControls();
+      if (preset === 'critical') runEstimate(400);
+    });
+  });
+
   const onResize = () => draw();
   window.addEventListener('resize', onResize);
   const offTheme = onTheme(() => draw());
 
   applyControls();
+
+  const recipeSamples = queryNumber(ctx.query, 'samples', 0) | 0;
+  if (ctx.query?.recipe === 'self-duality' && recipeSamples > 0) {
+    setTimeout(() => runEstimate(Math.min(2000, recipeSamples)), 350);
+  }
 
   return () => {
     offTheme();

@@ -8,6 +8,10 @@ Write for a technically literate reader who is not necessarily a specialist in p
 
 Avoid the tells of generated prose: three-item lists that all say the same thing, "it is important to note", "in today's world", "delve", "landscape", "testament", repeated sentence openings, and conclusions that restate the introduction. A little asymmetry is good. A paragraph may be one sentence long.
 
+Do not describe the site as an instrument, a mission-control panel, a feed or a HUD in reader-facing copy. Use the same labels everywhere: chapters, experiments, algorithms, code, data, sources, search. A label in all capitals is not a hierarchy; use a heading or a rule.
+
+When a number is a measurement, give the sample size or the interval. When a mapping is exact only under an assumption, name the assumption in the same paragraph, not in a footnote. The reader should be able to decide whether a sentence applies to their problem before looking up the citation.
+
 ## Claims and sources
 
 - A theorem is attributed to the paper that proves it.

@@ -66,7 +66,8 @@
   "lsw2001b",
   "grimmett1999",
   "nienhuis1982",
-  "stauffer1979"
+  "stauffer1979",
+  "borinsky2021"
  ],
  "07-two-dimensions": [
   "cardy1992",
@@ -76,7 +77,8 @@
   "lsw2001b",
   "grimmett1999",
   "nienhuis1982",
-  "smirnov2010"
+  "smirnov2010",
+  "borinsky2021"
  ],
  "08-high-dimensions": [
   "hara1990",
@@ -347,6 +349,7 @@
   "boguna2003",
   "newman2005",
   "durrett2007",
-  "hofstad2017"
+  "hofstad2017",
+  "kenah2007"
  ]
 }

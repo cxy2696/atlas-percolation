@@ -137,7 +137,7 @@ The message-passing form is what makes the tree calculation useful on real data:
 
 The Bethe lattice is the $d\to\infty$ limit, and its threshold $1/(z-1)$ is *not* the threshold of $\mathbb{Z}^d$ with the same degree. Table 22.1 makes the gap visible.
 
-| Graph | $z$ | Tree prediction $1/(z-1)$ | Actual $p_c$ (bond) | Status |
+| Graph | $z$ | Prediction | Actual $p_c$ (bond) | Status |
 |---|---|---|---|---|
 | $\mathbb{Z}^2$ | 4 | $1/3=0.3333$ | $1/2$ | exact (Kesten) |
 | Simple cubic $\mathbb{Z}^3$ | 6 | $1/5=0.2$ | $0.24881182(10)$ | numerical |

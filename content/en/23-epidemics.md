@@ -7,7 +7,7 @@ subtitle: Final size, herd immunity, and where the mapping stops
 reading: 16 min
 ---
 
-An SIR epidemic and bond percolation answer the same question when the question is *who is ever infected*. The answer is exact, not an analogy: retain each contact edge with the probability that it transmits, and the ever-infected set is the open cluster of the initial case. That identity gives the final size, the epidemic threshold, and the vaccination target in one calculation. It says nothing about the peak, the time course, or the effect of behaviour — and most failed applications fail by forgetting the second sentence.
+An SIR epidemic and bond percolation answer the same question when the question is *who is ever infected*. The mapping is exact when the infectious period is constant: retain each contact edge with probability $T=1-e^{-\beta\tau}$, and the ever-infected set is the open cluster of the initial case. When infectious periods vary, transmissions from the same vertex are correlated, so the exact object is a directed epidemic percolation network rather than an independent bond-percolation cluster. The marginal transmission probability still fixes the threshold, and in the configuration-model limit it gives the final-size equation. Keeping the distinction is what makes the calculation useful: it says which numbers the mapping can support and which it cannot. It says nothing about the peak or the time course — and most failed applications fail by forgetting that.
 
 ## 23.1 The mapping, stated precisely
 
@@ -15,24 +15,30 @@ Consider an SIR process on a static contact graph $G=(V,E)$ with one initially i
 $$
 T_i=1-e^{-\beta\tau_i}.
 $$
-If the infectious periods are independent and identically distributed, condition on them. Each *directed* edge $i\to j$ is open independently with probability $1-e^{-\beta\tau_i}$, and the set of vertices that ever become infected is the out-component of the initial case in this directed random graph. On a tree, each edge is traversed only away from the initial case, so averaging over the infectious periods gives independent edge retention with probability
-$$
-T=\mathbb{E}\big[1-e^{-\beta\tau}\big].
-$$
-In the configuration-model limit the same reduction holds because cycles are negligible at the scale of the giant out-component. This is the mapping used below; on a general graph with short cycles the exact object is the directed out-component, and the undirected percolation cluster is the tree approximation.
+If the infectious periods are independent and identically distributed, condition on them. Each *directed* edge $i\to j$ is open independently with probability $T_i$, and the set of vertices that ever become infected is the out-component of the initial case in this directed random graph.
 
-Two special cases are worth recording. For a constant infectious period $\tau$, $T=1-e^{-\beta\tau}$. For a Markovian SIR with recovery rate $\gamma$ (mean infectious period $1/\gamma$) and transmission rate $\beta$, $T=\beta/(\beta+\gamma)$. The mapping requires the contacts to be independent across edges; that is what makes the percolation representation exact, and it is the assumption that temporal and behavioural heterogeneity violate.
+Averaging over the periods does **not** make the edges independent. All edges out of $i$ share $\tau_i$, so their transmission events are correlated; the exact object is the semi-directed epidemic percolation network, whose out-component gives the final size and whose in-component gives the probability that a vertex is infected by a given initial case (Kenah and Robins 2007). On a tree the out-component is still described by a random-environment branching process, but not by an independent bond-percolation cluster with retention $T=\mathbb{E}[1-e^{-\beta\tau}]$.
+
+Two cases reduce to the simpler bond picture exactly. If $\tau$ is constant, then $T_i=T=1-e^{-\beta\tau}$ for every vertex and the directed edges are independent; on a tree the out-component is an independent bond-percolation cluster. If the degree distribution is Poisson, the average over $\tau$ can be moved inside the generating function, because $G_0(z)=G_1(z)=e^{c(z-1)}$, and the final-size equation is again the scalar equation with $T=\mathbb{E}[1-e^{-\beta\tau}]$. For a general degree distribution and non-degenerate $\tau$, the exact tree recursion is
+$$
+u=\mathbb{E}_\tau\Big[G_1\big(1-(1-e^{-\beta\tau})(1-u)\big)\Big],
+\qquad
+R_\infty=1-\mathbb{E}_\tau\Big[G_0\big(1-(1-e^{-\beta\tau})(1-u)\big)\Big];
+$$
+substituting $T$ for the random transmission probability inside $G_1$ is an approximation, not an identity. The threshold is still $R_0=T(\kappa-1)$, because the mean offspring number is linear in $T$.
+
+For a constant infectious period $\tau$, $T=1-e^{-\beta\tau}$. For a Markovian SIR with recovery rate $\gamma$ (mean infectious period $1/\gamma$) and transmission rate $\beta$, $T=\beta/(\beta+\gamma)$ is the marginal transmission probability; it represents independent edges only in the constant-period case, or in the Poisson-degree mean-field reduction above. Temporal and behavioural heterogeneity violate the static-contact assumption itself, which is a separate failure discussed in Section 23.5.
 
 For several initial cases, the final set is the union of their open clusters. In a large population with a vanishing initial fraction, the final size is the giant component whenever the parameters are supercritical; near the threshold the fluctuation of the initial seed matters.
 
 ## 23.2 The final-size equation
 
-Take the configuration model of Chapter 22 with degree generating functions $G_0$ and $G_1$. The bond-percolation solution (22.9) with retention $T$ gives the final fraction directly:
+Take the configuration model of Chapter 22 with degree generating functions $G_0$ and $G_1$. The bond-percolation solution (22.9) with retention $T$ is
 $$
 R_\infty=1-G_0\big(1-T+T u\big),\qquad
 u=G_1\big(1-T+T u\big). \tag{23.1}
 $$
-The derivation is the message-passing one: a vertex escapes infection if every neighbour either does not transmit (probability $1-T$) or transmits to a neighbour whose own branch dies out (probability $T u$). The giant component is the set of vertices that do not escape.
+It is exact when $\tau$ is constant or when the degree distribution is Poisson; for a general degree distribution with variable $\tau$ it is the mean-field approximation obtained by replacing the random transmission probability with its mean $T$ inside $G_1$. The derivation is the message-passing one: a vertex escapes infection if every neighbour either does not transmit (probability $1-T$) or transmits to a neighbour whose own branch dies out (probability $T u$). The giant component is the set of vertices that do not escape.
 
 For Poisson degrees with mean $c$, $G_0=G_1=e^{c(x-1)}$ and (23.1) collapses to the scalar equation
 $$
@@ -82,7 +88,7 @@ $R_0=T(\kappa-1)$ is a single number, but the epidemic is governed by the whole 
 
 The empirical literature on superspreading makes the same point from the other side. Individual variation in infectiousness is often overdispersed, with a small fraction of cases responsible for a large fraction of transmissions (Lloyd-Smith et al. 2005). In percolation language, the offspring distribution is not Poisson: the mean is $R_0$, but the variance and the tail determine the extinction probability and the size of the largest cluster. $R_0$ alone does not determine either. The practical consequence is that control measures which reduce the variance — avoiding crowded indoor events, for example — can have an effect out of proportion to their effect on the mean.
 
-This is also where the analogy with the degree distribution becomes quantitative. In the configuration model, the offspring law of the percolation process is size-biased, and its variance is fixed by $p_k$. A contact distribution with a heavy tail has a heavy-tailed offspring law even if transmission is a simple coin flip per edge. The two sources of overdispersion — contact heterogeneity and individual infectiousness — are different, and a single $R_0$ cannot distinguish them.
+This is also where the analogy with the degree distribution becomes quantitative. In the configuration model, the offspring law of the percolation process is size-biased, and its variance is fixed by $p_k$. A contact distribution with a heavy tail has a heavy-tailed offspring law even if transmission is a simple coin flip per edge. The two sources of overdispersion — contact heterogeneity and individual infectiousness — are different, and a single $R_0$ cannot distinguish them. When $\tau$ varies, the transmission count from a vertex is a mixture over $\tau$; even with a fixed degree its variance is larger than that of independent edges with the same mean, which is the correlation that the simple bond picture omits.
 
 ## 23.5 Temporal networks: when the static mapping fails
 
@@ -106,7 +112,7 @@ solve_final_size(T, degree_pmf):
     return 1 - G0(1 - T + T*u)
 ```
 
-Starting from $u=0$ the iteration is monotone increasing and converges to the smallest fixed point, which is the physical one; starting from $u=1$ stays at the trivial fixed point $u=1$ and would report a final size of zero. On a tree the equations are exact; on the configuration model they are exact in the limit; on a given graph the same equations are the message-passing system (22.11). The libraries expose the solver as `sirFinalSize` in C++, Julia, Python and JavaScript, and the tests compare it with the analytic Erdős–Rényi value and with a direct percolation computation on a small graph.
+Starting from $u=0$ the iteration is monotone increasing and converges to the smallest fixed point, which is the physical one; starting from $u=1$ stays at the trivial fixed point $u=1$ and would report a final size of zero. On a tree, these equations are exact when the infectious period is constant or the degrees are Poisson; with variable periods they are the mean-field approximation to the random-environment recursion of Section 23.1. In the configuration model they are exact in the limit under the same conditions; on a given graph the same equations are the message-passing system (22.11). The libraries expose the solver as `sirFinalSize` in C++, Julia, Python and JavaScript, and the tests compare it with the analytic Erdős–Rényi value and with a direct percolation computation on a small graph.
 
 A stochastic check is worth running once. Simulate the SIR process with the Gillespie algorithm on a small configuration-model graph, repeat with many seeds, and compare the mean final size with (23.1). The mean converges slowly near the threshold, where the distribution is bimodal: most runs die out, and a few reach the giant component. Reporting only the mean hides the bimodality; report the extinction probability and the size distribution as well.
 
@@ -117,6 +123,8 @@ A stochastic check is worth running once. Simulate the SIR process with the Gill
 **Heterogeneous contact networks.** For a network with a heavy-tailed degree distribution, random immunisation needs a fraction close to one even when the mean degree is modest, while targeted immunisation of the high-degree vertices can be much cheaper. The percolation calculation gives the comparison; it does not give the contact network.
 
 **Temporal and behavioural networks.** The static mapping is a bound, not an estimate. When contacts are ordered, bursty or responsive to the epidemic, the threshold is a property of the temporal process, and the static giant component can be badly misleading.
+
+**Variable infectious periods.** The independent-bond picture is exact only for a constant infectious period (or in the Poisson-degree mean-field reduction). For a general infectious-period distribution and degree sequence, use the random-environment recursion of Section 23.1 or the epidemic percolation network; the final-size equation (23.1) is then an approximation.
 
 **What the model does not give.** It does not give the peak time or height, the effect of isolation or treatment, the waning of immunity, the emergence of variants, or the behavioural response to prevalence. Those are dynamical questions, and the percolation mapping deliberately discards the dynamics. Chapter 18's first-passage material is the right place to start when timing matters, and Keeling and Rohani (2008) or Kiss, Miller and Simon (2017) give the dynamical treatment.
 

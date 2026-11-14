@@ -60,7 +60,7 @@ Drei Prüfungen legen die Konstanten und die Orientierung fest.
 
 *Grenzwerte.* Für $\ell\to0$ geht $m\to0$ und $\pi\to0$; für $\ell\to\infty$ geht $\pi\to1$. Beides ist geometrisch plausibel: Ein sehr breites, flaches Rechteck wird fast nie links–rechts durchquert, ein sehr hohes fast immer.
 
-*Werte.* $\pi(0.1)=4.0394890896\times10^{-5}$, $\pi(0.25)=0.0216300291$, $\pi(0.5)=0.1756468938$, $\pi(1)=0.5$, $\pi(2)=0.8243531062$, $\pi(4)=0.9783699709$, $\pi(10)=0.9999596051$. Die Steilheit ist real; deshalb braucht eine Simulation mit fester schmaler Breite große Seitenverhältnisse, bevor die asymptotische Kurve sichtbar wird.
+*Werte.* $\pi(0.1)=4.0392840613\times10^{-5}$, $\pi(0.25)=0.0216300291$, $\pi(0.5)=0.1756468938$, $\pi(1)=0.5$, $\pi(2)=0.8243531062$, $\pi(4)=0.9783699709$, $\pi(10)=0.9999596072$. Die Steilheit ist real; deshalb braucht eine Simulation mit fester schmaler Breite große Seitenverhältnisse, bevor die asymptotische Kurve sichtbar wird.
 
 **Numerische Auswertung.** Der Modul wird durch Bisektion auf $m\in[0,1/2]$ gefunden, $K$ über das arithmetisch–geometrische Mittel. Weil nur $m\le1/2$ ausgewertet wird, konvergiert die hypergeometrische Reihe schnell. Der Code in `lib/js/engine/cardy.js`, `lib/python/percolation_atlas/cardy.py`, `lib/cpp/include/percolation_atlas/cardy.hpp` und `lib/julia/src/cardy.jl` folgt diesem Weg; die obigen Regressionswerte stehen in allen vier Testsuiten.
 
@@ -107,7 +107,7 @@ Ein berichteter Exponent von $n^{-2/3}$ ist mit diesem Wert unvereinbar, und die
 
 ## 7.5 Was die zweidimensionale Lösung liefert und was nicht
 
-Sie liefert die Exponenten, die Durchgangswahrscheinlichkeiten, die Arm-Exponenten und die konforme Invarianz des Skalierungslimits — für das Dreiecksgitter und für Gitter, die durch Stern-Dreieck-Transformationen mit ihm verbunden sind. Im Prinzip liefert sie die vollständige Kontinuumsbeschreibung der kritischen Geometrie.
+Sie liefert die Exponenten, die Durchgangswahrscheinlichkeiten, die Arm-Exponenten und die konforme Invarianz des Skalierungslimits — für die Site-Perkolation auf dem Dreiecksgitter. Stern-Dreieck-Transformationen übertragen Schwellen zwischen gepaarten Gittern, nicht das Skalierungslimit; auf anderen planaren Gittern werden dieselben Exponenten erwartet, sind aber nicht bewiesen. Im Prinzip liefert sie die vollständige Kontinuumsbeschreibung der kritischen Geometrie.
 
 Sie liefert nicht die Schwelle auf einem beliebigen Gitter. Cardys Formel betrifft den kritischen Punkt; sie sagt nichts darüber aus, wo dieser liegt. Die Schwelle bleibt eine gitterabhängige Größe, die für eine Handvoll Gitter exakt (Kapitel 4) und für die übrigen numerisch bekannt ist.
 

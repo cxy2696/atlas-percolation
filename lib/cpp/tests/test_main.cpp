@@ -201,12 +201,12 @@ void test_directed() {
 }
 
 void test_cardy() {
-  CHECK_CLOSE(atlas::cardy_crossing(0.1), 4.0394890895707114e-05, 1e-13);
+  CHECK_CLOSE(atlas::cardy_crossing(0.1), 4.039284061265219e-05, 1e-13);
   CHECK_CLOSE(atlas::cardy_hypergeom(1.0), 1.1129126745223048, 1e-12);
   CHECK_CLOSE(atlas::cardy_crossing(1.0), 0.5, 0.0);
-  CHECK_CLOSE(atlas::cardy_crossing(10.0), 0.9999596051091043, 1e-12);
-  CHECK_CLOSE(atlas::cardy_crossing(0.25), 0.02163002909086475, 1e-12);
-  CHECK_CLOSE(atlas::cardy_crossing(2.0), 0.8243531061993461, 1e-12);
+  CHECK_CLOSE(atlas::cardy_crossing(10.0), 0.9999596071593873, 1e-12);
+  CHECK_CLOSE(atlas::cardy_crossing(0.25), 0.02163002909086675, 1e-12);
+  CHECK_CLOSE(atlas::cardy_crossing(2.0), 0.8243531061993448, 1e-12);
 }
 
 void test_sanity() {

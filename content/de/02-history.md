@@ -7,7 +7,7 @@ subtitle: Vom Kaffeesatz zur konformen Invarianz
 reading: 10 min
 ---
 
-Die Geschichte der Perkolation ist ungewöhnlich klar: eine eindeutige Gründungsarbeit, eine eindeutige Blütezeit und eine eindeutige Lösung in zwei Dimensionen. Im Folgenden steht eine Zeitleiste mit den jeweiligen Primärquellen, sodass sich jede Aussage zurückverfolgen lässt.
+Die Geschichte der Perkolation ist verhältnismäßig klar: eine eindeutige Gründungsarbeit, eine produktive mittlere Phase und eine Lösung in zwei Dimensionen. Im Folgenden steht eine Zeitleiste mit den jeweiligen Primärquellen, sodass sich jede Aussage zurückverfolgen lässt.
 
 ## 1957: die Gründungsarbeit
 

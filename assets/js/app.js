@@ -12,6 +12,7 @@ import * as sources from './views/sources.js';
 import { LABS } from './labs/index.js';
 import { ALGORITHM_ORDER, ALGORITHM_GROUPS, ALGORITHM_GUIDE } from './lib/algorithm-guide.js';
 import { initTheme, toggleTheme, themeLabel, onTheme } from './theme.js';
+import { initNotebook } from './lib/notebook.js';
 
 const VIEWS = { guide, overview, atlas, labs, code, algorithms, data, library, sources };
 const state = { lang: 'en', view: 'overview', param: null, manifest: null, cleanup: null };
@@ -40,8 +41,14 @@ function updateThemeButton() {
   if (!btn) return;
   const label = themeLabel(state.lang);
   btn.querySelector('.theme-text').textContent = label;
-  btn.setAttribute('aria-label', `${label} · switch colour theme`);
-  btn.setAttribute('title', `${label} · switch colour theme`);
+  const dark = document.documentElement.dataset.theme === 'dark';
+  const text = {
+    en: dark ? `${label}. Switch to light theme` : `${label}. Switch to dark theme`,
+    zh: dark ? `${label}。切换到明亮主题` : `${label}。切换到深色主题`,
+    de: dark ? `${label}. Zur hellen Darstellung wechseln` : `${label}. Zur dunklen Darstellung wechseln`,
+  }[state.lang] || `${label}. Switch theme`;
+  btn.setAttribute('aria-label', text);
+  btn.setAttribute('title', text);
 }
 
 function setStatus(mode, info) {
@@ -146,6 +153,7 @@ async function route() {
   state.param = param;
   localStorage.setItem('atlas-lang-v3', lang);
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+  window.dispatchEvent(new CustomEvent('atlas:lang', { detail: { lang } }));
   document.body.dataset.view = view;
   document.title = `${t(lang, 'brand')} — ${t(lang, view === 'overview' ? 'nav_overview' : `nav_${view}`)}`;
 
@@ -192,7 +200,7 @@ async function route() {
     main.querySelectorAll('details.guide').forEach((d) => { d.open = true; });
   }
   const n = state.manifest ? state.manifest.chapters.length : 0;
-  setStatus(t(lang, 'status_ready'), `${n} ${t(lang, 'chapters')} · ${state.manifest ? state.manifest.languages.length : 3} LANG · ${lang.toUpperCase()}`);
+  setStatus(t(lang, 'status_ready'), `${n} ${t(lang, 'chapters')} · ${state.manifest ? state.manifest.languages.length : 3} ${t(lang, 'guide_languages')} · ${lang.toUpperCase()}`);
 }
 
 async function boot() {
@@ -234,8 +242,7 @@ async function boot() {
       }
     }
   });
-  tickClock();
-  setInterval(tickClock, 1000);
+  initNotebook();
   route();
 }
 

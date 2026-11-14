@@ -137,7 +137,7 @@ Die Botschaftspassage macht die Baumrechnung für reale Daten nutzbar: Das Konta
 
 Das Bethe-Gitter ist der Limes $d\to\infty$, und sein Schwellenwert $1/(z-1)$ ist *nicht* der Schwellenwert von $\mathbb{Z}^d$ mit demselben Grad. Tabelle 22.1 macht die Lücke sichtbar.
 
-| Graph | $z$ | Baumvorhersage $1/(z-1)$ | Tatsächliches $p_c$ (Kanten) | Status |
+| Graph | $z$ | Vorhersage | Tatsächliches $p_c$ (Kanten) | Status |
 |---|---|---|---|---|
 | $\mathbb{Z}^2$ | 4 | $1/3=0.3333$ | $1/2$ | exakt (Kesten) |
 | Einfach kubisch $\mathbb{Z}^3$ | 6 | $1/5=0.2$ | $0.24881182(10)$ | numerisch |

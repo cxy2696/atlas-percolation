@@ -127,7 +127,7 @@ which has the root $p=1/2$ and two roots outside $(0,1)$. It therefore "predicts
 $$
 \theta_T(p)>0\iff \theta_H^{\ast}(1-p)=0 ,
 $$
-and the self-dual point of the transformation is $p=1/2$. The rigorous version is due to Wierman (1981); see Grimmett (1999), §11.9, for a complete account. $\blacksquare$
+and the self-dual point of the transformation is $p=1/2$. The rigorous version is due to Kesten (1982); Sykes and Essam (1964) had predicted the value. See Grimmett (1999), §11.9, for a complete account. $\blacksquare$
 
 Menshikov and Aizenman–Barsky prove sharpness of the phase transition, not the numerical value of this threshold; the two sets of results are often conflated in secondary accounts.
 
@@ -141,13 +141,13 @@ The table gives the values used throughout this atlas. "Exact" means a theorem; 
 |---|---|---|---|---|---|
 | Chain | 2 | 1 | 1 | exact | trivial |
 | Square $\mathbb{Z}^2$ | 4 | 0.59274605(3) | $1/2$ | bond exact, site numerical | Kesten 1980; Jacobsen 2014 |
-| Triangular | 6 | $1/2$ | $2\sin(\pi/18)=0.3472963553$ | exact | Wierman 1981; Sykes–Essam 1964 |
-| Honeycomb | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | bond exact, site numerical | Sykes–Essam 1964; Jacobsen 2014 |
+| Triangular | 6 | $1/2$ | $2\sin(\pi/18)=0.3472963553$ | exact | Kesten 1982 (site); Sykes–Essam 1964, Wierman 1981 (bond) |
+| Honeycomb | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | bond exact, site numerical | Sykes–Essam 1964 and Wierman 1981 (bond); Jacobsen 2014 (site) |
 | Kagome | 4 | $0.6527036447$ | 0.5244053(3) | site exact, bond numerical | matching argument; Jacobsen 2014 |
 | Simple cubic | 6 | 0.3116077(2) | 0.24881182(10) | numerical | Wang et al. 2013 |
 | BCC | 8 | 0.2459(1) | 0.1803(1) | numerical | site van der Marck 1997; bond Lorenz–Ziff 1998 |
 | FCC | 12 | 0.1992(1) | 0.1190(1) | numerical | site van der Marck 1997; bond Lorenz–Ziff 1998 |
-| Diamond | 4 | 0.4299(2) | 0.3886(2) | numerical | van der Marck 1997 |
+| Diamond | 4 | 0.4297(4) | 0.3893(3) | numerical | van der Marck 1997, erratum 1997 |
 | Bethe lattice, degree $z$ | $z$ | $1/(z-1)$ | $1/(z-1)$ | exact | Hammersley 1957 |
 
 Two entries deserve comment. The kagome site threshold equals the honeycomb bond threshold, $1-2\sin(\pi/18)$, and this is not a coincidence: the kagome lattice is the "line graph" of the honeycomb in the sense of the matching construction, so the site problem on one is the bond problem on the other. The equality of the two numbers to all displayed digits is a good test of any table one finds in the wild.

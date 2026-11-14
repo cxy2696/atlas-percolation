@@ -37,15 +37,15 @@ It scales as $n^{-\beta/\nu}$. This identity is used constantly as a fingerprint
 | | $\beta$ | $\gamma$ | $\nu$ | $\delta$ | $\eta$ | $d_f$ | status |
 |---|---|---|---|---|---|---|---|
 | $d=1$ | 0 | 1 | 1 | $\infty$ | — | 1 | exact, degenerate |
-| $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | theorem (SLE) |
+| $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | theorem, triangular site (SLE) |
 | $d=3$ | 0.4181(1) | 1.793(3) | 0.8764(1) | 5.29(1) | $-0.046(2)$ | 2.5229(1) | numerical |
-| $d=4$ | 0.639(2) | 1.44(2) | 0.689(2) | 3.26(2) | — | — | numerical |
-| $d=5$ | 0.77(1) | 1.18(1) | 0.54(1) | — | — | — | numerical |
-| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | theorem (nearest-neighbour $d\ge11$; spread-out $d>6$), logs at $d=6$ |
+| $d=4$ | 0.659(1) | 1.45(2) | 0.6845(10) | 3.198(6) | $-0.095(5)$ | 3.037(5) | numerical, effective |
+| $d=5$ | 0.8457(2) | 1.1817(7) | 0.5737(33) | 2.397(5) | $-0.057(5)$ | 3.526(6) | numerical, effective |
+| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | theorem for $d\ge11$ (nearest-neighbour) or $d>6$ (spread-out); log corrections at $d=6$ are partial |
 | Bethe | 1 | 1 | $1/2$ | 2 | 0 | 4 | exact |
 | Directed, $1+1$D | 0.276486(8) | 2.277730(5) | 1.096854(4) | — | — | — | numerical, distinct class (ν = ν_⊥) |
 
-The directed row refers to directed percolation in $1+1$ dimensions (one transverse dimension and one time direction); $\nu$ there is the transverse exponent $\nu_\perp$. The $2+1$-dimensional class has different values ($\beta\approx0.584$, $\nu_\perp\approx0.733$); the table lists the $1+1$-dimensional class because that is the one the interactive directed lattice uses. The $d=1$ row is the lower critical dimension: the threshold is at $p=1$, the cluster is a segment, and the hyperscaling relations below degenerate (they are stated for $d\ge2$). The two-dimensional row is the only one that is simultaneously exact and non-mean-field. It comes from the SLE description of the scaling limit (Chapter 7), and every entry can be checked against the relations below, which is how the table should be read: not as six independent numbers but as a small set constrained by consistency.
+The directed row refers to directed percolation in $1+1$ dimensions (one transverse dimension and one time direction); $\nu$ there is the transverse exponent $\nu_\perp$. The $2+1$-dimensional class has different values ($\beta\approx0.584$, $\nu_\perp\approx0.733$); the table lists the $1+1$-dimensional class because that is the one the interactive directed lattice uses. The $d=1$ row is the lower critical dimension: the threshold is at $p=1$, the cluster is a segment, and the hyperscaling relations below degenerate (they are stated for $d\ge2$). The two-dimensional row is the only one that is simultaneously exact and non-mean-field. It comes from the SLE description of the scaling limit of triangular-lattice site percolation (Chapter 7), and every entry can be checked against the relations below, which is how the table should be read: not as six independent numbers but as a small set constrained by consistency. The $d=4$ and $d=5$ rows are effective numerical exponents, compiled in Borinsky et al. (2021) and the work cited there; corrections to scaling make the last digits fit-dependent, so the identities below close only within the quoted precision. At $d=6$ the mean-field exponents hold with logarithmic corrections, but the correction exponents are not settled; the theorem is stated for $d\ge11$ (nearest-neighbour) or $d>6$ (spread-out).
 
 For $d=3$ the values above are those of Wang, Zhou, Zhang, Garoni and Deng (2013), obtained from $L\le512$ with about $2.5\times10^7$ samples per size. They are quoted with the precision the method supports; the third decimal is not stable across methods.
 
@@ -119,7 +119,7 @@ At $d=6$ exactly, $\int|k|^{-6}$ diverges logarithmically, and the mean-field pi
 
 Universality is the claim that the exponents depend only on the dimension (and on symmetries), not on the lattice. Its status differs sharply by dimension.
 
-**Two dimensions: theorem for the triangular lattice and its star–triangle relatives.** For critical site percolation on the triangular lattice, the scaling limit is conformally invariant and the interfaces converge to SLE$_6$ (Chapter 7), which fixes the exponents. The same exponent set is expected on every periodic planar lattice in the same universality class, but conformal invariance of the scaling limit for a general planar lattice is still a conjecture, supported by extensive numerics. This is the most important open problem in the rigorous two-dimensional theory and is discussed in Chapter 13.
+**Two dimensions: theorem for site percolation on the triangular lattice.** For critical site percolation on the triangular lattice, the scaling limit is conformally invariant and the interfaces converge to SLE$_6$ (Chapter 7), which fixes the exponents. Star–triangle transformations transfer thresholds between matching lattices; they do not transfer the scaling limit. The same exponent set is expected on every periodic planar lattice in the same universality class, but conformal invariance for a general planar lattice is still a conjecture, supported by extensive numerics. This is the most important open problem in the rigorous two-dimensional theory and is discussed in Chapter 13.
 
 **Above six dimensions: theorem.** Lace expansion proves mean-field behaviour for $d\ge11$ for nearest-neighbour bond percolation (Fitzner–van der Hofstad 2017), with Hara and Slade's earlier $d\ge19$ threshold (1990). The result includes the values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ and the behaviour $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ for $p>p_c$, with $c_1>0$; $\theta$ is $C^2$ on $(p_c,1]$ and has one-sided right derivatives at $p_c$.
 

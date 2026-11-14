@@ -27,8 +27,8 @@ export const PALETTE = new Proxy(
   }
 );
 
-const FONT = '9px SFMono-Regular, Menlo, Consolas, monospace';
-const FONT_SMALL = '8.5px SFMono-Regular, Menlo, Consolas, monospace';
+const FONT = '11px "Avenir Next", "Segoe UI", system-ui, sans-serif';
+const FONT_SMALL = '10px "Avenir Next", "Segoe UI", system-ui, sans-serif';
 
 function niceTicks(a, b, n = 5) {
   if (!(isFinite(a) && isFinite(b)) || a === b) return [a];
@@ -89,8 +89,9 @@ export function drawPlot(canvas, spec) {
     ctx.fillRect(0, 0, cssW, cssH);
   }
 
-  const topPad = spec.title ? 20 : 12;
-  const m = { l: spec.xLabel ? 50 : 44, r: 14, t: topPad, b: spec.xLabel ? 42 : 30 };
+  const hasLegend = !!(spec.series && spec.series.some((s) => s.label));
+  const topPad = hasLegend ? 38 : spec.title ? 26 : 18;
+  const m = { l: spec.xLabel ? 62 : 50, r: 18, t: topPad, b: spec.xLabel ? 50 : 34 };
   const W = cssW - m.l - m.r;
   const H = cssH - m.t - m.b;
 
@@ -116,7 +117,7 @@ export function drawPlot(canvas, spec) {
     ctx.font = FONT;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
-    ctx.fillText(spec.title, m.l, 3);
+    ctx.fillText(spec.title, m.l, 6);
   }
 
   // frame
@@ -157,10 +158,10 @@ export function drawPlot(canvas, spec) {
   ctx.font = FONT_SMALL;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'bottom';
-  if (spec.xLabel) ctx.fillText(spec.xLabel, m.l + W / 2, cssH - 1);
+  if (spec.xLabel) ctx.fillText(spec.xLabel, m.l + W / 2, cssH - 4);
   if (spec.yLabel) {
     ctx.save();
-    ctx.translate(10, m.t + H / 2);
+    ctx.translate(13, m.t + H / 2);
     ctx.rotate(-Math.PI / 2);
     ctx.textAlign = 'center';
     ctx.fillText(spec.yLabel, 0, 0);
@@ -307,15 +308,21 @@ export function drawPlot(canvas, spec) {
     ctx.fillText(a.text, px, py);
   }
 
-  // legend
-  if (spec.series && spec.series.some((s) => s.label)) {
-    let x = m.l + 8;
-    const y = m.t + 10;
+  // legend, in the top margin so it never covers the data
+  if (hasLegend) {
+    let x = m.l;
+    const y = 12;
     ctx.font = FONT;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     for (const s of spec.series) {
       if (!s.label) continue;
+      const width = 26 + ctx.measureText(s.label).width;
+      if (x > m.l && x + width > m.l + W) {
+        // One row is enough for the current charts. If a future chart has
+        // more series, the extra labels start again at the left margin.
+        x = m.l;
+      }
       ctx.strokeStyle = s.color || C.cyan;
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -324,7 +331,7 @@ export function drawPlot(canvas, spec) {
       ctx.stroke();
       ctx.fillStyle = C.dim;
       ctx.fillText(s.label, x + 18, y);
-      x += 26 + ctx.measureText(s.label).width;
+      x += width + 18;
     }
   }
 }

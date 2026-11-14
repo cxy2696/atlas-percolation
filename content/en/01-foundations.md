@@ -38,7 +38,7 @@ Six quantities carry almost all of the theory. Their definitions are worth fixin
 
 **Crossing probability.** On a finite box $\Lambda$, $\pi_\Lambda(p)=\mathbb{P}_p(\text{open left–right crossing of }\Lambda)$. This is the observable that finite-size studies actually measure, because it is an indicator with a sharp threshold in $L$ and no need for an infinite lattice.
 
-A sixth quantity, the cluster number density $n_s(p)=\mathbb{P}_p(|C_0|=s)/s$ per site, is the natural object for scaling theory; it appears in Chapter 6 and is the reason $\delta$ exists.
+A related quantity, the cluster number density $n_s(p)=\mathbb{P}_p(|C_0|=s)/s$ per site, is the natural object for scaling theory; it appears in Chapter 6 and is the reason $\delta$ exists.
 
 ## Why one parameter is enough
 
@@ -58,9 +58,9 @@ The subject is usually taught as a stack, and it helps to see the whole stack at
 
 ## Landmarks
 
-Three results orient a newcomer. On the square lattice, bond percolation has $p_c=1/2$ exactly (Kesten 1980). On the triangular lattice, site percolation has $p_c=1/2$ exactly, a fact with a short star–triangle proof (Chapter 4). For the triangular lattice and its star–triangle relatives, the two-dimensional critical exponents are known exactly: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. In three dimensions no threshold or exponent is known exactly; the best numerical values are $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, with error bars in the last quoted digit. Above six dimensions the mean-field values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ are expected; they are proved for $d\ge11$ (Chapter 8), and at $d=6$ the exponents are mean-field with logarithmic corrections.
+Three results orient a newcomer. On the square lattice, bond percolation has $p_c=1/2$ exactly (Kesten 1980). On the triangular lattice, site percolation has $p_c=1/2$ exactly, a fact with a short star–triangle proof (Chapter 4). For site percolation on the triangular lattice, the two-dimensional critical exponents are known exactly: $\beta=5/36$, $\gamma=43/18$, $\nu=4/3$, $\delta=91/5$, $\eta=5/24$, $d_f=91/48$. The same values are expected on other planar lattices, but that is a conjecture. In three dimensions no threshold or exponent is known exactly; the best numerical values are $\beta\approx0.4181$, $\nu\approx0.8764$, $d_f\approx2.5229$, with error bars in the last quoted digit. Above six dimensions the mean-field values $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ are expected; they are proved for $d\ge11$ (Chapter 8), and at $d=6$ the exponents are mean-field with logarithmic corrections.
 
-The gap between the exact results and the numerical middle is the honest shape of the field: exact in two dimensions, rigorous for $d\ge11$, numerical in between.
+The gap between the exact results and the numerical middle is the shape of the field: exact in two dimensions, rigorous for $d\ge11$, numerical in between.
 
 ## How to read this atlas
 

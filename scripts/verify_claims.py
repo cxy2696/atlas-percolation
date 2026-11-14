@@ -83,8 +83,8 @@ def main() -> int:
 
     # Cardy formula values quoted in Chapter 7.
     check("Cardy pi(1)", cardy_crossing(1.0), 0.5, 0.0)
-    check("Cardy pi(0.1)", cardy_crossing(0.1), 4.0394890895707114e-05, 1e-16)
-    check("Cardy pi(10)", cardy_crossing(10.0), 0.9999596051091043, 1e-12)
+    check("Cardy pi(0.1)", cardy_crossing(0.1), 4.039284061265219e-05, 1e-16)
+    check("Cardy pi(10)", cardy_crossing(10.0), 0.9999596071593873, 1e-12)
     check("Cardy symmetry pi(2)", cardy_crossing(2.0), 1.0 - cardy_crossing(0.5), 1e-15)
 
     # Exact two-dimensional exponent set and its identities (Chapter 7).
@@ -134,8 +134,8 @@ def main() -> int:
     audit_path = ROOT / "content" / "reference_audit.json"
     if audit_path.exists():
         audit = json.loads(audit_path.read_text())
-        check("audit total", audit.get("total"), 140)
-        check("audit verified", audit.get("counts", {}).get("ok"), 138)
+        check("audit total", audit.get("total"), 142)
+        check("audit verified", audit.get("counts", {}).get("ok"), 140)
         check("audit notes", audit.get("counts", {}).get("ok-note"), 2)
         bad = [r for r in audit.get("results", []) if r.get("status") not in ("ok", "ok-note")]
         check("audit has no unresolved entries", len(bad), 0)

@@ -68,7 +68,7 @@ $$
 p_c(\text{triangular})=2\sin\frac{\pi}{18}\approx0.347296,\qquad
 p_c(\text{honeycomb})=1-2\sin\frac{\pi}{18}\approx0.652704,
 $$
-and the square value is $1/2$ (Sykes and Essam 1964; Wierman 1981). These are exact, not fits.
+and the square bond value is $1/2$ (Kesten 1980). The triangular and honeycomb bond values are due to Sykes–Essam (1964) and were proved by Wierman (1981); the triangular site value is due to Kesten (1982). These are exact, not fits.
 
 No such identity is known for site percolation on the square lattice; the numerical value $0.592746\ldots$ is not a closed form. The directed model has no duality at $p_c$, which is why its crossing probability at threshold is not $1/2$.
 

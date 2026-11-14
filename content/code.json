@@ -1,5 +1,6 @@
 {
- "generated": "2026-11-14 20:19",
+ "generated": "code-18a01f1ff508ff73",
+ "fingerprint": "18a01f1ff508ff73",
  "languages": [
   {
    "id": "javascript",
@@ -14,8 +15,8 @@
     {
      "path": "lib/js/engine/cardy.js",
      "bucket": "core",
-     "lines": 81,
-     "bytes": 2651
+     "lines": 93,
+     "bytes": 2926
     },
     {
      "path": "lib/js/engine/continuum.js",
@@ -99,7 +100,13 @@
      "path": "tests/js/engine.test.js",
      "bucket": "tests",
      "lines": 222,
-     "bytes": 8788
+     "bytes": 8787
+    },
+    {
+     "path": "tests/js/experiment.test.js",
+     "bucket": "tests",
+     "lines": 53,
+     "bytes": 1837
     },
     {
      "path": "tests/js/guides.test.js",
@@ -158,8 +165,8 @@
     {
      "path": "lib/python/percolation_atlas/cardy.py",
      "bucket": "core",
-     "lines": 83,
-     "bytes": 2715
+     "lines": 97,
+     "bytes": 3168
     },
     {
      "path": "lib/python/percolation_atlas/cli.py",
@@ -225,7 +232,7 @@
      "path": "lib/python/tests/test_engine.py",
      "bucket": "core",
      "lines": 267,
-     "bytes": 9120
+     "bytes": 9119
     },
     {
      "path": "lib/python/tests/test_message.py",
@@ -260,8 +267,8 @@
     {
      "path": "lib/cpp/include/percolation_atlas/cardy.hpp",
      "bucket": "core",
-     "lines": 98,
-     "bytes": 2969
+     "lines": 110,
+     "bytes": 3278
     },
     {
      "path": "lib/cpp/include/percolation_atlas/continuum.hpp",
@@ -309,7 +316,7 @@
      "path": "lib/cpp/tests/test_main.cpp",
      "bucket": "core",
      "lines": 774,
-     "bytes": 28115
+     "bytes": 28114
     },
     {
      "path": "scripts/bench.cpp",
@@ -338,8 +345,8 @@
     {
      "path": "lib/julia/src/cardy.jl",
      "bucket": "core",
-     "lines": 80,
-     "bytes": 2553
+     "lines": 90,
+     "bytes": 2786
     },
     {
      "path": "lib/julia/src/continuum.jl",
@@ -381,7 +388,7 @@
      "path": "lib/julia/test/runtests.jl",
      "bucket": "tests",
      "lines": 627,
-     "bytes": 22032
+     "bytes": 22031
     }
    ]
   }

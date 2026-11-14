@@ -7,7 +7,7 @@ subtitle: Endgröße, Herdenimmunität und wo die Abbildung endet
 reading: 16 min
 ---
 
-Eine SIR-Epidemie und die Kantenperkolation beantworten dieselbe Frage, wenn die Frage lautet, *wer jemals infiziert wird*. Die Antwort ist exakt und keine Analogie: Man behalte jede Kontaktkante mit der Wahrscheinlichkeit bei, mit der sie überträgt, und die Menge der jemals Infizierten ist der offene Cluster des Ausgangsfalls. Diese Identität liefert die Endgröße, die Epidemieschwelle und das Impfziel in einer einzigen Rechnung. Sie sagt nichts über den Peak, den zeitlichen Verlauf oder die Wirkung von Verhalten – und die meisten gescheiterten Anwendungen scheitern daran, dass sie den zweiten Satz vergessen.
+Eine SIR-Epidemie und die Kantenperkolation beantworten dieselbe Frage, wenn die Frage lautet, *wer jemals infiziert wird*. Die Abbildung ist exakt, wenn die infektiöse Periode konstant ist: Man behalte jede Kontaktkante mit Wahrscheinlichkeit $T=1-e^{-\beta\tau}$ bei, und die Menge der jemals Infizierten ist der offene Cluster des Ausgangsfalls. Variieren die infektiösen Perioden, so sind die Übertragungen von demselben Knoten korreliert; das exakte Objekt ist ein gerichtetes Epidemie-Perkolationsnetzwerk und kein unabhängiger Bond-Perkolationscluster. Die marginale Übertragungswahrscheinlichkeit legt weiterhin die Schwelle fest und liefert im Limes des Konfigurationsmodells die Endgrößen-Gleichung. Diese Unterscheidung macht die Rechnung nützlich: Sie sagt, welche Zahlen die Abbildung stützen kann und welche nicht. Über Peak und Zeitverlauf sagt sie nichts – und die meisten gescheiterten Anwendungen scheitern daran, dass sie das vergessen.
 
 ## 23.1 Die Abbildung, präzise formuliert
 
@@ -15,24 +15,30 @@ Betrachtet werde ein SIR-Prozess auf einem statischen Kontaktgraphen $G=(V,E)$ m
 $$
 T_i=1-e^{-\beta\tau_i}.
 $$
-Sind die infektiösen Perioden unabhängig und identisch verteilt, so konditioniere man auf sie. Jede *gerichtete* Kante $i\to j$ ist mit Wahrscheinlichkeit $1-e^{-\beta\tau_i}$ unabhängig offen, und die Menge der jemals infizierten Knoten ist die Vorwärtskomponente des Ausgangsfalls in diesem gerichteten Zufallsgraphen. Auf einem Baum wird jede Kante nur vom Ausgangsfall weg durchlaufen, sodass die Mittelung über die infektiösen Perioden eine unabhängige Kantenbeibehaltung mit Wahrscheinlichkeit
-$$
-T=\mathbb{E}\big[1-e^{-\beta\tau}\big].
-$$
-Im Limes des Konfigurationsmodells gilt dieselbe Reduktion, weil Zyklen auf der Skala der riesigen Vorwärtskomponente vernachlässigbar sind. Dies ist die im Folgenden verwendete Abbildung; auf einem allgemeinen Graphen mit kurzen Zyklen ist das exakte Objekt die gerichtete Vorwärtskomponente, und der ungerichtete Perkolationscluster ist die Baum-Näherung.
+Sind die infektiösen Perioden unabhängig und identisch verteilt, so konditioniere man auf sie. Jede *gerichtete* Kante $i\to j$ ist mit Wahrscheinlichkeit $T_i$ unabhängig offen, und die Menge der jemals infizierten Knoten ist die Vorwärtskomponente des Ausgangsfalls in diesem gerichteten Zufallsgraphen.
 
-Zwei Spezialfälle verdienen es, festgehalten zu werden. Für eine konstante infektiöse Periode $\tau$ gilt $T=1-e^{-\beta\tau}$. Für ein Markov-SIR-Modell mit Genesungsrate $\gamma$ (mittlere infektiöse Periode $1/\gamma$) und Transmissionsrate $\beta$ gilt $T=\beta/(\beta+\gamma)$. Die Abbildung verlangt, dass die Kontakte über die Kanten hinweg unabhängig sind; genau das macht die Perkolationsdarstellung exakt, und genau diese Annahme verletzen zeitliche und verhaltensbedingte Heterogenität.
+Die Mittelung über die Perioden macht die Kanten **nicht** unabhängig. Alle Kanten von $i$ teilen $\tau_i$, also sind ihre Übertragungsereignisse korreliert; das exakte Objekt ist das halbgerichtete Epidemie-Perkolationsnetzwerk, dessen Vorwärtskomponente die Endgröße und dessen Rückwärtskomponente die Wahrscheinlichkeit liefert, dass ein gegebener Ausgangsfall einen Knoten infiziert (Kenah und Robins 2007). Auf einem Baum wird die Vorwärtskomponente weiterhin durch einen Verzweigungsprozess in zufälliger Umgebung beschrieben, aber nicht durch einen unabhängigen Bond-Perkolationscluster mit Beibehaltungswahrscheinlichkeit $T=\mathbb{E}[1-e^{-\beta\tau}]$.
+
+Zwei Fälle reduzieren sich exakt auf das einfachere Bond-Bild. Ist $\tau$ konstant, so gilt $T_i=T=1-e^{-\beta\tau}$ für jeden Knoten, die gerichteten Kanten sind unabhängig, und die Vorwärtskomponente ist auf einem Baum ein unabhängiger Bond-Perkolationscluster. Ist die Gradverteilung Poisson, so lässt sich die Mittelung über $\tau$ in die erzeugende Funktion ziehen, weil $G_0(z)=G_1(z)=e^{c(z-1)}$; die Endgröße erfüllt wieder die skalare Gleichung mit $T=\mathbb{E}[1-e^{-\beta\tau}]$. Für eine allgemeine Gradverteilung und nicht-entartetes $\tau$ lautet die exakte Baumrekursion
+$$
+u=\mathbb{E}_\tau\Big[G_1\big(1-(1-e^{-\beta\tau})(1-u)\big)\Big],
+\qquad
+R_\infty=1-\mathbb{E}_\tau\Big[G_0\big(1-(1-e^{-\beta\tau})(1-u)\big)\Big];
+$$
+das Ersetzen der zufälligen Übertragungswahrscheinlichkeit durch $T$ in $G_1$ ist eine Näherung, keine Identität. Die Schwelle bleibt $R_0=T(\kappa-1)$, weil die mittlere Nachkommenzahl linear in $T$ ist.
+
+Für eine konstante infektiöse Periode $\tau$ gilt $T=1-e^{-\beta\tau}$. Für ein Markov-SIR-Modell mit Genesungsrate $\gamma$ (mittlere infektiöse Periode $1/\gamma$) und Transmissionsrate $\beta$ ist $T=\beta/(\beta+\gamma)$ die marginale Übertragungswahrscheinlichkeit; unabhängige Kanten beschreibt sie nur im Fall konstanter Periode oder in der Poisson-Grad-Molekularfeldreduktion. Zeitliche und verhaltensbedingte Heterogenität verletzen bereits die Annahme statischer Kontakte; das ist ein separater Fehler, der in Abschnitt 23.5 behandelt wird.
 
 Bei mehreren Ausgangsfällen ist die Endmenge die Vereinigung ihrer offenen Cluster. In einer großen Population mit verschwindendem Anfangsanteil ist die Endgröße die Riesenkomponente, sofern die Parameter superkritisch sind; nahe dem Schwellenwert spielt die Fluktuation des Anfangskeims eine Rolle.
 
 ## 23.2 Die Gleichung für die Endgröße
 
-Man nehme das Konfigurationsmodell aus Kapitel 22 mit den erzeugenden Funktionen $G_0$ und $G_1$ der Grade. Die Lösung (22.9) der Kantenperkolation mit Beibehaltungswahrscheinlichkeit $T$ liefert den Endanteil direkt:
+Man nehme das Konfigurationsmodell aus Kapitel 22 mit den erzeugenden Funktionen $G_0$ und $G_1$ der Grade. Die Lösung (22.9) der Kantenperkolation mit Beibehaltungswahrscheinlichkeit $T$ ist
 $$
 R_\infty=1-G_0\big(1-T+T u\big),\qquad
 u=G_1\big(1-T+T u\big). \tag{23.1}
 $$
-Die Herleitung folgt der Botschaftspassage: Ein Knoten entgeht der Infektion, wenn jeder Nachbar entweder nicht überträgt (Wahrscheinlichkeit $1-T$) oder auf einen Nachbarn überträgt, dessen eigener Zweig erlischt (Wahrscheinlichkeit $T u$). Die Riesenkomponente ist die Menge der Knoten, die nicht entkommen.
+Sie ist exakt, wenn $\tau$ konstant ist oder die Gradverteilung Poisson ist; für eine allgemeine Gradverteilung mit variablem $\tau$ ist sie die Molekularfeldnäherung, die die zufällige Übertragungswahrscheinlichkeit in $G_1$ durch ihren Mittelwert $T$ ersetzt. Die Herleitung folgt der Botschaftspassage: Ein Knoten entgeht der Infektion, wenn jeder Nachbar entweder nicht überträgt (Wahrscheinlichkeit $1-T$) oder auf einen Nachbarn überträgt, dessen eigener Zweig erlischt (Wahrscheinlichkeit $T u$). Die Riesenkomponente ist die Menge der Knoten, die nicht entkommen.
 
 Für Poisson-Grade mit Mittelwert $c$ gilt $G_0=G_1=e^{c(x-1)}$, und (23.1) reduziert sich auf die skalare Gleichung
 $$
@@ -82,7 +88,7 @@ $R_0=T(\kappa-1)$ ist eine einzige Zahl, doch die Epidemie wird von der gesamten
 
 Die empirische Literatur zu Superspreading macht denselben Punkt von der anderen Seite. Die individuelle Variation der Infektiosität ist häufig überdispers, wobei ein kleiner Anteil der Fälle für einen großen Anteil der Übertragungen verantwortlich ist (Lloyd-Smith et al. 2005). In der Sprache der Perkolation ist die Nachkommenverteilung nicht Poisson-verteilt: Der Mittelwert ist $R_0$, doch Varianz und Verteilungsende bestimmen die Aussterbewahrscheinlichkeit und die Größe des größten Clusters. $R_0$ allein bestimmt keines von beiden. Praktisch folgt daraus, dass Maßnahmen, die die Varianz senken – etwa das Meiden überfüllter Innenraumveranstaltungen –, eine Wirkung haben können, die in keinem Verhältnis zu ihrer Wirkung auf den Mittelwert steht.
 
-Hier wird auch der Vergleich mit der Gradverteilung quantitativ. Im Konfigurationsmodell ist die Nachkommenverteilung des Perkolationsprozesses größenverzerrt, und ihre Varianz ist durch $p_k$ festgelegt. Eine Kontaktverteilung mit schwerem Ende hat eine Nachkommenverteilung mit schwerem Ende, selbst wenn die Übertragung pro Kante ein einfacher Münzwurf ist. Die beiden Quellen der Überdispersion – Heterogenität der Kontakte und individuelle Infektiosität – sind verschieden, und ein einzelnes $R_0$ kann sie nicht unterscheiden.
+Hier wird auch der Vergleich mit der Gradverteilung quantitativ. Im Konfigurationsmodell ist die Nachkommenverteilung des Perkolationsprozesses größenverzerrt, und ihre Varianz ist durch $p_k$ festgelegt. Eine Kontaktverteilung mit schwerem Ende hat eine Nachkommenverteilung mit schwerem Ende, selbst wenn die Übertragung pro Kante ein einfacher Münzwurf ist. Die beiden Quellen der Überdispersion – Heterogenität der Kontakte und individuelle Infektiosität – sind verschieden, und ein einzelnes $R_0$ kann sie nicht unterscheiden. Variiert $\tau$, so ist die Übertragungszahl eines Knotens eine Mischung über $\tau$; selbst bei festem Grad ist ihre Varianz größer als die unabhängiger Kanten mit demselben Mittelwert – genau diese Korrelation lässt das einfache Bond-Bild weg.
 
 ## 23.5 Zeitliche Netzwerke: Wann die statische Abbildung versagt
 
@@ -106,7 +112,7 @@ solve_final_size(T, degree_pmf):
     return 1 - G0(1 - T + T*u)
 ```
 
-Von $u=0$ aus ist die Iteration monoton wachsend und konvergiert gegen den kleinsten Fixpunkt, den physikalischen; von $u=1$ aus bleibt sie beim trivialen Fixpunkt $u=1$ stehen und würde eine Endgröße von null melden. Auf einem Baum sind die Gleichungen exakt, im Konfigurationsmodell sind sie im Limes exakt, und auf einem gegebenen Graphen sind dieselben Gleichungen das Botschaftspassage-System (22.11). Die Bibliotheken stellen den Löser als `sirFinalSize` in C++, Julia, Python und JavaScript bereit, und die Tests vergleichen ihn mit dem analytischen Erdős–Rényi-Wert sowie mit einer direkten Perkolationsrechnung auf einem kleinen Graphen.
+Von $u=0$ aus ist die Iteration monoton wachsend und konvergiert gegen den kleinsten Fixpunkt, den physikalischen; von $u=1$ aus bleibt sie beim trivialen Fixpunkt $u=1$ stehen und würde eine Endgröße von null melden. Auf einem Baum sind diese Gleichungen exakt, wenn die infektiöse Periode konstant ist oder die Grade Poisson-verteilt sind; bei variablen Perioden sind sie die Molekularfeldnäherung an die Rekursion in zufälliger Umgebung aus Abschnitt 23.1. Im Konfigurationsmodell sind sie unter denselben Bedingungen im Limes exakt; auf einem gegebenen Graphen sind dieselben Gleichungen das Botschaftspassage-System (22.11). Die Bibliotheken stellen den Löser als `sirFinalSize` in C++, Julia, Python und JavaScript bereit, und die Tests vergleichen ihn mit dem analytischen Erdős–Rényi-Wert sowie mit einer direkten Perkolationsrechnung auf einem kleinen Graphen.
 
 Eine stochastische Kontrolle lohnt sich einmal. Man simuliere den SIR-Prozess mit dem Gillespie-Algorithmus auf einem kleinen Graphen des Konfigurationsmodells, wiederhole das mit vielen Anfangskeimen und vergleiche die mittlere Endgröße mit (23.1). Der Mittelwert konvergiert nahe dem Schwellenwert langsam, wo die Verteilung bimodal ist: Die meisten Läufe erlöschen, wenige erreichen die Riesenkomponente. Wer nur den Mittelwert berichtet, verdeckt die Bimodalität; man gebe auch die Aussterbewahrscheinlichkeit und die Größenverteilung an.
 
@@ -117,6 +123,8 @@ Eine stochastische Kontrolle lohnt sich einmal. Man simuliere den SIR-Prozess mi
 **Heterogene Kontaktnetzwerke.** In einem Netzwerk mit einer Gradverteilung mit schwerem Ende verlangt zufällige Immunisierung selbst bei bescheidenem mittlerem Grad einen Anteil nahe eins, während gezielte Immunisierung der Knoten hohen Grades deutlich billiger sein kann. Die Perkolationsrechnung liefert den Vergleich; das Kontaktnetzwerk liefert sie nicht.
 
 **Zeitliche und verhaltensabhängige Netzwerke.** Die statische Abbildung ist eine Schranke, keine Schätzung. Sind die Kontakte geordnet, stoßartig oder reagieren sie auf die Epidemie, so ist der Schwellenwert eine Eigenschaft des zeitlichen Prozesses, und die statische Riesenkomponente kann stark in die Irre führen.
+
+**Variable infektiöse Perioden.** Das Bild unabhängiger Kanten ist nur bei konstanter infektiöser Periode (oder in der Poisson-Grad-Molekularfeldreduktion) exakt. Für eine allgemeine Verteilung der infektiösen Periode und eine allgemeine Gradfolge verwendet man die Rekursion in zufälliger Umgebung aus Abschnitt 23.1 oder das Epidemie-Perkolationsnetzwerk; die Endgrößengleichung (23.1) ist dann eine Näherung.
 
 **Was das Modell nicht liefert.** Es liefert weder Zeitpunkt noch Höhe des Peaks, weder die Wirkung von Isolation oder Behandlung noch das Nachlassen der Immunität, weder das Auftreten von Varianten noch die Verhaltensreaktion auf die Prävalenz. Dies sind dynamische Fragen, und die Perkolationsabbildung verwirft die Dynamik bewusst. Wenn es auf das Timing ankommt, ist der Stoff zu Erstpassagezeiten in Kapitel 18 der richtige Ausgangspunkt; Keeling und Rohani (2008) oder Kiss, Miller und Simon (2017) behandeln die Dynamik.
 

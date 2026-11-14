@@ -4,8 +4,8 @@ The bibliography is in [`content/references.json`](https://github.com/cxy2696/at
 
 ## Current state
 
-- **140 entries**: articles, books, blog notes and software.
-- **138 verified** against Crossref (DOI title, year and first author) or by HTTP fetch.
+- **142 entries**: articles, books, blog notes and software.
+- **140 verified** against Crossref (DOI title, year and first author) or by HTTP fetch.
 - **2 explanatory notes** where a DOI does not exist or a reissue date differs:
   - Menshikov (1986): no DOI for the translation; bibliographic record given.
   - Stauffer & Aharony: the second edition is dated 1994; the DOI identifies a later CRC reissue (2018).

@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-11-14 19:46",
+ "checked_at": "2026-11-14 21:25",
  "method": "crossref-doi+http-url",
- "total": 140,
+ "total": 142,
  "counts": {
-  "ok": 138,
+  "ok": 140,
   "ok-note": 2
  },
  "results": [
@@ -256,6 +256,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "bollobas2006",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Five-loop renormalization of\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mrow>\n                        <mml:msup>\n                          <mml:mrow>\n                            <mml:mi>ϕ</mml:mi>\n                          </mml:mrow>\n                          <mml:mrow>\n                            <mml:mn>3</mml:mn>\n                          </mml:mrow>\n                        </mml:msup>\n                      </mml:mrow>\n                    </mml:math>\n                    theory with applications to the Lee-Yang edge singularity and percolation theory",
+   "resolved_year": 2021,
+   "resolved_first_author": "Borinsky",
+   "similarity": 0.991,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "borinsky2021",
    "source": "doi",
    "problems": []
   },
@@ -1036,6 +1050,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "keeling2008",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Second look at the spread of epidemics on networks",
+   "resolved_year": 2007,
+   "resolved_first_author": "Kenah",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "kenah2007",
    "source": "doi",
    "problems": []
   },

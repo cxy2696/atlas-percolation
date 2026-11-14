@@ -2535,6 +2535,44 @@
     "optimal-percolation",
     "algorithms"
    ]
+  },
+  {
+   "id": "kenah2007",
+   "authors": [
+    "Kenah, E.",
+    "Robins, J. M."
+   ],
+   "year": 2007,
+   "title": "Second look at the spread of epidemics on networks",
+   "venue": "Physical Review E",
+   "volume": "76",
+   "pages": "036113",
+   "doi": "10.1103/PhysRevE.76.036113",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks"
+   ]
+  },
+  {
+   "id": "borinsky2021",
+   "authors": [
+    "Borinsky, M.",
+    "Gracey, J. A.",
+    "Kompaniets, M. V.",
+    "Schnetz, O."
+   ],
+   "year": 2021,
+   "title": "Five-loop renormalization of φ³ theory with applications to the Lee-Yang edge singularity and percolation theory",
+   "venue": "Physical Review D",
+   "volume": "103",
+   "pages": "116024",
+   "doi": "10.1103/PhysRevD.103.116024",
+   "type": "article",
+   "topics": [
+    "exponents",
+    "high-dimensions"
+   ]
   }
  ]
 }

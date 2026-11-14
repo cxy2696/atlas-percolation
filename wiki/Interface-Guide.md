@@ -9,7 +9,7 @@ The site is a hash-routed static application. The default route is the start gui
 | Start | `#/en/guide` | What the atlas contains and which path to take |
 | Overview | `#/en/overview` | Live isometric lattice, exact thresholds, critical exponents |
 | Atlas | `#/en/atlas` | 23 chapters, grouped by part, with a rail and a table of contents |
-| Labs | `#/en/labs` | 16 interactive instruments, grouped by purpose |
+| Experiments | `#/en/labs` | 16 interactive experiments, grouped by purpose |
 | Algorithms | `#/en/algorithms` | 13 routines, grouped into core, dynamics, labels/trees/messages |
 | Code | `#/en/code` | Four-language source browser with deep links (`?file=...`) |
 | Data | `#/en/data` | Benchmark record: sample sizes, seeds, dates, fits |

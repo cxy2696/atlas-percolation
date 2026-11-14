@@ -37,11 +37,11 @@ Sie skaliert wie $n^{-\beta/\nu}$. Diese Identität dient ständig als Fingerabd
 | | $\beta$ | $\gamma$ | $\nu$ | $\delta$ | $\eta$ | $d_f$ | Status |
 |---|---|---|---|---|---|---|---|
 | $d=1$ | 0 | 1 | 1 | $\infty$ | — | 1 | exakt, entartet |
-| $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | Satz (SLE) |
+| $d=2$ | $5/36$ | $43/18$ | $4/3$ | $91/5$ | $5/24$ | $91/48$ | Satz, Dreiecks-Site (SLE) |
 | $d=3$ | 0.4181(1) | 1.793(3) | 0.8764(1) | 5.29(1) | $-0.046(2)$ | 2.5229(1) | numerisch |
-| $d=4$ | 0.639(2) | 1.44(2) | 0.689(2) | 3.26(2) | — | — | numerisch |
-| $d=5$ | 0.77(1) | 1.18(1) | 0.54(1) | — | — | — | numerisch |
-| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | Satz (nächste Nachbarn $d\ge11$; spread-out $d>6$), Logarithmen bei $d=6$ |
+| $d=4$ | 0.659(1) | 1.45(2) | 0.6845(10) | 3.198(6) | $-0.095(5)$ | 3.037(5) | numerisch, effektiv |
+| $d=5$ | 0.8457(2) | 1.1817(7) | 0.5737(33) | 2.397(5) | $-0.057(5)$ | 3.526(6) | numerisch, effektiv |
+| $d\ge6$ | 1 | 1 | $1/2$ | 2 | 0 | 4 | Satz für nächste Nachbarn $d\ge11$ oder spread-out $d>6$; die Logarithmen bei $d=6$ sind nicht vollständig geklärt |
 | Bethe | 1 | 1 | $1/2$ | 2 | 0 | 4 | exakt |
 | Gerichtet, $1+1$D | 0.276486(8) | 2.277730(5) | 1.096854(4) | — | — | — | numerisch, eigene Klasse (ν = ν_⊥) |
 
@@ -119,7 +119,7 @@ Bei genau $d=6$ divergiert $\int|k|^{-6}$ logarithmisch, und das Molekularfeld-B
 
 Universalität ist die Behauptung, dass die Exponenten nur von der Dimension (und von Symmetrien) abhängen, nicht vom Gitter. Ihr Status unterscheidet sich stark je nach Dimension.
 
-**Zwei Dimensionen: Satz für das Dreiecksgitter und seine Stern-Dreieck-Verwandten.** Für die kritische Site-Perkolation auf dem Dreiecksgitter ist das Skalierungslimit konform invariant, und die Grenzlinien konvergieren gegen SLE$_6$ (Kapitel 7), was die Exponenten festlegt. Derselbe Exponentensatz wird auf jedem periodischen planaren Gitter derselben Universalitätsklasse erwartet; die konforme Invarianz des Skalierungslimits für ein allgemeines planares Gitter ist jedoch weiterhin eine Vermutung, die von umfangreicher Numerik gestützt wird. Dies ist das wichtigste offene Problem der rigorosen zweidimensionalen Theorie und wird in Kapitel 13 behandelt.
+**Zwei Dimensionen: Satz für die Site-Perkolation auf dem Dreiecksgitter.** Für die kritische Site-Perkolation auf dem Dreiecksgitter ist das Skalierungslimit konform invariant, und die Grenzlinien konvergieren gegen SLE$_6$ (Kapitel 7), was die Exponenten festlegt. Stern-Dreieck-Transformationen übertragen Schwellen zwischen gepaarten Gittern, nicht das Skalierungslimit. Derselbe Exponentensatz wird auf jedem periodischen planaren Gitter derselben Universalitätsklasse erwartet; die konforme Invarianz des Skalierungslimits für ein allgemeines planares Gitter ist jedoch weiterhin eine Vermutung, die von umfangreicher Numerik gestützt wird. Dies ist das wichtigste offene Problem der rigorosen zweidimensionalen Theorie und wird in Kapitel 13 behandelt.
 
 **Oberhalb von sechs Dimensionen: Satz.** Die Lace-Expansion beweist Molekularfeld-Verhalten für $d\ge11$ bei Nächste-Nachbar-Bond-Perkolation (Fitzner–van der Hofstad 2017); die frühere Schwelle von Hara und Slade (1990) lag bei $d\ge19$. Das Ergebnis umfasst die Werte $\beta=\gamma=1$, $\nu=1/2$, $\delta=2$, $\eta=0$, $d_f=4$ und das Verhalten $\theta(p)=c_1(p-p_c)+c_2(p-p_c)^2+O((p-p_c)^3)$ für $p>p_c$ mit $c_1>0$; $\theta$ ist auf $(p_c,1]$ $C^2$ und besitzt bei $p_c$ einseitige rechtsseitige Ableitungen.
 

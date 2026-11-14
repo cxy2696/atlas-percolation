@@ -16,9 +16,9 @@ JULIA  ?= julia
 CXX    ?= c++
 PORT   ?= 8788
 
-.PHONY: test test-js test-py test-cpp test-julia parity parity-check parity-alg check-translations check-claims verify audit bench analyse content site serve package api clean
+.PHONY: test test-js test-py test-cpp test-julia parity parity-check parity-alg check-translations check-claims check-consistency verify audit bench analyse content site serve package api clean
 
-test: test-js test-py test-cpp test-julia parity-check parity-alg check-translations check-claims
+test: test-js test-py test-cpp test-julia parity-check parity-alg check-translations check-claims check-consistency
 
 test-js:
 	$(NODE) --test tests/js/*.test.js
@@ -46,7 +46,10 @@ check-translations:
 check-claims:
 	$(PYTHON) scripts/verify_claims.py
 
-verify: check-translations check-claims audit
+check-consistency:
+	$(PYTHON) scripts/check_consistency.py
+
+verify: check-translations check-claims check-consistency audit
 
 audit:
 	$(PYTHON) scripts/verify_references.py

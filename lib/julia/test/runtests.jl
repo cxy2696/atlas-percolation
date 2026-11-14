@@ -172,11 +172,11 @@ end
 end
 
 @testset "Cardy formula" begin
-    @test isapprox(cardy_crossing(0.1), 4.0394890895707114e-05; atol = 1e-15, rtol = 0)
+    @test isapprox(cardy_crossing(0.1), 4.039284061265219e-05; atol = 1e-15, rtol = 0)
     @test cardy_crossing(1.0) == 0.5
-    @test isapprox(cardy_crossing(10.0), 0.9999596051091043; atol = 1e-12, rtol = 0)
-    @test isapprox(cardy_crossing(0.25), 0.02163002909086475; atol = 1e-12, rtol = 0)
-    @test isapprox(cardy_crossing(2.0), 0.8243531061993461; atol = 1e-12, rtol = 0)
+    @test isapprox(cardy_crossing(10.0), 0.9999596071593873; atol = 1e-12, rtol = 0)
+    @test isapprox(cardy_crossing(0.25), 0.02163002909086675; atol = 1e-12, rtol = 0)
+    @test isapprox(cardy_crossing(2.0), 0.8243531061993448; atol = 1e-12, rtol = 0)
     @test isapprox(cardy_hypergeom(1.0), 1.1129126745223048; atol = 1e-12, rtol = 0)
     @test isapprox(cardy_crossing_vertical(10.0), 1.0 - cardy_crossing(10.0);
                    atol = 1e-12, rtol = 0)

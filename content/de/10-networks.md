@@ -84,7 +84,7 @@ t=\frac{(1-e^{-t})^2}{2(1-e^{-t})e^{-t}}=\frac{e^{t}-1}{2},
 $$
 also $e^{t}=1+2t$. Die von null verschiedene Wurzel ist $t^\ast=1.256431\ldots$, und man erhält
 $$
-p_c=\frac{1}{2c\,(1-e^{-t^\ast})e^{-t^\ast}}=\frac{2.45538\ldots}{c}.
+p_c=\frac{1}{2c\,(1-e^{-t^\ast})e^{-t^\ast}}=\frac{2.4554075\ldots}{c}.
 $$
 Zum Vergleich: Eine einzelne Erdős–Rényi-Schicht hat $p_c=1/c$. Die Kopplung erhöht die Schwelle also um den Faktor $2.4554$, und der Übergang ist **erster Ordnung**: Bei $p_c$ springt die gemeinsame Komponente von null auf eine endliche Größe $\mu^\ast=t^\ast/c$, weil der nichttriviale Zweig durch eine Sattel-Knoten-Bifurkation entsteht und nicht durch eine stetige Bifurkation aus null.
 

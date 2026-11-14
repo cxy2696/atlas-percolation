@@ -190,8 +190,8 @@ test('continuum Boolean model', () => {
 
 test('Cardy formula and symmetry', () => {
   assert.equal(cardyCrossing(1.0), 0.5);
-  assert.ok(Math.abs(cardyCrossing(0.1) - 4.0394890895707114e-05) < 1e-13);
-  assert.ok(Math.abs(cardyCrossing(10.0) - 0.9999596051091043) < 1e-12);
+  assert.ok(Math.abs(cardyCrossing(0.1) - 4.039284061265219e-05) < 1e-13);
+  assert.ok(Math.abs(cardyCrossing(10.0) - 0.9999596071593873) < 1e-12);
   assert.ok(Math.abs(cardyCrossingVertical(10.0) - (1 - cardyCrossing(10.0))) < 1e-12);
   assert.ok(Math.abs(CARDY_CONSTANT - 3 * Math.exp(
     lgamma(2 / 3) - 2 * lgamma(1 / 3)

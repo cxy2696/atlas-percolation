@@ -68,7 +68,7 @@ $$
 p_c(\text{Dreieck})=2\sin\frac{\pi}{18}\approx0.347296,\qquad
 p_c(\text{Bienenwabe})=1-2\sin\frac{\pi}{18}\approx0.652704,
 $$
-der Quadratwert ist $1/2$ (Sykes und Essam 1964; Wierman 1981). Das sind exakte Werte, keine Fits.
+der Quadrat-Bondwert ist $1/2$ (Kesten 1980). Die Bondwerte für Dreieck und Wabe stammen von Sykes–Essam (1964) und wurden von Wierman (1981) bewiesen; der Sitewert des Dreiecks stammt von Kesten (1982). Das sind exakte Werte, keine Fits.
 
 Für Platzperkolation auf dem Quadratgitter ist keine solche Identität bekannt; $0.592746\ldots$ ist keine geschlossene Form. Das gerichtete Modell hat bei $p_c$ keine Dualität; daher ist seine Durchgangswahrscheinlichkeit an der Schwelle nicht $1/2$.
 

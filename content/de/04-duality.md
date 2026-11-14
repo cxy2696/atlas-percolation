@@ -127,7 +127,7 @@ mit der Wurzel $p=1/2$ und zwei Wurzeln außerhalb von $(0,1)$. Sie „sagt“ d
 $$
 \theta_T(p)>0\iff \theta_H^{\ast}(1-p)=0 ,
 $$
-und der selbstduale Punkt der Transformation ist $p=1/2$. Die rigorose Version stammt von Wierman (1981); eine vollständige Darstellung findet sich bei Grimmett (1999), §11.9. $\blacksquare$
+und der selbstduale Punkt der Transformation ist $p=1/2$. Die rigorose Version stammt von Kesten (1982); Sykes und Essam (1964) hatten den Wert vorhergesagt. Eine vollständige Darstellung findet sich bei Grimmett (1999), §11.9. $\blacksquare$
 
 Menshikov sowie Aizenman–Barsky beweisen die Schärfe des Phasenübergangs, nicht den numerischen Wert dieser Schwelle; in Sekundärquellen werden die beiden Ergebnisreihen oft vermengt.
 
@@ -141,13 +141,13 @@ Die Tabelle enthält die in diesem Atlas durchgängig verwendeten Werte. „Exak
 |---|---|---|---|---|---|
 | Kette | 2 | 1 | 1 | exakt | trivial |
 | Quadrat $\mathbb{Z}^2$ | 4 | 0.59274605(3) | $1/2$ | Kante exakt, Platz numerisch | Kesten 1980; Jacobsen 2014 |
-| Dreieck | 6 | $1/2$ | $2\sin(\pi/18)=0.3472963553$ | exakt | Wierman 1981; Sykes–Essam 1964 |
-| Honigwabe | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | Kante exakt, Platz numerisch | Sykes–Essam 1964; Jacobsen 2014 |
+| Dreieck | 6 | $1/2$ | $2\sin(\pi/18)=0.3472963553$ | exakt | Site: Kesten 1982; Bond: Sykes–Essam 1964, Wierman 1981 |
+| Honigwabe | 3 | 0.697043(3) | $1-2\sin(\pi/18)=0.6527036447$ | Kante exakt, Platz numerisch | Kante: Sykes–Essam 1964, Wierman 1981; Platz: Jacobsen 2014 |
 | Kagome | 4 | $0.6527036447$ | 0.5244053(3) | Platz exakt, Kante numerisch | Paarungsargument; Jacobsen 2014 |
 | Einfach kubisch | 6 | 0.3116077(2) | 0.24881182(10) | numerisch | Wang et al. 2013 |
 | BCC | 8 | 0.2459(1) | 0.1803(1) | numerisch | Site van der Marck 1997; Bond Lorenz–Ziff 1998 |
 | FCC | 12 | 0.1992(1) | 0.1190(1) | numerisch | Site van der Marck 1997; Bond Lorenz–Ziff 1998 |
-| Diamant | 4 | 0.4299(2) | 0.3886(2) | numerisch | van der Marck 1997 |
+| Diamant | 4 | 0.4297(4) | 0.3893(3) | numerisch | van der Marck 1997, Erratum 1997 |
 | Bethe-Gitter, Grad $z$ | $z$ | $1/(z-1)$ | $1/(z-1)$ | exakt | Hammersley 1957 |
 
 Zwei Einträge verdienen einen Kommentar. Die Platzschwelle des Kagome-Gitters ist gleich der Kantenschwelle des Honigwabengitters, $1-2\sin(\pi/18)$, und das ist kein Zufall: Das Kagome-Gitter ist im Sinne der Paarungskonstruktion der „Kantengraph“ (line graph) des Honigwabengitters, sodass das Platzproblem auf dem einen dem Kantenproblem auf dem anderen entspricht. Die Übereinstimmung beider Zahlen in allen angegebenen Stellen ist ein guter Test für jede Tabelle, die man irgendwo findet.

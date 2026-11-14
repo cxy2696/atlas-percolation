@@ -71,7 +71,7 @@ python3 scripts/analyse_bench.py</pre></div>`;
     <div><span>${t(lang, 'data_fit')} p_c</span><b>${fmt(collapse.pc, 4)}</b></div>
     <div><span>ν (fixed)</span><b>${fmt(collapse.nu, 3)}</b></div>
     <div><span>one-arm</span><b>${fmt(armFit.slope, 4)}${armFit.slope_se ? ` ± ${fmt(1.96 * armFit.slope_se, 3)}` : ''}</b></div>
-    <div><span>${t(lang, 'sections')}</span><b>${(data.crossing || []).length + (data.torus || []).length}</b></div>
+    <div><span>${t(lang, 'records')}</span><b>${(data.crossing || []).length + (data.torus || []).length}</b></div>
   </div>
   <p class="hint small" style="margin:-4px 0 18px">${collapse.note || ''}${fitWindow ? ' · ' + fitWindow : ''}</p>`;
   const crossingByL = byL(data.crossing || [], 'L');

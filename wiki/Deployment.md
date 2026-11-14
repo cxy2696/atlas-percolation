@@ -12,13 +12,13 @@ The canonical deployment is the Pages workflow in `.github/workflows/pages.yml`.
 
 The live URL is <https://cxy2696.github.io/atlas-percolation/>.
 
-`lib/` is required because the browser laboratories import the JavaScript engine directly from the repository layout.
+`lib/` is required because the browser experiments import the JavaScript engine directly from the repository layout.
 
 ## Docker
 
 ```sh
-docker build -t atlas-percolation:4.3.0 .
-docker run --rm -p 8080:8080 atlas-percolation:4.3.0
+docker build -t atlas-percolation:4.4.0 .
+docker run --rm -p 8080:8080 atlas-percolation:4.4.0
 ```
 
 Open <http://127.0.0.1:8080/>. The API is at `/api/health`, `/api/thresholds`, `/api/sample`, `/api/sweep`, `/api/bootstrap`, `/api/invasion`, `/api/explosive`, `/api/openapi.json`.
@@ -40,6 +40,6 @@ cd lib/python
 python3 -m build --wheel --sdist --outdir ../../dist
 ```
 
-The wheel is `percolation_atlas-4.3.0-py3-none-any.whl`; the release assets are on the [v4.3.0 release](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.3.0).
+The wheel is `percolation_atlas-4.4.0-py3-none-any.whl`; the release assets are on the [v4.4.0 release](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.4.0).
 
 Next: [[Contributing]].

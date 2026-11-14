@@ -3,7 +3,7 @@
 // With aspect ratio l = H/W, the left-right crossing probability is
 //
 //   P(l) = C * m^(1/3) * 2F1(1/3, 2/3; 4/3; m),
-//   C    = 3*Gamma(2/3) / Gamma(1/3)^2 = 0.5660466803631552...,
+//   C    = 3*Gamma(2/3) / Gamma(1/3)^2 = 0.5660466803631597...,
 //
 // where m solves l = K(m) / K(1-m).  For l > 1 the identity
 // P(l) = 1 - P(1/l) is used, so the series is evaluated at m <= 1/2.
@@ -19,7 +19,7 @@
 
 namespace atlas {
 
-inline constexpr double CARDY_CONSTANT = 0.5660466803631552;
+inline constexpr double CARDY_CONSTANT = 0.5660466803631597;
 
 namespace detail {
 
@@ -27,6 +27,18 @@ namespace detail {
 inline double ellip_k(double m) {
   double a = 1.0;
   double b = std::sqrt(1.0 - m);
+  for (int i = 0; i < 80; ++i) {
+    const double an = 0.5 * (a + b);
+    b = std::sqrt(a * b);
+    a = an;
+  }
+  return std::acos(-1.0) / (2.0 * a);
+}
+
+// K(1-m) without forming 1-m; keeps tiny moduli resolvable.
+inline double ellip_k_complement(double m) {
+  double a = 1.0;
+  double b = std::sqrt(m);
   for (int i = 0; i < 80; ++i) {
     const double an = 0.5 * (a + b);
     b = std::sqrt(a * b);
@@ -59,7 +71,7 @@ inline double cardy_modulus(double l) {
   double hi = 0.5;
   for (int i = 0; i < 90; ++i) {
     const double mid = 0.5 * (lo + hi);
-    const double ratio = detail::ellip_k(mid) / detail::ellip_k(1.0 - mid);
+    const double ratio = detail::ellip_k(mid) / detail::ellip_k_complement(mid);
     if (ratio < l) {
       lo = mid;
     } else {

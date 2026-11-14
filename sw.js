@@ -4,11 +4,12 @@
  * assets are stale-while-revalidate.  Content JSON is network-first so a new
  * chapter is visible immediately, while the shell still works offline.
  */
-const VERSION = 'atlas-v4.3.0';
+const VERSION = 'atlas-v4.4.0';
 const SHELL = [
   './',
   'index.html',
   'assets/css/hud.css',
+  'assets/css/reading.css',
   'assets/js/app.js',
   'assets/js/theme.js',
   'assets/js/i18n.js',
@@ -17,6 +18,9 @@ const SHELL = [
   'assets/js/lib/algorithm-guide.js',
   'lib/js/engine/trees.js',
   'assets/js/labs/tree.js',
+  'assets/js/labs/recipes.js',
+  'assets/js/lib/experiment.js',
+  'assets/js/lib/notebook.js',
   'assets/js/labs/epidemic.js',
   'assets/js/views/algorithms.js',
   'assets/js/views/guide.js',

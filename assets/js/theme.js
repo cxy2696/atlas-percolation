@@ -7,7 +7,7 @@
  */
 
 const KEY = 'atlas-theme-v3';
-const META = { dark: '#06090d', light: '#f4f1ea' };
+const META = { dark: '#0e1316', light: '#f6f2e9' };
 
 export function currentTheme() {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
@@ -96,9 +96,9 @@ export function redrawOnTheme(draw) {
 export function themeLabel(lang) {
   const light = currentTheme() === 'light';
   const labels = {
-    en: light ? 'LIGHT' : 'DARK',
+    en: light ? 'Light' : 'Dark',
     zh: light ? '明亮' : '深色',
-    de: light ? 'HELL' : 'DUNKEL',
+    de: light ? 'Hell' : 'Dunkel',
   };
   return (labels[lang] || labels.en);
 }

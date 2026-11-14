@@ -1,12 +1,12 @@
 {
   "name": "atlas-percolation",
-  "version": "4.3.0",
-  "description": "Trilingual percolation atlas: 23 chapters, 16 interactive laboratories, 13 algorithm walkthroughs, 140 audited references and a reproducible Python package",
+  "version": "4.4.0",
+  "description": "Trilingual percolation atlas: 23 chapters, 16 interactive laboratories, 13 algorithm walkthroughs, 142 audited references and a reproducible Python package",
   "type": "module",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "test": "python3 scripts/check_translations.py && python3 scripts/verify_claims.py && python3 scripts/parity.py && python3 scripts/parity_algorithms.py && node --test tests/js/*.test.js",
+    "test": "python3 scripts/check_translations.py && python3 scripts/verify_claims.py && python3 scripts/check_consistency.py && python3 scripts/parity.py && python3 scripts/parity_algorithms.py && node --test tests/js/*.test.js",
     "content": "python3 scripts/build_content.py && python3 scripts/check_translations.py",
     "bench": "make bench",
     "serve": "python3 scripts/serve.py 8788",

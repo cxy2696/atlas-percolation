@@ -5,19 +5,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Percolation Atlas — interactive knowledge base</title>
-  <meta name="theme-color" content="#f4f1ea" />
+  <meta name="theme-color" content="#f6f2e9" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <meta name="description" content="A trilingual atlas of percolation theory: 23 chapters, verified thresholds, 16 interactive laboratories, a thirteen-entry algorithm reader and 140 audited references." />
+  <meta name="description" content="A trilingual atlas of percolation theory: 23 chapters, verified thresholds, 16 interactive experiments, a 13-entry algorithm reader and 142 audited references." />
   <meta property="og:title" content="Percolation Atlas — interactive knowledge base" />
-  <meta property="og:description" content="Rigorous derivations, verified thresholds, 16 interactive laboratories, a thirteen-entry algorithm reader, a reproducible algorithm package and 140 audited references." />
+  <meta property="og:description" content="Rigorous derivations, verified thresholds, 16 interactive experiments, a 13-entry algorithm reader, a reproducible algorithm package and 142 audited references." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cxy2696.github.io/atlas-percolation/" />
   <meta property="og:image" content="https://cxy2696.github.io/atlas-percolation/assets/icon.svg" />
   <meta name="twitter:card" content="summary" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
   <link rel="stylesheet" href="assets/css/hud.css" />
+  <link rel="stylesheet" href="assets/css/reading.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23060a0e'/%3E%3Cpath d='M6 26 26 6M6 6l20 20' stroke='%234fe3ea' stroke-width='2'/%3E%3C/svg%3E" />
 </head>
 <body>
@@ -27,7 +29,7 @@
         <div class="mark" aria-hidden="true"></div>
         <div>
           <h1 data-i18n="brand">Percolation Atlas</h1>
-          <span>v4.3.0 · 2026</span>
+          <span>v4.4.0 · 2026</span>
         </div>
       </div>
       <nav class="topnav" id="topnav" aria-label="Primary"></nav>
@@ -54,17 +56,17 @@
 
     <footer class="statusbar">
       <span class="dot" aria-hidden="true"></span>
-      <span id="status-mode">SYS OK</span>
-      <span class="sep">/</span>
-      <span id="status-info">BOOT</span>
+      <span id="status-mode">Ready</span>
+      <span class="sep">·</span>
+      <span id="status-info">Loading the atlas</span>
       <span class="right">
-        <a href="https://github.com/cxy2696/atlas-percolation" target="_blank" rel="noopener noreferrer">REPO</a>
-        <span class="sep">/</span>
-        <a href="https://cxy2696.github.io/atlas-percolation/" target="_blank" rel="noopener noreferrer">LIVE</a>
-        <span class="sep">/</span>
+        <button type="button" class="status-link" id="notebook-open" aria-label="Notebook: 0 saved runs">Notebook <span id="notebook-count">0</span></button>
+        <span class="sep">·</span>
+        <a href="https://github.com/cxy2696/atlas-percolation" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="sep">·</span>
+        <a href="https://cxy2696.github.io/atlas-percolation/" target="_blank" rel="noopener noreferrer">Live site</a>
+        <span class="sep">·</span>
         <a href="https://github.com/cxy2696/atlas-percolation/blob/main/docs/API.md" target="_blank" rel="noopener noreferrer">API</a>
-        <span class="sep">/</span>
-        SEED 20241112 · RNG XOSHIRO128** · <span id="status-clock">--:--:--</span>
       </span>
     </footer>
   </div>
