@@ -39,8 +39,8 @@ and the top navigation all follow the same sequence.
 
 **Housekeeping**
 
-- README, translated READMEs, CITATION, meta tags, PWA cache and wiki updated
-  to 4.3.0.
+- README, translated READMEs, meta tags, PWA cache and wiki updated to
+  4.3.0.
 - No bibliography, chapter text, engine or golden file changed.
 
 ## 4.2.0 — 2026-11-14
