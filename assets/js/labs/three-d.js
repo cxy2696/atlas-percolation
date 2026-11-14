@@ -89,7 +89,7 @@ export function mount(root, ctx) {
     labHead({ kicker: L.kicker, title: L.title, lead: L.lead, lang, guide: 'three-d' }) +
     `<div class="grid-lab">
       <div>
-        ${canvasBox('td-canvas', [L.field, 'L', 'z', 'p'])}
+        ${canvasBox('td-canvas', ['', 'L', 'z', 'p'])}
         <div class="legend" style="margin:10px 0 14px">
           <span><i data-theme-color="cyan"></i>${L.largest}</span>
           <span><i data-theme-color="amber"></i>${L.second}</span>
