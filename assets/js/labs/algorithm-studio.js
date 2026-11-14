@@ -8,7 +8,7 @@ import { palette, onTheme } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 13 · algorithm observatory',
+    kicker: 'lab 16 · algorithm observatory',
     title: 'Algorithm studio',
     lead: 'Five ways to ask a percolation question, on the same lattice and the same seed. The step slider replays a Newman–Ziff edge order one union at a time; the benchmark compares measured cost and the scaling fit estimates the exponent.',
     lattice: 'Edge order replay',

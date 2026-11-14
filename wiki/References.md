@@ -36,6 +36,6 @@ The full annotated shelf is §19.12 of the atlas.
 
 ## How to cite
 
-Cite the repository and the primary sources for the specific result. Citation metadata is in [`CITATION.cff`](https://github.com/cxy2696/atlas-percolation/blob/main/CITATION.cff). The atlas is a guide to the literature, not a substitute for it.
+Cite the repository and the primary sources for the specific result. The atlas is a guide to the literature, not a substitute for it.
 
 Next: [[Deployment]].

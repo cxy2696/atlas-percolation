@@ -1,6 +1,6 @@
 ---
 id: 16-directed
-part: Critical phenomena
+part: extensions
 order: 16
 title: 有向渗流：把时间作为方向
 subtitle: 因果性、DP 猜想，以及随之而来的指数

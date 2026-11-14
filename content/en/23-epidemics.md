@@ -1,6 +1,6 @@
 ---
 id: 23-epidemics
-part: Networks and applications
+part: bridges
 order: 23
 title: Epidemics as percolation
 subtitle: Final size, herd immunity, and where the mapping stops

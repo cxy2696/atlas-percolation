@@ -1,6 +1,6 @@
 ---
 id: 17-continuum
-part: Networks and applications
+part: extensions
 order: 17
 title: Kontinuumsperkolation: Scheiben, Stäbe und reale Medien
 subtitle: Das Boolesche Modell, Ausschlussvolumen und warum Überdeckung nicht Konnektivität ist

@@ -1,6 +1,6 @@
 ---
 id: 21-reproducibility
-part: Methods
+part: synthesis
 order: 21
 title: 可复现性、不确定性与误差预算
 subtitle: 从一个种子到一个可发表的数，再原路返回

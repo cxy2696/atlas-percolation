@@ -1,6 +1,6 @@
 ---
 id: 17-continuum
-part: Networks and applications
+part: extensions
 order: 17
 title: 连续渗流：圆盘、棒与真实介质
 subtitle: 布尔模型、排除体积，以及为什么覆盖不等于连通

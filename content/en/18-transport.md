@@ -1,6 +1,6 @@
 ---
 id: 18-transport
-part: Networks and applications
+part: extensions
 order: 18
 title: Transport and first passage
 subtitle: What connectivity does not tell you, and how to measure the rest

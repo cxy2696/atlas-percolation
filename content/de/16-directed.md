@@ -1,6 +1,6 @@
 ---
 id: 16-directed
-part: Critical phenomena
+part: extensions
 order: 16
 title: Gerichtete Perkolation: die Zeit als Richtung
 subtitle: Kausalität, die DP-Vermutung und die zugehörigen Exponenten

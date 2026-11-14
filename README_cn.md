@@ -21,7 +21,7 @@
 | 测试 | 四语言整数级一致性探针（含算法库、v4 树/流行病求解器、位点扫描与消息传递）、RNG 金标向量、性质测试与文献审计 |
 | 示例 | 四语言并排调用：`docs/EXAMPLES.md`；代码阅读地图：`docs/ALGORITHMS.md`；CLI 与 JSON API：`docs/API.md` |
 
-**在线站点：** <https://cxy2696.github.io/atlas-percolation/> · **Wiki：** <https://github.com/cxy2696/atlas-percolation/wiki>（源文件在 `wiki/`）· **发布：** [v4.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.2.0) · **安装：** `pip install -e lib/python`
+**在线站点：** <https://cxy2696.github.io/atlas-percolation/> · **Wiki：** <https://github.com/cxy2696/atlas-percolation/wiki>（源文件在 `wiki/`）· **发布：** [v4.3.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.3.0) · **安装：** `pip install -e lib/python`
 
 ## 快速开始
 
@@ -159,4 +159,4 @@ wiki/                  GitHub Wiki 源文件，由 scripts/push_wiki.sh 发布
 
 ## 许可
 
-代码：MIT（`LICENSE`）。文字与图：CC BY 4.0（`LICENSE-CONTENT`）。引用元数据：`CITATION.cff`。
+代码：MIT（`LICENSE`）。文字与图：CC BY 4.0（`LICENSE-CONTENT`）。

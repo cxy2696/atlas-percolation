@@ -10,7 +10,7 @@ import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 05 · coupled networks',
+    kicker: 'lab 12 · coupled networks',
     title: 'Cascade between two layers',
     lead: 'Two Erdős–Rényi layers with one-to-one coupling. Each round keeps only vertices that are in the giant component of both layers. The mutual component disappears by a saddle-node bifurcation at p_c = 2.4554/c, not by a continuous decay — the curve jumps.',
     layers: 'Layer A / layer B, surviving set',

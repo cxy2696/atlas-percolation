@@ -1,6 +1,6 @@
 ---
 id: 23-epidemics
-part: Networks and applications
+part: bridges
 order: 23
 title: 流行病即渗流
 subtitle: 最终规模、群体免疫，以及这一对应的边界

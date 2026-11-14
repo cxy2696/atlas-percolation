@@ -5,7 +5,7 @@ import { palette, onTheme } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 11 · two choices',
+    kicker: 'lab 09 · two choices',
     title: 'Explosive percolation',
     lead: 'At every step two candidate edges are drawn; the product rule keeps the one whose endpoint components have the smaller size product. The giant component is delayed and then appears in a sharp step. Compare it with ordinary random addition at the same number of edges.',
     curve: 'S_max(q): two-choice vs random',

@@ -1,6 +1,6 @@
 ---
 id: 23-epidemics
-part: Networks and applications
+part: bridges
 order: 23
 title: Epidemien als Perkolation
 subtitle: Endgröße, Herdenimmunität und wo die Abbildung endet

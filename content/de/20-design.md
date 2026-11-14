@@ -1,6 +1,6 @@
 ---
 id: 20-design
-part: Networks and applications
+part: synthesis
 order: 20
 title: Entwerfen unter Unsicherheit
 subtitle: Kanten, Dosen, Füllstoffe und Brandschneisen in einem zufälligen Medium wählen

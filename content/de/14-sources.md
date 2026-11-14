@@ -89,6 +89,6 @@ Die Paritätssonden in `data/golden/parity.json` sind der Vertrag zwischen den v
 
 ## 14.6 Lizenz und Zitierung
 
-Der Text steht unter CC BY 4.0, der Code unter der MIT-Lizenz; siehe `LICENSE` und `LICENSE-CONTENT`. Die Zitierangaben stehen in `CITATION.cff`. Wer ein bestimmtes Ergebnis zitiert, sollte die Originalquelle ebenso wie den Atlas zitieren; der Atlas ist ein Wegweiser durch die Literatur, kein Ersatz für sie.
+Der Text steht unter CC BY 4.0, der Code unter der MIT-Lizenz; siehe `LICENSE` und `LICENSE-CONTENT`. Wer ein bestimmtes Ergebnis zitiert, sollte die Originalquelle ebenso wie den Atlas zitieren; der Atlas ist ein Wegweiser durch die Literatur, kein Ersatz für sie.
 
 Der Atlas wird als statische Website ohne serverseitige Abhängigkeiten gepflegt. Das ist eine bewusste Entscheidung: Er lässt sich archivieren, spiegeln und offline lesen, und er funktioniert noch, wenn das Build-Werkzeug des Monats längst vergessen ist.

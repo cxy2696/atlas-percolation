@@ -1,6 +1,6 @@
 ---
 id: 22-trees
-part: Critical phenomena
+part: bridges
 order: 22
 title: Bäume, erzeugende Funktionen und Botschaftspassage
 subtitle: Exakte Perkolation auf Verzweigungsstrukturen und was dünn besetzte Netzwerke davon erben

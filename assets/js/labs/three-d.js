@@ -6,7 +6,7 @@ const PC = 0.3116077;
 
 const LABELS = {
   en: {
-    kicker: 'lab 16 · three dimensions',
+    kicker: 'lab 04 · three dimensions',
     title: 'Three-dimensional percolation',
     lead: 'Simple cubic site percolation, drawn in isometric projection. The cube is L × L × L with open boundaries; cyan is the largest cluster, amber the second, grey the rest. The readout reports top–bottom spanning, which is the event whose probability defines p_c.',
     field: 'Site configuration',

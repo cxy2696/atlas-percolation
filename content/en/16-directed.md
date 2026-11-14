@@ -1,6 +1,6 @@
 ---
 id: 16-directed
-part: Critical phenomena
+part: extensions
 order: 16
 title: Directed percolation: time as a direction
 subtitle: Causality, the DP conjecture, and the exponents that come with it

@@ -89,6 +89,6 @@ The parity probes in `data/golden/parity.json` are the contract between the four
 
 ## 14.6 Licence and citation
 
-The text is released under CC BY 4.0 and the code under MIT; see `LICENSE` and `LICENSE-CONTENT`. Citation metadata is in `CITATION.cff`. When citing a specific result, cite the original source as well as the atlas; the atlas is a guide to the literature, not a substitute for it.
+The text is released under CC BY 4.0 and the code under MIT; see `LICENSE` and `LICENSE-CONTENT`. When citing a specific result, cite the original source as well as the atlas; the atlas is a guide to the literature, not a substitute for it.
 
 The atlas is maintained as a static site with no server-side dependencies. That is a deliberate choice: it can be archived, mirrored and read offline, and it will still work when the build tool of the month has been forgotten.

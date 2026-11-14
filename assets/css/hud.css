@@ -1678,3 +1678,43 @@ body[data-view="overview"] .topbar { border-bottom-color: rgba(79, 227, 234, 0.2
   body[data-view="guide"] #app { grid-template-columns: 0 minmax(0, 1fr); }
   body[data-view="guide"] .rail { display: none; }
 }
+
+/* ---------------------------------------------------------- information architecture */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 28px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.section-head h3 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.section-head .mono { color: var(--text-faint); }
+.chapter-group .cards, .lab-group .cards { margin-top: 0; }
+.chapter-group + .chapter-group, .lab-group + .lab-group { margin-top: 6px; }
+
+.lab-pager {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.algo-list .group {
+  padding: 9px 12px 5px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="light"] .algo-list .group { background: #f4efe4; color: #566b74; }

@@ -1,6 +1,6 @@
 ---
 id: 20-design
-part: Networks and applications
+part: synthesis
 order: 20
 title: Design under uncertainty
 subtitle: Choosing edges, doses, fillers and firebreaks when the medium is random

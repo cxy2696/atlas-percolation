@@ -1,6 +1,6 @@
 ---
 id: 19-proofs
-part: Reference
+part: synthesis
 order: 19
 title: Beweise, Algorithmen und der Status einer Aussage
 subtitle: Ein strenger Anhang, mit klar gekennzeichneten Beweisskizzen

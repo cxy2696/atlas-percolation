@@ -6,7 +6,7 @@ import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 06 · continuum',
+    kicker: 'lab 13 · continuum',
     title: 'Boolean model',
     lead: 'Poisson points, hard disks, overlap means connected. The control parameter is the reduced density λ = nπr². Coverage is the smooth curve 1 − e^(−λ); connectivity is a genuine threshold near λ_c ≈ 1.128. At that density only about 68% of the square is covered, and a disk deployment can cover a large area without forming a spanning cluster.',
     field: 'Disk configuration',

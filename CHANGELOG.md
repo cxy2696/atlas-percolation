@@ -1,5 +1,48 @@
 # Changelog
 
+## 4.3.0 — 2026-11-14
+
+A reading-order edition. The content is unchanged; the site is reorganised so
+the first visit, the chapter index, the laboratory index, the algorithm index
+and the top navigation all follow the same sequence.
+
+**Navigation**
+
+- The top bar now reads **Start → Overview → Atlas → Labs → Algorithms → Code →
+  Data → Sources → Library**. Algorithms precede the raw code browser, and the
+  bibliography precedes the full-text search index.
+
+**Atlas**
+
+- The chapter index is grouped by part instead of one flat 23-card grid.
+- The tail of the atlas is now contiguous: 16–18 are **Extensions** (directed,
+  continuum, transport), 19–21 are **Proofs, design and reproducibility**, and
+  22–23 are **Bridges: trees and epidemics**. This removes the repeated
+  "Critical phenomena" and "Networks" headings that the old part labels
+  produced in the rail.
+- Chapter cards show only the number, title, subtitle and reading time; the
+  part name is in the group heading, not repeated on every card.
+
+**Labs**
+
+- The 16 labs are grouped into **Foundations**, **Critical phenomena**,
+  **Networks and applications**, and **Methods**.
+- 3D percolation moves next to the lattice laboratories (lab 04); the other
+  lab numbers and on-page kickers follow the new sequence.
+- Each lab page has a previous/next pager at the bottom, matching the chapter
+  reader.
+
+**Algorithms**
+
+- The 13-entry reader is grouped into **Core sampling**, **Dynamics**, and
+  **Labels, trees and messages**, in both the rail and the reader list.
+
+**Housekeeping**
+
+- README, translated READMEs, CITATION, meta tags, PWA cache and wiki updated
+  to 4.3.0.
+- No bibliography, chapter text, engine or golden file changed.
+
 ## 4.2.0 — 2026-11-14
 
 A field-guide release. The atlas gains a three-dimensional site-percolation

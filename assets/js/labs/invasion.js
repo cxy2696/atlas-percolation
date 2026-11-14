@@ -5,7 +5,7 @@ import { palette, onTheme } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 12 · minimum bottleneck growth',
+    kicker: 'lab 10 · minimum bottleneck growth',
     title: 'Invasion percolation',
     lead: 'Every edge has an independent random threshold. Starting from one seed, the cluster always invades across the lowest-threshold edge on its boundary. It is not Bernoulli percolation: the rule is greedy and history-dependent, and the result is a spanning tree of the invaded region.',
     field: 'Invaded set and threshold',

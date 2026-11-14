@@ -5,7 +5,7 @@ import { palette, onTheme } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 10 · thresholds on thresholds',
+    kicker: 'lab 08 · thresholds on thresholds',
     title: 'Bootstrap percolation',
     lead: 'Sites are occupied independently with probability p. An empty site then becomes active if at least r of its neighbours are active, and the rule is applied until nothing changes. This is a closure, not a random process: the final set is the least fixed point and is independent of the update order.',
     field: 'Occupation and activation time',

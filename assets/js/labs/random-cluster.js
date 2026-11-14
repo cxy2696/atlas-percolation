@@ -6,7 +6,7 @@ import { palette, onTheme, withAlpha } from '../theme.js';
 const LABELS = {
   en: {
     title: 'Random-cluster / Potts',
-    kicker: 'lab 09 · cluster weight',
+    kicker: 'lab 07 · cluster weight',
     lead: 'A Swendsen–Wang update on a 64×64 square lattice. Equal-spin edges are opened with probability p, each FK cluster gets a fresh colour, and the cycle repeats. q=2 is the Ising point at p = √2/(1+√2); q>2 is the q-state Potts model.',
     state: 'Order parameter',
     pc: 'Self-dual p_c(q)',

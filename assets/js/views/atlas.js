@@ -45,19 +45,24 @@ function renderIndex(root, ctx) {
       `${chapters.length} ${t(lang, 'chapters')}<br>EN · 中文 · DE`
     ) +
     `<p class="muted" style="max-width:760px;line-height:1.7;margin-top:-6px">${t(lang, 'atlas_lead')}</p>` +
-    `<div class="cards" style="margin-top:22px">` +
-    chapters
-      .map(
-        (ch) => `<a class="card" href="#/${lang}/atlas/${ch.id}">
-          <span class="idx">${String(ch.order).padStart(2, '0')}</span>
-          <div class="tag">${partName(lang, ch.part)}</div>
-          <h4>${ch.title[lang] || ch.title.en}</h4>
-          <p>${ch.subtitle[lang] || ch.subtitle.en}</p>
-          <div class="hint" style="margin-top:10px">${(ch.reading && ch.reading[lang]) || ch.reading?.en || 10} ${t(lang, 'min')}</div>
-        </a>`
-      )
-      .join('') +
-    `</div>`;
+    [...new Set(chapters.map((ch) => ch.part))].map((part) => {
+      const rows = chapters.filter((ch) => ch.part === part);
+      return `<section class="chapter-group">
+        <div class="section-head">
+          <h3>${partName(lang, part)}</h3>
+          <span class="mono small">${rows.length} ${t(lang, 'chapters')}</span>
+        </div>
+        <div class="cards">` +
+        rows.map(
+          (ch) => `<a class="card" href="#/${lang}/atlas/${ch.id}">
+            <span class="idx">${String(ch.order).padStart(2, '0')}</span>
+            <h4>${ch.title[lang] || ch.title.en}</h4>
+            <p>${ch.subtitle[lang] || ch.subtitle.en}</p>
+            <div class="hint" style="margin-top:10px">${(ch.reading && ch.reading[lang]) || ch.reading?.en || 10} ${t(lang, 'min')}</div>
+          </a>`
+        ).join('') +
+        `</div></section>`;
+    }).join('');
   ctx.setStatus(t(lang, 'status_ready'), `${chapters.length} ${t(lang, 'chapters')} · INDEX`);
   return null;
 }

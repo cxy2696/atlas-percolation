@@ -10,7 +10,7 @@ import * as data from './views/data.js';
 import * as library from './views/library.js';
 import * as sources from './views/sources.js';
 import { LABS } from './labs/index.js';
-import { ALGORITHM_ORDER, ALGORITHM_GUIDE } from './lib/algorithm-guide.js';
+import { ALGORITHM_ORDER, ALGORITHM_GROUPS, ALGORITHM_GUIDE } from './lib/algorithm-guide.js';
 import { initTheme, toggleTheme, themeLabel, onTheme } from './theme.js';
 
 const VIEWS = { guide, overview, atlas, labs, code, algorithms, data, library, sources };
@@ -61,21 +61,29 @@ function buildRail() {
   }
   if (state.view === 'algorithms') {
     bits.push(`<div class="rail-title">${t(lang, 'algorithms_title')}</div>`);
-    ALGORITHM_ORDER.forEach((id, i) => {
-      const meta = ALGORITHM_GUIDE[id];
-      const title = meta.title[lang] || meta.title.en;
-      const active = state.param === id;
-      bits.push(
-        `<a href="#/${lang}/algorithms/${id}" class="${active ? 'active' : ''}">` +
-          `<span class="num">${String(i + 1).padStart(2, '0')}</span>${title}</a>`
-      );
+    ALGORITHM_GROUPS.forEach((group) => {
+      bits.push(`<div class="group">${t(lang, `algo_group_${group.id}`)}</div>`);
+      group.ids.forEach((id) => {
+        const meta = ALGORITHM_GUIDE[id];
+        const title = meta.title[lang] || meta.title.en;
+        const active = state.param === id;
+        bits.push(
+          `<a href="#/${lang}/algorithms/${id}" class="${active ? 'active' : ''}">` +
+            `<span class="num">${String(ALGORITHM_ORDER.indexOf(id) + 1).padStart(2, '0')}</span>${title}</a>`
+        );
+      });
     });
     rail.innerHTML = bits.join('');
     return;
   }
   if (state.view === 'labs') {
     bits.push(`<div class="rail-title">${t(lang, 'labs_title')}</div>`);
+    let lastGroup = null;
     LABS.forEach((lab, i) => {
+      if (lab.group && lab.group !== lastGroup) {
+        lastGroup = lab.group;
+        bits.push(`<div class="group">${t(lang, `lab_group_${lab.group}`)}</div>`);
+      }
       const active = state.param === lab.id;
       bits.push(
         `<a href="#/${lang}/labs/${lab.id}" class="${active ? 'active' : ''}">` +
@@ -109,11 +117,11 @@ function buildNav() {
     ['overview', 'nav_overview'],
     ['atlas', 'nav_atlas'],
     ['labs', 'nav_labs'],
-    ['code', 'nav_code'],
     ['algorithms', 'nav_algorithms'],
+    ['code', 'nav_code'],
     ['data', 'nav_data'],
-    ['library', 'nav_library'],
     ['sources', 'nav_sources'],
+    ['library', 'nav_library'],
   ];
   nav.innerHTML = items
     .map(([v, key]) => `<a href="#/${state.lang}/${v}" data-view="${v}">${t(state.lang, key)}</a>`)

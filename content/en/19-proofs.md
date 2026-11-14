@@ -1,6 +1,6 @@
 ---
 id: 19-proofs
-part: Reference
+part: synthesis
 order: 19
 title: Proofs, algorithms and the status of a claim
 subtitle: A rigorous appendix, with proof sketches clearly labelled

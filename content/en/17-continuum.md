@@ -1,6 +1,6 @@
 ---
 id: 17-continuum
-part: Networks and applications
+part: extensions
 order: 17
 title: Continuum percolation: disks, rods, and real media
 subtitle: The Boolean model, excluded volume, and why coverage is not connectivity

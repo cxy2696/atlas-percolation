@@ -21,7 +21,7 @@ Ein dreisprachiger, quellenbelegter Atlas der Perkolationstheorie mit vier Refer
 | Tests | Ganzzahlgenaue Paritätsprüfungen über alle vier Implementierungen, einschließlich der Algorithmensammlung, der v4-Löser für Bäume und Epidemien, des Platz-Sweeps und der Botschaftspassage; RNG-Golden-Vektoren, Eigenschaftstests und eine Quellenprüfung |
 | Beispiele | Nebeneinander gestellte Aufrufe desselben Experiments in allen vier Sprachen: `docs/EXAMPLES.md`; die Landkarte zum Codelesen: `docs/ALGORITHMS.md`; eine CLI und JSON-API: `docs/API.md` |
 
-**Live-Seite:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (Quelltext in `wiki/`) · **Release:** [v4.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.2.0) · **Paket:** `pip install -e lib/python`
+**Live-Seite:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (Quelltext in `wiki/`) · **Release:** [v4.3.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.3.0) · **Paket:** `pip install -e lib/python`
 
 ## Schnellstart
 
@@ -167,4 +167,4 @@ Dies ist ein Nachschlagewerk und ein Lehrinstrument. Es ersetzt nicht die Primä
 
 ## Lizenz
 
-Code: MIT (`LICENSE`). Text und Abbildungen: CC BY 4.0 (`LICENSE-CONTENT`). Zitationsmetadaten: `CITATION.cff`.
+Code: MIT (`LICENSE`). Text und Abbildungen: CC BY 4.0 (`LICENSE-CONTENT`). 

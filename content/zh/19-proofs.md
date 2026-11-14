@@ -1,6 +1,6 @@
 ---
 id: 19-proofs
-part: Reference
+part: synthesis
 order: 19
 title: 证明、算法与论断的地位
 subtitle: 一份严格性附录，并明确标注哪些只是证明梗概

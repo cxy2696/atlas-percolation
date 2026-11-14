@@ -6,7 +6,7 @@ import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 07 · conformal',
+    kicker: 'lab 05 · conformal',
     title: 'Cardy’s crossing formula',
     lead: 'The exact left–right crossing probability of a critical rectangle as a function of ℓ = H/W. The curve is Cardy’s hypergeometric formula evaluated through the elliptic modulus; the dots are measured square-lattice crossings at p = 1/2. Both pass through 1/2 at ℓ = 1.',
     curve: 'π(ℓ) with measured points',

@@ -1,6 +1,6 @@
 ---
 id: 20-design
-part: Networks and applications
+part: synthesis
 order: 20
 title: 不确定性下的设计
 subtitle: 当介质随机时，如何选择边、剂量、填料与防火带

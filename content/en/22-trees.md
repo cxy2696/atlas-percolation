@@ -1,6 +1,6 @@
 ---
 id: 22-trees
-part: Critical phenomena
+part: bridges
 order: 22
 title: Trees, generating functions, and message passing
 subtitle: Exact percolation on branching structures, and what sparse networks inherit

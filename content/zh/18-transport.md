@@ -1,6 +1,6 @@
 ---
 id: 18-transport
-part: Networks and applications
+part: extensions
 order: 18
 title: 输运与首达
 subtitle: 连通性不告诉你的，以及如何测量其余部分

@@ -4,6 +4,12 @@
 
 export const ALGORITHM_ORDER = ['sampler', 'dsu', 'nz', 'nz-site', 'leath', 'bootstrap', 'invasion', 'achlioptas', 'kcore', 'hoshen', 'bethe', 'sir', 'message'];
 
+export const ALGORITHM_GROUPS = [
+  { id: 'core', ids: ['sampler', 'dsu', 'nz', 'nz-site', 'leath'] },
+  { id: 'dynamics', ids: ['bootstrap', 'invasion', 'achlioptas', 'kcore'] },
+  { id: 'trees', ids: ['hoshen', 'bethe', 'sir', 'message'] },
+];
+
 export const ALGORITHM_GUIDE = {
   sampler: {
     tag: { en: 'Bernoulli sampling', zh: 'Bernoulli 抽样', de: 'Bernoulli-Sampling' },

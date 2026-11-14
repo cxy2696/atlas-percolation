@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14 19:55",
+ "generated": "2026-11-14 20:17",
  "languages": [
   "en",
   "zh",
@@ -385,7 +385,7 @@
   {
    "id": "16-directed",
    "order": 16,
-   "part": "critical",
+   "part": "extensions",
    "title": {
     "en": "Directed percolation: time as a direction",
     "zh": "有向渗流：把时间作为方向",
@@ -410,7 +410,7 @@
   {
    "id": "17-continuum",
    "order": 17,
-   "part": "networks",
+   "part": "extensions",
    "title": {
     "en": "Continuum percolation: disks, rods, and real media",
     "zh": "连续渗流：圆盘、棒与真实介质",
@@ -435,7 +435,7 @@
   {
    "id": "18-transport",
    "order": 18,
-   "part": "networks",
+   "part": "extensions",
    "title": {
     "en": "Transport and first passage",
     "zh": "输运与首达",
@@ -460,7 +460,7 @@
   {
    "id": "19-proofs",
    "order": 19,
-   "part": "reference",
+   "part": "synthesis",
    "title": {
     "en": "Proofs, algorithms and the status of a claim",
     "zh": "证明、算法与论断的地位",
@@ -485,7 +485,7 @@
   {
    "id": "20-design",
    "order": 20,
-   "part": "networks",
+   "part": "synthesis",
    "title": {
     "en": "Design under uncertainty",
     "zh": "不确定性下的设计",
@@ -510,7 +510,7 @@
   {
    "id": "21-reproducibility",
    "order": 21,
-   "part": "methods",
+   "part": "synthesis",
    "title": {
     "en": "Reproducibility, uncertainty and the error budget",
     "zh": "可复现性、不确定性与误差预算",
@@ -535,7 +535,7 @@
   {
    "id": "22-trees",
    "order": 22,
-   "part": "critical",
+   "part": "bridges",
    "title": {
     "en": "Trees, generating functions, and message passing",
     "zh": "树、生成函数与消息传递",
@@ -560,7 +560,7 @@
   {
    "id": "23-epidemics",
    "order": 23,
-   "part": "networks",
+   "part": "bridges",
    "title": {
     "en": "Epidemics as percolation",
     "zh": "流行病即渗流",

@@ -1,6 +1,6 @@
 ---
 id: 22-trees
-part: Critical phenomena
+part: bridges
 order: 22
 title: 树、生成函数与消息传递
 subtitle: 分支结构上的精确渗流，以及稀疏网络从中继承了什么

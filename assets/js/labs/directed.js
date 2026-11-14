@@ -9,7 +9,7 @@ const PC = { bond: 0.644700, site: 0.705489 };
 const LABELS = {
   en: {
     title: 'Directed percolation',
-    kicker: 'lab 08 · causality',
+    kicker: 'lab 06 · causality',
     lead: 'East edges are space, south edges are time. A site is reachable only from the west or north; the cyan set is the causal future of the left boundary. At the same p the directed model is far below the undirected threshold.',
     readout: 'Reachable set',
     threshold: 'Threshold (1+1)',

@@ -1,6 +1,6 @@
 /** Algorithm reader: idea, invariant, cost, code notes and the exact source. */
 import { t } from '../i18n.js';
-import { ALGORITHM_ORDER, ALGORITHM_GUIDE, guideFor } from '../lib/algorithm-guide.js';
+import { ALGORITHM_ORDER, ALGORITHM_GROUPS, ALGORITHM_GUIDE, guideFor } from '../lib/algorithm-guide.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -10,13 +10,16 @@ export async function render(root, ctx) {
   const active = ALGORITHM_ORDER.includes(param) ? param : ALGORITHM_ORDER[0];
   const g = guideFor(active, lang);
 
-  const list = ALGORITHM_ORDER.map((id, i) => {
-    const entry = ALGORITHM_GUIDE[id];
-    const title = entry.title[lang] || entry.title.en;
-    return `<a href="#/${lang}/algorithms/${id}" class="${id === active ? 'active' : ''}">
-      <span class="idx">${String(i + 1).padStart(2, '0')}</span>
-      <span><b>${esc(title)}</b><em>${esc(entry.tag[lang] || entry.tag.en)}</em></span>
-    </a>`;
+  const list = ALGORITHM_GROUPS.map((group) => {
+    const rows = group.ids.map((id) => {
+      const entry = ALGORITHM_GUIDE[id];
+      const title = entry.title[lang] || entry.title.en;
+      return `<a href="#/${lang}/algorithms/${id}" class="${id === active ? 'active' : ''}">
+        <span class="idx">${String(ALGORITHM_ORDER.indexOf(id) + 1).padStart(2, '0')}</span>
+        <span><b>${esc(title)}</b><em>${esc(entry.tag[lang] || entry.tag.en)}</em></span>
+      </a>`;
+    }).join('');
+    return `<div class="group">${T(`algo_group_${group.id}`)}</div>${rows}`;
   }).join('');
 
   const steps = g.steps.map((s) => `<li>${esc(s)}</li>`).join('');

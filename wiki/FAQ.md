@@ -34,7 +34,7 @@ Browser wall-clock timings include JIT, cache and scheduling noise. The algorith
 
 ### I changed the theme and the page still looks old.
 
-The service worker caches the shell. It is versioned (`atlas-v4.2.0`); refresh once, or hard-refresh with `Cmd/Ctrl + Shift + R`.
+The service worker caches the shell. It is versioned (`atlas-v4.3.0`); refresh once, or hard-refresh with `Cmd/Ctrl + Shift + R`.
 
 ### Where do I start?
 

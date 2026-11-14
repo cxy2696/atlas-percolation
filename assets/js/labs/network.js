@@ -13,7 +13,7 @@ import { palette, onTheme, withAlpha } from '../theme.js';
 
 const LABELS = {
   en: {
-    kicker: 'lab 04 · networks',
+    kicker: 'lab 11 · networks',
     title: 'Robust yet fragile',
     lead: 'A configuration-model network of 20 000 vertices. Random removal follows the Molloy–Reed curve; targeted removal of the highest-degree vertices destroys the giant component while most vertices are still present. Move γ_deg and watch the two failure modes separate.',
     curves: 'Giant component under attack',

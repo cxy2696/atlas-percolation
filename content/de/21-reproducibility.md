@@ -1,6 +1,6 @@
 ---
 id: 21-reproducibility
-part: Methods
+part: synthesis
 order: 21
 title: Reproduzierbarkeit, Unsicherheit und das Fehlerbudget
 subtitle: Von einem Seed zu einer publizierbaren Zahl und zurück
