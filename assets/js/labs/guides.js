@@ -724,6 +724,51 @@ export const GUIDES = {
       caveat: `<p>Das Histogramm ist ein Verzweigungsprozess, keine Netzwerksimulation: Es ignoriert endliche Populationsgröße, Clustering und die Erschöpfung der Empfänglichen jenseits des Perkolationslimits. Die Kurve setzt ein statisches Poisson-Netz und unabhängige Übertragung pro Kante voraus. Zeitliche Ordnung, Verhalten und Zeitverlauf liegen außerhalb des Modells.</p>`,
     },
   },
+  'three-d': {
+    en: {
+      read: `<p>A cube of <b>L × L × L</b> sites in isometric projection. Cyan is the largest cluster, amber the second, grey the rest; empty sites are not drawn. The cube outline marks the open boundaries, and the readout “top–bottom spanning” turns green when one cluster joins a site on the <i>z = 0</i> face to a site on the <i>z = L−1</i> face.</p>
+        <p>The projection is a drawing device. The model is the simple cubic lattice with six neighbours per site; the third dimension is real, not a visual effect.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Cube side L</dt><dd>12, 16, 20 or 24. The number of sites is L³, so each step up is roughly twice the work. Larger cubes sharpen the crossing.</dd>
+        <dt>Occupancy p</dt><dd>Independent site probability. The interesting window is around 0.31; far above it the cube is one cluster, far below it the clusters are small.</dd>
+        <dt>Resample / Sweep</dt><dd>Resample draws a fresh configuration at the same p. Sweep walks p from 0.18 to 0.46 so the transition can be watched.</dd>
+      </dl>`,
+      dynamics: `<p>Below the threshold the largest cluster is small and the top–bottom indicator is red. Near <i>p</i> ≈ 0.31 the indicator flips between runs at fixed <i>p</i>; that is the finite-size transition, not a bug. Above it a spanning cluster survives and the second cluster shrinks. The largest-cluster fraction is the order parameter; the cluster count falls as the cube fills.</p>`,
+      try: `<div class="guide-try"><b>1.</b> Set L = 16, p = 0.3116 and resample ten times. Count the green top–bottom outcomes; the fraction should be near one half only in the scaling limit, so a small cube will scatter.</div>
+        <div class="guide-try"><b>2.</b> Repeat at L = 24. The transition should look sharper; the finite-size crossing is still rounded.</div>
+        <div class="guide-try"><b>3.</b> Set p = 0.40 and sweep down to 0.25. Watch the largest cluster break apart; the percolation threshold is not a property of the colouring but of the connectivity.</div>`,
+      caveat: `<p>This is site percolation on the simple cubic lattice with open boundaries. The quoted <i>p<sub>c</sub></i> = 0.3116077(2) is the high-precision numerical value of Wang et al. (2013), not an exact identity. Bond percolation has a different threshold (0.24881182(10)); a finite cube rounds the transition and shifts the apparent crossing.</p>`,
+    },
+    zh: {
+      read: `<p>一个 <b>L × L × L</b> 的立方体，用等距投影绘制。青色是最大团簇，琥珀色是次大团簇，灰色是其余；空位点不画。立方体轮廓表示开边界；当某个团簇把 <i>z = 0</i> 面的位点与 <i>z = L−1</i> 面的位点连起来时，“上下贯穿”读数变绿。</p>
+        <p>投影只是画法。模型是简单立方格子，每个位点有六个邻居；第三维是真实的，不是视觉特效。</p>`,
+      params: `<dl class="guide-key">
+        <dt>立方体边长 L</dt><dd>12、16、20 或 24。位点数为 L³，每升一档工作量约翻倍。更大的立方体会让交点更锐。</dd>
+        <dt>占据率 p</dt><dd>每个位点独立占据的概率。有意义的窗口在 0.31 附近；远高于它是整块连通，远低于它是小团簇。</dd>
+        <dt>重采样 / 扫描</dt><dd>重采样在相同 p 下换一张构型；扫描让 p 从 0.18 走到 0.46，便于观察转变。</dd>
+      </dl>`,
+      dynamics: `<p>阈值以下最大团簇很小，上下贯穿指示为红。接近 <i>p</i> ≈ 0.31 时，固定 p 连续重采样会让指示在红绿之间跳；这是有限尺度转变，不是错误。阈值以上有贯通团簇存活，次大团簇缩小。最大团簇占比是序参量；立方体越满，团簇数越少。</p>`,
+      try: `<div class="guide-try"><b>1.</b> 取 L = 16、p = 0.3116，重采样十次，数绿色上下贯穿的次数。只有在标度极限下比例才接近一半，小立方体会明显散布。</div>
+        <div class="guide-try"><b>2.</b> 换到 L = 24。转变应更锐；有限尺度交点仍然是圆的。</div>
+        <div class="guide-try"><b>3.</b> 从 p = 0.40 扫到 0.25，看最大团簇如何碎裂；阈值不是着色方式的性质，而是连通性的性质。</div>`,
+      caveat: `<p>这是简单立方格子上的位点渗流，开边界。所引 <i>p<sub>c</sub></i> = 0.3116077(2) 是 Wang 等（2013）的高精度数值，不是精确恒等式。键渗流的阈值不同（0.24881182(10)）；有限立方体会抹圆转变并移动表观交点。</p>`,
+    },
+    de: {
+      read: `<p>Ein Würfel aus <b>L × L × L</b> Plätzen in isometrischer Projektion. Cyan ist der größte Cluster, Bernstein der zweitgrößte, Grau der Rest; leere Plätze werden nicht gezeichnet. Der Würfelrand markiert die offenen Ränder; „Durchgang oben–unten“ wird grün, wenn ein Cluster einen Platz auf der Fläche <i>z = 0</i> mit einem auf <i>z = L−1</i> verbindet.</p>
+        <p>Die Projektion ist nur eine Zeichenhilfe. Das Modell ist das einfache kubische Gitter mit sechs Nachbarn pro Platz; die dritte Dimension ist real.</p>`,
+      params: `<dl class="guide-key">
+        <dt>Würfelkante L</dt><dd>12, 16, 20 oder 24. Die Platzahl ist L³; jede Stufe verdoppelt etwa die Arbeit. Größere Würfel schärfen den Übergang.</dd>
+        <dt>Besetzung p</dt><dd>Unabhängige Platzwahrscheinlichkeit. Das interessante Fenster liegt um 0.31; weit darüber ist der Würfel ein Cluster, weit darunter sind die Cluster klein.</dd>
+        <dt>Neu ziehen / Sweep</dt><dd>Neu ziehen würfelt bei gleichem p; der Sweep fährt p von 0.18 bis 0.46.</dd>
+      </dl>`,
+      dynamics: `<p>Unter der Schwelle ist der größte Cluster klein und die Anzeige rot. Nahe <i>p</i> ≈ 0.31 springt sie bei festem p zwischen den Läufen; das ist der Endlichkeitsübergang. Darüber überlebt ein durchspannender Cluster, der zweitgrößte schrumpft. Der Anteil des größten Clusters ist der Ordnungsparameter.</p>`,
+      try: `<div class="guide-try"><b>1.</b> L = 16, p = 0.3116, zehnmal neu ziehen und die grünen Fälle zählen. Nur im Skalierungslimes liegt der Anteil bei eins halb; ein kleiner Würfel streut.</div>
+        <div class="guide-try"><b>2.</b> Mit L = 24 wiederholen. Der Übergang sollte schärfer aussehen, bleibt aber endlich gerundet.</div>
+        <div class="guide-try"><b>3.</b> Von p = 0.40 auf 0.25 sweepen und beobachten, wie der größte Cluster zerfällt.</div>`,
+      caveat: `<p>Dies ist Platzperkolation auf dem einfachen kubischen Gitter mit offenen Rändern. Der Wert <i>p<sub>c</sub></i> = 0.3116077(2) ist der hochpräzise numerische Wert von Wang et al. (2013), keine exakte Identität. Bondperkolation hat eine andere Schwelle (0.24881182(10)); ein endlicher Würfel rundet den Übergang.</p>`,
+    },
+  },
+
 };
 
 export function guideHTML(id, lang) {

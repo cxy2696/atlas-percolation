@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-13 14:43",
+ "generated": "2026-11-14 19:55",
  "languages": [
   "en",
   "zh",
   "de"
  ],
- "references": 125,
+ "references": 140,
  "chapters": [
   {
    "id": "01-foundations",
@@ -292,14 +292,14 @@
     "de": "Anwendungen – und wie man die Theorie nutzt, ohne sie zu missbrauchen"
    },
    "subtitle": {
-    "en": "A protocol, four case studies, and the questions to ask first",
-    "zh": "一套规程、四个案例，以及应当先问的问题",
-    "de": "Ein Protokoll, vier Fallstudien und die Fragen, die zuerst zu stellen sind"
+    "en": "A protocol, four case studies, a field guide, and the questions to ask first",
+    "zh": "一套规程、四个案例、一张领域指南，以及应当先问的问题",
+    "de": "Ein Protokoll, vier Fallstudien, ein Feldführer und die Fragen, die zuerst zu stellen sind"
    },
    "reading": {
-    "en": 16,
-    "zh": 15,
-    "de": 17
+    "en": 23,
+    "zh": 23,
+    "de": 23
    },
    "files": {
     "en": "content/en/12-applications.md",

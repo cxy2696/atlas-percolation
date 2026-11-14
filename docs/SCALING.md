@@ -4,7 +4,7 @@ This note records what each routine costs, where the implementation stops scalin
 
 ## Percolation on a lattice
 
-Let `n = L²` be the number of sites and `m` the number of edges (`2L(L−1)` on an open square lattice, `3n` on a triangular torus).
+Let `n = L²` be the number of sites and `m` the number of edges (`2L(L−1)` on an open square lattice, `3n` on a triangular torus). The three-dimensional simple cubic generator has `n = L³` and `m = 3L²(L−1)`; it is JavaScript-only for the browser laboratory, and it is not part of the four-language parity contract.
 
 | Operation | Time | Memory | Notes |
 |---|---|---|---|
@@ -64,7 +64,7 @@ The benchmark harness is single-threaded. The C++ union-find is the obvious plac
 ## What is not implemented
 
 - Random-cluster sampling as a library API. The Swendsen–Wang laboratory is a browser-only implementation; the four-library contract covers Bernoulli percolation and directed percolation.
-- Three-dimensional lattice generators (the threshold table is data, not a generator).
+- Higher-resolution three-dimensional campaigns in the shared C++/Julia/Python libraries; the browser has a site-percolation cube generator, not a full 3D benchmark harness.
 - Higher-order connectivity on simplicial complexes.
 - Temporal networks and time-respecting paths.
 - GPU kernels.

@@ -68,7 +68,7 @@ from .trees import (
     sir_final_size,
 )
 
-__version__ = "4.1.0"
+__version__ = "4.2.0"
 
 __all__ = [
     "Rng",

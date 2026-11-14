@@ -8,7 +8,7 @@ const LANGS = ['en', 'zh', 'de'];
 const SECTIONS = ['read', 'params', 'dynamics', 'try', 'caveat'];
 
 test('every registered laboratory has a complete guide in every language', () => {
-  assert.equal(LABS.length, 15);
+  assert.equal(LABS.length, 16);
   for (const lab of LABS) {
     const guide = GUIDES[lab.id];
     assert.ok(guide, `missing guide for ${lab.id}`);

@@ -134,8 +134,8 @@ def main() -> int:
     audit_path = ROOT / "content" / "reference_audit.json"
     if audit_path.exists():
         audit = json.loads(audit_path.read_text())
-        check("audit total", audit.get("total"), 125)
-        check("audit verified", audit.get("counts", {}).get("ok"), 123)
+        check("audit total", audit.get("total"), 140)
+        check("audit verified", audit.get("counts", {}).get("ok"), 138)
         check("audit notes", audit.get("counts", {}).get("ok-note"), 2)
         bad = [r for r in audit.get("results", []) if r.get("status") not in ("ok", "ok-note")]
         check("audit has no unresolved entries", len(bad), 0)

@@ -4,24 +4,24 @@
 
 [![CI](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml) [![Pages](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml) [![Release](https://img.shields.io/github/v/release/cxy2696/atlas-percolation?label=release)](https://github.com/cxy2696/atlas-percolation/releases)
 
-一部有原始文献支撑、三语并行的渗流理论图册：四种参考实现、十五个交互实验室、十三条算法精读，以及可追溯的数值与勘误记录。站点是无运行时框架的静态 HUD，直接读取 Markdown、JSON 与 JavaScript 引擎，可被归档、镜像或部署到任意静态主机。
+一部有原始文献支撑、三语并行的渗流理论图册：四种参考实现、十六个交互实验室、十三条算法精读，以及可追溯的数值与勘误记录。站点是无运行时框架的静态 HUD，直接读取 Markdown、JSON 与 JavaScript 引擎，可被归档、镜像或部署到任意静态主机。
 
-**当前内容：** 23 章（英文、简体中文、德文）· 15 个实验室 · 13 条算法精读 · 4 种语言实现 · 125 篇文献 · 一个可 `pip` 安装的算法包。站点默认以**浅色、英文**打开，并记住读者的语言与主题选择。
+**当前内容：** 23 章（英文、简体中文、德文）· 16 个实验室 · 13 条算法精读 · 4 种语言实现 · 140 篇文献 · 一个可 `pip` 安装的算法包。站点默认以**浅色、英文**打开，并记住读者的语言与主题选择。
 
 ## 内容一览
 
 | 层次 | 内容 |
 |---|---|
 | 知识库 | 23 章：从 1957 年奠基论文，到对偶、锐性、临界指数、SLE、随机簇模型、网络、测量、应用、算法、有向与连续渗流、输运、跨学科地图、证明附录、不确定性下的设计、可复现性、树与生成函数、流行病即渗流 |
-| 文献 | 125 条（论文、专著、博客、软件），附 DOI 或稳定链接；Crossref/HTTP 审计记录（123 条通过，2 条解释性附注）；逐章来源表与勘误表 |
+| 文献 | 140 条（论文、专著、博客、软件），附 DOI 或稳定链接；Crossref/HTTP 审计记录（138 条通过，2 条解释性附注）；逐章来源表与勘误表 |
 | 代码 | C++20（header-only）、Julia、Python、JavaScript；共享同一 xoshiro128** 随机流与同一格子边序 |
-| 实验室 | 格子渗流、横穿坍缩、Newman–Ziff 扫描、网络鲁棒性、耦合级联、布尔模型、Cardy 公式、有向渗流、随机簇/Potts、自举渗流、爆炸渗流、侵入渗流、算法工坊、Bethe 树、SIR 即渗流 |
+| 实验室 | 格子渗流、横穿坍缩、Newman–Ziff 扫描、网络鲁棒性、耦合级联、布尔模型、Cardy 公式、有向渗流、随机簇/Potts、自举渗流、爆炸渗流、侵入渗流、算法工坊、Bethe 树、SIR 即渗流、三维位点渗流 |
 | 算法 | 13 条精读：Bernoulli 抽样、并查集、键/位点 Newman–Ziff、Leath 生长、自举、侵入、Achlioptas、k-core、Hoshen–Kopelman、Bethe 不动点、SIR 最终规模、消息传递。每条给出想法、不变量、代价、易错点与精确源码链接 |
 | 数据 | C++ 基准程序、Python 分析器，以及 Data 视图直接读取的 JSON 记录；缺数据时如实说明，不伪造曲线 |
 | 测试 | 四语言整数级一致性探针（含算法库、v4 树/流行病求解器、位点扫描与消息传递）、RNG 金标向量、性质测试与文献审计 |
 | 示例 | 四语言并排调用：`docs/EXAMPLES.md`；代码阅读地图：`docs/ALGORITHMS.md`；CLI 与 JSON API：`docs/API.md` |
 
-**在线站点：** <https://cxy2696.github.io/atlas-percolation/> · **Wiki：** <https://github.com/cxy2696/atlas-percolation/wiki>（源文件在 `wiki/`）· **发布：** [v4.1.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.1.0) · **安装：** `pip install -e lib/python`
+**在线站点：** <https://cxy2696.github.io/atlas-percolation/> · **Wiki：** <https://github.com/cxy2696/atlas-percolation/wiki>（源文件在 `wiki/`）· **发布：** [v4.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.2.0) · **安装：** `pip install -e lib/python`
 
 ## 快速开始
 

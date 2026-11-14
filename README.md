@@ -4,24 +4,24 @@
 
 [![CI](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/ci.yml) [![Pages](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml/badge.svg)](https://github.com/cxy2696/atlas-percolation/actions/workflows/pages.yml) [![Release](https://img.shields.io/github/v/release/cxy2696/atlas-percolation?label=release)](https://github.com/cxy2696/atlas-percolation/releases)
 
-A trilingual, source-backed atlas of percolation theory with four reference implementations, fifteen interactive laboratories and a thirteen-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
+A trilingual, source-backed atlas of percolation theory with four reference implementations, sixteen interactive laboratories and a thirteen-entry algorithm reader. The site is a static, dependency-free HUD: it reads Markdown, JSON and the JavaScript engine directly, and it can be archived or served from any static host.
 
-**Live content:** 23 chapters in English, Simplified Chinese and German · 15 laboratories · 13 code walkthroughs · 4 language implementations · 125 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
+**Live content:** 23 chapters in English, Simplified Chinese and German · 16 laboratories · 13 code walkthroughs · 4 language implementations · 140 references · a pip-installable algorithm package. The site opens in **light mode, English** by default and remembers a reader's choice.
 
 ## What is inside
 
 | Layer | Contents |
 |---|---|
 | Knowledge base | 23 chapters from the founding 1957 paper through duality, sharpness, exponents, SLE, random-cluster models, networks, measurement, applications, algorithms, directed and continuum percolation, transport, the cross-disciplinary map, a proofs appendix, design under uncertainty, reproducibility, trees and generating functions, and epidemics as percolation |
-| Sources | 125 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (123 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
+| Sources | 140 references (articles, books, blog notes, software) with DOI or URL links, a Crossref/HTTP audit record (138 verified, 2 explanatory notes), per-chapter source lists, and an errata table |
 | Code | C++20 (header-only), Julia, Python and JavaScript, all consuming the same xoshiro128** stream and the same lattice edge order |
-| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, an algorithm studio, the Bethe tree, and SIR as percolation |
+| Laboratories | Lattice percolation, crossing collapse, Newman–Ziff sweep, network robustness, coupled cascades, the Boolean model, Cardy's formula, directed percolation, random-cluster/Potts, bootstrap percolation, explosive percolation, invasion percolation, an algorithm studio, the Bethe tree, SIR as percolation, and three-dimensional site percolation |
 | Algorithms | A thirteen-entry reader: Bernoulli sampler, DSU, bond and site Newman–Ziff, Leath, bootstrap, invasion, Achlioptas, k-core, Hoshen–Kopelman, the Bethe fixed point, the SIR final size and message passing. Each entry gives the idea, invariant, cost, pitfalls and links to the exact source. |
 | Data | A C++ benchmark harness, a Python analyser, and a JSON record that the Data view reads without hiding missing data |
 | Tests | Integer-exact parity probes across all four implementations, including the algorithm zoo, the v4 tree/epidemic solvers, the site sweep and message passing; RNG golden vectors, property tests, and a reference audit |
 | Examples | Side-by-side calls for the same experiment in all four languages: `docs/EXAMPLES.md`; the code-reading map: `docs/ALGORITHMS.md`; a CLI and JSON API: `docs/API.md` |
 
-**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v4.1.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.1.0) · **Package:** `pip install -e lib/python`
+**Live site:** <https://cxy2696.github.io/atlas-percolation/> · **Wiki:** <https://github.com/cxy2696/atlas-percolation/wiki> (source in `wiki/`) · **Release:** [v4.2.0](https://github.com/cxy2696/atlas-percolation/releases/tag/v4.2.0) · **Package:** `pip install -e lib/python`
 
 ## Quick start
 
@@ -138,7 +138,7 @@ lib/
                          explosive, Leath, trees and message passing)
 assets/
   js/views/             overview, atlas reader, labs, code, algorithms, data, library, sources
-  js/labs/              fifteen instruments, with authored guides
+  js/labs/              sixteen instruments, with authored guides
   css/hud.css           the HUD shell
 scripts/
   build_content.py      validates content and generates JSON

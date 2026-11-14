@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13 14:43",
+ "generated": "2026-11-14 19:55",
  "languages": [
   {
    "id": "javascript",
@@ -42,6 +42,12 @@
      "bytes": 3148
     },
     {
+     "path": "lib/js/engine/lattice3d.js",
+     "bucket": "core",
+     "lines": 51,
+     "bytes": 1465
+    },
+    {
      "path": "lib/js/engine/message.js",
      "bucket": "core",
      "lines": 100,
@@ -80,8 +86,8 @@
     {
      "path": "lib/js/index.js",
      "bucket": "core",
-     "lines": 41,
-     "bytes": 1282
+     "lines": 42,
+     "bytes": 1355
     },
     {
      "path": "tests/js/algorithms.test.js",
@@ -100,6 +106,12 @@
      "bucket": "tests",
      "lines": 60,
      "bytes": 2403
+    },
+    {
+     "path": "tests/js/lattice3d.test.js",
+     "bucket": "tests",
+     "lines": 45,
+     "bytes": 1558
     },
     {
      "path": "tests/js/message.test.js",

@@ -3,8 +3,8 @@ id: 12-applications
 part: Networks and applications
 order: 12
 title: Applications, and how to use the theory without abusing it
-subtitle: A protocol, four case studies, and the questions to ask first
-reading: 16 min
+subtitle: A protocol, four case studies, a field guide, and the questions to ask first
+reading: 23 min
 ---
 
 Percolation earns its keep in applications because it answers one question very well: given a random medium, is there a connected path across it? Everything else — the threshold value, the exponents, the finite-size corrections — is a refinement of that question. Most failed applications fail not because the mathematics is wrong but because the question being asked is not the one percolation answers.
@@ -49,7 +49,7 @@ For an SIR epidemic on a static contact network, retain each edge independently 
 $$
 v_c=1-\frac{1}{R_0},\qquad R_0=T(\kappa-1),
 $$
-where $\kappa=\langle k^2\rangle/\langle k\rangle$ is the Molloy–Reed ratio. For homogeneous mixing $R_0\approx T\langle k\rangle$, and for $T\approx1$ the heterogeneous expression reduces to $1-1/(\kappa-1)$. The heterogeneity matters: for a network with a heavy-tailed degree distribution, the fraction that must be immune is larger than the homogeneous formula suggests, and targeted immunity of high-degree vertices is far more efficient than random immunity.
+where $\kappa=\langle k^2\rangle/\langle k\rangle$ is the Molloy–Reed ratio. For homogeneous mixing $R_0\approx T\langle k\rangle$, and for $T\approx1$ the heterogeneous expression reduces to $1-1/(\kappa-1)$. If $R_0$ is held fixed, the random-coverage formula is the same for every degree distribution. What heterogeneity changes is $R_0$: at fixed mean degree, a heavy-tailed network has a larger $\kappa$ and therefore a larger $R_0$ and a larger $v_c$. Random immunization is never easier on the heterogeneous network; targeted immunity of high-degree vertices is the strategy that lowers the required coverage.
 
 Two warnings. The mapping assumes a static network and a Markovian epidemic; for temporal networks with bursty contacts the percolation threshold is replaced by a *temporal* connectivity threshold, and the two can differ by a large factor. And the herd-immunity threshold is a statement about the final size in an infinite population, not about the peak or the time course, which require the dynamics that percolation deliberately discards.
 
@@ -84,3 +84,46 @@ Wildfire is a natural percolation problem with the same structure: fuel connecti
 *Case 4: coupled power/communication cascade.* Percolation predicts the existence of a first-order transition and the scaling of the cascade size. It does not predict which line trips first. Use it to compare topologies and to justify redundancy; do not use it to forecast a specific blackout.
 
 The pattern in all four is the same: percolation gives thresholds, scaling and qualitative transitions with remarkable reliability, and gives amplitudes and dynamics poorly or not at all. An application that respects the division of labour is useful; one that quotes a threshold as a material constant is not.
+
+## 12.8 A field guide by domain
+
+The same three questions — what is the graph, what is the control parameter, what connectivity matters — organise every application below. The table is deliberately conservative: it separates a model that has been tested against data from a percolation metaphor that has not.
+
+| Domain | Graph and control | What percolation actually gives | What it does not give | Key sources |
+|---|---|---|---|---|
+| Conductive composites, electrodes | filler particles and contacts; volume fraction, aspect ratio, dispersion | threshold window and power-law conductivity above it | absolute conductivity, tunnelling, contact resistance | Balberg et al. 1984; Sahimi 2023 |
+| Rigidity of glasses and frameworks | constraint graph; mean coordination | mean-field rigidity threshold and constraint-counting algorithm | experimental glass transition, chemistry-specific thresholds | Thorpe 1983; Jacobs and Thorpe 1995 |
+| Porous media, CO₂ storage | pore–throat network; saturation, capillary pressure | connected pore fraction, invasion path, relative-permeability shape | pore-scale reaction, multiphase hysteresis | Sahimi 2023; Hunt et al. 2013 |
+| Wildfire | fuel cells; fuel density, wind, treatment | qualitative threshold and treatment-placement logic | operational fire spread, weather, suppression | Drossel and Schwabl 1992 (model) |
+| Epidemics | contact network; per-contact transmission | final size, random and targeted immunization thresholds | timing, behaviour change, temporal contacts | Newman 2002; Cohen et al. 2003 |
+| Infrastructure | multilayer network; coupling strength, redundancy | first-order cascade, mutual giant component | which line trips, operator response | Buldyrev et al. 2010; Parshani et al. 2010 |
+| Optimal percolation | graph; removed vertices | minimal dismantling set, influence maximization | exact optimum at scale, costs and constraints | Morone and Makse 2015; Zdeborová et al. 2016; Mugisha and Zhou 2016 |
+| Road traffic | evolving road network; removal of bottlenecks | percolation transition in the dynamical network | individual route choice, demand forecast | Li et al. 2015 |
+| Finance | interbank exposures; default threshold | cascade condition and systemic-risk ranking | balance-sheet detail, fire sales, policy response | Gai and Kapadia 2010 |
+| Social contagion, urban growth | social/contact graph or correlated landscape | threshold for global adoption; correlated-percolation morphology | preferences, media, planning policy | Watts 2002; Solomon et al. 2000; Makse et al. 1995 |
+| Quantum information | fusion/measurement graph; gate success probability | percolation threshold for a usable cluster state, erasure threshold | general gate errors, overhead, architecture | Kieling et al. 2007; Stace et al. 2009 |
+| Turbulence | directed percolation in space–time | universality class and critical exponents | Navier–Stokes derivation, engineering amplitudes | Lemoult et al. 2016; Sano and Tamai 2016 |
+
+## 12.9 Claims that are easy to get wrong
+
+**“Random immunization is easier on a heterogeneous network.”** It is not. For random immunization the required coverage is
+$$
+v_c = 1-\frac{1}{T(\kappa-1)},
+$$
+which grows with $R_0$. If $R_0$ is held fixed, the random coverage is the same for every degree distribution. At fixed mean degree, a heavy-tailed network has a larger $\kappa$, hence a larger $R_0$ and a larger $v_c$; it is **not** easier to protect by random immunization. Targeted immunization of high-degree vertices is the strategy that needs less coverage (Cohen et al. 2003).
+
+**“Two-dimensional site percolation with $p_c\approx0.5927$ is the landscape-connectivity threshold.”** It is the threshold of the square-lattice site model. A real landscape has correlated habitat, weighted movement costs and a species-specific dispersal kernel; the relevant model is correlated or weighted percolation, and the number should be measured, not borrowed.
+
+**“The conductivity exponent is universal and exact.”** In three dimensions $t\approx2.0$ is a numerical value; in two dimensions $t\approx1.299$ is also numerical (Grassberger 1999). The scaling relation $t=\nu(d-2+\zeta)$ is a relation between exponents, not a derivation of their values.
+
+**“The surface-code erasure threshold is exactly the bond-percolation threshold.”** For the specific loss model in Stace et al. (2009), the mapping is useful and the threshold coincides with the corresponding bond-percolation value. General gate errors, measurement errors and circuit-level noise do not map to that single number.
+
+**“Rigidity percolation has a sharp threshold at mean coordination 2.4.”** The $2.4$ value is a mean-field constraint-counting result. Real glasses have different coordination distributions, bond-bending forces and floppy modes; experiments give a range, not a universal constant.
+
+**“Forest-fire models prove that real forests are self-organised critical.”** Drossel–Schwabl is a model with a separation of time scales. Real fire regimes depend on weather, fuel structure, ignition and suppression; the power-law claim is model-conditional.
+
+**“Percolation explains the emergence of capabilities in large language models.”** The language of connectivity and pruning is useful, and $k$-core pruning thresholds are rigorous for random sparse networks. Claims that a specific capability is a percolation transition in a trained transformer are hypotheses about a particular architecture, not theorems.
+
+**“Message passing gives the exact threshold of any real network.”** The non-backtracking criterion is exact on trees and asymptotically on locally tree-like ensembles. Finite cycles, degree correlations and community structure can shift it; the result is a principled approximation, not an exact identity for one observed graph.
+
+The practical rule is the same in every row: state the graph, the control parameter and the connectivity; label the result exact, numerical, model-conditional or metaphorical; and do not quote a threshold as a material constant.

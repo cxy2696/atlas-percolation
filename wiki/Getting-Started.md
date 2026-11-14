@@ -39,7 +39,7 @@ Open <http://127.0.0.1:8080/>; the API is under `/api`.
 python3 -m pip install -e lib/python
 
 # or install the release wheel
-python3 -m pip install percolation_atlas-4.1.0-py3-none-any.whl
+python3 -m pip install percolation_atlas-4.2.0-py3-none-any.whl
 ```
 
 Python 3.10 or newer; the package uses only the standard library.

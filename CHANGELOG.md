@@ -1,5 +1,52 @@
 # Changelog
 
+## 4.2.0 — 2026-11-14
+
+A field-guide release. The atlas gains a three-dimensional site-percolation
+laboratory, a domain-by-domain applications guide, and fifteen verified
+application references. The bibliography is now 140 entries: 138 checked
+against Crossref or the publisher, 2 explanatory notes.
+
+**Three dimensions**
+
+- Added `buildLattice3D(L)` (simple cubic, open boundaries, `L³` sites and
+  `3L²(L−1)` edges) and a new **3D percolation** laboratory (`#/en/labs/three-d`).
+- The laboratory draws every occupied site in isometric projection, colours the
+  largest and second-largest clusters, and tests top–bottom spanning directly
+  through the union-find roots.
+- New guide explains the projection, the cube side, the finite-size crossing,
+  and why the quoted `p_c = 0.3116077(2)` is numerical, not exact.
+
+**Applications**
+
+- Chapter 12 now ends with a field guide by domain: materials and rigidity,
+  porous media, wildfire, epidemics, infrastructure, optimal percolation,
+  traffic, finance, social/urban models, quantum information and turbulence.
+- Added a "claims that are easy to get wrong" section. In particular: random
+  immunization on heterogeneous networks is not easier. At fixed mean degree a
+  heavy-tailed network has a larger R0 and needs *more* random coverage; at
+  fixed R0 the random-coverage formula is the same. Targeted immunization is
+  the strategy that lowers the requirement.
+- Corrected the common overreach around the 2D landscape threshold, the
+  conductivity exponent, surface-code erasure thresholds, the mean-field
+  rigidity value 2.4, forest-fire criticality, message passing and AI emergence.
+
+**References**
+
+- Added fifteen entries: Thorpe (1983), Drossel–Schwabl (1992), Cohen–Havlin–
+  ben-Avraham (2003), Morone–Makse (2015), Li et al. (2015), Gai–Kapadia
+  (2010), Solomon et al. (2000), Makse et al. (1995), Kieling–Rudolph–Eisert
+  (2007), Stace–Barrett–Doherty (2009), Lemoult et al. (2016), Sano–Tamai
+  (2016), Jacobs–Thorpe (1995), Zdeborová et al. (2016) and Mugisha–Zhou (2016).
+- Audit: 140 total, 138 verified, 2 explanatory notes, 0 unresolved.
+
+**Housekeeping**
+
+- README, README_cn, README_de, CITATION, meta tags, wiki and deployment
+  examples updated to 16 laboratories and 140 references.
+- Added `tests/js/lattice3d.test.js` (size, edge count, degree, extremes,
+  positions); the guide and claim checks now expect the new counts.
+
 ## 4.1.0 — 2026-11-13
 
 A verification and algorithm edition. The atlas keeps 23 chapters, 15

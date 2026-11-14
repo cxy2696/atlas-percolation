@@ -2237,6 +2237,304 @@
     "epidemics",
     "networks"
    ]
+  },
+  {
+   "id": "thorpe1983",
+   "authors": [
+    "Thorpe, M. F."
+   ],
+   "year": 1983,
+   "title": "Continuous deformations in random networks",
+   "venue": "Journal of Non-Crystalline Solids",
+   "volume": "57",
+   "pages": "355–370",
+   "doi": "10.1016/0022-3093(83)90424-6",
+   "type": "article",
+   "topics": [
+    "rigidity",
+    "materials",
+    "applications"
+   ]
+  },
+  {
+   "id": "drossel1992",
+   "authors": [
+    "Drossel, B.",
+    "Schwabl, F."
+   ],
+   "year": 1992,
+   "title": "Self-organized critical forest-fire model",
+   "venue": "Physical Review Letters",
+   "volume": "69",
+   "pages": "1629–1632",
+   "doi": "10.1103/PhysRevLett.69.1629",
+   "type": "article",
+   "topics": [
+    "forest-fire",
+    "applications",
+    "critical"
+   ]
+  },
+  {
+   "id": "cohen2003",
+   "authors": [
+    "Cohen, R.",
+    "Havlin, S.",
+    "ben-Avraham, D."
+   ],
+   "year": 2003,
+   "title": "Efficient immunization strategies for computer networks and populations",
+   "venue": "Physical Review Letters",
+   "volume": "91",
+   "pages": "247901",
+   "doi": "10.1103/PhysRevLett.91.247901",
+   "type": "article",
+   "topics": [
+    "epidemics",
+    "networks",
+    "applications"
+   ]
+  },
+  {
+   "id": "morone2015",
+   "authors": [
+    "Morone, F.",
+    "Makse, H. A."
+   ],
+   "year": 2015,
+   "title": "Influence maximization in complex networks through optimal percolation",
+   "venue": "Nature",
+   "volume": "524",
+   "pages": "65–68",
+   "doi": "10.1038/nature14604",
+   "type": "article",
+   "topics": [
+    "networks",
+    "optimal-percolation",
+    "applications"
+   ]
+  },
+  {
+   "id": "li2015",
+   "authors": [
+    "Li, D.",
+    "Fu, B.",
+    "Wang, Y.",
+    "Lu, G.",
+    "Berezin, Y.",
+    "Stanley, H. E.",
+    "Havlin, S."
+   ],
+   "year": 2015,
+   "title": "Percolation transition in dynamical traffic network with evolving critical bottlenecks",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "112",
+   "pages": "669–672",
+   "doi": "10.1073/pnas.1419185112",
+   "type": "article",
+   "topics": [
+    "transport",
+    "networks",
+    "applications"
+   ]
+  },
+  {
+   "id": "gai2010",
+   "authors": [
+    "Gai, P.",
+    "Kapadia, S."
+   ],
+   "year": 2010,
+   "title": "Contagion in financial networks",
+   "venue": "Proceedings of the Royal Society A",
+   "volume": "466",
+   "pages": "2401–2423",
+   "doi": "10.1098/rspa.2009.0410",
+   "type": "article",
+   "topics": [
+    "finance",
+    "networks",
+    "applications"
+   ]
+  },
+  {
+   "id": "solomon2000",
+   "authors": [
+    "Solomon, S.",
+    "Weisbuch, G.",
+    "de Arcangelis, L.",
+    "Jan, N.",
+    "Stauffer, D."
+   ],
+   "year": 2000,
+   "title": "Social percolation models",
+   "venue": "Physica A",
+   "volume": "277",
+   "pages": "239–247",
+   "doi": "10.1016/S0378-4371(99)00543-9",
+   "type": "article",
+   "topics": [
+    "social",
+    "applications"
+   ]
+  },
+  {
+   "id": "makse1995",
+   "authors": [
+    "Makse, H. A.",
+    "Havlin, S.",
+    "Stanley, H. E."
+   ],
+   "year": 1995,
+   "title": "Modelling urban growth patterns",
+   "venue": "Nature",
+   "volume": "377",
+   "pages": "608–612",
+   "doi": "10.1038/377608a0",
+   "type": "article",
+   "topics": [
+    "urban",
+    "correlated-percolation",
+    "applications"
+   ]
+  },
+  {
+   "id": "kieling2007",
+   "authors": [
+    "Kieling, K.",
+    "Rudolph, T.",
+    "Eisert, J."
+   ],
+   "year": 2007,
+   "title": "Percolation, renormalization, and quantum computing with nondeterministic gates",
+   "venue": "Physical Review Letters",
+   "volume": "99",
+   "pages": "130501",
+   "doi": "10.1103/PhysRevLett.99.130501",
+   "type": "article",
+   "topics": [
+    "quantum",
+    "applications"
+   ]
+  },
+  {
+   "id": "stace2009",
+   "authors": [
+    "Stace, T. M.",
+    "Barrett, S. D.",
+    "Doherty, A. C."
+   ],
+   "year": 2009,
+   "title": "Thresholds for topological codes in the presence of loss",
+   "venue": "Physical Review Letters",
+   "volume": "102",
+   "pages": "200501",
+   "doi": "10.1103/PhysRevLett.102.200501",
+   "type": "article",
+   "topics": [
+    "quantum",
+    "applications"
+   ]
+  },
+  {
+   "id": "lemoult2016",
+   "authors": [
+    "Lemoult, G.",
+    "Shi, L.",
+    "Avila, K.",
+    "Jalikop, S. V.",
+    "Avila, M.",
+    "Hof, B."
+   ],
+   "year": 2016,
+   "title": "Directed percolation phase transition to sustained turbulence in Couette flow",
+   "venue": "Nature Physics",
+   "volume": "12",
+   "pages": "254–258",
+   "doi": "10.1038/nphys3675",
+   "type": "article",
+   "topics": [
+    "directed",
+    "turbulence",
+    "applications"
+   ]
+  },
+  {
+   "id": "sano2016",
+   "authors": [
+    "Sano, M.",
+    "Tamai, K."
+   ],
+   "year": 2016,
+   "title": "A universal transition to turbulence in channel flow",
+   "venue": "Nature Physics",
+   "volume": "12",
+   "pages": "249–253",
+   "doi": "10.1038/nphys3659",
+   "type": "article",
+   "topics": [
+    "directed",
+    "turbulence",
+    "applications"
+   ]
+  },
+  {
+   "id": "jacobs1995",
+   "authors": [
+    "Jacobs, D. J.",
+    "Thorpe, M. F."
+   ],
+   "year": 1995,
+   "title": "Generic rigidity percolation: the pebble game",
+   "venue": "Physical Review Letters",
+   "volume": "75",
+   "pages": "4051–4054",
+   "doi": "10.1103/PhysRevLett.75.4051",
+   "type": "article",
+   "topics": [
+    "rigidity",
+    "algorithms",
+    "applications"
+   ]
+  },
+  {
+   "id": "zdeborova2016",
+   "authors": [
+    "Zdeborová, L.",
+    "Zhang, P.",
+    "Zhou, H.-J."
+   ],
+   "year": 2016,
+   "title": "Fast and simple decycling and dismantling of networks",
+   "venue": "Scientific Reports",
+   "volume": "6",
+   "pages": "37954",
+   "doi": "10.1038/srep37954",
+   "type": "article",
+   "topics": [
+    "networks",
+    "optimal-percolation",
+    "algorithms"
+   ]
+  },
+  {
+   "id": "mugisha2016",
+   "authors": [
+    "Mugisha, S.",
+    "Zhou, H.-J."
+   ],
+   "year": 2016,
+   "title": "Identifying optimal targets of network attack by belief propagation",
+   "venue": "Physical Review E",
+   "volume": "94",
+   "pages": "012305",
+   "doi": "10.1103/PhysRevE.94.012305",
+   "type": "article",
+   "topics": [
+    "networks",
+    "optimal-percolation",
+    "algorithms"
+   ]
   }
  ]
 }

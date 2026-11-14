@@ -152,4 +152,14 @@ export const LABS = [
     },
     mount: (el, ctx) => import('./epidemic.js').then((m) => m.mount(el, ctx)),
   },
+  {
+    id: 'three-d',
+    title: { en: '3D percolation', zh: '三维渗流', de: '3D-Perkolation' },
+    blurb: {
+      en: 'Simple cubic site percolation in isometric projection: L³ sites, top–bottom spanning, p_c ≈ 0.3116.',
+      zh: '等距投影下的简单立方位点渗流：L³ 个位点、上下贯穿、p_c ≈ 0.3116。',
+      de: 'Einfache kubische Platzperkolation in isometrischer Projektion: L³ Plätze, Durchgang oben–unten, p_c ≈ 0.3116.',
+    },
+    mount: (el, ctx) => import('./three-d.js').then((m) => m.mount(el, ctx)),
+  },
 ];

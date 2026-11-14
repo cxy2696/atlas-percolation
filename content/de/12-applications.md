@@ -3,8 +3,8 @@ id: 12-applications
 part: Networks and applications
 order: 12
 title: Anwendungen – und wie man die Theorie nutzt, ohne sie zu missbrauchen
-subtitle: Ein Protokoll, vier Fallstudien und die Fragen, die zuerst zu stellen sind
-reading: 17 min
+subtitle: Ein Protokoll, vier Fallstudien, ein Feldführer und die Fragen, die zuerst zu stellen sind
+reading: 23 min
 ---
 
 Die Perkolation verdient ihren Platz in Anwendungen, weil sie eine Frage sehr gut beantwortet: Gibt es in einem zufälligen Medium einen zusammenhängenden Pfad hindurch? Alles andere – der Schwellenwert, die Exponenten, die Finite-Size-Korrekturen – ist eine Verfeinerung dieser Frage. Die meisten gescheiterten Anwendungen scheitern nicht, weil die Mathematik falsch ist, sondern weil die gestellte Frage nicht diejenige ist, die die Perkolation beantwortet.
@@ -84,3 +84,46 @@ Ein Waldbrand ist ein natürliches Perkolationsproblem mit derselben Struktur: D
 *Fall 4: gekoppelte Strom-/Kommunikationskaskade.* Die Perkolation sagt die Existenz eines Übergangs erster Ordnung und die Skalierung der Kaskadengröße voraus. Sie sagt nicht voraus, welche Leitung zuerst auslöst. Man nutze sie, um Topologien zu vergleichen und Redundanz zu begründen; man nutze sie nicht, um einen konkreten Stromausfall vorherzusagen.
 
 Das Muster ist in allen vier Fällen dasselbe: Die Perkolation liefert Schwellen, Skalierung und qualitative Übergänge mit bemerkenswerter Zuverlässigkeit, Amplituden und Dynamik dagegen schlecht oder gar nicht. Eine Anwendung, die diese Arbeitsteilung respektiert, ist nützlich; eine, die eine Schwelle als Materialkonstante ausgibt, nicht.
+
+## 12.8 Ein Feldführer nach Disziplinen
+
+Jede Anwendung lässt sich mit denselben drei Fragen ordnen: Was ist der Graph, was ist der Kontrollparameter, welche Konnektivität zählt? Die Tabelle ist bewusst konservativ: Sie trennt ein an Daten geprüftes Modell von einer Perkolationsmetapher, die es nicht ist.
+
+| Bereich | Graph und Kontrolle | Was Perkolation tatsächlich liefert | Was sie nicht liefert | Quellen |
+|---|---|---|---|---|
+| Leitfähige Verbunde, Elektroden | Füllstoffteilchen und Kontakte; Volumenanteil, Aspektverhältnis, Dispersion | Schwellenfenster und Potenzgesetz-Leitfähigkeit darüber | absolute Leitfähigkeit, Tunneln, Kontaktwiderstand | Balberg et al. 1984; Sahimi 2023 |
+| Rigidität von Gläsern und Gerüsten | Constraint-Graph; mittlere Koordination | Mean-Field-Rigiditätsschwelle und Constraint-Zählung | experimenteller Glasübergang, chemische Details | Thorpe 1983; Jacobs und Thorpe 1995 |
+| Poröse Medien, CO₂-Speicherung | Poren-Hals-Netz; Sättigung, Kapillardruck | verbundener Porenanteil, Invasionspfad, relative Permeabilität | Porenskalenreaktion, Mehrphasen-Hysterese | Sahimi 2023; Hunt et al. 2013 |
+| Waldbrand | Brennstoffzellen; Dichte, Wind, Behandlung | qualitative Schwelle und Platzierungslogik | operativer Brandverlauf, Wetter, Bekämpfung | Drossel und Schwabl 1992 (Modell) |
+| Epidemien | Kontaktnetz; Übertragung pro Kontakt | Endgröße, Schwellen für zufällige und gezielte Immunisierung | Zeitverlauf, Verhaltensänderung, temporäre Kontakte | Newman 2002; Cohen et al. 2003 |
+| Infrastruktur | Mehrschichtnetz; Kopplung, Redundanz | Kaskade erster Ordnung, gemeinsame Riesenkomponente | welche Leitung zuerst ausfällt, Betreiberreaktion | Buldyrev et al. 2010; Parshani et al. 2010 |
+| Optimale Perkolation | Graph; entfernte Knoten | minimale Zerstörungsmenge, Influence Maximization | exaktes Optimum in großem Maßstab, Kosten | Morone und Makse 2015; Zdeborová et al. 2016; Mugisha und Zhou 2016 |
+| Straßenverkehr | evolvierendes Straßennetz; Engpässe | Perkolationsübergang im dynamischen Netz | individuelle Routenwahl, Nachfrageprognose | Li et al. 2015 |
+| Finanzen | Interbank-Exposures; Ausfallschwelle | Kaskadenbedingung, systemisches Risiko-Ranking | Bilanzdetails, Fire Sales, Politik | Gai und Kapadia 2010 |
+| Soziale Ansteckung, Stadtwachstum | soziales/Kontaktnetz oder korrelierte Landschaft | globale Adoptionsschwelle; korrelierte Perkolationsmorphologie | Präferenzen, Medien, Planung | Watts 2002; Solomon et al. 2000; Makse et al. 1995 |
+| Quanteninformation | Fusions-/Messgraph; Gate-Erfolg | Perkolationsschwelle für einen nutzbaren Clusterzustand, Löschschwelle | allgemeine Gate-Fehler, Overhead, Architektur | Kieling et al. 2007; Stace et al. 2009 |
+| Turbulenz | gerichtete Perkolation in Raum–Zeit | Universalitätsklasse und kritische Exponenten | Navier–Stokes-Herleitung, technische Amplituden | Lemoult et al. 2016; Sano und Tamai 2016 |
+
+## 12.9 Behauptungen, die leicht schiefgehen
+
+**„Zufällige Immunisierung ist auf heterogenen Netzen leichter.“** Nein. Die nötige Abdeckung ist
+$$
+v_c = 1-\frac{1}{T(\kappa-1)},
+$$
+und sie wächst mit $R_0$. Bei festem $R_0$ ist die zufällige Abdeckung für jede Gradverteilung gleich. Bei festem mittlerem Grad hat ein schwer-tailed-Netz ein größeres $\kappa$, also ein größeres $R_0$ und ein größeres $v_c$; zufällige Immunisierung ist **nicht** leichter. Weniger braucht die gezielte Immunisierung von Knoten mit hohem Grad (Cohen et al. 2003).
+
+**„Der zweidimensionale Platzschwellenwert $p_c\approx0.5927$ ist die Landschafts-Schwelle.“** Das ist der Wert des Quadratgitter-Platzmodells. Eine reale Landschaft hat korrelierte Habitate, gewichtete Bewegungskosten und ein artspezifisches Dispersalkern; das relevante Modell ist korrelierte oder gewichtete Perkolation, und der Wert muss gemessen werden.
+
+**„Der Leitfähigkeitsexponent ist universell und exakt.“** In drei Dimensionen ist $t\approx2.0$ numerisch; in zwei Dimensionen ist $t\approx1.299$ ebenfalls numerisch (Grassberger 1999). Die Skalenrelation $t=\nu(d-2+\zeta)$ verbindet Exponenten, leitet ihre Werte aber nicht her.
+
+**„Die Löschschwelle des Oberflächencodes ist genau die Bond-Perkolationsschwelle.“** Für das spezielle Verlustmodell von Stace et al. (2009) ist die Abbildung nützlich und die Schwelle fällt mit dem entsprechenden Bond-Wert zusammen. Allgemeine Gate-, Mess- und Schaltkreisfehler bilden nicht auf diese eine Zahl ab.
+
+**„Rigiditätsperkolation hat eine scharfe Schwelle bei mittlerer Koordination 2.4.“** Der Wert $2.4$ ist ein Mean-Field-Ergebnis der Constraint-Zählung. Reale Gläser haben andere Koordinationsverteilungen, Biegekräfte und floppy modes; Experimente liefern einen Bereich, keine universelle Konstante.
+
+**„Waldbrandmodelle beweisen, dass reale Wälder selbstorganisiert kritisch sind.“** Drossel–Schwabl ist ein Modell mit getrennten Zeitskalen. Reale Feuerregime hängen von Wetter, Brennstoffstruktur, Zündung und Bekämpfung ab; die Potenzgesetz-Aussage ist modellbedingt.
+
+**„Perkolation erklärt die Emergenz von Fähigkeiten großer Sprachmodelle.“** Die Sprache von Konnektivität und Pruning ist nützlich, und $k$-Core-Pruning-Schwellen sind für zufällige dünne Netze streng. Die Behauptung, eine konkrete Fähigkeit sei ein Perkolationsübergang in einem trainierten Transformer, ist eine Hypothese über eine Architektur, kein Theorem.
+
+**„Message Passing liefert die exakte Schwelle jedes realen Netzes.“** Das Non-Backtracking-Kriterium ist auf Bäumen exakt und auf lokal baumartigen Ensembles asymptotisch. Endliche Zyklen, Gradkorrelationen und Gemeinschaftsstruktur verschieben es; es ist eine begründete Näherung, keine exakte Identität für einen beobachteten Graphen.
+
+Die praktische Regel ist in jeder Zeile dieselbe: Graph, Kontrollparameter und Konnektivität nennen; das Ergebnis als exakt, numerisch, modellbedingt oder metaphorisch kennzeichnen; und eine Schwelle nicht als Materialkonstante zitieren.

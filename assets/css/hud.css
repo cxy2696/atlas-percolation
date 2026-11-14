@@ -367,6 +367,7 @@ select:focus { outline: 1px solid var(--cyan-dim); }
 .canvas-wrap canvas { display: block; width: 100%; height: auto; }
 .canvas-wrap .corner {
   position: absolute;
+  z-index: 2;
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.1em;
@@ -374,7 +375,7 @@ select:focus { outline: 1px solid var(--cyan-dim); }
   padding: 4px 6px;
   pointer-events: none;
 }
-.canvas-wrap .corner.tl { top: 0; left: 0; }
+.canvas-wrap .corner.tl { top: 0; left: 4px; }
 .canvas-wrap .corner.tr { top: 0; right: 0; }
 .canvas-wrap .corner.bl { bottom: 0; left: 0; }
 .canvas-wrap .corner.br { bottom: 0; right: 0; }

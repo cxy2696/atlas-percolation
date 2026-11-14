@@ -7,11 +7,12 @@ The site is a hash-routed static application. The default route is the start gui
 | View | Route | What it is for |
 |---|---|---|
 | Start | `#/en/guide` | What the atlas contains and which path to take |
+| 3D lab | `#/en/labs/three-d` | Simple cubic site percolation, L³ sites, top–bottom spanning |
 | Overview | `#/en/overview` | Live isometric lattice, exact thresholds, critical exponents |
 | Atlas | `#/en/atlas` | 23 chapters, with a rail and a table of contents |
-| Labs | `#/en/labs` | 13 interactive instruments |
+| Labs | `#/en/labs` | 16 interactive instruments |
 | Code | `#/en/code` | Four-language source browser with deep links (`?file=...`) |
-| Algorithms | `#/en/algorithms` | 8 routines: idea, invariant, cost, code notes, pitfalls |
+| Algorithms | `#/en/algorithms` | 13 routines: idea, invariant, cost, code notes, pitfalls |
 | Data | `#/en/data` | Benchmark record: sample sizes, seeds, dates, fits |
 | Library | `#/en/library` | Full-text search and the complete section index |
 | Sources | `#/en/sources` | Bibliography, audit badges, chapter cross-links |

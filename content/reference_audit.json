@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-11-13 14:46",
+ "checked_at": "2026-11-14 19:46",
  "method": "crossref-doi+http-url",
- "total": 125,
+ "total": 140,
  "counts": {
-  "ok": 123,
+  "ok": 138,
   "ok-note": 2
  },
  "results": [
@@ -388,6 +388,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Efficient Immunization Strategies for Computer Networks and Populations",
+   "resolved_year": 2003,
+   "resolved_first_author": "Cohen",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "cohen2003",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Cluster structure near the percolation threshold",
    "resolved_year": 1982,
    "resolved_first_author": "Coniglio",
@@ -494,6 +508,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Self-organized critical forest-fire model",
+   "resolved_year": 1992,
+   "resolved_first_author": "Drossel",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "drossel1992",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Explosive phenomena in complex networks",
    "resolved_year": 2019,
    "resolved_first_author": "D'Souza",
@@ -572,6 +600,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "fortuin1972",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Contagion in financial networks",
+   "resolved_year": 2010,
+   "resolved_first_author": "Gai",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "gai2010",
    "source": "doi",
    "problems": []
   },
@@ -908,6 +950,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Generic Rigidity Percolation: The Pebble Game",
+   "resolved_year": 1995,
+   "resolved_first_author": "Jacobs",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "jacobs1995",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "High-precision percolation thresholds and Potts-model critical manifolds from graph polynomials",
    "resolved_year": 2014,
    "resolved_first_author": "Jacobsen",
@@ -1014,6 +1070,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Percolation, Renormalization, and Quantum Computing with Nondeterministic Gates",
+   "resolved_year": 2007,
+   "resolved_first_author": "Kieling",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "kieling2007",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Percolation and Conduction",
    "resolved_year": 1973,
    "resolved_first_author": "Kirkpatrick",
@@ -1078,6 +1148,34 @@
    "year_ok": true,
    "author_ok": true,
    "id": "leath1976",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Directed percolation phase transition to sustained turbulence in Couette flow",
+   "resolved_year": 2016,
+   "resolved_first_author": "Lemoult",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "lemoult2016",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Percolation transition in dynamical traffic network with evolving critical bottlenecks",
+   "resolved_year": 2014,
+   "resolved_first_author": "Li",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "li2015",
    "source": "doi",
    "problems": []
   },
@@ -1168,6 +1266,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Modelling urban growth patterns",
+   "resolved_year": 1995,
+   "resolved_first_author": "Makse",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "makse1995",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Continuum Percolation",
    "resolved_year": 1996,
    "resolved_first_author": "Meester",
@@ -1230,6 +1342,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "Influence maximization in complex networks through optimal percolation",
+   "resolved_year": 2015,
+   "resolved_first_author": "Morone",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "morone2015",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Cascade-based attacks on complex networks",
    "resolved_year": 2002,
    "resolved_first_author": "Motter",
@@ -1238,6 +1364,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "motter2002",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Identifying optimal targets of network attack by belief propagation",
+   "resolved_year": 2016,
+   "resolved_first_author": "Mugisha",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "mugisha2016",
    "source": "doi",
    "problems": []
   },
@@ -1484,6 +1624,20 @@
   {
    "status": "ok",
    "http": 200,
+   "resolved_title": "A universal transition to turbulence in channel flow",
+   "resolved_year": 2016,
+   "resolved_first_author": "Sano",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "sano2016",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
    "resolved_title": "Scaling limits of loop-erased random walks and uniform spanning trees",
    "resolved_year": 2000,
    "resolved_first_author": "Schramm",
@@ -1534,6 +1688,34 @@
    "year_ok": true,
    "author_ok": true,
    "id": "smirnov2010",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Social percolation models",
+   "resolved_year": 2000,
+   "resolved_first_author": "Solomon",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "solomon2000",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Thresholds for Topological Codes in the Presence of Loss",
+   "resolved_year": 2009,
+   "resolved_first_author": "Stace",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "stace2009",
    "source": "doi",
    "problems": []
   },
@@ -1618,6 +1800,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "tarjan1975",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Continuous deformations in random networks",
+   "resolved_year": 1983,
+   "resolved_first_author": "Thorpe",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "thorpe1983",
    "source": "doi",
    "problems": []
   },
@@ -1716,6 +1912,20 @@
    "year_ok": true,
    "author_ok": true,
    "id": "zallen1983",
+   "source": "doi",
+   "problems": []
+  },
+  {
+   "status": "ok",
+   "http": 200,
+   "resolved_title": "Fast and simple decycling and dismantling of networks",
+   "resolved_year": 2016,
+   "resolved_first_author": "Zdeborová",
+   "similarity": 1.0,
+   "title_ok": true,
+   "year_ok": true,
+   "author_ok": true,
+   "id": "zdeborova2016",
    "source": "doi",
    "problems": []
   }
