@@ -173,4 +173,4 @@ This is a reference and a teaching instrument. It is not a substitute for the pr
 
 ## Licence
 
-Code: MIT (`LICENSE`). Text and figures: CC BY 4.0 (`LICENSE-CONTENT`). Citation metadata: `CITATION.cff`.
+Code: MIT (`LICENSE`). Text and figures: CC BY 4.0 (`LICENSE-CONTENT`). 
